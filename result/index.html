@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your Cheapest Hours — CheapestHours</title>
+  <meta name="description" content="See whether to use electricity now or wait, compare the current cost with the cheapest available window, and explore how the same load compares around the world.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://cheapesthours.com/result/">
+
+  <meta name="theme-color" content="#17213B">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:#17213B; --navy-deep:#0D1526; --gold:#D4A24C; --cream:#F5ECDC;
+      --ink:#1B2A4A; --ink-soft:rgba(27,42,74,.64);
+      --green:#3F8F6B; --orange:#B9862E; --red:#C85F54; --white:#fff;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0; min-height:100vh;
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--cream);
+      background:radial-gradient(ellipse at 50% -10%,#2a3c69 0%,var(--navy) 43%,var(--navy-deep) 100%);
+      overflow-x:hidden;
+    }
+
+    .world-grid {
+      position:fixed; inset:0; pointer-events:none; opacity:.045;
+      background-image:
+        repeating-linear-gradient(0deg,var(--cream) 0,transparent 1px,transparent 54px),
+        repeating-linear-gradient(90deg,var(--cream) 0,transparent 1px,transparent 54px);
+    }
+
+    main {
+      position:relative; z-index:1;
+      width:min(100% - 36px,440px);
+      margin:0 auto; padding:38px 0 48px;
+    }
+
+    .topline {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:23px;
+    }
+
+    .brand {
+      color:var(--gold); text-decoration:none;
+      font-family:"Fraunces",serif; font-size:21px; font-weight:650;
+    }
+
+    .step {
+      color:rgba(245,236,220,.48);
+      font-size:11px; letter-spacing:.04em; text-transform:uppercase;
+    }
+
+    h1 {
+      margin:0 0 7px; text-align:center;
+      font-family:"Fraunces",serif; font-size:28px; line-height:1.16; font-weight:600;
+    }
+
+    .lead {
+      margin:0 auto 24px; max-width:380px;
+      text-align:center; color:rgba(245,236,220,.66);
+      font-size:13.5px; line-height:1.55;
+    }
+
+    .card {
+      background:var(--cream); color:var(--ink);
+      border-radius:21px; padding:24px 22px;
+      box-shadow:0 22px 65px rgba(0,0,0,.34);
+      text-align:center;
+    }
+
+    .flag-big { font-size:38px; margin-bottom:4px; }
+
+    .market {
+      color:var(--ink-soft);
+      font-size:11px; text-transform:uppercase;
+      letter-spacing:.09em; font-weight:700;
+    }
+
+    .verdict {
+      display:inline-block;
+      margin:17px 0 9px;
+      padding:9px 18px;
+      border:2px dashed;
+      border-radius:999px;
+      font-family:"Fraunces",serif;
+      font-size:20px; font-weight:700;
+    }
+
+    .verdict.run { color:var(--green); border-color:var(--green); background:rgba(63,143,107,.08); }
+    .verdict.mid { color:var(--orange); border-color:var(--orange); background:rgba(185,134,46,.08); }
+    .verdict.wait { color:var(--red); border-color:var(--red); background:rgba(200,95,84,.08); }
+    .verdict.none { color:var(--ink-soft); border-color:rgba(27,42,74,.35); background:rgba(27,42,74,.04); }
+
+    .explain {
+      margin:0 auto;
+      max-width:380px;
+      font-size:13.5px; line-height:1.5;
+    }
+
+    .stats {
+      display:grid; grid-template-columns:1fr 1fr; gap:9px;
+      margin-top:17px;
+    }
+
+    .stat {
+      padding:12px;
+      border:1px solid rgba(27,42,74,.09);
+      border-radius:12px;
+      background:var(--white);
+    }
+
+    .stat .k {
+      color:var(--ink-soft);
+      font-size:9.5px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase;
+    }
+
+    .stat .v {
+      margin-top:3px;
+      font-size:16px; font-weight:800;
+    }
+
+    .window {
+      margin-top:11px; padding:13px 14px;
+      border:1px solid rgba(212,162,76,.24);
+      border-radius:12px;
+      background:rgba(212,162,76,.08);
+    }
+
+    .window .k {
+      color:var(--ink-soft);
+      font-size:9.5px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase;
+    }
+
+    .window .v {
+      margin-top:3px;
+      font-size:16px; font-weight:800;
+    }
+
+    details {
+      margin-top:15px;
+      padding-top:14px;
+      border-top:1px solid rgba(27,42,74,.09);
+      text-align:left;
+    }
+
+    summary {
+      cursor:pointer;
+      color:var(--ink);
+      font-size:12px; font-weight:700;
+      list-style:none;
+    }
+
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:" ↓"; color:var(--ink-soft); }
+
+    .more-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:8px;
+      margin-top:12px;
+    }
+
+    .more-item {
+      padding:10px;
+      border-radius:10px;
+      background:rgba(27,42,74,.045);
+    }
+
+    .more-item .k {
+      color:var(--ink-soft);
+      font-size:9px; text-transform:uppercase; letter-spacing:.06em;
+    }
+
+    .more-item .v {
+      margin-top:2px;
+      font-size:12px; font-weight:700;
+    }
+
+    .fine {
+      margin-top:12px;
+      color:var(--ink-soft);
+      font-size:10px; line-height:1.45;
+    }
+
+    .loading,.error {
+      padding:36px 0;
+      text-align:center;
+      color:rgba(245,236,220,.64);
+      font-size:13px;
+    }
+
+    .ad-slot {
+      margin:22px 0; min-height:74px;
+      display:grid; place-items:center;
+      border:1px dashed rgba(245,236,220,.18);
+      border-radius:12px;
+      color:rgba(245,236,220,.3);
+      font-size:10px; letter-spacing:.05em; text-transform:uppercase;
+    }
+
+    .world-title {
+      margin:27px 0 5px;
+      text-align:center;
+      color:var(--gold);
+      font-family:"Fraunces",serif;
+      font-size:21px; font-weight:600;
+    }
+
+    .world-sub {
+      margin:0 0 11px;
+      text-align:center;
+      color:rgba(245,236,220,.54);
+      font-size:11.5px; line-height:1.45;
+    }
+
+    .postcard {
+      display:block;
+      padding:15px 16px;
+      border:1px solid rgba(245,236,220,.14);
+      border-radius:14px;
+      background:rgba(245,236,220,.055);
+      color:var(--cream);
+      text-decoration:none;
+      transition:.17s ease;
+    }
+
+    .postcard:hover {
+      transform:translateY(-2px);
+      border-color:rgba(212,162,76,.55);
+      background:rgba(245,236,220,.09);
+    }
+
+    .postcard .headline {
+      font-family:"Fraunces",serif;
+      font-size:16px; font-weight:700; line-height:1.28;
+    }
+
+    .postcard .sub {
+      margin-top:5px;
+      color:rgba(245,236,220,.64);
+      font-size:11.5px; line-height:1.45;
+    }
+
+    .links {
+      display:grid; grid-template-columns:1fr 1fr; gap:9px;
+      margin-top:10px;
+    }
+
+    .links a {
+      padding:12px;
+      border:1px solid rgba(245,236,220,.12);
+      border-radius:12px;
+      background:rgba(245,236,220,.04);
+      color:var(--cream);
+      text-align:center;
+      text-decoration:none;
+      font-size:11px;
+    }
+
+    .note {
+      margin-top:22px;
+      color:rgba(245,236,220,.43);
+      text-align:center;
+      font-size:10.5px; line-height:1.55;
+    }
+
+    @media (max-width:370px) {
+      .stats,.more-grid,.links { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="world-grid" aria-hidden="true"></div>
+
+  <main>
+    <div class="topline">
+      <a class="brand" href="/">⚡ CheapestHours</a>
+      <div class="step">Step 3 of 3</div>
+    </div>
+
+    <h1>Your cheapest hours</h1>
+    <p class="lead" id="lead">Checking your selected load against the live electricity market.</p>
+
+    <div id="content">
+      <div class="loading">Finding the best available window…</div>
+    </div>
+
+    <!-- Replace with the real AdSense unit after approval. -->
+    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
+
+    <section id="worldSection" hidden>
+      <h2 class="world-title">Meanwhile, somewhere else…</h2>
+      <p class="world-sub">The same electricity use can look very different in another market.</p>
+
+      <a class="postcard" id="worldCard" href="#">
+        <div class="headline" id="worldHeadline"></div>
+        <div class="sub" id="worldText"></div>
+      </a>
+
+      <div class="links">
+        <a href="/">🌍 Check another country</a>
+        <a href="/ireland/">🇮🇪 Ireland cheapest hours</a>
+      </div>
+    </section>
+
+    <p class="note">
+      CheapestHours compares wholesale electricity market signals. Your actual bill may include taxes,
+      grid charges, supplier margin and contract-specific pricing.
+    </p>
+  </main>
+
+<script>
+const COUNTRY_NAMES = {
+  FI:["Finland","🇫🇮"], SE:["Sweden","🇸🇪"], NO:["Norway","🇳🇴"], DK:["Denmark","🇩🇰"],
+  DE:["Germany","🇩🇪"], NL:["Netherlands","🇳🇱"], BE:["Belgium","🇧🇪"], AT:["Austria","🇦🇹"],
+  FR:["France","🇫🇷"], PL:["Poland","🇵🇱"], CZ:["Czechia","🇨🇿"], HU:["Hungary","🇭🇺"],
+  ES:["Spain","🇪🇸"], PT:["Portugal","🇵🇹"], IT:["Italy","🇮🇹"], GR:["Greece","🇬🇷"],
+  EE:["Estonia","🇪🇪"], LV:["Latvia","🇱🇻"], LT:["Lithuania","🇱🇹"], IE:["Ireland","🇮🇪"],
+  GB:["United Kingdom","🇬🇧"], CH:["Switzerland","🇨🇭"], HR:["Croatia","🇭🇷"], BG:["Bulgaria","🇧🇬"],
+  SI:["Slovenia","🇸🇮"], SK:["Slovakia","🇸🇰"], RO:["Romania","🇷🇴"], RS:["Serbia","🇷🇸"],
+  BA:["Bosnia & Herzegovina","🇧🇦"], ME:["Montenegro","🇲🇪"], MK:["North Macedonia","🇲🇰"],
+  US:["United States","🇺🇸"], CA:["Canada","🇨🇦"], MX:["Mexico","🇲🇽"], AU:["Australia","🇦🇺"],
+  NZ:["New Zealand","🇳🇿"], JP:["Japan","🇯🇵"], KR:["South Korea","🇰🇷"], ZA:["South Africa","🇿🇦"], PH:["Philippines","🇵🇭"]
+};
+
+const ZONE_META = {
+  FI:{name:"Finland",flag:"🇫🇮",tz:"Europe/Helsinki"},
+  SE1:{name:"Sweden SE1",flag:"🇸🇪",tz:"Europe/Stockholm"},
+  SE2:{name:"Sweden SE2",flag:"🇸🇪",tz:"Europe/Stockholm"},
+  SE3:{name:"Sweden SE3",flag:"🇸🇪",tz:"Europe/Stockholm"},
+  SE4:{name:"Sweden SE4",flag:"🇸🇪",tz:"Europe/Stockholm"},
+  NO1:{name:"Norway NO1",flag:"🇳🇴",tz:"Europe/Oslo"},
+  NO2:{name:"Norway NO2",flag:"🇳🇴",tz:"Europe/Oslo"},
+  NO3:{name:"Norway NO3",flag:"🇳🇴",tz:"Europe/Oslo"},
+  NO4:{name:"Norway NO4",flag:"🇳🇴",tz:"Europe/Oslo"},
+  NO5:{name:"Norway NO5",flag:"🇳🇴",tz:"Europe/Oslo"},
+  DK1:{name:"Denmark DK1",flag:"🇩🇰",tz:"Europe/Copenhagen"},
+  DK2:{name:"Denmark DK2",flag:"🇩🇰",tz:"Europe/Copenhagen"},
+  DE:{name:"Germany",flag:"🇩🇪",tz:"Europe/Berlin"},
+  NL:{name:"Netherlands",flag:"🇳🇱",tz:"Europe/Amsterdam"},
+  BE:{name:"Belgium",flag:"🇧🇪",tz:"Europe/Brussels"},
+  AT:{name:"Austria",flag:"🇦🇹",tz:"Europe/Vienna"},
+  FR:{name:"France",flag:"🇫🇷",tz:"Europe/Paris"},
+  PL:{name:"Poland",flag:"🇵🇱",tz:"Europe/Warsaw"},
+  CZ:{name:"Czechia",flag:"🇨🇿",tz:"Europe/Prague"},
+  HU:{name:"Hungary",flag:"🇭🇺",tz:"Europe/Budapest"},
+  ES:{name:"Spain",flag:"🇪🇸",tz:"Europe/Madrid"},
+  PT:{name:"Portugal",flag:"🇵🇹",tz:"Europe/Lisbon"},
+  GR:{name:"Greece",flag:"🇬🇷",tz:"Europe/Athens"},
+  EE:{name:"Estonia",flag:"🇪🇪",tz:"Europe/Tallinn"},
+  LV:{name:"Latvia",flag:"🇱🇻",tz:"Europe/Riga"},
+  LT:{name:"Lithuania",flag:"🇱🇹",tz:"Europe/Vilnius"},
+  IE:{name:"Ireland",flag:"🇮🇪",tz:"Europe/Dublin"},
+  GB:{name:"United Kingdom",flag:"🇬🇧",tz:"Europe/London"},
+  CH:{name:"Switzerland",flag:"🇨🇭",tz:"Europe/Zurich"},
+  HR:{name:"Croatia",flag:"🇭🇷",tz:"Europe/Zagreb"},
+  BG:{name:"Bulgaria",flag:"🇧🇬",tz:"Europe/Sofia"},
+  SI:{name:"Slovenia",flag:"🇸🇮",tz:"Europe/Ljubljana"},
+  SK:{name:"Slovakia",flag:"🇸🇰",tz:"Europe/Bratislava"},
+  RO:{name:"Romania",flag:"🇷🇴",tz:"Europe/Bucharest"},
+  RS:{name:"Serbia",flag:"🇷🇸",tz:"Europe/Belgrade"},
+  BA:{name:"Bosnia & Herzegovina",flag:"🇧🇦",tz:"Europe/Sarajevo"},
+  ME:{name:"Montenegro",flag:"🇲🇪",tz:"Europe/Podgorica"},
+  MK:{name:"North Macedonia",flag:"🇲🇰",tz:"Europe/Skopje"},
+  "US-CA-NP15":{name:"California NP15",flag:"🇺🇸",tz:"America/Los_Angeles"},
+  "US-CA-SP15":{name:"California SP15",flag:"🇺🇸",tz:"America/Los_Angeles"},
+  "US-CA-ZP26":{name:"California ZP26",flag:"🇺🇸",tz:"America/Los_Angeles"},
+  "US-NY-NYC":{name:"New York City",flag:"🇺🇸",tz:"America/New_York"},
+  "US-TX-HB-HOUSTON":{name:"Houston",flag:"🇺🇸",tz:"America/Chicago"},
+  "CA-ON":{name:"Ontario",flag:"🇨🇦",tz:"America/Toronto"},
+  "MX-MTY":{name:"Monterrey",flag:"🇲🇽",tz:"America/Monterrey"},
+  "MX-GDL":{name:"Guadalajara",flag:"🇲🇽",tz:"America/Mexico_City"},
+  "MX-MEX":{name:"Mexico City",flag:"🇲🇽",tz:"America/Mexico_City"},
+  "AU-NSW":{name:"New South Wales",flag:"🇦🇺",tz:"Australia/Sydney"},
+  "AU-VIC":{name:"Victoria",flag:"🇦🇺",tz:"Australia/Melbourne"},
+  "AU-QLD":{name:"Queensland",flag:"🇦🇺",tz:"Australia/Brisbane"},
+  "AU-SA":{name:"South Australia",flag:"🇦🇺",tz:"Australia/Adelaide"},
+  "AU-TAS":{name:"Tasmania",flag:"🇦🇺",tz:"Australia/Hobart"},
+  "NZ-NI":{name:"New Zealand North Island",flag:"🇳🇿",tz:"Pacific/Auckland"},
+  "NZ-SI":{name:"New Zealand South Island",flag:"🇳🇿",tz:"Pacific/Auckland"},
+  "JP-TKY":{name:"Tokyo",flag:"🇯🇵",tz:"Asia/Tokyo"},
+  "JP-KNS":{name:"Kansai",flag:"🇯🇵",tz:"Asia/Tokyo"},
+  KR:{name:"South Korea",flag:"🇰🇷",tz:"Asia/Seoul"},
+  "KR-JEJU":{name:"Jeju",flag:"🇰🇷",tz:"Asia/Seoul"},
+  ZA:{name:"South Africa",flag:"🇿🇦",tz:"Africa/Johannesburg"},
+  "PH-LUZ":{name:"Luzon",flag:"🇵🇭",tz:"Asia/Manila"},
+  "PH-VIS":{name:"Visayas",flag:"🇵🇭",tz:"Asia/Manila"},
+  "PH-MIN":{name:"Mindanao",flag:"🇵🇭",tz:"Asia/Manila"}
+};
+
+const DEVICE_NAMES = {
+  ev:"EV charge",
+  dishwasher:"dishwasher cycle",
+  washer:"laundry cycle",
+  dryer:"dryer cycle",
+  "water-heater":"water heating",
+  "heat-pump":"heat-pump run",
+  custom:"custom electricity load"
+};
+
+const qs = new URLSearchParams(location.search);
+const country = qs.get("country") || "FI";
+const zoneCode = qs.get("zone") || "FI";
+const device = qs.get("device") || "ev";
+const kwh = Math.max(.01, Number(qs.get("kwh")) || 40);
+const waitHours = Math.max(1, Number(qs.get("wait")) || 8);
+const runtime = Math.max(.1, Number(qs.get("runtime")) || Math.min(waitHours, 3));
+
+const zone = ZONE_META[zoneCode] || {
+  name:(COUNTRY_NAMES[country] || [zoneCode,"🌍"])[0],
+  flag:(COUNTRY_NAMES[country] || [zoneCode,"🌍"])[1],
+  tz:"UTC"
+};
+
+const deviceLabel = DEVICE_NAMES[device] || "electricity load";
+
+document.getElementById("lead").textContent =
+  `${zone.flag} ${zone.name} · ${deviceLabel} · ${trim(kwh)} kWh`;
+
+async function fetchJSON(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  return res.json();
+}
+
+function trim(n) {
+  return Number(n).toFixed(2).replace(/\.00$/,"").replace(/(\.\d)0$/,"$1");
+}
+
+function minorUnit(unit) {
+  return /^[cp]\//i.test(unit || "");
+}
+
+function majorPrice(price,unit) {
+  return minorUnit(unit) ? Number(price) / 100 : Number(price);
+}
+
+function symbol(currency) {
+  return {
+    EUR:"€", GBP:"£", USD:"$", JPY:"¥", CAD:"CA$", AUD:"A$", NZD:"NZ$",
+    KRW:"₩", ZAR:"R", PHP:"₱", MXN:"MX$"
+  }[currency] || (currency ? currency + " " : "");
+}
+
+function fmtUnitPrice(value,unit,currency) {
+  if (value == null) return "—";
+  if (minorUnit(unit)) return `${Number(value).toFixed(2)} ${unit}`;
+  const decimals = currency === "JPY" || currency === "KRW" ? 1 : 2;
+  return `${symbol(currency)}${Number(value).toFixed(decimals)}/kWh`;
+}
+
+function fmtMoney(value,currency) {
+  const decimals = currency === "JPY" || currency === "KRW" ? 0 : 2;
+  return `${symbol(currency)}${Number(value).toFixed(decimals)}`;
+}
+
+function fmtHour(iso,tz) {
+  if (!iso) return "—";
+  try {
+    return new Date(iso).toLocaleTimeString("en-GB", {
+      hour:"2-digit", minute:"2-digit", timeZone:tz
+    });
+  } catch {
+    return iso;
+  }
+}
+
+function extractWindow(cheap) {
+  if (cheap?.best_window?.avg_price != null) {
+    return {
+      avg:cheap.best_window.avg_price,
+      start:cheap.best_window.start,
+      end:cheap.best_window.end
+    };
+  }
+
+  if (cheap?.best_3h_window?.avg_price != null && runtime <= 3.25) {
+    return {
+      avg:cheap.best_3h_window.avg_price,
+      start:cheap.best_3h_window.start,
+      end:cheap.best_3h_window.end
+    };
+  }
+
+  if (cheap?.cheapest_hours?.length && runtime <= 1.25) {
+    const best = [...cheap.cheapest_hours].sort((a,b) => a.price - b.price)[0];
+    return { avg:best.price, start:best.hour, end:null };
+  }
+
+  return null;
+}
+
+function verdictFor(nowCost,bestCost) {
+  if (nowCost <= 0) return ["run","🟢 RUN NOW"];
+
+  const save = Math.max(0,nowCost - bestCost);
+  const pct = nowCost > 0 ? (save / nowCost) * 100 : 0;
+
+  const minAbsolute = Math.max(.20, kwh * .02);
+
+  if (save < minAbsolute) return ["run","🟢 RUN NOW"];
+  if (pct < 40) return ["mid","🟠 WAIT IF CONVENIENT"];
+  return ["wait","🔴 WAIT"];
+}
+
+async function run() {
+  const content = document.getElementById("content");
+
+  try {
+    const [spot, cheap] = await Promise.all([
+      fetchJSON(`https://elecz.com/signal/spot?zone=${encodeURIComponent(zoneCode)}`),
+      fetchJSON(`https://elecz.com/signal/cheapest-hours?zone=${encodeURIComponent(zoneCode)}&hours=${Math.round(waitHours)}`)
+        .catch(() => ({ available:false }))
+    ]);
+
+    const regulated = spot.price_type === "regulated";
+    const currentUnitMajor = majorPrice(spot.price,spot.unit);
+    const currentCost = currentUnitMajor * kwh;
+
+    let verdictClass = "none";
+    let verdictText = "⚪ CURRENT PRICE ONLY";
+    let explanation = "";
+    let window = null;
+    let bestCost = null;
+    let saving = 0;
+    let savingPct = 0;
+
+    if (regulated) {
+      explanation =
+        `This market is shown as a regulated tariff. CheapestHours won't invent a future RUN/WAIT decision when there isn't a comparable forward market signal.`;
+    } else if (cheap.available === false) {
+      explanation =
+        `The current wholesale price is available, but this market does not currently provide a usable cheapest-hours forecast.`;
+    } else {
+      window = extractWindow(cheap);
+
+      if (window) {
+        bestCost = majorPrice(window.avg,spot.unit) * kwh;
+
+        if (bestCost > currentCost) bestCost = currentCost;
+
+        saving = Math.max(0,currentCost - bestCost);
+        savingPct = currentCost > 0 ? (saving / currentCost) * 100 : 0;
+
+        [verdictClass,verdictText] = verdictFor(currentCost,bestCost);
+
+        if (currentCost <= 0) {
+          explanation =
+            `The wholesale market price is at or below zero right now — an exceptionally cheap market-price period for this ${deviceLabel}.`;
+        } else if (verdictClass === "run") {
+          explanation = saving > 0
+            ? `A cheaper window exists later, but the market-price difference is only about ${fmtMoney(saving,spot.currency)} for this ${deviceLabel}.`
+            : `The current price is already as good as the best comparable window available for this ${deviceLabel}.`;
+        } else if (verdictClass === "mid") {
+          explanation =
+            `Waiting could reduce the wholesale market-price component by about ${fmtMoney(saving,spot.currency)} (${savingPct.toFixed(0)}%).`;
+        } else {
+          explanation =
+            `A later window could reduce the wholesale market-price component by about ${fmtMoney(saving,spot.currency)} (${savingPct.toFixed(0)}%).`;
+        }
+      } else {
+        explanation =
+          `Forward price data exists, but CheapestHours could not verify a contiguous window matching this load. Showing the current price without guessing.`;
+      }
+    }
+
+    content.innerHTML = `
+      <section class="card">
+        <div class="flag-big">${zone.flag}</div>
+        <div class="market">${zone.name}</div>
+
+        <div class="verdict ${verdictClass}">${verdictText}</div>
+        <div class="explain">${explanation}</div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="k">Price right now</div>
+            <div class="v">${fmtUnitPrice(spot.price,spot.unit,spot.currency)}</div>
+          </div>
+          <div class="stat">
+            <div class="k">Your ${trim(kwh)} kWh</div>
+            <div class="v">${fmtMoney(currentCost,spot.currency)}</div>
+          </div>
+        </div>
+
+        ${window ? `
+          <div class="window">
+            <div class="k">Best verified window</div>
+            <div class="v">${fmtHour(window.start,zone.tz)}${window.end ? " – " + fmtHour(window.end,zone.tz) : ""}</div>
+            <div style="margin-top:4px;color:var(--ink-soft);font-size:11px">
+              ${bestCost != null ? fmtMoney(bestCost,spot.currency) + " market-price component" : ""}
+            </div>
+          </div>
+        ` : ""}
+
+        <details>
+          <summary>See more details</summary>
+          <div class="more-grid">
+            <div class="more-item">
+              <div class="k">Load</div>
+              <div class="v">${deviceLabel}</div>
+            </div>
+            <div class="more-item">
+              <div class="k">Energy</div>
+              <div class="v">${trim(kwh)} kWh</div>
+            </div>
+            <div class="more-item">
+              <div class="k">Search window</div>
+              <div class="v">${trim(waitHours)} h</div>
+            </div>
+            <div class="more-item">
+              <div class="k">Possible saving</div>
+              <div class="v">${bestCost != null ? fmtMoney(saving,spot.currency) : "—"}</div>
+            </div>
+          </div>
+        </details>
+
+        <div class="fine">
+          Wholesale market signal only. Taxes, grid fees, supplier margin and your electricity contract are not included.
+        </div>
+      </section>
+    `;
+
+    buildWorldHook(spot,currentCost).catch(() => {});
+  } catch (err) {
+    content.innerHTML =
+      `<div class="error">Could not calculate this result right now (${err.message}).</div>`;
+  }
+}
+
+async function buildWorldHook(userSpot,userCostLocal) {
+  /*
+    Prototype:
+    Sample a handful of diverse markets.
+
+    Production:
+    Replace this fan-out with ONE cached global snapshot generated server-side.
+  */
+  const candidateZones = [
+    "FI","DE","ES","IE","NO1",
+    "US-CA-NP15","US-NY-NYC",
+    "JP-TKY","AU-NSW"
+  ].filter(code => code !== zoneCode);
+
+  const fx = await fetchJSON("https://api.frankfurter.app/latest?base=USD");
+  const rates = fx.rates || {};
+
+  function toUsdPerKwh(spot) {
+    const major = majorPrice(spot.price,spot.unit);
+    if (spot.currency === "USD") return major;
+    const rate = rates[spot.currency];
+    return rate ? major / rate : null;
+  }
+
+  const userUsdPerKwh = toUsdPerKwh(userSpot);
+  if (userUsdPerKwh == null) return;
+
+  const userUsdCost = userUsdPerKwh * kwh;
+
+  const rows = (await Promise.all(candidateZones.map(async code => {
+    try {
+      const s = await fetchJSON(`https://elecz.com/signal/spot?zone=${encodeURIComponent(code)}`);
+      if (s.price_type === "regulated") return null;
+
+      const usdPerKwh = toUsdPerKwh(s);
+      if (usdPerKwh == null) return null;
+
+      return {
+        code,
+        spot:s,
+        usdPerKwh,
+        usdCost:usdPerKwh * kwh,
+        meta:ZONE_META[code] || {name:code,flag:"🌍",tz:"UTC"}
+      };
+    } catch {
+      return null;
+    }
+  }))).filter(Boolean);
+
+  if (!rows.length) return;
+
+  const negative = rows.find(r => r.spot.price < 0);
+  const cheapest = [...rows].sort((a,b) => a.usdCost - b.usdCost)[0];
+  const mostExpensive = [...rows].sort((a,b) => b.usdCost - a.usdCost)[0];
+
+  let chosen = null;
+  let mode = null;
+
+  if (negative) {
+    chosen = negative;
+    mode = "negative";
+  } else {
+    const cheapRatio = cheapest ? cheapest.usdCost / userUsdCost : 1;
+    const expensiveRatio = mostExpensive ? mostExpensive.usdCost / userUsdCost : 1;
+
+    const cheapContrast = cheapRatio > 0 ? 1 / cheapRatio : 999;
+    const expensiveContrast = expensiveRatio;
+
+    if (cheapContrast >= 1.35 || expensiveContrast >= 1.35) {
+      if (cheapContrast >= expensiveContrast) {
+        chosen = cheapest;
+        mode = "cheaper";
+      } else {
+        chosen = mostExpensive;
+        mode = "expensive";
+      }
+    } else {
+      chosen = cheapest || mostExpensive;
+      mode = "compare";
+    }
+  }
+
+  if (!chosen || chosen.code === zoneCode) return;
+
+  let headline = "";
+  let text = "";
+
+  const destination = chosen.meta.name;
+  const destFlag = chosen.meta.flag;
+
+  if (mode === "negative") {
+    headline = `${destFlag} Meanwhile in ${destination}, wholesale electricity is below zero.`;
+    text =
+      `The same ${trim(kwh)} kWh load is sitting in a very unusual market-price period there right now. See the same calculation in ${destination} →`;
+  }
+
+  if (mode === "cheaper") {
+    if (device === "dishwasher") {
+      headline = `${destFlag} Too bad you're not doing the dishes in ${destination}.`;
+    } else if (device === "washer") {
+      headline = `${destFlag} Too bad you're not doing laundry in ${destination}.`;
+    } else if (device === "dryer") {
+      headline = `${destFlag} Your dryer might prefer ${destination} today.`;
+    } else if (device === "ev") {
+      headline = `${destFlag} Your EV might prefer ${destination} today.`;
+    } else {
+      headline = `${destFlag} This load is cheaper in ${destination} right now.`;
+    }
+
+    const pct = userUsdCost > 0 ? (1 - chosen.usdCost / userUsdCost) * 100 : null;
+
+    text =
+      `At the current wholesale price, the same ${trim(kwh)} kWh would cost about $${chosen.usdCost.toFixed(2)} there` +
+      `${pct != null ? ` — roughly ${Math.max(0,pct).toFixed(0)}% less than here.` : "."} Click to compare →`;
+  }
+
+  if (mode === "expensive") {
+    if (device === "dishwasher") {
+      headline = `${destFlag} Good thing you're not doing the dishes in ${destination}.`;
+    } else if (device === "washer") {
+      headline = `${destFlag} Good thing you're not doing laundry in ${destination}.`;
+    } else if (device === "dryer") {
+      headline = `${destFlag} Good thing your dryer isn't in ${destination}.`;
+    } else if (device === "ev") {
+      headline = `${destFlag} Good thing you're not charging your EV in ${destination}.`;
+    } else {
+      headline = `${destFlag} Good thing this load isn't running in ${destination}.`;
+    }
+
+    const multiple = userUsdCost > 0 ? chosen.usdCost / userUsdCost : null;
+
+    text =
+      `The same ${trim(kwh)} kWh would cost about $${chosen.usdCost.toFixed(2)} there right now` +
+      `${multiple != null ? ` — about ${multiple.toFixed(1)}× your current market-price cost.` : "."} See ${destination} →`;
+  }
+
+  if (mode === "compare") {
+    headline = `${destFlag} How does the same ${deviceLabel} compare in ${destination}?`;
+    text =
+      `Same ${trim(kwh)} kWh, different electricity market. See what the current wholesale price does to the result →`;
+  }
+
+  const linkParams = new URLSearchParams({
+    country: countryForZone(chosen.code),
+    zone: chosen.code,
+    device,
+    kwh: String(kwh),
+    wait: String(waitHours)
+  });
+
+  if (qs.get("runtime")) linkParams.set("runtime", qs.get("runtime"));
+
+  document.getElementById("worldHeadline").textContent = headline;
+  document.getElementById("worldText").textContent = text;
+  document.getElementById("worldCard").href = "/result/?" + linkParams.toString();
+  document.getElementById("worldSection").hidden = false;
+}
+
+function countryForZone(code) {
+  if (code.startsWith("US-")) return "US";
+  if (code.startsWith("AU-")) return "AU";
+  if (code.startsWith("JP-")) return "JP";
+  if (code.startsWith("NZ-")) return "NZ";
+  if (code.startsWith("MX-")) return "MX";
+  if (code.startsWith("CA-")) return "CA";
+  if (code.startsWith("PH-")) return "PH";
+  if (code.startsWith("KR-")) return "KR";
+
+  if (/^SE\d$/.test(code)) return "SE";
+  if (/^NO\d$/.test(code)) return "NO";
+  if (/^DK\d$/.test(code)) return "DK";
+
+  return code;
+}
+
+run();
+</script>
+</body>
+</html>
