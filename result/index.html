@@ -647,11 +647,58 @@ async function run() {
       </section>
     `;
 
-    buildWorldHook(spot,currentCost).catch(() => {});
+    buildWorldHook(spot,currentCost).catch((err) => { console.warn("World hook fallback:", err); renderWorldFallback(); });
   } catch (err) {
     content.innerHTML =
       `<div class="error">Could not calculate this result right now (${err.message}).</div>`;
   }
+}
+
+
+function renderWorldFallback() {
+  const fallbackZones = [
+    "JP-TKY","AU-NSW","IE","FI","DE","ES","NO1","US-CA-NP15","US-NY-NYC"
+  ].filter(code => code !== zoneCode);
+
+  if (!fallbackZones.length) return;
+
+  // Stable-enough variety without making any unsupported price claim.
+  const index = Math.abs(
+    [...(zoneCode + device + String(Math.round(kwh * 10)))]
+      .reduce((sum, ch) => sum + ch.charCodeAt(0), 0)
+  ) % fallbackZones.length;
+
+  const code = fallbackZones[index];
+  const meta = ZONE_META[code] || { name: code, flag: "🌍" };
+
+  let headline;
+  if (device === "dishwasher") {
+    headline = `${meta.flag} What would the same dishwasher cycle look like in ${meta.name}?`;
+  } else if (device === "washer") {
+    headline = `${meta.flag} What would doing the same laundry cost in ${meta.name}?`;
+  } else if (device === "dryer") {
+    headline = `${meta.flag} How would your dryer compare in ${meta.name}?`;
+  } else if (device === "ev") {
+    headline = `${meta.flag} What if you charged the same EV in ${meta.name}?`;
+  } else {
+    headline = `${meta.flag} How does the same ${deviceLabel} compare in ${meta.name}?`;
+  }
+
+  const linkParams = new URLSearchParams({
+    country: countryForZone(code),
+    zone: code,
+    device,
+    kwh: String(kwh),
+    wait: String(waitHours)
+  });
+
+  if (qs.get("runtime")) linkParams.set("runtime", qs.get("runtime"));
+
+  document.getElementById("worldHeadline").textContent = headline;
+  document.getElementById("worldText").textContent =
+    `Same ${trim(kwh)} kWh, different electricity market. See the live result in ${meta.name} →`;
+  document.getElementById("worldCard").href = "/result/?" + linkParams.toString();
+  document.getElementById("worldSection").hidden = false;
 }
 
 async function buildWorldHook(userSpot,userCostLocal) {
@@ -668,8 +715,14 @@ async function buildWorldHook(userSpot,userCostLocal) {
     "JP-TKY","AU-NSW"
   ].filter(code => code !== zoneCode);
 
-  const fx = await fetchJSON("https://api.frankfurter.app/latest?base=USD");
-  const rates = fx.rates || {};
+  let rates = {};
+  try {
+    const fx = await fetchJSON("https://api.frankfurter.app/latest?base=USD");
+    rates = fx.rates || {};
+  } catch (err) {
+    renderWorldFallback();
+    return;
+  }
 
   function toUsdPerKwh(spot) {
     const major = majorPrice(spot.price,spot.unit);
@@ -679,7 +732,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
   }
 
   const userUsdPerKwh = toUsdPerKwh(userSpot);
-  if (userUsdPerKwh == null) return;
+  if (userUsdPerKwh == null) { renderWorldFallback(); return; }
 
   const userUsdCost = userUsdPerKwh * kwh;
 
@@ -703,7 +756,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
     }
   }))).filter(Boolean);
 
-  if (!rows.length) return;
+  if (!rows.length) { renderWorldFallback(); return; }
 
   const negative = rows.find(r => r.spot.price < 0);
   const cheapest = [...rows].sort((a,b) => a.usdCost - b.usdCost)[0];
@@ -736,7 +789,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
     }
   }
 
-  if (!chosen || chosen.code === zoneCode) return;
+  if (!chosen || chosen.code === zoneCode) { renderWorldFallback(); return; }
 
   let headline = "";
   let text = "";
