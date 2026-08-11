@@ -359,6 +359,8 @@ const customBox = document.getElementById("customBox");
 const power = document.getElementById("power");
 const runtime = document.getElementById("runtime");
 
+const requestedDevice = qs.get("device");
+
 localStorage.setItem("cheapesthours-country", countryCode);
 countryName.textContent = `${meta.flag} ${meta.name}`;
 
@@ -386,6 +388,10 @@ function updateLoad() {
 }
 
 device.addEventListener("change", updateLoad);
+
+if (requestedDevice && [...device.options].some(option => option.value === requestedDevice)) {
+  device.value = requestedDevice;
+}
 updateLoad();
 
 document.getElementById("checkBtn").addEventListener("click", () => {
