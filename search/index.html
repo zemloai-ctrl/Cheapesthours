@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Check the Cheapest Time to Use Electricity — CheapestHours</title>
+  <meta name="description" content="Tell CheapestHours what you want to run, how much electricity it uses and where you are. We'll compare current and upcoming electricity market prices.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://cheapesthours.com/search/">
+
+  <meta name="theme-color" content="#17213B">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:#17213B; --navy-deep:#0D1526; --gold:#D4A24C; --cream:#F5ECDC;
+      --ink:#1B2A4A; --ink-soft:rgba(27,42,74,.64); --white:#fff;
+    }
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0; min-height:100vh;
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--cream);
+      background:radial-gradient(ellipse at 50% -10%,#2a3c69 0%,var(--navy) 43%,var(--navy-deep) 100%);
+      overflow-x:hidden;
+    }
+
+    .world-grid {
+      position:fixed; inset:0; pointer-events:none; opacity:.045;
+      background-image:
+        repeating-linear-gradient(0deg,var(--cream) 0,transparent 1px,transparent 54px),
+        repeating-linear-gradient(90deg,var(--cream) 0,transparent 1px,transparent 54px);
+    }
+
+    .flag {
+      position:fixed; opacity:.13; z-index:0; user-select:none;
+      animation:drift 14s ease-in-out infinite;
+    }
+    .f1 { left:7%; top:12%; font-size:28px; }
+    .f2 { right:8%; top:20%; font-size:23px; animation-delay:-5s; }
+    .f3 { left:10%; bottom:12%; font-size:22px; animation-delay:-9s; }
+
+    @keyframes drift {
+      0%,100% { transform:translateY(0) rotate(-4deg); }
+      50% { transform:translateY(-13px) rotate(4deg); }
+    }
+
+    main {
+      position:relative; z-index:1;
+      width:min(100% - 36px,440px);
+      margin:0 auto; padding:38px 0 48px;
+    }
+
+    .topline {
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:23px;
+    }
+
+    .brand {
+      color:var(--gold); text-decoration:none;
+      font-family:"Fraunces",serif; font-size:21px; font-weight:650;
+    }
+
+    .step {
+      color:rgba(245,236,220,.48); font-size:11px;
+      letter-spacing:.04em; text-transform:uppercase;
+    }
+
+    h1 {
+      margin:0 0 7px; text-align:center;
+      font-family:"Fraunces",serif; font-size:28px; line-height:1.16; font-weight:600;
+    }
+
+    .lead {
+      margin:0 auto 25px; max-width:370px; text-align:center;
+      color:rgba(245,236,220,.66); font-size:13.5px; line-height:1.55;
+    }
+
+    .card {
+      background:var(--cream); color:var(--ink);
+      border-radius:21px; padding:24px 22px;
+      box-shadow:0 22px 65px rgba(0,0,0,.34);
+    }
+
+    .country-line {
+      display:flex; align-items:center; justify-content:space-between;
+      padding-bottom:16px; margin-bottom:18px;
+      border-bottom:1px solid rgba(27,42,74,.09);
+    }
+
+    .country-name { font-weight:700; font-size:15px; }
+    .change {
+      color:var(--ink-soft); font-size:11px; text-decoration:none;
+    }
+
+    .field { margin-bottom:16px; }
+
+    label {
+      display:block; margin:0 0 7px;
+      color:var(--ink-soft); font-size:10.5px; font-weight:700;
+      letter-spacing:.07em; text-transform:uppercase;
+    }
+
+    select,input {
+      width:100%; padding:13px 14px;
+      border:1.5px solid rgba(27,42,74,.13);
+      border-radius:12px; outline:none;
+      background:var(--white); color:var(--ink);
+      font:inherit; font-size:14px;
+    }
+
+    select:focus,input:focus {
+      border-color:rgba(212,162,76,.85);
+      box-shadow:0 0 0 3px rgba(212,162,76,.14);
+    }
+
+    .grid2 {
+      display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    }
+
+    .hint {
+      margin:6px 2px 0;
+      color:var(--ink-soft); font-size:10.5px; line-height:1.45;
+    }
+
+    .custom {
+      display:none; padding:14px; margin:-3px 0 16px;
+      border-radius:12px; background:rgba(27,42,74,.045);
+    }
+    .custom.show { display:block; }
+
+    .go {
+      width:100%; margin-top:3px; padding:15px 16px;
+      border:0; border-radius:12px;
+      color:var(--ink);
+      background:linear-gradient(135deg,#dfb25e,#c78d34);
+      box-shadow:0 8px 22px rgba(212,162,76,.28);
+      font-family:"Fraunces",serif; font-size:17px; font-weight:700;
+      cursor:pointer;
+    }
+    .go:active { transform:translateY(1px); }
+
+    .ad-slot {
+      margin:22px 0; min-height:74px;
+      display:grid; place-items:center;
+      border:1px dashed rgba(245,236,220,.18);
+      border-radius:12px;
+      color:rgba(245,236,220,.3);
+      font-size:10px; letter-spacing:.05em; text-transform:uppercase;
+    }
+
+    .note {
+      color:rgba(245,236,220,.49);
+      font-size:11px; line-height:1.6; text-align:center;
+    }
+
+    @media (max-width:370px) {
+      .grid2 { grid-template-columns:1fr; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .flag { animation:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="world-grid" aria-hidden="true"></div>
+  <span class="flag f1" aria-hidden="true">🇮🇪</span>
+  <span class="flag f2" aria-hidden="true">🇯🇵</span>
+  <span class="flag f3" aria-hidden="true">🇦🇺</span>
+
+  <main>
+    <div class="topline">
+      <a class="brand" href="/">⚡ CheapestHours</a>
+      <div class="step">Step 2 of 3</div>
+    </div>
+
+    <h1>What do you want to run?</h1>
+    <p class="lead">A few details let us compare using electricity now with waiting for a cheaper window.</p>
+
+    <section class="card">
+      <div class="country-line">
+        <div class="country-name" id="countryName">🌍 Your market</div>
+        <a class="change" href="/">Change country</a>
+      </div>
+
+      <div class="field" id="zoneField" style="display:none">
+        <label for="zone">Area / market zone</label>
+        <select id="zone"></select>
+        <p class="hint">Some countries have several electricity market areas.</p>
+      </div>
+
+      <div class="field">
+        <label for="device">What are you using?</label>
+        <select id="device">
+          <option value="ev">🚗 Charge an EV</option>
+          <option value="dishwasher">🍽️ Run the dishwasher</option>
+          <option value="washer">👕 Do laundry</option>
+          <option value="dryer">🌪️ Run the dryer</option>
+          <option value="water-heater">🚿 Heat water</option>
+          <option value="heat-pump">🏠 Run a heat pump</option>
+          <option value="custom">⚙️ Something else / custom load</option>
+        </select>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="kwh">Energy use (kWh)</label>
+          <input id="kwh" type="number" min="0.01" step="0.1" value="40">
+        </div>
+        <div class="field">
+          <label for="duration">Can wait up to</label>
+          <select id="duration">
+            <option value="2">2 hours</option>
+            <option value="4">4 hours</option>
+            <option value="6">6 hours</option>
+            <option value="8" selected>8 hours</option>
+            <option value="12">12 hours</option>
+            <option value="24">24 hours</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="hint" id="loadHint">Typical EV example: about 40 kWh. Change it if you know your actual amount.</p>
+
+      <div class="custom" id="customBox">
+        <div class="grid2">
+          <div>
+            <label for="power">Power (kW)</label>
+            <input id="power" type="number" min="0.01" step="0.1" placeholder="e.g. 15">
+          </div>
+          <div>
+            <label for="runtime">Run time (hours)</label>
+            <input id="runtime" type="number" min="0.1" step="0.1" placeholder="e.g. 4">
+          </div>
+        </div>
+        <p class="hint">For pumps, servers, industrial loads or anything measured in kW × hours.</p>
+      </div>
+
+      <button class="go" id="checkBtn" type="button">Find my cheapest hours →</button>
+    </section>
+
+    <!-- Replace with the real AdSense unit after approval. -->
+    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
+
+    <p class="note">
+      CheapestHours uses electricity market data to compare the current price with upcoming hours.
+      Wholesale prices are not the same as your final electricity bill.
+    </p>
+  </main>
+
+<script>
+const COUNTRY_META = {
+  FI:{name:"Finland",flag:"🇫🇮",zones:[["FI","Finland"]]},
+  SE:{name:"Sweden",flag:"🇸🇪",zones:[["SE1","SE1 · North"],["SE2","SE2"],["SE3","SE3 · Stockholm"],["SE4","SE4 · South"]]},
+  NO:{name:"Norway",flag:"🇳🇴",zones:[["NO1","NO1 · Oslo"],["NO2","NO2"],["NO3","NO3"],["NO4","NO4"],["NO5","NO5"]]},
+  DK:{name:"Denmark",flag:"🇩🇰",zones:[["DK1","DK1 · West"],["DK2","DK2 · East"]]},
+  DE:{name:"Germany",flag:"🇩🇪",zones:[["DE","Germany"]]},
+  NL:{name:"Netherlands",flag:"🇳🇱",zones:[["NL","Netherlands"]]},
+  BE:{name:"Belgium",flag:"🇧🇪",zones:[["BE","Belgium"]]},
+  AT:{name:"Austria",flag:"🇦🇹",zones:[["AT","Austria"]]},
+  FR:{name:"France",flag:"🇫🇷",zones:[["FR","France"]]},
+  PL:{name:"Poland",flag:"🇵🇱",zones:[["PL","Poland"]]},
+  CZ:{name:"Czechia",flag:"🇨🇿",zones:[["CZ","Czechia"]]},
+  HU:{name:"Hungary",flag:"🇭🇺",zones:[["HU","Hungary"]]},
+  ES:{name:"Spain",flag:"🇪🇸",zones:[["ES","Spain"]]},
+  PT:{name:"Portugal",flag:"🇵🇹",zones:[["PT","Portugal"]]},
+  IT:{name:"Italy",flag:"🇮🇹",zones:[
+    ["IT-NO","North"],["IT-CNO","Centre-North"],["IT-CSO","Centre-South"],
+    ["IT-SO","South"],["IT-SAR","Sardinia"],["IT-SIC","Sicily"]
+  ]},
+  GR:{name:"Greece",flag:"🇬🇷",zones:[["GR","Greece"]]},
+  EE:{name:"Estonia",flag:"🇪🇪",zones:[["EE","Estonia"]]},
+  LV:{name:"Latvia",flag:"🇱🇻",zones:[["LV","Latvia"]]},
+  LT:{name:"Lithuania",flag:"🇱🇹",zones:[["LT","Lithuania"]]},
+  IE:{name:"Ireland",flag:"🇮🇪",zones:[["IE","Ireland"]]},
+  GB:{name:"United Kingdom",flag:"🇬🇧",zones:[["GB","Great Britain"]]},
+  CH:{name:"Switzerland",flag:"🇨🇭",zones:[["CH","Switzerland"]]},
+  HR:{name:"Croatia",flag:"🇭🇷",zones:[["HR","Croatia"]]},
+  BG:{name:"Bulgaria",flag:"🇧🇬",zones:[["BG","Bulgaria"]]},
+  SI:{name:"Slovenia",flag:"🇸🇮",zones:[["SI","Slovenia"]]},
+  SK:{name:"Slovakia",flag:"🇸🇰",zones:[["SK","Slovakia"]]},
+  RO:{name:"Romania",flag:"🇷🇴",zones:[["RO","Romania"]]},
+  RS:{name:"Serbia",flag:"🇷🇸",zones:[["RS","Serbia"]]},
+  BA:{name:"Bosnia & Herzegovina",flag:"🇧🇦",zones:[["BA","Bosnia & Herzegovina"]]},
+  ME:{name:"Montenegro",flag:"🇲🇪",zones:[["ME","Montenegro"]]},
+  MK:{name:"North Macedonia",flag:"🇲🇰",zones:[["MK","North Macedonia"]]},
+
+  US:{name:"United States",flag:"🇺🇸",zones:[
+    ["US-CA-NP15","California · NP15"],
+    ["US-CA-SP15","California · SP15"],
+    ["US-CA-ZP26","California · ZP26"],
+    ["US-NY-NYC","New York · NYC"],
+    ["US-TX-HB-HOUSTON","Texas · Houston"]
+  ]},
+  CA:{name:"Canada",flag:"🇨🇦",zones:[["CA-ON","Ontario"]]},
+  MX:{name:"Mexico",flag:"🇲🇽",zones:[
+    ["MX-MTY","Monterrey"],["MX-GDL","Guadalajara"],["MX-MEX","Mexico City"]
+  ]},
+
+  AU:{name:"Australia",flag:"🇦🇺",zones:[
+    ["AU-NSW","New South Wales"],["AU-VIC","Victoria"],["AU-QLD","Queensland"],
+    ["AU-SA","South Australia"],["AU-TAS","Tasmania"]
+  ]},
+  NZ:{name:"New Zealand",flag:"🇳🇿",zones:[["NZ-NI","North Island"],["NZ-SI","South Island"]]},
+  JP:{name:"Japan",flag:"🇯🇵",zones:[
+    ["JP-HKD","Hokkaido"],["JP-THK","Tohoku"],["JP-TKY","Tokyo"],["JP-CBU","Chubu"],
+    ["JP-HKR","Hokuriku"],["JP-KNS","Kansai"],["JP-CGK","Chugoku"],["JP-SKK","Shikoku"],["JP-KYS","Kyushu"]
+  ]},
+  KR:{name:"South Korea",flag:"🇰🇷",zones:[["KR","South Korea"],["KR-JEJU","Jeju"]]},
+  ZA:{name:"South Africa",flag:"🇿🇦",zones:[["ZA","South Africa"]]},
+  PH:{name:"Philippines",flag:"🇵🇭",zones:[
+    ["PH-LUZ","Luzon"],["PH-VIS","Visayas"],["PH-MIN","Mindanao"]
+  ]}
+};
+
+const LOADS = {
+  ev:{kwh:40,duration:8,hint:"Typical EV example: about 40 kWh. Change it if you know your actual amount."},
+  dishwasher:{kwh:1.2,duration:4,hint:"A dishwasher cycle is often around 1–1.5 kWh."},
+  washer:{kwh:1,duration:4,hint:"A washing machine cycle is often around 0.5–1.5 kWh."},
+  dryer:{kwh:2.5,duration:4,hint:"A tumble-dryer cycle is often around 2–4 kWh."},
+  "water-heater":{kwh:6,duration:8,hint:"Example only. Enter the energy your water heater actually needs if known."},
+  "heat-pump":{kwh:5,duration:8,hint:"Heat-pump use varies widely. Change this estimate if you know your consumption."}
+};
+
+const qs = new URLSearchParams(location.search);
+const countryCode = qs.get("country") || localStorage.getItem("cheapesthours-country") || "FI";
+const meta = COUNTRY_META[countryCode] || COUNTRY_META.FI;
+
+const countryName = document.getElementById("countryName");
+const zoneField = document.getElementById("zoneField");
+const zoneSelect = document.getElementById("zone");
+const device = document.getElementById("device");
+const kwh = document.getElementById("kwh");
+const duration = document.getElementById("duration");
+const loadHint = document.getElementById("loadHint");
+const customBox = document.getElementById("customBox");
+const power = document.getElementById("power");
+const runtime = document.getElementById("runtime");
+
+localStorage.setItem("cheapesthours-country", countryCode);
+countryName.textContent = `${meta.flag} ${meta.name}`;
+
+meta.zones.forEach(([value,label]) => {
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = label;
+  zoneSelect.appendChild(option);
+});
+
+if (meta.zones.length > 1) zoneField.style.display = "block";
+
+function updateLoad() {
+  if (device.value === "custom") {
+    customBox.classList.add("show");
+    loadHint.textContent = "Enter either total kWh above, or use power × run time below.";
+    return;
+  }
+
+  customBox.classList.remove("show");
+  const preset = LOADS[device.value];
+  kwh.value = preset.kwh;
+  duration.value = String(preset.duration);
+  loadHint.textContent = preset.hint;
+}
+
+device.addEventListener("change", updateLoad);
+updateLoad();
+
+document.getElementById("checkBtn").addEventListener("click", () => {
+  let energy = Number(kwh.value);
+  let runHours = null;
+
+  if (device.value === "custom" && Number(power.value) > 0 && Number(runtime.value) > 0) {
+    runHours = Number(runtime.value);
+    energy = Number(power.value) * runHours;
+  }
+
+  if (!(energy > 0)) {
+    kwh.focus();
+    return;
+  }
+
+  const out = new URLSearchParams({
+    country: countryCode,
+    zone: zoneSelect.value,
+    device: device.value,
+    kwh: String(Math.round(energy * 100) / 100),
+    wait: duration.value
+  });
+
+  if (runHours) out.set("runtime", String(runHours));
+
+  window.location.href = "/result/?" + out.toString();
+});
+</script>
+</body>
+</html>
