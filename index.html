@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CheapestHours — Find the Cheapest Hours to Use Electricity</title>
+  <meta name="description" content="Find the cheapest hours to use electricity in your market. Choose your country to check when to charge an EV, run appliances, or use electricity.">
+  <link rel="canonical" href="https://cheapesthours.com/">
+
+  <meta property="og:title" content="CheapestHours — Find the Cheapest Hours to Use Electricity">
+  <meta property="og:description" content="Choose your country and find out when electricity is cheapest to use.">
+  <meta property="og:url" content="https://cheapesthours.com/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#17213B">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #17213B;
+      --navy-deep: #0D1526;
+      --gold: #D4A24C;
+      --cream: #F5ECDC;
+      --ink: #1B2A4A;
+      --ink-soft: rgba(27,42,74,.64);
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--cream);
+      background:
+        radial-gradient(ellipse at 50% -10%, #2a3c69 0%, var(--navy) 43%, var(--navy-deep) 100%);
+      overflow-x: hidden;
+    }
+
+    .world-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .045;
+      background-image:
+        repeating-linear-gradient(0deg, var(--cream) 0, transparent 1px, transparent 54px),
+        repeating-linear-gradient(90deg, var(--cream) 0, transparent 1px, transparent 54px);
+    }
+
+    .flag {
+      position: fixed;
+      z-index: 0;
+      opacity: .15;
+      filter: saturate(.85);
+      animation: drift 14s ease-in-out infinite;
+      user-select: none;
+    }
+
+    .f1 { left: 7%; top: 12%; font-size: 30px; }
+    .f2 { right: 8%; top: 18%; font-size: 23px; animation-delay: -4s; }
+    .f3 { left: 11%; bottom: 15%; font-size: 22px; animation-delay: -8s; }
+    .f4 { right: 10%; bottom: 12%; font-size: 28px; animation-delay: -11s; }
+
+    @keyframes drift {
+      0%,100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-13px) rotate(4deg); }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(100% - 36px, 440px);
+      margin: 0 auto;
+      padding: 54px 0 46px;
+      text-align: center;
+    }
+
+    .brand {
+      color: var(--gold);
+      font-family: "Fraunces", serif;
+      font-size: 29px;
+      font-weight: 650;
+      letter-spacing: .01em;
+      margin-bottom: 7px;
+    }
+
+    .bolt {
+      display: inline-block;
+      animation: glow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%,100% { opacity: 1; }
+      50% { opacity: .58; }
+    }
+
+    h1 {
+      max-width: 390px;
+      margin: 0 auto 10px;
+      font-family: "Fraunces", serif;
+      font-size: clamp(25px, 7vw, 33px);
+      line-height: 1.12;
+      font-weight: 600;
+    }
+
+    .lead {
+      margin: 0 auto 30px;
+      max-width: 360px;
+      color: rgba(245,236,220,.67);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .card {
+      padding: 25px 22px 22px;
+      color: var(--ink);
+      text-align: left;
+      background: var(--cream);
+      border-radius: 21px;
+      box-shadow: 0 22px 65px rgba(0,0,0,.34);
+    }
+
+    label {
+      display: block;
+      margin: 0 0 7px;
+      color: var(--ink-soft);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .select-wrap { position: relative; }
+
+    select {
+      width: 100%;
+      padding: 14px 43px 14px 14px;
+      border: 1.5px solid rgba(27,42,74,.13);
+      border-radius: 12px;
+      outline: none;
+      appearance: none;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    select:focus {
+      border-color: rgba(212,162,76,.85);
+      box-shadow: 0 0 0 3px rgba(212,162,76,.14);
+    }
+
+    .select-wrap::after {
+      content: "⌄";
+      position: absolute;
+      right: 15px;
+      top: 9px;
+      color: var(--ink);
+      font-size: 22px;
+      pointer-events: none;
+    }
+
+    .go {
+      width: 100%;
+      margin-top: 13px;
+      padding: 15px 16px;
+      border: 0;
+      border-radius: 12px;
+      color: var(--ink);
+      background: linear-gradient(135deg, #dfb25e, #c78d34);
+      box-shadow: 0 8px 22px rgba(212,162,76,.28);
+      font-family: "Fraunces", serif;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .go:hover { filter: brightness(1.04); }
+    .go:active { transform: translateY(1px); }
+
+    .micro {
+      margin: 11px 4px 0;
+      color: var(--ink-soft);
+      text-align: center;
+      font-size: 10.5px;
+      line-height: 1.45;
+    }
+
+    .ad-slot {
+      margin: 23px 0;
+      min-height: 74px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed rgba(245,236,220,.18);
+      border-radius: 12px;
+      color: rgba(245,236,220,.3);
+      font-size: 10px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      margin: 27px auto 0;
+      max-width: 390px;
+      color: rgba(245,236,220,.62);
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+
+    .intro strong { color: rgba(245,236,220,.88); }
+
+    footer {
+      margin-top: 28px;
+      color: rgba(245,236,220,.36);
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .flag { opacity: .11; }
+      main { padding-top: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flag, .bolt { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="world-grid" aria-hidden="true"></div>
+  <span class="flag f1" aria-hidden="true">🇯🇵</span>
+  <span class="flag f2" aria-hidden="true">🇳🇴</span>
+  <span class="flag f3" aria-hidden="true">🇪🇸</span>
+  <span class="flag f4" aria-hidden="true">🇦🇺</span>
+
+  <main>
+    <div class="brand"><span class="bolt">⚡</span> CheapestHours</div>
+
+    <h1>When is electricity cheapest?</h1>
+    <p class="lead">
+      Start with your country. We'll help you find the best time to use electricity.
+    </p>
+
+    <section class="card" aria-labelledby="country-label">
+      <label id="country-label" for="country">Where are you?</label>
+      <div class="select-wrap">
+        <select id="country">
+          <option value="FI">🇫🇮 Finland</option>
+          <option value="SE">🇸🇪 Sweden</option>
+          <option value="NO">🇳🇴 Norway</option>
+          <option value="DK">🇩🇰 Denmark</option>
+          <option value="DE">🇩🇪 Germany</option>
+          <option value="NL">🇳🇱 Netherlands</option>
+          <option value="BE">🇧🇪 Belgium</option>
+          <option value="AT">🇦🇹 Austria</option>
+          <option value="FR">🇫🇷 France</option>
+          <option value="PL">🇵🇱 Poland</option>
+          <option value="CZ">🇨🇿 Czechia</option>
+          <option value="HU">🇭🇺 Hungary</option>
+          <option value="ES">🇪🇸 Spain</option>
+          <option value="PT">🇵🇹 Portugal</option>
+          <option value="IT">🇮🇹 Italy</option>
+          <option value="GR">🇬🇷 Greece</option>
+          <option value="EE">🇪🇪 Estonia</option>
+          <option value="LV">🇱🇻 Latvia</option>
+          <option value="LT">🇱🇹 Lithuania</option>
+          <option value="IE">🇮🇪 Ireland</option>
+          <option value="GB">🇬🇧 United Kingdom</option>
+          <option value="CH">🇨🇭 Switzerland</option>
+          <option value="HR">🇭🇷 Croatia</option>
+          <option value="BG">🇧🇬 Bulgaria</option>
+          <option value="SI">🇸🇮 Slovenia</option>
+          <option value="SK">🇸🇰 Slovakia</option>
+          <option value="RO">🇷🇴 Romania</option>
+          <option value="RS">🇷🇸 Serbia</option>
+          <option value="BA">🇧🇦 Bosnia &amp; Herzegovina</option>
+          <option value="ME">🇲🇪 Montenegro</option>
+          <option value="MK">🇲🇰 North Macedonia</option>
+          <option value="US">🇺🇸 United States</option>
+          <option value="CA">🇨🇦 Canada</option>
+          <option value="MX">🇲🇽 Mexico</option>
+          <option value="AU">🇦🇺 Australia</option>
+          <option value="NZ">🇳🇿 New Zealand</option>
+          <option value="JP">🇯🇵 Japan</option>
+          <option value="KR">🇰🇷 South Korea</option>
+          <option value="ZA">🇿🇦 South Africa</option>
+          <option value="PH">🇵🇭 Philippines</option>
+        </select>
+      </div>
+
+      <button class="go" id="continueBtn" type="button">Continue →</button>
+      <p class="micro">Next: choose your area and what you want to run.</p>
+    </section>
+
+    <!-- Replace this placeholder with the real AdSense unit after approval. -->
+    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
+
+    <p class="intro">
+      <strong>CheapestHours</strong> turns electricity market data into a simple question:
+      use electricity now, or wait? Check charging, appliances and other flexible
+      electricity use against current and upcoming market prices.
+    </p>
+
+    <footer>
+      Electricity market data powered by
+      <a href="https://elecz.com" rel="noopener">Elecz</a>.
+      Wholesale prices are not the same as your final electricity bill.
+    </footer>
+  </main>
+
+  <script>
+    const country = document.getElementById("country");
+    const continueBtn = document.getElementById("continueBtn");
+
+    // Remember the last selected country for returning visitors.
+    const savedCountry = localStorage.getItem("cheapesthours-country");
+    if (savedCountry && [...country.options].some(option => option.value === savedCountry)) {
+      country.value = savedCountry;
+    }
+
+    function continueToSearch() {
+      const selectedCountry = country.value;
+      localStorage.setItem("cheapesthours-country", selectedCountry);
+      window.location.href = "/search/?country=" + encodeURIComponent(selectedCountry);
+    }
+
+    continueBtn.addEventListener("click", continueToSearch);
+
+    country.addEventListener("keydown", event => {
+      if (event.key === "Enter") continueToSearch();
+    });
+  </script>
+</body>
+</html>
