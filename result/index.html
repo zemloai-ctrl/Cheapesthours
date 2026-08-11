@@ -647,11 +647,13 @@ async function run() {
       </section>
     `;
 
-    // Show a useful curiosity card immediately. The live global comparison below
-    // may replace it if the extra API calls succeed, but the section is never left hidden.
+    // Show a useful curiosity card immediately — this does not depend on any
+    // network call, so it can never be left blank. The live global comparison
+    // below (buildWorldHook) upgrades this card with real data when it succeeds,
+    // but the section is never hidden waiting on it.
     renderWorldFallback();
     buildWorldHook(spot,currentCost).catch((err) => {
-      console.warn("World hook live comparison failed; keeping fallback:", err);
+      console.warn("World hook live comparison failed; keeping fallback card:", err);
     });
   } catch (err) {
     content.innerHTML =
@@ -725,7 +727,6 @@ async function buildWorldHook(userSpot,userCostLocal) {
     const fx = await fetchJSON("https://api.frankfurter.app/latest?base=USD");
     rates = fx.rates || {};
   } catch (err) {
-    renderWorldFallback();
     return;
   }
 
@@ -737,7 +738,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
   }
 
   const userUsdPerKwh = toUsdPerKwh(userSpot);
-  if (userUsdPerKwh == null) { renderWorldFallback(); return; }
+  if (userUsdPerKwh == null) return;
 
   const userUsdCost = userUsdPerKwh * kwh;
 
@@ -761,7 +762,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
     }
   }))).filter(Boolean);
 
-  if (!rows.length) { renderWorldFallback(); return; }
+  if (!rows.length) return;
 
   const negative = rows.find(r => r.spot.price < 0);
   const cheapest = [...rows].sort((a,b) => a.usdCost - b.usdCost)[0];
@@ -794,7 +795,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
     }
   }
 
-  if (!chosen || chosen.code === zoneCode) { renderWorldFallback(); return; }
+  if (!chosen || chosen.code === zoneCode) return;
 
   let headline = "";
   let text = "";
