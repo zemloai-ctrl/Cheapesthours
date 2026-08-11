@@ -647,7 +647,12 @@ async function run() {
       </section>
     `;
 
-    buildWorldHook(spot,currentCost).catch((err) => { console.warn("World hook fallback:", err); renderWorldFallback(); });
+    // Show a useful curiosity card immediately. The live global comparison below
+    // may replace it if the extra API calls succeed, but the section is never left hidden.
+    renderWorldFallback();
+    buildWorldHook(spot,currentCost).catch((err) => {
+      console.warn("World hook live comparison failed; keeping fallback:", err);
+    });
   } catch (err) {
     content.innerHTML =
       `<div class="error">Could not calculate this result right now (${err.message}).</div>`;
