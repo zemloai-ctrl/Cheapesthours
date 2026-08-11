@@ -6,6 +6,10 @@
   <title>Cheapest Electricity Hours in Poland Today — CheapestHours</title>
   <meta name="description" content="Find the cheapest electricity hours in Poland today. Check the live wholesale electricity price and see whether it's a good time to charge an EV, run a dishwasher or do laundry.">
   <link rel="canonical" href="https://cheapesthours.com/poland/">
+  <meta property="og:title" content="Cheapest Electricity Hours in Poland Today — CheapestHours">
+  <meta property="og:description" content="Find the cheapest electricity hours in Poland today. Check the live wholesale electricity price and see whether it's a good time to charge an EV, run a dishwasher or do laundry.">
+  <meta property="og:url" content="https://cheapesthours.com/poland/">
+  <meta property="og:type" content="website">
   <meta name="theme-color" content="#17213B">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +32,9 @@
     .ad{min-height:74px;margin:21px 0;display:grid;place-items:center;border:1px dashed rgba(245,236,220,.18);border-radius:12px;color:rgba(245,236,220,.3);font-size:10px;text-transform:uppercase}
     .copy{font-size:12.5px;line-height:1.7;color:rgba(245,236,220,.67)}.copy h2{color:var(--gold);font-size:20px}
     .links{display:grid;gap:9px;margin-top:20px}.links a{color:var(--cream);text-decoration:none;border:1px solid rgba(245,236,220,.13);background:rgba(245,236,220,.05);border-radius:12px;padding:12px 14px;font-size:12px}
+    .country-links-title{font-family:"Fraunces",serif;color:var(--gold);font-size:18px;margin:25px 0 9px;text-align:center}
+    .country-links{display:grid;gap:8px}
+    .country-links a{color:var(--cream);text-decoration:none;border:1px solid rgba(245,236,220,.13);background:rgba(245,236,220,.045);border-radius:12px;padding:11px 14px;font-size:11.5px}
     .fine{margin-top:22px;text-align:center;color:rgba(245,236,220,.4);font-size:10px;line-height:1.5}
     .loading,.error{text-align:center;padding:35px 0;color:var(--soft);font-size:12px}
   </style>
@@ -50,10 +57,17 @@
   </section>
 
   <div class="links">
-    <a href="/search/?country=PL">🚗 Find my cheapest EV charging time →</a>
-    <a href="/search/?country=PL">🍽️ Should I run the dishwasher now? →</a>
+    <a href="/search/?country=PL&device=ev">🚗 Find my cheapest EV charging time →</a>
+    <a href="/search/?country=PL&device=dishwasher">🍽️ Should I run the dishwasher now? →</a>
     <a href="/">🌍 Check electricity prices in another country →</a>
   </div>
+
+  <h2 class="country-links-title">Explore other markets</h2>
+  <nav class="country-links" aria-label="Other electricity markets">
+    <a href="/ireland/">🇮🇪 Cheapest electricity hours in Ireland →</a>
+    <a href="/california/">🇺🇸 Cheapest electricity hours in California →</a>
+    <a href="/united-kingdom/">🇬🇧 Cheapest electricity hours in the United Kingdom →</a>
+  </nav>
 
   <p class="fine">Live wholesale electricity data via Elecz. CheapestHours is an independent electricity timing tool.</p>
 </main>
