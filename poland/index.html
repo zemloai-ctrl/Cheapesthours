@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Cheapest Electricity Hours in Poland Today — CheapestHours</title>
+  <title>Najtańsze godziny prądu w Polsce dzisiaj — CheapestHours</title>
 
-  <meta name="description" content="Find Poland's cheapest electricity hours today. Check the live wholesale price and see whether it's better to use electricity now or wait.">
+  <meta name="description" content="Sprawdź najtańsze godziny prądu w Polsce dzisiaj. Zobacz aktualną cenę hurtową energii i dowiedz się, czy lepiej zużyć prąd teraz, czy poczekać.">
 
   <link rel="canonical" href="https://cheapesthours.com/poland/">
 
-  <meta property="og:title" content="Cheapest Electricity Hours in Poland Today — CheapestHours">
-  <meta property="og:description" content="Find Poland's cheapest electricity hours today. Check the live wholesale price and see whether it's better to use electricity now or wait.">
+  <meta property="og:title" content="Najtańsze godziny prądu w Polsce dzisiaj — CheapestHours">
+  <meta property="og:description" content="Sprawdź najtańsze godziny prądu w Polsce dzisiaj. Zobacz aktualną cenę hurtową energii i dowiedz się, czy lepiej zużyć prąd teraz, czy poczekać.">
   <meta property="og:url" content="https://cheapesthours.com/poland/">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cheapesthours.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta name="theme-color" content="#17213B">
 
@@ -264,39 +270,41 @@
 
   <a class="brand" href="/">⚡ CheapestHours</a>
 
-  <h1>🇵🇱 Cheapest electricity hours in Poland today</h1>
+  <h1>🇵🇱 Najtańsze godziny prądu w Polsce dzisiaj</h1>
 
   <p class="intro">
-    See Poland's current wholesale electricity price and the cheapest available periods today.
+    Sprawdź aktualną hurtową cenę energii elektrycznej w Polsce i najtańsze dostępne godziny na dziś.
   </p>
 
   <div class="card" id="live">
-    <div class="loading">Loading Poland's live electricity market…</div>
+    <div class="loading">Ładowanie aktualnych danych z polskiego rynku energii…</div>
   </div>
 
-  <div class="ad">Advertisement</div>
+  <div class="ad">Reklama</div>
 
   <section class="copy">
 
-    <h2>When is electricity cheapest in Poland?</h2>
+    <h2>Kiedy prąd jest najtańszy w Polsce?</h2>
 
     <p>
-      Wholesale electricity prices can change throughout the day.
-      CheapestHours uses live market data to show the current price and
-      the cheapest available periods, helping you decide whether to use
-      electricity now or wait.
+      Hurtowe ceny energii elektrycznej mogą zmieniać się w ciągu dnia.
+      CheapestHours korzysta z aktualnych danych rynkowych, aby pokazać
+      bieżącą cenę i najtańsze dostępne godziny oraz pomóc zdecydować,
+      czy lepiej zużyć prąd teraz, czy poczekać.
     </p>
 
     <p>
-      This can be useful for flexible electricity use such as EV charging,
-      dishwashers, washing machines, dryers, water heating and other loads
-      that can be moved to a cheaper time.
+      Może to być przydatne przy elastycznym zużyciu energii, takim jak
+      ładowanie samochodu elektrycznego, zmywarka, pralka, suszarka,
+      podgrzewanie wody i inne urządzenia, których pracę można przesunąć
+      na tańszą porę.
     </p>
 
     <p>
-      The prices shown here are wholesale market signals, not your final
-      household tariff. Your electricity bill can also include supplier
-      charges, distribution fees, taxes and contract-specific pricing.
+      Pokazane tutaj ceny są sygnałem z rynku hurtowego, a nie końcową
+      taryfą dla gospodarstwa domowego. Rachunek za energię może również
+      obejmować marżę sprzedawcy, opłaty dystrybucyjne, podatki oraz
+      warunki wynikające z Twojej umowy.
     </p>
 
   </section>
@@ -304,40 +312,40 @@
   <div class="links">
 
     <a href="/search/?country=PL&device=ev">
-      🚗 Find my cheapest EV charging time →
+      🚗 Znajdź najtańszy czas ładowania auta elektrycznego →
     </a>
 
     <a href="/search/?country=PL&device=dishwasher">
-      🍽️ Should I run the dishwasher now? →
+      🍽️ Czy warto teraz włączyć zmywarkę? →
     </a>
 
     <a href="/">
-      🌍 Check electricity prices in another country →
+      🌍 Sprawdź ceny prądu w innym kraju →
     </a>
 
   </div>
 
-  <h2 class="country-links-title">Explore other markets</h2>
+  <h2 class="country-links-title">Sprawdź inne rynki</h2>
 
   <nav class="country-links" aria-label="Other electricity markets">
 
     <a href="/ireland/">
-      🇮🇪 Cheapest electricity hours in Ireland →
+      🇮🇪 Najtańsze godziny prądu w Irlandii →
     </a>
 
     <a href="/california/">
-      🇺🇸 Cheapest electricity hours in California →
+      🇺🇸 Najtańsze godziny prądu w Kalifornii →
     </a>
 
     <a href="/united-kingdom/">
-      🇬🇧 Cheapest electricity hours in the United Kingdom →
+      🇬🇧 Najtańsze godziny prądu w Wielkiej Brytanii →
     </a>
 
   </nav>
 
   <p class="fine">
-    Live wholesale electricity data via Elecz.
-    CheapestHours is an independent electricity timing tool.
+    Aktualne dane hurtowego rynku energii dzięki Elecz.
+    CheapestHours to niezależne narzędzie pomagające wybrać najtańszy czas zużycia energii.
   </p>
 
 </main>
@@ -376,7 +384,7 @@ function hour(iso){
   try{
 
     return new Date(iso).toLocaleTimeString(
-      "en-GB",
+      "pl-PL",
       {
         hour:"2-digit",
         minute:"2-digit",
@@ -420,10 +428,10 @@ function hour(iso){
 
     const label =
       cls === "good"
-        ? "🟢 Cheap now"
+        ? "🟢 Teraz tanio"
         : cls === "bad"
-          ? "🔴 Expensive now"
-          : "🟡 Normal";
+          ? "🔴 Teraz drogo"
+          : "🟡 Normalna cena";
 
     const pts = (cheap.cheapest_hours || [])
       .slice()
@@ -447,7 +455,7 @@ function hour(iso){
       <div class="flag">🇵🇱</div>
 
       <div class="updated">
-        Updated ${hour(spot.timestamp)} local time
+        Aktualizacja: ${hour(spot.timestamp)} czasu lokalnego
       </div>
 
       <div class="hero">
@@ -462,7 +470,7 @@ function hour(iso){
 
       </div>
 
-      <h2>Cheapest available hours</h2>
+      <h2>Najtańsze dostępne godziny</h2>
 
       ${
         rows
@@ -471,8 +479,8 @@ function hour(iso){
 
               <thead>
                 <tr>
-                  <th>Time</th>
-                  <th>Price</th>
+                  <th>Godzina</th>
+                  <th>Cena</th>
                 </tr>
               </thead>
 
@@ -484,13 +492,13 @@ function hour(iso){
           `
           : `
             <p style="font-size:12px;color:var(--soft)">
-              No forward price data is available right now.
+              Brak dostępnych danych o cenach na najbliższe godziny.
             </p>
           `
       }
 
       <a class="check" href="/search/?country=PL">
-        Check my electricity use →
+        Sprawdź moje zużycie prądu →
       </a>
 
     `;
@@ -499,7 +507,7 @@ function hour(iso){
 
     el.innerHTML = `
       <div class="error">
-        Live Poland data is temporarily unavailable.
+        Dane dla Polski są chwilowo niedostępne.
       </div>
     `;
 
