@@ -444,6 +444,13 @@ function t(lang, key) {
   return (key in dict) ? dict[key] : STRINGS.en[key];
 }
 
+// ============================================================================
+// Zone data. Every zone code below is taken directly from Elecz's own public
+// docs (elecz.com/docs/) — not guessed. GB, US and MX were corrected on
+// 2026-08-12: MX-MEX did not exist as an Elecz zone (Mexico City area is
+// MX-PUE); GB and US were only exposing a small subset of the zones Elecz
+// actually supports.
+// ============================================================================
 const COUNTRY_META = {
   FI:{name:"Finland",flag:"🇫🇮",zones:[["FI","Finland"]]},
   SE:{name:"Sweden",flag:"🇸🇪",zones:[["SE1","SE1 · North"],["SE2","SE2"],["SE3","SE3 · Stockholm"],["SE4","SE4 · South"]]},
@@ -468,7 +475,25 @@ const COUNTRY_META = {
   LV:{name:"Latvia",flag:"🇱🇻",zones:[["LV","Latvia"]]},
   LT:{name:"Lithuania",flag:"🇱🇹",zones:[["LT","Lithuania"]]},
   IE:{name:"Ireland",flag:"🇮🇪",zones:[["IE","Ireland"]]},
-  GB:{name:"United Kingdom",flag:"🇬🇧",zones:[["GB","Great Britain"]]},
+
+  GB:{name:"United Kingdom",flag:"🇬🇧",zones:[
+    ["GB","National average (London/region C)"],
+    ["GB-A","Region A"],
+    ["GB-B","Region B"],
+    ["GB-C","London"],
+    ["GB-D","Region D"],
+    ["GB-E","Birmingham"],
+    ["GB-F","Region F"],
+    ["GB-G","Manchester"],
+    ["GB-H","Region H"],
+    ["GB-J","Region J"],
+    ["GB-K","Cardiff"],
+    ["GB-L","Bristol"],
+    ["GB-M","Region M"],
+    ["GB-N","Glasgow / Edinburgh"],
+    ["GB-P","Region P"]
+  ]},
+
   CH:{name:"Switzerland",flag:"🇨🇭",zones:[["CH","Switzerland"]]},
   HR:{name:"Croatia",flag:"🇭🇷",zones:[["HR","Croatia"]]},
   BG:{name:"Bulgaria",flag:"🇧🇬",zones:[["BG","Bulgaria"]]},
@@ -481,15 +506,40 @@ const COUNTRY_META = {
   MK:{name:"North Macedonia",flag:"🇲🇰",zones:[["MK","North Macedonia"]]},
 
   US:{name:"United States",flag:"🇺🇸",zones:[
-    ["US-CA-NP15","California · NP15"],
-    ["US-CA-SP15","California · SP15"],
-    ["US-CA-ZP26","California · ZP26"],
+    ["US-CA-NP15","California · NorCal/PG&E"],
+    ["US-CA-SP15","California · SoCal/SCE+SDG&E"],
+    ["US-CA-ZP26","California · Desert/Central"],
+    ["US-TX-HB_NORTH","Texas · Dallas/Fort Worth"],
+    ["US-TX-HB_HOUSTON","Texas · Houston"],
+    ["US-TX-HB_SOUTH","Texas · San Antonio/Austin"],
+    ["US-TX-HB_WEST","Texas · Midland/Odessa"],
     ["US-NY-NYC","New York · NYC"],
-    ["US-TX-HB_HOUSTON","Texas · Houston"]
+    ["US-NY-WEST","New York · Buffalo"],
+    ["US-NY-GENESE","New York · Rochester"],
+    ["US-NY-CENTRL","New York · Syracuse"],
+    ["US-NY-NORTH","New York · Watertown"],
+    ["US-NY-MHK_VL","New York · Utica"],
+    ["US-NY-CAPITL","New York · Albany"],
+    ["US-NY-HUD_VL","New York · Poughkeepsie"],
+    ["US-NY-DUNWOD","New York · Yonkers/White Plains"],
+    ["US-NY-LONGIL","New York · Long Island"]
   ]},
   CA:{name:"Canada",flag:"🇨🇦",zones:[["CA-ON","Ontario"]]},
   MX:{name:"Mexico",flag:"🇲🇽",zones:[
-    ["MX-MTY","Monterrey"],["MX-GDL","Guadalajara"],["MX-MEX","Mexico City"]
+    ["MX-PUE","Mexico City area"],
+    ["MX-MTY","Monterrey"],
+    ["MX-GDL","Guadalajara"],
+    ["MX-CUN","Cancún"],
+    ["MX-HMO","Hermosillo"],
+    ["MX-AGS","Aguascalientes"],
+    ["MX-VER","Veracruz"],
+    ["MX-CHH","Chihuahua"],
+    ["MX-MID","Mérida"],
+    ["MX-CUL","Culiacán"],
+    ["MX-LEO","León"],
+    ["MX-QRO","Querétaro"],
+    ["MX-MLM","Morelia"],
+    ["MX-OAX","Oaxaca"]
   ]},
 
   AU:{name:"Australia",flag:"🇦🇺",zones:[
@@ -507,7 +557,6 @@ const COUNTRY_META = {
     ["PH-LUZ","Luzon"],["PH-VIS","Visayas"],["PH-MIN","Mindanao"]
   ]}
 };
-
 
 const MARKET_NAMES_PL = {
   FI:"Finlandia", SE:"Szwecja", NO:"Norwegia", DK:"Dania", DE:"Niemcy", NL:"Holandia", BE:"Belgia", AT:"Austria", FR:"Francja", PL:"Polska", CZ:"Czechy", HU:"Węgry", ES:"Hiszpania", PT:"Portugalia", IT:"Włochy", GR:"Grecja", EE:"Estonia", LV:"Łotwa", LT:"Litwa", IE:"Irlandia", GB:"Wielka Brytania", CH:"Szwajcaria", HR:"Chorwacja", BG:"Bułgaria", SI:"Słowenia", SK:"Słowacja", RO:"Rumunia", RS:"Serbia", BA:"Bośnia i Hercegowina", ME:"Czarnogóra", MK:"Macedonia Północna", US:"Stany Zjednoczone", CA:"Kanada", MX:"Meksyk", AU:"Australia", NZ:"Nowa Zelandia", JP:"Japonia", KR:"Korea Południowa", ZA:"Republika Południowej Afryki", PH:"Filipiny"
