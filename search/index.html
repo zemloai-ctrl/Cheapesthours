@@ -321,6 +321,7 @@ const STRINGS = {
     sourceLine: 'Live electricity market data by <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.',
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
+    market_greece: "Greece", market_italy: "Italy",
   },
   pl: {
     stepLabel: "Krok 2 z 3",
@@ -358,6 +359,83 @@ const STRINGS = {
     sourceLine: 'Aktualne dane rynku energii dostarcza <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.',
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
+    market_greece: "Grecja", market_italy: "Włochy",
+  },
+  el: {
+    stepLabel: "Βήμα 2 από 3",
+    h1: "Τι θέλετε να χρησιμοποιήσετε;",
+    lead: "Λίγες πληροφορίες αρκούν για να συγκρίνουμε τη χρήση ρεύματος τώρα με την αναμονή για φθηνότερες ώρες.",
+    yourMarket: "🌍 Η αγορά σας",
+    changeCountry: "Αλλαγή χώρας",
+    zoneLabel: "Περιοχή / ζώνη αγοράς",
+    zoneHint: "Ορισμένες χώρες έχουν περισσότερες από μία ζώνες αγοράς ηλεκτρικής ενέργειας.",
+    deviceLabel: "Τι θέλετε να χρησιμοποιήσετε;",
+    device_ev: "🚗 Φόρτιση ηλεκτρικού αυτοκινήτου",
+    device_dishwasher: "🍽️ Πλυντήριο πιάτων",
+    device_washer: "👕 Πλυντήριο ρούχων",
+    device_dryer: "🌪️ Στεγνωτήριο",
+    device_water_heater: "🚿 Θέρμανση νερού",
+    device_heat_pump: "🏠 Αντλία θερμότητας",
+    device_custom: "⚙️ Κάτι άλλο / προσαρμοσμένο φορτίο",
+    kwhLabel: "Κατανάλωση ενέργειας (kWh)",
+    durationLabel: "Μπορεί να περιμένει έως",
+    duration_2: "2 ώρες", duration_4: "4 ώρες", duration_6: "6 ώρες",
+    duration_8: "8 ώρες", duration_12: "12 ώρες", duration_24: "24 ώρες",
+    hint_ev: "Τυπικό παράδειγμα για EV: περίπου 40 kWh. Αλλάξτε την τιμή αν γνωρίζετε την πραγματική κατανάλωση.",
+    hint_dishwasher: "Ένας κύκλος πλυντηρίου πιάτων είναι συχνά περίπου 1–1,5 kWh.",
+    hint_washer: "Ένας κύκλος πλυντηρίου ρούχων είναι συχνά περίπου 0,5–1,5 kWh.",
+    hint_dryer: "Ένας κύκλος στεγνωτηρίου είναι συχνά περίπου 2–4 kWh.",
+    hint_water_heater: "Ενδεικτική τιμή. Εισαγάγετε την πραγματική κατανάλωση του θερμοσίφωνα αν τη γνωρίζετε.",
+    hint_heat_pump: "Η κατανάλωση της αντλίας θερμότητας διαφέρει πολύ. Αλλάξτε την εκτίμηση αν γνωρίζετε την κατανάλωσή σας.",
+    hint_custom: "Εισαγάγετε συνολικά kWh παραπάνω ή χρησιμοποιήστε ισχύ × χρόνο λειτουργίας παρακάτω.",
+    powerLabel: "Ισχύς (kW)",
+    runtimeLabel: "Χρόνος λειτουργίας (ώρες)",
+    customHint: "Για αντλίες, διακομιστές, βιομηχανικά φορτία ή οτιδήποτε υπολογίζεται σε kW × ώρες.",
+    checkBtn: "Βρείτε τις φθηνότερες ώρες →",
+    ad: "Διαφήμιση",
+    note: "Το CheapestHours χρησιμοποιεί δεδομένα της αγοράς ηλεκτρικής ενέργειας για να συγκρίνει την τρέχουσα τιμή με τις επόμενες ώρες. Οι χονδρικές τιμές δεν είναι το ίδιο με τον τελικό λογαριασμό ρεύματος.",
+    sourceLine: 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας από το <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.',
+    market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
+    market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
+    market_greece: "Ελλάδα", market_italy: "Ιταλία",
+  },
+  it: {
+    stepLabel: "Passaggio 2 di 3",
+    h1: "Cosa vuoi utilizzare?",
+    lead: "Bastano pochi dettagli per confrontare l’uso dell’elettricità adesso con l’attesa di una fascia più conveniente.",
+    yourMarket: "🌍 Il tuo mercato",
+    changeCountry: "Cambia paese",
+    zoneLabel: "Area / zona di mercato",
+    zoneHint: "Alcuni paesi hanno più zone del mercato elettrico.",
+    deviceLabel: "Cosa vuoi utilizzare?",
+    device_ev: "🚗 Ricaricare un’auto elettrica",
+    device_dishwasher: "🍽️ Avviare la lavastoviglie",
+    device_washer: "👕 Fare il bucato",
+    device_dryer: "🌪️ Avviare l’asciugatrice",
+    device_water_heater: "🚿 Scaldare l’acqua",
+    device_heat_pump: "🏠 Usare una pompa di calore",
+    device_custom: "⚙️ Altro / carico personalizzato",
+    kwhLabel: "Consumo di energia (kWh)",
+    durationLabel: "Può aspettare fino a",
+    duration_2: "2 ore", duration_4: "4 ore", duration_6: "6 ore",
+    duration_8: "8 ore", duration_12: "12 ore", duration_24: "24 ore",
+    hint_ev: "Esempio tipico per un EV: circa 40 kWh. Modifica il valore se conosci il consumo reale.",
+    hint_dishwasher: "Un ciclo di lavastoviglie consuma spesso circa 1–1,5 kWh.",
+    hint_washer: "Un ciclo di lavatrice consuma spesso circa 0,5–1,5 kWh.",
+    hint_dryer: "Un ciclo di asciugatrice consuma spesso circa 2–4 kWh.",
+    hint_water_heater: "Valore indicativo. Inserisci il consumo effettivo dello scaldacqua se lo conosci.",
+    hint_heat_pump: "Il consumo di una pompa di calore può variare molto. Modifica la stima se conosci il tuo consumo.",
+    hint_custom: "Inserisci i kWh totali sopra oppure usa potenza × tempo di funzionamento qui sotto.",
+    powerLabel: "Potenza (kW)",
+    runtimeLabel: "Tempo di funzionamento (ore)",
+    customHint: "Per pompe, server, carichi industriali o qualsiasi utilizzo calcolato in kW × ore.",
+    checkBtn: "Trova le ore più economiche →",
+    ad: "Pubblicità",
+    note: "CheapestHours usa i dati del mercato elettrico per confrontare il prezzo attuale con le ore successive. I prezzi all’ingrosso non corrispondono al prezzo finale della bolletta.",
+    sourceLine: 'Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell’elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.',
+    market_ireland: "Irlanda", market_california: "California",
+    market_uk: "Regno Unito", market_poland: "Polonia",
+    market_greece: "Grecia", market_italy: "Italia",
   }
 };
 
@@ -434,8 +512,53 @@ const COUNTRY_META = {
 const MARKET_NAMES_PL = {
   FI:"Finlandia", SE:"Szwecja", NO:"Norwegia", DK:"Dania", DE:"Niemcy", NL:"Holandia", BE:"Belgia", AT:"Austria", FR:"Francja", PL:"Polska", CZ:"Czechy", HU:"Węgry", ES:"Hiszpania", PT:"Portugalia", IT:"Włochy", GR:"Grecja", EE:"Estonia", LV:"Łotwa", LT:"Litwa", IE:"Irlandia", GB:"Wielka Brytania", CH:"Szwajcaria", HR:"Chorwacja", BG:"Bułgaria", SI:"Słowenia", SK:"Słowacja", RO:"Rumunia", RS:"Serbia", BA:"Bośnia i Hercegowina", ME:"Czarnogóra", MK:"Macedonia Północna", US:"Stany Zjednoczone", CA:"Kanada", MX:"Meksyk", AU:"Australia", NZ:"Nowa Zelandia", JP:"Japonia", KR:"Korea Południowa", ZA:"Republika Południowej Afryki", PH:"Filipiny"
 };
+
+const MARKET_NAMES_EL = {
+  FI:"Φινλανδία", SE:"Σουηδία", NO:"Νορβηγία", DK:"Δανία", DE:"Γερμανία", NL:"Ολλανδία",
+  BE:"Βέλγιο", AT:"Αυστρία", FR:"Γαλλία", PL:"Πολωνία", CZ:"Τσεχία", HU:"Ουγγαρία",
+  ES:"Ισπανία", PT:"Πορτογαλία", IT:"Ιταλία", GR:"Ελλάδα", EE:"Εσθονία", LV:"Λετονία",
+  LT:"Λιθουανία", IE:"Ιρλανδία", GB:"Ηνωμένο Βασίλειο", CH:"Ελβετία", HR:"Κροατία",
+  BG:"Βουλγαρία", SI:"Σλοβενία", SK:"Σλοβακία", RO:"Ρουμανία", RS:"Σερβία",
+  BA:"Βοσνία και Ερζεγοβίνη", ME:"Μαυροβούνιο", MK:"Βόρεια Μακεδονία",
+  US:"Ηνωμένες Πολιτείες", CA:"Καναδάς", MX:"Μεξικό", AU:"Αυστραλία",
+  NZ:"Νέα Ζηλανδία", JP:"Ιαπωνία", KR:"Νότια Κορέα", ZA:"Νότια Αφρική", PH:"Φιλιππίνες"
+};
+
+const MARKET_NAMES_IT = {
+  FI:"Finlandia", SE:"Svezia", NO:"Norvegia", DK:"Danimarca", DE:"Germania", NL:"Paesi Bassi",
+  BE:"Belgio", AT:"Austria", FR:"Francia", PL:"Polonia", CZ:"Cechia", HU:"Ungheria",
+  ES:"Spagna", PT:"Portogallo", IT:"Italia", GR:"Grecia", EE:"Estonia", LV:"Lettonia",
+  LT:"Lituania", IE:"Irlanda", GB:"Regno Unito", CH:"Svizzera", HR:"Croazia",
+  BG:"Bulgaria", SI:"Slovenia", SK:"Slovacchia", RO:"Romania", RS:"Serbia",
+  BA:"Bosnia ed Erzegovina", ME:"Montenegro", MK:"Macedonia del Nord",
+  US:"Stati Uniti", CA:"Canada", MX:"Messico", AU:"Australia",
+  NZ:"Nuova Zelanda", JP:"Giappone", KR:"Corea del Sud", ZA:"Sudafrica", PH:"Filippine"
+};
+
+const ZONE_NAMES_EL = {
+  GR:"Ελλάδα",
+  "IT-NO":"Βόρεια Ιταλία", "IT-CNO":"Κεντροβόρεια Ιταλία", "IT-CSO":"Κεντρονότια Ιταλία",
+  "IT-SO":"Νότια Ιταλία", "IT-SAR":"Σαρδηνία", "IT-SIC":"Σικελία"
+};
+
+const ZONE_NAMES_IT = {
+  GR:"Grecia",
+  "IT-NO":"Nord", "IT-CNO":"Centro-Nord", "IT-CSO":"Centro-Sud",
+  "IT-SO":"Sud", "IT-SAR":"Sardegna", "IT-SIC":"Sicilia"
+};
+
 function marketName(code, fallback){
-  return lang === "pl" ? (MARKET_NAMES_PL[code] || fallback) : fallback;
+  if (lang === "pl") return MARKET_NAMES_PL[code] || fallback;
+  if (lang === "el") return MARKET_NAMES_EL[code] || fallback;
+  if (lang === "it") return MARKET_NAMES_IT[code] || fallback;
+  return fallback;
+}
+
+function zoneName(value, fallback){
+  if (lang === "pl" && value === "PL") return "Polska";
+  if (lang === "el") return ZONE_NAMES_EL[value] || fallback;
+  if (lang === "it") return ZONE_NAMES_IT[value] || fallback;
+  return fallback;
 }
 
 const LOAD_META = {
@@ -449,7 +572,10 @@ const LOAD_META = {
 
 const qs = new URLSearchParams(location.search);
 const countryCode = qs.get("country") || localStorage.getItem("cheapesthours-country") || "FI";
-const lang = qs.get("lang") || (countryCode === "PL" ? "pl" : "en");
+const lang = qs.get("lang") ||
+  (countryCode === "PL" ? "pl" :
+   countryCode === "GR" ? "el" :
+   countryCode === "IT" ? "it" : "en");
 const meta = COUNTRY_META[countryCode] || COUNTRY_META.FI;
 
 // Every internal link must carry `lang` forward — this is the one function
@@ -536,7 +662,7 @@ els.countryName.textContent = `${meta.flag} ${marketName(countryCode, meta.name)
 meta.zones.forEach(([value,label]) => {
   const option = document.createElement("option");
   option.value = value;
-  option.textContent = (lang === "pl" && value === "PL") ? "Polska" : label;
+  option.textContent = zoneName(value, label);
   els.zoneSelect.appendChild(option);
 });
 if (meta.zones.length > 1) els.zoneField.style.display = "block";
@@ -585,6 +711,8 @@ const FEATURED = [
   { slug: "california", key: "market_california" },
   { slug: "united-kingdom", key: "market_uk" },
   { slug: "poland", key: "market_poland" },
+  { slug: "greece", key: "market_greece" },
+  { slug: "italy", key: "market_italy" },
 ];
 els.seoLinks.innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
