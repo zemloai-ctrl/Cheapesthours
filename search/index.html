@@ -9,6 +9,17 @@
   <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="https://cheapesthours.com/search/">
 
+  <meta property="og:title" content="Check the Cheapest Time to Use Electricity — CheapestHours">
+  <meta property="og:description" content="Tell CheapestHours what you want to run, how much electricity it uses and where you are. We'll compare current and upcoming electricity market prices.">
+  <meta property="og:url" content="https://cheapesthours.com/search/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cheapesthours.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <meta name="theme-color" content="#17213B">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,52 +196,52 @@
 
   <main>
     <div class="topline">
-      <a class="brand" href="/">⚡ CheapestHours</a>
-      <div class="step">Step 2 of 3</div>
+      <a class="brand" href="/" id="brandLink">⚡ CheapestHours</a>
+      <div class="step" id="stepLabel">Step 2 of 3</div>
     </div>
 
-    <h1>What do you want to run?</h1>
-    <p class="lead">A few details let us compare using electricity now with waiting for a cheaper window.</p>
+    <h1 id="h1Text">What do you want to run?</h1>
+    <p class="lead" id="leadText">A few details let us compare using electricity now with waiting for a cheaper window.</p>
 
     <section class="card">
       <div class="country-line">
         <div class="country-name" id="countryName">🌍 Your market</div>
-        <a class="change" href="/">Change country</a>
+        <a class="change" href="/" id="changeLink">Change country</a>
       </div>
 
       <div class="field" id="zoneField" style="display:none">
-        <label for="zone">Area / market zone</label>
+        <label id="zoneLabel" for="zone">Area / market zone</label>
         <select id="zone"></select>
-        <p class="hint">Some countries have several electricity market areas.</p>
+        <p class="hint" id="zoneHint">Some countries have several electricity market areas.</p>
       </div>
 
       <div class="field">
-        <label for="device">What are you using?</label>
+        <label id="deviceLabel" for="device">What are you using?</label>
         <select id="device">
-          <option value="ev">🚗 Charge an EV</option>
-          <option value="dishwasher">🍽️ Run the dishwasher</option>
-          <option value="washer">👕 Do laundry</option>
-          <option value="dryer">🌪️ Run the dryer</option>
-          <option value="water-heater">🚿 Heat water</option>
-          <option value="heat-pump">🏠 Run a heat pump</option>
-          <option value="custom">⚙️ Something else / custom load</option>
+          <option value="ev">🚗</option>
+          <option value="dishwasher">🍽️</option>
+          <option value="washer">👕</option>
+          <option value="dryer">🌪️</option>
+          <option value="water-heater">🚿</option>
+          <option value="heat-pump">🏠</option>
+          <option value="custom">⚙️</option>
         </select>
       </div>
 
       <div class="grid2">
         <div class="field">
-          <label for="kwh">Energy use (kWh)</label>
+          <label id="kwhLabel" for="kwh">Energy use (kWh)</label>
           <input id="kwh" type="number" min="0.01" step="0.1" value="40">
         </div>
         <div class="field">
-          <label for="duration">Can wait up to</label>
+          <label id="durationLabel" for="duration">Can wait up to</label>
           <select id="duration">
-            <option value="2">2 hours</option>
-            <option value="4">4 hours</option>
-            <option value="6">6 hours</option>
-            <option value="8" selected>8 hours</option>
-            <option value="12">12 hours</option>
-            <option value="24">24 hours</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8" selected>8</option>
+            <option value="12">12</option>
+            <option value="24">24</option>
           </select>
         </div>
       </div>
@@ -240,37 +251,121 @@
       <div class="custom" id="customBox">
         <div class="grid2">
           <div>
-            <label for="power">Power (kW)</label>
+            <label id="powerLabel" for="power">Power (kW)</label>
             <input id="power" type="number" min="0.01" step="0.1" placeholder="e.g. 15">
           </div>
           <div>
-            <label for="runtime">Run time (hours)</label>
+            <label id="runtimeLabel" for="runtime">Run time (hours)</label>
             <input id="runtime" type="number" min="0.1" step="0.1" placeholder="e.g. 4">
           </div>
         </div>
-        <p class="hint">For pumps, servers, industrial loads or anything measured in kW × hours.</p>
+        <p class="hint" id="customHint">For pumps, servers, industrial loads or anything measured in kW × hours.</p>
       </div>
 
       <button class="go" id="checkBtn" type="button">Find my cheapest hours →</button>
     </section>
 
     <!-- Replace with the real AdSense unit after approval. -->
-    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
+    <div class="ad-slot" aria-label="Advertisement" id="adLabel">Advertisement</div>
 
-    <p class="note">
+    <p class="note" id="noteText">
       CheapestHours uses electricity market data to compare the current price with upcoming hours.
       Wholesale prices are not the same as your final electricity bill.
     </p>
+    <p class="note" id="sourceLine"></p>
 
-    <nav class="seo-links" aria-label="Featured electricity markets">
-      <a href="/ireland/">Ireland</a>
-      <a href="/california/">California</a>
-      <a href="/united-kingdom/">United Kingdom</a>
-      <a href="/poland/">Poland</a>
-    </nav>
+    <nav class="seo-links" aria-label="Featured electricity markets" id="seoLinks"></nav>
   </main>
 
 <script>
+// ============================================================================
+// i18n. English is the ground truth: every UI string has an `en` entry, and
+// t(lang, key, ...args) falls back to `en` per-key if a translation is
+// missing — a gap in one string never breaks the rest of the page. Language
+// flows through every internal link (withLang) so it never resets mid-funnel.
+// ============================================================================
+const STRINGS = {
+  en: {
+    stepLabel: "Step 2 of 3",
+    h1: "What do you want to run?",
+    lead: "A few details let us compare using electricity now with waiting for a cheaper window.",
+    yourMarket: "🌍 Your market",
+    changeCountry: "Change country",
+    zoneLabel: "Area / market zone",
+    zoneHint: "Some countries have several electricity market areas.",
+    deviceLabel: "What are you using?",
+    device_ev: "🚗 Charge an EV",
+    device_dishwasher: "🍽️ Run the dishwasher",
+    device_washer: "👕 Do laundry",
+    device_dryer: "🌪️ Run the dryer",
+    device_water_heater: "🚿 Heat water",
+    device_heat_pump: "🏠 Run a heat pump",
+    device_custom: "⚙️ Something else / custom load",
+    kwhLabel: "Energy use (kWh)",
+    durationLabel: "Can wait up to",
+    duration_2: "2 hours", duration_4: "4 hours", duration_6: "6 hours",
+    duration_8: "8 hours", duration_12: "12 hours", duration_24: "24 hours",
+    hint_ev: "Typical EV example: about 40 kWh. Change it if you know your actual amount.",
+    hint_dishwasher: "A dishwasher cycle is often around 1–1.5 kWh.",
+    hint_washer: "A washing machine cycle is often around 0.5–1.5 kWh.",
+    hint_dryer: "A tumble-dryer cycle is often around 2–4 kWh.",
+    hint_water_heater: "Example only. Enter the energy your water heater actually needs if known.",
+    hint_heat_pump: "Heat-pump use varies widely. Change this estimate if you know your consumption.",
+    hint_custom: "Enter either total kWh above, or use power × run time below.",
+    powerLabel: "Power (kW)",
+    runtimeLabel: "Run time (hours)",
+    customHint: "For pumps, servers, industrial loads or anything measured in kW × hours.",
+    checkBtn: "Find my cheapest hours →",
+    ad: "Advertisement",
+    note: "CheapestHours uses electricity market data to compare the current price with upcoming hours. Wholesale prices are not the same as your final electricity bill.",
+    sourceLine: 'Live electricity market data by <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.',
+    market_ireland: "Ireland", market_california: "California",
+    market_uk: "United Kingdom", market_poland: "Poland",
+  },
+  pl: {
+    stepLabel: "Krok 2 z 3",
+    h1: "Co chcesz uruchomić?",
+    lead: "Kilka szczegółów pozwoli nam porównać zużycie energii teraz z oczekiwaniem na tańsze godziny.",
+    yourMarket: "🌍 Twój rynek",
+    changeCountry: "Zmień kraj",
+    zoneLabel: "Obszar / strefa rynkowa",
+    zoneHint: "Niektóre kraje mają kilka stref rynku energii.",
+    deviceLabel: "Co chcesz uruchomić?",
+    device_ev: "🚗 Ładowanie samochodu elektrycznego",
+    device_dishwasher: "🍽️ Uruchomienie zmywarki",
+    device_washer: "👕 Pranie",
+    device_dryer: "🌪️ Uruchomienie suszarki",
+    device_water_heater: "🚿 Podgrzewanie wody",
+    device_heat_pump: "🏠 Uruchomienie pompy ciepła",
+    device_custom: "⚙️ Coś innego / własne obciążenie",
+    kwhLabel: "Zużycie energii (kWh)",
+    durationLabel: "Można czekać do",
+    duration_2: "2 godzin", duration_4: "4 godzin", duration_6: "6 godzin",
+    duration_8: "8 godzin", duration_12: "12 godzin", duration_24: "24 godzin",
+    hint_ev: "Typowy przykład dla EV: około 40 kWh. Zmień wartość, jeśli znasz dokładne zużycie.",
+    hint_dishwasher: "Cykl zmywarki to zwykle około 1–1,5 kWh.",
+    hint_washer: "Cykl prania to zwykle około 0,5–1,5 kWh.",
+    hint_dryer: "Cykl suszenia to zwykle około 2–4 kWh.",
+    hint_water_heater: "To tylko przykład. Wpisz rzeczywiste zużycie podgrzewacza wody, jeśli je znasz.",
+    hint_heat_pump: "Zużycie pompy ciepła bywa bardzo różne. Zmień tę wartość, jeśli znasz swoje zużycie.",
+    hint_custom: "Wpisz całkowite kWh powyżej albo skorzystaj z mocy × czas pracy poniżej.",
+    powerLabel: "Moc (kW)",
+    runtimeLabel: "Czas pracy (godziny)",
+    customHint: "Dla pomp, serwerów, obciążeń przemysłowych lub czegokolwiek liczonego w kW × godziny.",
+    checkBtn: "Sprawdź najtańsze godziny →",
+    ad: "Reklama",
+    note: "CheapestHours wykorzystuje dane rynku energii, aby porównać obecną cenę z nadchodzącymi godzinami. Ceny hurtowe nie są tym samym co Twój ostateczny rachunek za prąd.",
+    sourceLine: 'Aktualne dane rynku energii dostarcza <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.',
+    market_ireland: "Irlandia", market_california: "Kalifornia",
+    market_uk: "Wielka Brytania", market_poland: "Polska",
+  }
+};
+
+function t(lang, key) {
+  const dict = STRINGS[lang] || STRINGS.en;
+  return (key in dict) ? dict[key] : STRINGS.en[key];
+}
+
 const COUNTRY_META = {
   FI:{name:"Finland",flag:"🇫🇮",zones:[["FI","Finland"]]},
   SE:{name:"Sweden",flag:"🇸🇪",zones:[["SE1","SE1 · North"],["SE2","SE2"],["SE3","SE3 · Stockholm"],["SE4","SE4 · South"]]},
@@ -335,91 +430,165 @@ const COUNTRY_META = {
   ]}
 };
 
-const LOADS = {
-  ev:{kwh:40,duration:8,hint:"Typical EV example: about 40 kWh. Change it if you know your actual amount."},
-  dishwasher:{kwh:1.2,duration:4,hint:"A dishwasher cycle is often around 1–1.5 kWh."},
-  washer:{kwh:1,duration:4,hint:"A washing machine cycle is often around 0.5–1.5 kWh."},
-  dryer:{kwh:2.5,duration:4,hint:"A tumble-dryer cycle is often around 2–4 kWh."},
-  "water-heater":{kwh:6,duration:8,hint:"Example only. Enter the energy your water heater actually needs if known."},
-  "heat-pump":{kwh:5,duration:8,hint:"Heat-pump use varies widely. Change this estimate if you know your consumption."}
+
+const MARKET_NAMES_PL = {
+  FI:"Finlandia", SE:"Szwecja", NO:"Norwegia", DK:"Dania", DE:"Niemcy", NL:"Holandia", BE:"Belgia", AT:"Austria", FR:"Francja", PL:"Polska", CZ:"Czechy", HU:"Węgry", ES:"Hiszpania", PT:"Portugalia", IT:"Włochy", GR:"Grecja", EE:"Estonia", LV:"Łotwa", LT:"Litwa", IE:"Irlandia", GB:"Wielka Brytania", CH:"Szwajcaria", HR:"Chorwacja", BG:"Bułgaria", SI:"Słowenia", SK:"Słowacja", RO:"Rumunia", RS:"Serbia", BA:"Bośnia i Hercegowina", ME:"Czarnogóra", MK:"Macedonia Północna", US:"Stany Zjednoczone", CA:"Kanada", MX:"Meksyk", AU:"Australia", NZ:"Nowa Zelandia", JP:"Japonia", KR:"Korea Południowa", ZA:"Republika Południowej Afryki", PH:"Filipiny"
+};
+function marketName(code, fallback){
+  return lang === "pl" ? (MARKET_NAMES_PL[code] || fallback) : fallback;
+}
+
+const LOAD_META = {
+  ev:{kwh:40,duration:8,hintKey:"hint_ev"},
+  dishwasher:{kwh:1.2,duration:4,hintKey:"hint_dishwasher"},
+  washer:{kwh:1,duration:4,hintKey:"hint_washer"},
+  dryer:{kwh:2.5,duration:4,hintKey:"hint_dryer"},
+  "water-heater":{kwh:6,duration:8,hintKey:"hint_water_heater"},
+  "heat-pump":{kwh:5,duration:8,hintKey:"hint_heat_pump"}
 };
 
 const qs = new URLSearchParams(location.search);
 const countryCode = qs.get("country") || localStorage.getItem("cheapesthours-country") || "FI";
+const lang = qs.get("lang") || (countryCode === "PL" ? "pl" : "en");
 const meta = COUNTRY_META[countryCode] || COUNTRY_META.FI;
 
-const countryName = document.getElementById("countryName");
-const zoneField = document.getElementById("zoneField");
-const zoneSelect = document.getElementById("zone");
-const device = document.getElementById("device");
-const kwh = document.getElementById("kwh");
-const duration = document.getElementById("duration");
-const loadHint = document.getElementById("loadHint");
-const customBox = document.getElementById("customBox");
-const power = document.getElementById("power");
-const runtime = document.getElementById("runtime");
+// Every internal link must carry `lang` forward — this is the one function
+// that generates outbound URLs, so language can never silently reset.
+function withLang(paramsObj) {
+  const p = new URLSearchParams(paramsObj);
+  if (lang && lang !== "en") p.set("lang", lang);
+  return "?" + p.toString();
+}
 
-const requestedDevice = qs.get("device");
+document.documentElement.lang = lang;
 
-localStorage.setItem("cheapesthours-country", countryCode);
-countryName.textContent = `${meta.flag} ${meta.name}`;
+const els = {
+  countryName: document.getElementById("countryName"),
+  changeLink: document.getElementById("changeLink"),
+  zoneField: document.getElementById("zoneField"),
+  zoneSelect: document.getElementById("zone"),
+  zoneLabel: document.getElementById("zoneLabel"),
+  zoneHint: document.getElementById("zoneHint"),
+  device: document.getElementById("device"),
+  deviceLabel: document.getElementById("deviceLabel"),
+  kwh: document.getElementById("kwh"),
+  kwhLabel: document.getElementById("kwhLabel"),
+  duration: document.getElementById("duration"),
+  durationLabel: document.getElementById("durationLabel"),
+  loadHint: document.getElementById("loadHint"),
+  customBox: document.getElementById("customBox"),
+  power: document.getElementById("power"),
+  powerLabel: document.getElementById("powerLabel"),
+  runtime: document.getElementById("runtime"),
+  runtimeLabel: document.getElementById("runtimeLabel"),
+  customHint: document.getElementById("customHint"),
+  checkBtn: document.getElementById("checkBtn"),
+  adLabel: document.getElementById("adLabel"),
+  noteText: document.getElementById("noteText"),
+  sourceLine: document.getElementById("sourceLine"),
+  seoLinks: document.getElementById("seoLinks"),
+  stepLabel: document.getElementById("stepLabel"),
+  h1Text: document.getElementById("h1Text"),
+  leadText: document.getElementById("leadText"),
+};
+
+// Static UI text
+els.stepLabel.textContent = t(lang, "stepLabel");
+els.h1Text.textContent = t(lang, "h1");
+els.leadText.textContent = t(lang, "lead");
+els.changeLink.textContent = t(lang, "changeCountry");
+els.zoneLabel.textContent = t(lang, "zoneLabel");
+els.zoneHint.textContent = t(lang, "zoneHint");
+els.deviceLabel.textContent = t(lang, "deviceLabel");
+els.kwhLabel.textContent = t(lang, "kwhLabel");
+els.durationLabel.textContent = t(lang, "durationLabel");
+els.powerLabel.textContent = t(lang, "powerLabel");
+els.runtimeLabel.textContent = t(lang, "runtimeLabel");
+els.customHint.textContent = t(lang, "customHint");
+els.checkBtn.textContent = t(lang, "checkBtn");
+els.adLabel.textContent = t(lang, "ad");
+els.noteText.textContent = t(lang, "note");
+els.sourceLine.innerHTML = t(lang, "sourceLine");
+document.getElementById("changeLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
+document.getElementById("brandLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
+
+// Device select options (localized labels)
+els.device.innerHTML = "";
+["ev","dishwasher","washer","dryer","water-heater","heat-pump","custom"].forEach(key => {
+  const opt = document.createElement("option");
+  opt.value = key;
+  opt.textContent = t(lang, "device_" + key.replace("-", "_"));
+  els.device.appendChild(opt);
+});
+
+// Duration select options
+els.duration.innerHTML = "";
+[2,4,6,8,12,24].forEach(h => {
+  const opt = document.createElement("option");
+  opt.value = String(h);
+  opt.textContent = t(lang, "duration_" + h);
+  if (h === 8) opt.selected = true;
+  els.duration.appendChild(opt);
+});
+
+els.countryName.textContent = `${meta.flag} ${marketName(countryCode, meta.name)}`;
 
 meta.zones.forEach(([value,label]) => {
   const option = document.createElement("option");
   option.value = value;
-  option.textContent = label;
-  zoneSelect.appendChild(option);
+  option.textContent = (lang === "pl" && value === "PL") ? "Polska" : label;
+  els.zoneSelect.appendChild(option);
 });
-
-if (meta.zones.length > 1) zoneField.style.display = "block";
+if (meta.zones.length > 1) els.zoneField.style.display = "block";
 
 function updateLoad() {
-  if (device.value === "custom") {
-    customBox.classList.add("show");
-    loadHint.textContent = "Enter either total kWh above, or use power × run time below.";
+  if (els.device.value === "custom") {
+    els.customBox.classList.add("show");
+    els.loadHint.textContent = t(lang, "hint_custom");
     return;
   }
-
-  customBox.classList.remove("show");
-  const preset = LOADS[device.value];
-  kwh.value = preset.kwh;
-  duration.value = String(preset.duration);
-  loadHint.textContent = preset.hint;
+  els.customBox.classList.remove("show");
+  const preset = LOAD_META[els.device.value];
+  els.kwh.value = preset.kwh;
+  els.duration.value = String(preset.duration);
+  els.loadHint.textContent = t(lang, preset.hintKey);
 }
-
-device.addEventListener("change", updateLoad);
-
-if (requestedDevice && [...device.options].some(option => option.value === requestedDevice)) {
-  device.value = requestedDevice;
-}
+els.device.addEventListener("change", updateLoad);
 updateLoad();
 
-document.getElementById("checkBtn").addEventListener("click", () => {
-  let energy = Number(kwh.value);
+els.checkBtn.addEventListener("click", () => {
+  let energy = Number(els.kwh.value);
   let runHours = null;
 
-  if (device.value === "custom" && Number(power.value) > 0 && Number(runtime.value) > 0) {
-    runHours = Number(runtime.value);
-    energy = Number(power.value) * runHours;
+  if (els.device.value === "custom" && Number(els.power.value) > 0 && Number(els.runtime.value) > 0) {
+    runHours = Number(els.runtime.value);
+    energy = Number(els.power.value) * runHours;
   }
 
-  if (!(energy > 0)) {
-    kwh.focus();
-    return;
-  }
+  if (!(energy > 0)) { els.kwh.focus(); return; }
 
-  const out = new URLSearchParams({
+  const params = {
     country: countryCode,
-    zone: zoneSelect.value,
-    device: device.value,
+    zone: els.zoneSelect.value,
+    device: els.device.value,
     kwh: String(Math.round(energy * 100) / 100),
-    wait: duration.value
-  });
+    wait: els.duration.value
+  };
+  if (runHours) params.runtime = String(runHours);
 
-  if (runHours) out.set("runtime", String(runHours));
-
-  window.location.href = "/result/?" + out.toString();
+  window.location.href = "/result/" + withLang(params);
 });
+
+// Featured markets nav, localized market names, language preserved
+const FEATURED = [
+  { slug: "ireland", key: "market_ireland" },
+  { slug: "california", key: "market_california" },
+  { slug: "united-kingdom", key: "market_uk" },
+  { slug: "poland", key: "market_poland" },
+];
+els.seoLinks.innerHTML = FEATURED.map(f =>
+  `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
+).join("");
 </script>
 </body>
 </html>
