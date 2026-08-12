@@ -12,6 +12,13 @@
   <meta property="og:description" content="Choose your country and find out when electricity is cheapest to use.">
   <meta property="og:url" content="https://cheapesthours.com/">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cheapesthours.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <meta name="theme-color" content="#17213B">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -337,11 +344,16 @@
     <a class="featured-link" href="/california/">🇺🇸 See today's cheapest electricity hours in California →</a>
     <a class="featured-link" href="/united-kingdom/">🇬🇧 See today's cheapest electricity hours in the United Kingdom →</a>
     <a class="featured-link" href="/poland/">🇵🇱 See today's cheapest electricity hours in Poland →</a>
+    <a class="featured-link" href="/greece/">🇬🇷 See today's cheapest electricity hours in Greece →</a>
+    <a class="featured-link" href="/italy/">🇮🇹 See today's cheapest electricity hours in Italy →</a>
 
     <footer>
       Electricity market data powered by
-      <a href="https://elecz.com" rel="noopener">Elecz</a>.
+      <a href="https://elecz.com/" rel="noopener">Elecz</a>.
       Wholesale prices are not the same as your final electricity bill.
+      <br>
+      Comparing electricity price APIs?
+      <a href="https://botcentrum.com/" rel="noopener">See BotCentrum</a>.
     </footer>
   </main>
 
@@ -358,7 +370,16 @@
     function continueToSearch() {
       const selectedCountry = country.value;
       localStorage.setItem("cheapesthours-country", selectedCountry);
-      window.location.href = "/search/?country=" + encodeURIComponent(selectedCountry);
+
+      const lang =
+        selectedCountry === "PL" ? "pl" :
+        selectedCountry === "GR" ? "el" :
+        selectedCountry === "IT" ? "it" : "";
+
+      const params = new URLSearchParams({ country: selectedCountry });
+      if (lang) params.set("lang", lang);
+
+      window.location.href = "/search/?" + params.toString();
     }
 
     continueBtn.addEventListener("click", continueToSearch);
