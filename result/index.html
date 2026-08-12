@@ -11,6 +11,17 @@
 
   <meta name="theme-color" content="#17213B">
 
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:title" content="Your Cheapest Hours — CheapestHours">
+  <meta property="og:description" content="See whether to use electricity now or wait, compare the current cost with the cheapest available window, and explore electricity prices around the world.">
+  <meta property="og:url" content="https://cheapesthours.com/result/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cheapesthours.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +32,6 @@
       --ink:#1B2A4A; --ink-soft:rgba(27,42,74,.64);
       --green:#3F8F6B; --orange:#B9862E; --red:#C85F54; --white:#fff;
     }
-
     * { box-sizing:border-box; }
 
     body {
@@ -285,6 +295,9 @@
     @media (max-width:370px) {
       .stats,.more-grid,.links { grid-template-columns:1fr; }
     }
+  
+    .source-links { margin:14px auto 0; text-align:center; font-size:10.5px; line-height:1.55; color:rgba(27,42,74,.48); }
+    .source-links a { color:inherit; text-decoration:none; border-bottom:1px solid rgba(27,42,74,.18); }
   </style>
 </head>
 
@@ -293,23 +306,23 @@
 
   <main>
     <div class="topline">
-      <a class="brand" href="/">⚡ CheapestHours</a>
-      <div class="step">Step 3 of 3</div>
+      <a class="brand" href="/" id="brandLink">⚡ CheapestHours</a>
+      <div class="step" id="stepLabel">Step 3 of 3</div>
     </div>
 
-    <h1>Your cheapest hours</h1>
+    <h1 id="h1Text">Your cheapest hours</h1>
     <p class="lead" id="lead">Checking your selected load against the live electricity market.</p>
 
     <div id="content">
-      <div class="loading">Finding the best available window…</div>
+      <div class="loading" id="loadingText">Finding the best available window…</div>
     </div>
 
     <!-- Replace with the real AdSense unit after approval. -->
-    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
+    <div class="ad-slot" aria-label="Advertisement" id="adLabel1">Advertisement</div>
 
     <section id="worldSection" hidden>
-      <h2 class="world-title">Meanwhile, somewhere else…</h2>
-      <p class="world-sub">The same electricity use can look very different in another market.</p>
+      <h2 class="world-title" id="worldTitle">Meanwhile, somewhere else…</h2>
+      <p class="world-sub" id="worldSub">The same electricity use can look very different in another market.</p>
 
       <a class="postcard" id="worldCard" href="#">
         <div class="headline" id="worldHeadline"></div>
@@ -317,25 +330,177 @@
       </a>
 
       <div class="links">
-        <a href="/">🌍 Check another country</a>
-        <a href="/ireland/">🇮🇪 Ireland cheapest hours</a>
+        <a href="/" id="checkAnotherLink">🌍 Check another country</a>
+        <a href="/ireland/" id="irelandLink">🇮🇪 Ireland cheapest hours</a>
       </div>
     </section>
 
-    <p class="note">
+    <p class="note" id="noteText">
       CheapestHours compares wholesale electricity market signals. Your actual bill may include taxes,
       grid charges, supplier margin and contract-specific pricing.
     </p>
 
-    <nav class="seo-links" aria-label="Featured electricity markets">
-      <a href="/ireland/">Ireland</a>
-      <a href="/california/">California</a>
-      <a href="/united-kingdom/">United Kingdom</a>
-      <a href="/poland/">Poland</a>
-    </nav>
-  </main>
+    <nav class="seo-links" aria-label="Featured electricity markets" id="seoLinks"></nav>
+  
+  <p class="source-links" id="sourceLinks"></p>
+</main>
 
 <script>
+// ============================================================================
+// i18n — same model as /search/: English ground truth, per-key fallback,
+// `lang` carried through every generated URL (withLang), including the
+// world-hook postcards and fallback links, so language never resets
+// mid-funnel even while exploring other markets.
+// ============================================================================
+const STRINGS = {
+  en: {
+    stepLabel: "Step 3 of 3",
+    h1: "Your cheapest hours",
+    loading: "Finding the best available window…",
+    ad: "Advertisement",
+    worldTitle: "Meanwhile, somewhere else…",
+    worldSub: "The same electricity use can look very different in another market.",
+    checkAnother: "🌍 Check another country",
+    irelandLink: "🇮🇪 Ireland cheapest hours",
+    note: "CheapestHours compares wholesale electricity market signals. Your actual bill may include taxes, grid charges, supplier margin and contract-specific pricing.",
+    seeMoreDetails: "See more details",
+    bestVerifiedWindow: "Best verified window",
+    marketPriceComponent: "market-price component",
+    priceRightNow: "Price right now",
+    yourKwh: (kwh) => `Your ${kwh} kWh`,
+    load: "Load",
+    energy: "Energy",
+    searchWindow: "Search window",
+    possibleSaving: "Possible saving",
+    fine: "Wholesale market signal only. Taxes, grid fees, supplier margin and your electricity contract are not included.",
+    error: (msg) => `Could not calculate this result right now (${msg}).`,
+    verdict_run: "🟢 RUN NOW",
+    verdict_mid: "🟠 WAIT IF CONVENIENT",
+    verdict_wait: "🔴 WAIT",
+    verdict_regulated: "⚪ CURRENT PRICE ONLY",
+    verdict_no_forecast: "⚪ CURRENT PRICE ONLY",
+    verdict_unverified: "⚪ CURRENT PRICE ONLY",
+    explain_regulated: "This market is shown as a regulated tariff. CheapestHours won't invent a future RUN/WAIT decision when there isn't a comparable forward market signal.",
+    explain_no_forecast: "The current wholesale price is available, but this market does not currently provide a usable cheapest-hours forecast.",
+    explain_unverified: "Forward price data exists, but CheapestHours could not verify a contiguous window matching this load. Showing the current price without guessing.",
+    explain_zero: (device) => `The wholesale market price is at or below zero right now — an exceptionally cheap market-price period for this ${device}.`,
+    explain_run_small: (money, device) => `A cheaper window exists later, but the market-price difference is only about ${money} for this ${device}.`,
+    explain_run_best: (device) => `The current price is already as good as the best comparable window available for this ${device}.`,
+    explain_mid: (money, pct) => `Waiting could reduce the wholesale market-price component by about ${money} (${pct}%).`,
+    explain_wait: (money, pct) => `A later window could reduce the wholesale market-price component by about ${money} (${pct}%).`,
+    device_ev: "EV charge",
+    device_dishwasher: "dishwasher cycle",
+    device_washer: "laundry cycle",
+    device_dryer: "dryer cycle",
+    device_water_heater: "water heating",
+    device_heat_pump: "heat-pump run",
+    device_custom: "custom electricity load",
+    market_ireland: "Ireland", market_california: "California",
+    market_uk: "United Kingdom", market_poland: "Poland",
+    // Fallback postcard (no live network data)
+    fb_dishwasher: (dest) => `What would the same dishwasher cycle look like in ${dest}?`,
+    fb_washer: (dest) => `What would doing the same laundry cost in ${dest}?`,
+    fb_dryer: (dest) => `How would your dryer compare in ${dest}?`,
+    fb_ev: (dest) => `What if you charged the same EV in ${dest}?`,
+    fb_other: (dest, device) => `How does the same ${device} compare in ${dest}?`,
+    fb_sub: (kwh, dest) => `Same ${kwh} kWh, different electricity market. See the live result in ${dest} →`,
+    // Live postcard (real comparison data)
+    live_negative_headline: (dest) => `Meanwhile in ${dest}, wholesale electricity is below zero.`,
+    live_negative_sub: (kwh, dest) => `The same ${kwh} kWh load is sitting in a very unusual market-price period there right now. See the same calculation in ${dest} →`,
+    live_cheaper_dishwasher: (dest) => `Too bad you're not doing the dishes in ${dest}.`,
+    live_cheaper_washer: (dest) => `Too bad you're not doing laundry in ${dest}.`,
+    live_cheaper_dryer: (dest) => `Your dryer might prefer ${dest} today.`,
+    live_cheaper_ev: (dest) => `Your EV might prefer ${dest} today.`,
+    live_cheaper_other: (dest) => `This load is cheaper in ${dest} right now.`,
+    live_cheaper_sub_pct: (kwh, cost, pct) => `At the current wholesale price, the same ${kwh} kWh would cost about ${cost} there — roughly ${pct}% less than here. Click to compare →`,
+    live_cheaper_sub: (kwh, cost) => `At the current wholesale price, the same ${kwh} kWh would cost about ${cost} there. Click to compare →`,
+    live_expensive_dishwasher: (dest) => `Good thing you're not doing the dishes in ${dest}.`,
+    live_expensive_washer: (dest) => `Good thing you're not doing laundry in ${dest}.`,
+    live_expensive_dryer: (dest) => `Good thing your dryer isn't in ${dest}.`,
+    live_expensive_ev: (dest) => `Good thing you're not charging your EV in ${dest}.`,
+    live_expensive_other: (dest) => `Good thing this load isn't running in ${dest}.`,
+    live_expensive_sub_mult: (kwh, cost, mult) => `The same ${kwh} kWh would cost about ${cost} there right now — about ${mult}× your current market-price cost. See ${dest} →`,
+    live_expensive_sub: (kwh, cost, dest) => `The same ${kwh} kWh would cost about ${cost} there right now. See ${dest} →`,
+    live_compare_headline: (dest, device) => `How does the same ${device} compare in ${dest}?`,
+    live_compare_sub: "Same {kwh} kWh, different electricity market. See what the current wholesale price does to the result →",
+  },
+  pl: {
+    stepLabel: "Krok 3 z 3",
+    h1: "Twoje najtańsze godziny",
+    loading: "Szukamy najlepszego dostępnego okna…",
+    ad: "Reklama",
+    worldTitle: "Tymczasem gdzie indziej…",
+    worldSub: "To samo zużycie energii może wyglądać zupełnie inaczej na innym rynku.",
+    checkAnother: "🌍 Sprawdź inny kraj",
+    irelandLink: "🇮🇪 Najtańsze godziny w Irlandii",
+    note: "CheapestHours porównuje sygnały hurtowego rynku energii. Twój rzeczywisty rachunek może obejmować podatki, opłaty sieciowe, marżę sprzedawcy oraz warunki wynikające z umowy.",
+    seeMoreDetails: "Zobacz więcej szczegółów",
+    bestVerifiedWindow: "Najlepsze zweryfikowane okno",
+    marketPriceComponent: "składnik ceny rynkowej",
+    priceRightNow: "Cena w tej chwili",
+    yourKwh: (kwh) => `Twoje ${kwh} kWh`,
+    load: "Obciążenie",
+    energy: "Energia",
+    searchWindow: "Okno wyszukiwania",
+    possibleSaving: "Możliwa oszczędność",
+    fine: "Pokazane ceny są sygnałem z hurtowego rynku energii, a nie końcową ceną energii dla gospodarstwa domowego. Twój rachunek może również obejmować opłaty dystrybucyjne, podatki, marżę sprzedawcy oraz warunki wynikające z umowy.",
+    error: (msg) => `Nie udało się teraz obliczyć tego wyniku (${msg}).`,
+    verdict_run: "🟢 URUCHOM TERAZ",
+    verdict_mid: "🟠 CZEKAJ, JEŚLI TO WYGODNE",
+    verdict_wait: "🔴 CZEKAJ",
+    verdict_regulated: "⚪ TYLKO OBECNA CENA",
+    verdict_no_forecast: "⚪ TYLKO OBECNA CENA",
+    verdict_unverified: "⚪ TYLKO OBECNA CENA",
+    explain_regulated: "Ten rynek działa w oparciu o taryfę regulowaną. CheapestHours nie tworzy decyzji URUCHOM/CZEKAJ bez porównywalnego sygnału rynku terminowego.",
+    explain_no_forecast: "Obecna cena hurtowa jest dostępna, ale ten rynek nie udostępnia obecnie prognozy najtańszych godzin.",
+    explain_unverified: "Dane cenowe na przyszłość istnieją, ale CheapestHours nie mógł zweryfikować ciągłego okna odpowiadającego temu obciążeniu. Pokazujemy obecną cenę bez zgadywania.",
+    explain_zero: (device) => `Cena hurtowa jest obecnie na poziomie zera lub poniżej — wyjątkowo tani okres dla: ${device}.`,
+    explain_run_small: (money, device) => `Później jest tańsze okno, ale różnica w cenie rynkowej to tylko około ${money} dla: ${device}.`,
+    explain_run_best: (device) => `Obecna cena jest już tak dobra jak najlepsze porównywalne okno dostępne dla: ${device}.`,
+    explain_mid: (money, pct) => `Czekanie mogłoby zmniejszyć składnik ceny rynkowej o około ${money} (${pct}%).`,
+    explain_wait: (money, pct) => `Późniejsze okno mogłoby zmniejszyć składnik ceny rynkowej o około ${money} (${pct}%).`,
+    device_ev: "ładowanie EV",
+    device_dishwasher: "cykl zmywarki",
+    device_washer: "cykl prania",
+    device_dryer: "cykl suszenia",
+    device_water_heater: "podgrzewanie wody",
+    device_heat_pump: "pracę pompy ciepła",
+    device_custom: "niestandardowe obciążenie",
+    market_ireland: "Irlandia", market_california: "Kalifornia",
+    market_uk: "Wielka Brytania", market_poland: "Polska",
+    fb_dishwasher: (dest) => `Jak wyglądałby ten sam cykl zmywarki w ${dest}?`,
+    fb_washer: (dest) => `Ile kosztowałoby to samo pranie w ${dest}?`,
+    fb_dryer: (dest) => `Jak wypadłaby Twoja suszarka w ${dest}?`,
+    fb_ev: (dest) => `A gdybyś ładował ten sam EV w ${dest}?`,
+    fb_other: (dest, device) => `Jak wypada ${device} w porównaniu z ${dest}?`,
+    fb_sub: (kwh, dest) => `Te same ${kwh} kWh, inny rynek energii. Zobacz aktualny wynik w ${dest} →`,
+    live_negative_headline: (dest) => `Tymczasem w ${dest} cena hurtowa energii spadła poniżej zera.`,
+    live_negative_sub: (kwh, dest) => `To samo obciążenie ${kwh} kWh trafia tam właśnie na bardzo nietypowy okres cenowy. Zobacz to samo wyliczenie w ${dest} →`,
+    live_cheaper_dishwasher: (dest) => `Szkoda, że nie zmywasz naczyń w ${dest}.`,
+    live_cheaper_washer: (dest) => `Szkoda, że nie robisz prania w ${dest}.`,
+    live_cheaper_dryer: (dest) => `Twoja suszarka wolałaby dziś ${dest}.`,
+    live_cheaper_ev: (dest) => `Twój EV wolałby dziś ${dest}.`,
+    live_cheaper_other: (dest) => `To obciążenie jest teraz tańsze w ${dest}.`,
+    live_cheaper_sub_pct: (kwh, cost, pct) => `Przy obecnej cenie hurtowej te same ${kwh} kWh kosztowałyby tam około ${cost} — mniej więcej o ${pct}% taniej niż tutaj. Kliknij, aby porównać →`,
+    live_cheaper_sub: (kwh, cost) => `Przy obecnej cenie hurtowej te same ${kwh} kWh kosztowałyby tam około ${cost}. Kliknij, aby porównać →`,
+    live_expensive_dishwasher: (dest) => `Dobrze, że nie zmywasz naczyń w ${dest}.`,
+    live_expensive_washer: (dest) => `Dobrze, że nie robisz prania w ${dest}.`,
+    live_expensive_dryer: (dest) => `Dobrze, że Twojej suszarki nie ma w ${dest}.`,
+    live_expensive_ev: (dest) => `Dobrze, że nie ładujesz EV w ${dest}.`,
+    live_expensive_other: (dest) => `Dobrze, że to obciążenie nie działa w ${dest}.`,
+    live_expensive_sub_mult: (kwh, cost, mult) => `Te same ${kwh} kWh kosztowałyby tam teraz około ${cost} — to około ${mult}× więcej niż Twój obecny koszt rynkowy. Zobacz ${dest} →`,
+    live_expensive_sub: (kwh, cost, dest) => `Te same ${kwh} kWh kosztowałyby tam teraz około ${cost}. Zobacz ${dest} →`,
+    live_compare_headline: (dest, device) => `Jak wypada ${device} w porównaniu z ${dest}?`,
+    live_compare_sub: "Te same {kwh} kWh, inny rynek energii. Zobacz, jak obecna cena hurtowa wpływa na wynik →",
+  }
+};
+
+function t(lang, key, ...args) {
+  const dict = STRINGS[lang] || STRINGS.en;
+  const val = (key in dict) ? dict[key] : STRINGS.en[key];
+  return typeof val === "function" ? val(...args) : val;
+}
+
 const COUNTRY_NAMES = {
   FI:["Finland","🇫🇮"], SE:["Sweden","🇸🇪"], NO:["Norway","🇳🇴"], DK:["Denmark","🇩🇰"],
   DE:["Germany","🇩🇪"], NL:["Netherlands","🇳🇱"], BE:["Belgium","🇧🇪"], AT:["Austria","🇦🇹"],
@@ -414,14 +579,10 @@ const ZONE_META = {
   "PH-MIN":{name:"Mindanao",flag:"🇵🇭",tz:"Asia/Manila"}
 };
 
-const DEVICE_NAMES = {
-  ev:"EV charge",
-  dishwasher:"dishwasher cycle",
-  washer:"laundry cycle",
-  dryer:"dryer cycle",
-  "water-heater":"water heating",
-  "heat-pump":"heat-pump run",
-  custom:"custom electricity load"
+const DEVICE_KEY = {
+  ev:"device_ev", dishwasher:"device_dishwasher", washer:"device_washer",
+  dryer:"device_dryer", "water-heater":"device_water_heater",
+  "heat-pump":"device_heat_pump", custom:"device_custom"
 };
 
 const qs = new URLSearchParams(location.search);
@@ -431,14 +592,41 @@ const device = qs.get("device") || "ev";
 const kwh = Math.max(.01, Number(qs.get("kwh")) || 40);
 const waitHours = Math.max(1, Number(qs.get("wait")) || 8);
 const runtime = Math.max(.1, Number(qs.get("runtime")) || Math.min(waitHours, 3));
+const lang = qs.get("lang") || (country === "PL" ? "pl" : "en");
+
+
+const PL_COUNTRY_NAMES = {FI:"Finlandia",SE:"Szwecja",NO:"Norwegia",DK:"Dania",DE:"Niemcy",NL:"Holandia",BE:"Belgia",AT:"Austria",FR:"Francja",PL:"Polska",CZ:"Czechy",HU:"Węgry",ES:"Hiszpania",PT:"Portugalia",IT:"Włochy",GR:"Grecja",EE:"Estonia",LV:"Łotwa",LT:"Litwa",IE:"Irlandia",GB:"Wielka Brytania",CH:"Szwajcaria",HR:"Chorwacja",BG:"Bułgaria",SI:"Słowenia",SK:"Słowacja",RO:"Rumunia",RS:"Serbia",BA:"Bośnia i Hercegowina",ME:"Czarnogóra",MK:"Macedonia Północna",US:"Stany Zjednoczone",CA:"Kanada",MX:"Meksyk",AU:"Australia",NZ:"Nowa Zelandia",JP:"Japonia",KR:"Korea Południowa",ZA:"Republika Południowej Afryki",PH:"Filipiny"};
+function localizedCountryName(code, fallback) { return lang === "pl" ? (PL_COUNTRY_NAMES[code] || fallback) : fallback; }
+
+document.documentElement.lang = lang;
+
+// Preserve lang (and every other param) on every internal link this page emits.
+function withLang(paramsObj) {
+  const p = new URLSearchParams(paramsObj);
+  if (lang && lang !== "en") p.set("lang", lang);
+  return "?" + p.toString();
+}
 
 const zone = ZONE_META[zoneCode] || {
   name:(COUNTRY_NAMES[country] || [zoneCode,"🌍"])[0],
   flag:(COUNTRY_NAMES[country] || [zoneCode,"🌍"])[1],
   tz:"UTC"
 };
+const deviceLabel = t(lang, DEVICE_KEY[device] || "device_custom");
 
-const deviceLabel = DEVICE_NAMES[device] || "electricity load";
+// Static UI text
+document.getElementById("stepLabel").textContent = t(lang, "stepLabel");
+document.getElementById("h1Text").textContent = t(lang, "h1");
+document.getElementById("loadingText").textContent = t(lang, "loading");
+document.getElementById("adLabel1").textContent = t(lang, "ad");
+document.getElementById("worldTitle").textContent = t(lang, "worldTitle");
+document.getElementById("worldSub").textContent = t(lang, "worldSub");
+document.getElementById("checkAnotherLink").textContent = t(lang, "checkAnother");
+document.getElementById("irelandLink").textContent = t(lang, "irelandLink");
+document.getElementById("noteText").textContent = t(lang, "note");
+document.getElementById("checkAnotherLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
+document.getElementById("irelandLink").href = "/ireland/" + (lang !== "en" ? "?lang=" + lang : "");
+document.getElementById("brandLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
 
 document.getElementById("lead").textContent =
   `${zone.flag} ${zone.name} · ${deviceLabel} · ${trim(kwh)} kWh`;
@@ -453,13 +641,8 @@ function trim(n) {
   return Number(n).toFixed(2).replace(/\.00$/,"").replace(/(\.\d)0$/,"$1");
 }
 
-function minorUnit(unit) {
-  return /^[cp]\//i.test(unit || "");
-}
-
-function majorPrice(price,unit) {
-  return minorUnit(unit) ? Number(price) / 100 : Number(price);
-}
+function minorUnit(unit) { return /^[cp]\//i.test(unit || ""); }
+function majorPrice(price,unit) { return minorUnit(unit) ? Number(price) / 100 : Number(price); }
 
 function symbol(currency) {
   return {
@@ -483,50 +666,32 @@ function fmtMoney(value,currency) {
 function fmtHour(iso,tz) {
   if (!iso) return "—";
   try {
-    return new Date(iso).toLocaleTimeString("en-GB", {
-      hour:"2-digit", minute:"2-digit", timeZone:tz
-    });
-  } catch {
-    return iso;
-  }
+    return new Date(iso).toLocaleTimeString(lang === "pl" ? "pl-PL" : "en-GB", { hour:"2-digit", minute:"2-digit", timeZone:tz });
+  } catch { return iso; }
 }
 
 function extractWindow(cheap) {
   if (cheap?.best_window?.avg_price != null) {
-    return {
-      avg:cheap.best_window.avg_price,
-      start:cheap.best_window.start,
-      end:cheap.best_window.end
-    };
+    return { avg:cheap.best_window.avg_price, start:cheap.best_window.start, end:cheap.best_window.end };
   }
-
   if (cheap?.best_3h_window?.avg_price != null && runtime <= 3.25) {
-    return {
-      avg:cheap.best_3h_window.avg_price,
-      start:cheap.best_3h_window.start,
-      end:cheap.best_3h_window.end
-    };
+    return { avg:cheap.best_3h_window.avg_price, start:cheap.best_3h_window.start, end:cheap.best_3h_window.end };
   }
-
   if (cheap?.cheapest_hours?.length && runtime <= 1.25) {
     const best = [...cheap.cheapest_hours].sort((a,b) => a.price - b.price)[0];
     return { avg:best.price, start:best.hour, end:null };
   }
-
   return null;
 }
 
 function verdictFor(nowCost,bestCost) {
-  if (nowCost <= 0) return ["run","🟢 RUN NOW"];
-
+  if (nowCost <= 0) return ["run","verdict_run"];
   const save = Math.max(0,nowCost - bestCost);
   const pct = nowCost > 0 ? (save / nowCost) * 100 : 0;
-
   const minAbsolute = Math.max(.20, kwh * .02);
-
-  if (save < minAbsolute) return ["run","🟢 RUN NOW"];
-  if (pct < 40) return ["mid","🟠 WAIT IF CONVENIENT"];
-  return ["wait","🔴 WAIT"];
+  if (save < minAbsolute) return ["run","verdict_run"];
+  if (pct < 40) return ["mid","verdict_mid"];
+  return ["wait","verdict_wait"];
 }
 
 async function run() {
@@ -544,7 +709,7 @@ async function run() {
     const currentCost = currentUnitMajor * kwh;
 
     let verdictClass = "none";
-    let verdictText = "⚪ CURRENT PRICE ONLY";
+    let verdictKey = "verdict_no_forecast";
     let explanation = "";
     let window = null;
     let bestCost = null;
@@ -552,41 +717,34 @@ async function run() {
     let savingPct = 0;
 
     if (regulated) {
-      explanation =
-        `This market is shown as a regulated tariff. CheapestHours won't invent a future RUN/WAIT decision when there isn't a comparable forward market signal.`;
+      explanation = t(lang, "explain_regulated");
     } else if (cheap.available === false) {
-      explanation =
-        `The current wholesale price is available, but this market does not currently provide a usable cheapest-hours forecast.`;
+      explanation = t(lang, "explain_no_forecast");
     } else {
       window = extractWindow(cheap);
 
       if (window) {
         bestCost = majorPrice(window.avg,spot.unit) * kwh;
-
         if (bestCost > currentCost) bestCost = currentCost;
 
         saving = Math.max(0,currentCost - bestCost);
         savingPct = currentCost > 0 ? (saving / currentCost) * 100 : 0;
 
-        [verdictClass,verdictText] = verdictFor(currentCost,bestCost);
+        [verdictClass,verdictKey] = verdictFor(currentCost,bestCost);
 
         if (currentCost <= 0) {
-          explanation =
-            `The wholesale market price is at or below zero right now — an exceptionally cheap market-price period for this ${deviceLabel}.`;
+          explanation = t(lang, "explain_zero", deviceLabel);
         } else if (verdictClass === "run") {
           explanation = saving > 0
-            ? `A cheaper window exists later, but the market-price difference is only about ${fmtMoney(saving,spot.currency)} for this ${deviceLabel}.`
-            : `The current price is already as good as the best comparable window available for this ${deviceLabel}.`;
+            ? t(lang, "explain_run_small", fmtMoney(saving,spot.currency), deviceLabel)
+            : t(lang, "explain_run_best", deviceLabel);
         } else if (verdictClass === "mid") {
-          explanation =
-            `Waiting could reduce the wholesale market-price component by about ${fmtMoney(saving,spot.currency)} (${savingPct.toFixed(0)}%).`;
+          explanation = t(lang, "explain_mid", fmtMoney(saving,spot.currency), savingPct.toFixed(0));
         } else {
-          explanation =
-            `A later window could reduce the wholesale market-price component by about ${fmtMoney(saving,spot.currency)} (${savingPct.toFixed(0)}%).`;
+          explanation = t(lang, "explain_wait", fmtMoney(saving,spot.currency), savingPct.toFixed(0));
         }
       } else {
-        explanation =
-          `Forward price data exists, but CheapestHours could not verify a contiguous window matching this load. Showing the current price without guessing.`;
+        explanation = t(lang, "explain_unverified");
       }
     }
 
@@ -595,72 +753,54 @@ async function run() {
         <div class="flag-big">${zone.flag}</div>
         <div class="market">${zone.name}</div>
 
-        <div class="verdict ${verdictClass}">${verdictText}</div>
+        <div class="verdict ${verdictClass}">${t(lang, verdictKey)}</div>
         <div class="explain">${explanation}</div>
 
         <div class="stats">
           <div class="stat">
-            <div class="k">Price right now</div>
+            <div class="k">${t(lang,"priceRightNow")}</div>
             <div class="v">${fmtUnitPrice(spot.price,spot.unit,spot.currency)}</div>
           </div>
           <div class="stat">
-            <div class="k">Your ${trim(kwh)} kWh</div>
+            <div class="k">${t(lang,"yourKwh",trim(kwh))}</div>
             <div class="v">${fmtMoney(currentCost,spot.currency)}</div>
           </div>
         </div>
 
         ${window ? `
           <div class="window">
-            <div class="k">Best verified window</div>
+            <div class="k">${t(lang,"bestVerifiedWindow")}</div>
             <div class="v">${fmtHour(window.start,zone.tz)}${window.end ? " – " + fmtHour(window.end,zone.tz) : ""}</div>
             <div style="margin-top:4px;color:var(--ink-soft);font-size:11px">
-              ${bestCost != null ? fmtMoney(bestCost,spot.currency) + " market-price component" : ""}
+              ${bestCost != null ? fmtMoney(bestCost,spot.currency) + " " + t(lang,"marketPriceComponent") : ""}
             </div>
           </div>
         ` : ""}
 
         <details>
-          <summary>See more details</summary>
+          <summary>${t(lang,"seeMoreDetails")} ↓</summary>
           <div class="more-grid">
-            <div class="more-item">
-              <div class="k">Load</div>
-              <div class="v">${deviceLabel}</div>
-            </div>
-            <div class="more-item">
-              <div class="k">Energy</div>
-              <div class="v">${trim(kwh)} kWh</div>
-            </div>
-            <div class="more-item">
-              <div class="k">Search window</div>
-              <div class="v">${trim(waitHours)} h</div>
-            </div>
-            <div class="more-item">
-              <div class="k">Possible saving</div>
-              <div class="v">${bestCost != null ? fmtMoney(saving,spot.currency) : "—"}</div>
-            </div>
+            <div class="more-item"><div class="k">${t(lang,"load")}</div><div class="v">${deviceLabel}</div></div>
+            <div class="more-item"><div class="k">${t(lang,"energy")}</div><div class="v">${trim(kwh)} kWh</div></div>
+            <div class="more-item"><div class="k">${t(lang,"searchWindow")}</div><div class="v">${trim(waitHours)} h</div></div>
+            <div class="more-item"><div class="k">${t(lang,"possibleSaving")}</div><div class="v">${bestCost != null ? fmtMoney(saving,spot.currency) : "—"}</div></div>
           </div>
         </details>
 
-        <div class="fine">
-          Wholesale market signal only. Taxes, grid fees, supplier margin and your electricity contract are not included.
-        </div>
+        <div class="fine">${t(lang,"fine")}</div>
       </section>
     `;
 
-    // Show a useful curiosity card immediately — this does not depend on any
-    // network call, so it can never be left blank. The live global comparison
-    // below (buildWorldHook) upgrades this card with real data when it succeeds,
-    // but the section is never hidden waiting on it.
+    // Show a useful curiosity card immediately — no network dependency, so it
+    // can never be left blank. buildWorldHook upgrades it with live data.
     renderWorldFallback();
     buildWorldHook(spot,currentCost).catch((err) => {
       console.warn("World hook live comparison failed; keeping fallback card:", err);
     });
   } catch (err) {
-    content.innerHTML =
-      `<div class="error">Could not calculate this result right now (${err.message}).</div>`;
+    content.innerHTML = `<div class="error">${t(lang, "error", err.message)}</div>`;
   }
 }
-
 
 function renderWorldFallback() {
   const fallbackZones = [
@@ -669,7 +809,6 @@ function renderWorldFallback() {
 
   if (!fallbackZones.length) return;
 
-  // Stable-enough variety without making any unsupported price claim.
   const index = Math.abs(
     [...(zoneCode + device + String(Math.round(kwh * 10)))]
       .reduce((sum, ch) => sum + ch.charCodeAt(0), 0)
@@ -678,57 +817,34 @@ function renderWorldFallback() {
   const code = fallbackZones[index];
   const meta = ZONE_META[code] || { name: code, flag: "🌍" };
 
-  let headline;
-  if (device === "dishwasher") {
-    headline = `${meta.flag} What would the same dishwasher cycle look like in ${meta.name}?`;
-  } else if (device === "washer") {
-    headline = `${meta.flag} What would doing the same laundry cost in ${meta.name}?`;
-  } else if (device === "dryer") {
-    headline = `${meta.flag} How would your dryer compare in ${meta.name}?`;
-  } else if (device === "ev") {
-    headline = `${meta.flag} What if you charged the same EV in ${meta.name}?`;
-  } else {
-    headline = `${meta.flag} How does the same ${deviceLabel} compare in ${meta.name}?`;
-  }
+  const fbKeyMap = { dishwasher:"fb_dishwasher", washer:"fb_washer", dryer:"fb_dryer", ev:"fb_ev" };
+  const headline = fbKeyMap[device]
+    ? t(lang, fbKeyMap[device], meta.name)
+    : t(lang, "fb_other", meta.name, deviceLabel);
 
-  const linkParams = new URLSearchParams({
-    country: countryForZone(code),
-    zone: code,
-    device,
-    kwh: String(kwh),
-    wait: String(waitHours)
-  });
-
-  if (qs.get("runtime")) linkParams.set("runtime", qs.get("runtime"));
+  const params = { country: countryForZone(code), zone: code, device, kwh: String(kwh), wait: String(waitHours) };
+  if (qs.get("runtime")) params.runtime = qs.get("runtime");
 
   document.getElementById("worldHeadline").textContent = headline;
-  document.getElementById("worldText").textContent =
-    `Same ${trim(kwh)} kWh, different electricity market. See the live result in ${meta.name} →`;
-  document.getElementById("worldCard").href = "/result/?" + linkParams.toString();
+  document.getElementById("worldText").textContent = t(lang, "fb_sub", trim(kwh), meta.name);
+  document.getElementById("worldCard").href = "/result/" + withLang(params);
   document.getElementById("worldSection").hidden = false;
 }
 
 async function buildWorldHook(userSpot,userCostLocal) {
   /*
-    Prototype:
-    Sample a handful of diverse markets.
-
-    Production:
-    Replace this fan-out with ONE cached global snapshot generated server-side.
+    Prototype: samples a handful of diverse markets client-side.
+    Production: replace with ONE cached global snapshot generated server-side.
   */
   const candidateZones = [
-    "FI","DE","ES","IE","NO1",
-    "US-CA-NP15","US-NY-NYC",
-    "JP-TKY","AU-NSW"
+    "FI","DE","ES","IE","NO1","US-CA-NP15","US-NY-NYC","JP-TKY","AU-NSW"
   ].filter(code => code !== zoneCode);
 
   let rates = {};
   try {
     const fx = await fetchJSON("https://api.frankfurter.app/latest?base=USD");
     rates = fx.rates || {};
-  } catch (err) {
-    return;
-  }
+  } catch (err) { return; }
 
   function toUsdPerKwh(spot) {
     const major = majorPrice(spot.price,spot.unit);
@@ -739,27 +855,16 @@ async function buildWorldHook(userSpot,userCostLocal) {
 
   const userUsdPerKwh = toUsdPerKwh(userSpot);
   if (userUsdPerKwh == null) return;
-
   const userUsdCost = userUsdPerKwh * kwh;
 
   const rows = (await Promise.all(candidateZones.map(async code => {
     try {
       const s = await fetchJSON(`https://elecz.com/signal/spot?zone=${encodeURIComponent(code)}`);
       if (s.price_type === "regulated") return null;
-
       const usdPerKwh = toUsdPerKwh(s);
       if (usdPerKwh == null) return null;
-
-      return {
-        code,
-        spot:s,
-        usdPerKwh,
-        usdCost:usdPerKwh * kwh,
-        meta:ZONE_META[code] || {name:code,flag:"🌍",tz:"UTC"}
-      };
-    } catch {
-      return null;
-    }
+      return { code, spot:s, usdPerKwh, usdCost:usdPerKwh * kwh, meta:ZONE_META[code] || {name:code,flag:"🌍",tz:"UTC"} };
+    } catch { return null; }
   }))).filter(Boolean);
 
   if (!rows.length) return;
@@ -768,106 +873,62 @@ async function buildWorldHook(userSpot,userCostLocal) {
   const cheapest = [...rows].sort((a,b) => a.usdCost - b.usdCost)[0];
   const mostExpensive = [...rows].sort((a,b) => b.usdCost - a.usdCost)[0];
 
-  let chosen = null;
-  let mode = null;
-
-  if (negative) {
-    chosen = negative;
-    mode = "negative";
-  } else {
+  let chosen = null, mode = null;
+  if (negative) { chosen = negative; mode = "negative"; }
+  else {
     const cheapRatio = cheapest ? cheapest.usdCost / userUsdCost : 1;
     const expensiveRatio = mostExpensive ? mostExpensive.usdCost / userUsdCost : 1;
-
     const cheapContrast = cheapRatio > 0 ? 1 / cheapRatio : 999;
     const expensiveContrast = expensiveRatio;
-
     if (cheapContrast >= 1.35 || expensiveContrast >= 1.35) {
-      if (cheapContrast >= expensiveContrast) {
-        chosen = cheapest;
-        mode = "cheaper";
-      } else {
-        chosen = mostExpensive;
-        mode = "expensive";
-      }
-    } else {
-      chosen = cheapest || mostExpensive;
-      mode = "compare";
-    }
+      if (cheapContrast >= expensiveContrast) { chosen = cheapest; mode = "cheaper"; }
+      else { chosen = mostExpensive; mode = "expensive"; }
+    } else { chosen = cheapest || mostExpensive; mode = "compare"; }
   }
 
   if (!chosen || chosen.code === zoneCode) return;
 
-  let headline = "";
-  let text = "";
-
   const destination = chosen.meta.name;
   const destFlag = chosen.meta.flag;
+  let headline = "", text = "";
+
+  const cheaperKeyMap = { dishwasher:"live_cheaper_dishwasher", washer:"live_cheaper_washer", dryer:"live_cheaper_dryer", ev:"live_cheaper_ev" };
+  const expensiveKeyMap = { dishwasher:"live_expensive_dishwasher", washer:"live_expensive_washer", dryer:"live_expensive_dryer", ev:"live_expensive_ev" };
 
   if (mode === "negative") {
-    headline = `${destFlag} Meanwhile in ${destination}, wholesale electricity is below zero.`;
-    text =
-      `The same ${trim(kwh)} kWh load is sitting in a very unusual market-price period there right now. See the same calculation in ${destination} →`;
+    headline = t(lang, "live_negative_headline", destination);
+    text = t(lang, "live_negative_sub", trim(kwh), destination);
   }
 
   if (mode === "cheaper") {
-    if (device === "dishwasher") {
-      headline = `${destFlag} Too bad you're not doing the dishes in ${destination}.`;
-    } else if (device === "washer") {
-      headline = `${destFlag} Too bad you're not doing laundry in ${destination}.`;
-    } else if (device === "dryer") {
-      headline = `${destFlag} Your dryer might prefer ${destination} today.`;
-    } else if (device === "ev") {
-      headline = `${destFlag} Your EV might prefer ${destination} today.`;
-    } else {
-      headline = `${destFlag} This load is cheaper in ${destination} right now.`;
-    }
-
+    headline = cheaperKeyMap[device] ? t(lang, cheaperKeyMap[device], destination) : t(lang, "live_cheaper_other", destination);
     const pct = userUsdCost > 0 ? (1 - chosen.usdCost / userUsdCost) * 100 : null;
-
-    text =
-      `At the current wholesale price, the same ${trim(kwh)} kWh would cost about $${chosen.usdCost.toFixed(2)} there` +
-      `${pct != null ? ` — roughly ${Math.max(0,pct).toFixed(0)}% less than here.` : "."} Click to compare →`;
+    const costStr = "$" + chosen.usdCost.toFixed(2);
+    text = pct != null
+      ? t(lang, "live_cheaper_sub_pct", trim(kwh), costStr, Math.max(0,pct).toFixed(0))
+      : t(lang, "live_cheaper_sub", trim(kwh), costStr);
   }
 
   if (mode === "expensive") {
-    if (device === "dishwasher") {
-      headline = `${destFlag} Good thing you're not doing the dishes in ${destination}.`;
-    } else if (device === "washer") {
-      headline = `${destFlag} Good thing you're not doing laundry in ${destination}.`;
-    } else if (device === "dryer") {
-      headline = `${destFlag} Good thing your dryer isn't in ${destination}.`;
-    } else if (device === "ev") {
-      headline = `${destFlag} Good thing you're not charging your EV in ${destination}.`;
-    } else {
-      headline = `${destFlag} Good thing this load isn't running in ${destination}.`;
-    }
-
+    headline = expensiveKeyMap[device] ? t(lang, expensiveKeyMap[device], destination) : t(lang, "live_expensive_other", destination);
     const multiple = userUsdCost > 0 ? chosen.usdCost / userUsdCost : null;
-
-    text =
-      `The same ${trim(kwh)} kWh would cost about $${chosen.usdCost.toFixed(2)} there right now` +
-      `${multiple != null ? ` — about ${multiple.toFixed(1)}× your current market-price cost.` : "."} See ${destination} →`;
+    const costStr = "$" + chosen.usdCost.toFixed(2);
+    text = multiple != null
+      ? t(lang, "live_expensive_sub_mult", trim(kwh), costStr, multiple.toFixed(1))
+      : t(lang, "live_expensive_sub", trim(kwh), costStr, destination);
   }
 
   if (mode === "compare") {
-    headline = `${destFlag} How does the same ${deviceLabel} compare in ${destination}?`;
-    text =
-      `Same ${trim(kwh)} kWh, different electricity market. See what the current wholesale price does to the result →`;
+    headline = t(lang, "live_compare_headline", destination, deviceLabel);
+    text = t(lang, "live_compare_sub").replace("{kwh}", trim(kwh));
   }
 
-  const linkParams = new URLSearchParams({
-    country: countryForZone(chosen.code),
-    zone: chosen.code,
-    device,
-    kwh: String(kwh),
-    wait: String(waitHours)
-  });
-
-  if (qs.get("runtime")) linkParams.set("runtime", qs.get("runtime"));
+  const params = { country: countryForZone(chosen.code), zone: chosen.code, device, kwh: String(kwh), wait: String(waitHours) };
+  if (qs.get("runtime")) params.runtime = qs.get("runtime");
 
   document.getElementById("worldHeadline").textContent = headline;
   document.getElementById("worldText").textContent = text;
-  document.getElementById("worldCard").href = "/result/?" + linkParams.toString();
+  document.getElementById("worldCard").href = "/result/" + withLang(params);
   document.getElementById("worldSection").hidden = false;
 }
 
@@ -880,15 +941,34 @@ function countryForZone(code) {
   if (code.startsWith("CA-")) return "CA";
   if (code.startsWith("PH-")) return "PH";
   if (code.startsWith("KR-")) return "KR";
-
   if (/^SE\d$/.test(code)) return "SE";
   if (/^NO\d$/.test(code)) return "NO";
   if (/^DK\d$/.test(code)) return "DK";
-
   return code;
 }
 
+// Featured markets nav, localized, language preserved
+const FEATURED = [
+  { slug: "ireland", key: "market_ireland" },
+  { slug: "california", key: "market_california" },
+  { slug: "united-kingdom", key: "market_uk" },
+  { slug: "poland", key: "market_poland" },
+];
+document.getElementById("seoLinks").innerHTML = FEATURED.map(f =>
+  `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
+).join("");
+
 run();
+
+
+// Small attribution/reference links; intentionally unobtrusive.
+const sourceLinks = document.getElementById("sourceLinks");
+if (sourceLinks) {
+  sourceLinks.innerHTML = lang === "pl"
+    ? 'Aktualne dane rynku energii: <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.'
+    : 'Live electricity market data: <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.';
+}
+
 </script>
 </body>
 </html>
