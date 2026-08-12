@@ -397,6 +397,7 @@ const STRINGS = {
     device_custom: "custom electricity load",
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
+    market_greece: "Greece", market_italy: "Italy",
     // Fallback postcard (no live network data)
     fb_dishwasher: (dest) => `What would the same dishwasher cycle look like in ${dest}?`,
     fb_washer: (dest) => `What would doing the same laundry cost in ${dest}?`,
@@ -468,6 +469,7 @@ const STRINGS = {
     device_custom: "niestandardowe obciążenie",
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
+    market_greece: "Grecja", market_italy: "Włochy",
     fb_dishwasher: (dest) => `Jak wyglądałby ten sam cykl zmywarki w ${dest}?`,
     fb_washer: (dest) => `Ile kosztowałoby to samo pranie w ${dest}?`,
     fb_dryer: (dest) => `Jak wypadłaby Twoja suszarka w ${dest}?`,
@@ -492,6 +494,146 @@ const STRINGS = {
     live_expensive_sub: (kwh, cost, dest) => `Te same ${kwh} kWh kosztowałyby tam teraz około ${cost}. Zobacz ${dest} →`,
     live_compare_headline: (dest, device) => `Jak wypada ${device} w porównaniu z ${dest}?`,
     live_compare_sub: "Te same {kwh} kWh, inny rynek energii. Zobacz, jak obecna cena hurtowa wpływa na wynik →",
+  },
+  el: {
+    stepLabel: "Βήμα 3 από 3",
+    h1: "Οι φθηνότερες ώρες σας",
+    loading: "Αναζήτηση του καλύτερου διαθέσιμου χρονικού παραθύρου…",
+    ad: "Διαφήμιση",
+    worldTitle: "Εν τω μεταξύ, κάπου αλλού…",
+    worldSub: "Η ίδια κατανάλωση ρεύματος μπορεί να έχει πολύ διαφορετικό κόστος σε άλλη αγορά.",
+    checkAnother: "🌍 Ελέγξτε άλλη χώρα",
+    irelandLink: "🇮🇪 Φθηνότερες ώρες στην Ιρλανδία",
+    note: "Το CheapestHours συγκρίνει σήματα της χονδρικής αγοράς ηλεκτρικής ενέργειας. Ο πραγματικός λογαριασμός σας μπορεί να περιλαμβάνει φόρους, χρεώσεις δικτύου, περιθώριο προμηθευτή και όρους του συμβολαίου σας.",
+    seeMoreDetails: "Δείτε περισσότερες λεπτομέρειες",
+    bestVerifiedWindow: "Καλύτερο επαληθευμένο χρονικό παράθυρο",
+    marketPriceComponent: "κόστος βάσει τιμής αγοράς",
+    priceRightNow: "Τιμή αυτή τη στιγμή",
+    yourKwh: (kwh) => `Τα ${kwh} kWh σας`,
+    load: "Φορτίο",
+    energy: "Ενέργεια",
+    searchWindow: "Χρονικό εύρος αναζήτησης",
+    possibleSaving: "Πιθανή εξοικονόμηση",
+    fine: "Μόνο σήμα χονδρικής αγοράς. Δεν περιλαμβάνονται φόροι, χρεώσεις δικτύου, περιθώριο προμηθευτή ή οι όροι του συμβολαίου ηλεκτρικής ενέργειας.",
+    error: (msg) => `Δεν ήταν δυνατός ο υπολογισμός του αποτελέσματος αυτή τη στιγμή (${msg}).`,
+    verdict_run: "🟢 ΧΡΗΣΙΜΟΠΟΙΗΣΤΕ ΤΩΡΑ",
+    verdict_mid: "🟠 ΠΕΡΙΜΕΝΕΤΕ ΑΝ ΣΑΣ ΒΟΛΕΥΕΙ",
+    verdict_wait: "🔴 ΠΕΡΙΜΕΝΕΤΕ",
+    verdict_regulated: "⚪ ΜΟΝΟ ΤΡΕΧΟΥΣΑ ΤΙΜΗ",
+    verdict_no_forecast: "⚪ ΜΟΝΟ ΤΡΕΧΟΥΣΑ ΤΙΜΗ",
+    verdict_unverified: "⚪ ΜΟΝΟ ΤΡΕΧΟΥΣΑ ΤΙΜΗ",
+    explain_regulated: "Αυτή η αγορά εμφανίζεται ως ρυθμιζόμενο τιμολόγιο. Το CheapestHours δεν δημιουργεί απόφαση ΧΡΗΣΙΜΟΠΟΙΗΣΤΕ/ΠΕΡΙΜΕΝΕΤΕ όταν δεν υπάρχει συγκρίσιμο μελλοντικό σήμα αγοράς.",
+    explain_no_forecast: "Η τρέχουσα χονδρική τιμή είναι διαθέσιμη, αλλά αυτή η αγορά δεν παρέχει αυτή τη στιγμή αξιοποιήσιμη πρόβλεψη φθηνότερων ωρών.",
+    explain_unverified: "Υπάρχουν μελλοντικά δεδομένα τιμών, αλλά το CheapestHours δεν μπόρεσε να επαληθεύσει συνεχόμενο χρονικό παράθυρο που να ταιριάζει σε αυτό το φορτίο. Εμφανίζεται η τρέχουσα τιμή χωρίς εικασίες.",
+    explain_zero: (device) => `Η χονδρική τιμή είναι τώρα μηδενική ή αρνητική — μια εξαιρετικά φθηνή περίοδος τιμής αγοράς για ${device}.`,
+    explain_run_small: (money, device) => `Υπάρχει φθηνότερο χρονικό παράθυρο αργότερα, αλλά η διαφορά στην τιμή αγοράς είναι μόνο περίπου ${money} για ${device}.`,
+    explain_run_best: (device) => `Η τρέχουσα τιμή είναι ήδη τόσο καλή όσο το καλύτερο συγκρίσιμο χρονικό παράθυρο για ${device}.`,
+    explain_mid: (money, pct) => `Η αναμονή θα μπορούσε να μειώσει το κόστος βάσει τιμής αγοράς κατά περίπου ${money} (${pct}%).`,
+    explain_wait: (money, pct) => `Ένα μεταγενέστερο χρονικό παράθυρο θα μπορούσε να μειώσει το κόστος βάσει τιμής αγοράς κατά περίπου ${money} (${pct}%).`,
+    device_ev: "φόρτιση ηλεκτρικού αυτοκινήτου",
+    device_dishwasher: "κύκλο πλυντηρίου πιάτων",
+    device_washer: "κύκλο πλυντηρίου ρούχων",
+    device_dryer: "κύκλο στεγνωτηρίου",
+    device_water_heater: "θέρμανση νερού",
+    device_heat_pump: "λειτουργία αντλίας θερμότητας",
+    device_custom: "προσαρμοσμένο ηλεκτρικό φορτίο",
+    market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
+    market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
+    market_greece: "Ελλάδα", market_italy: "Ιταλία",
+    fb_dishwasher: (dest) => `Πώς θα ήταν ο ίδιος κύκλος πλυντηρίου πιάτων στην ${dest};`,
+    fb_washer: (dest) => `Πόσο θα κόστιζε η ίδια πλύση στην ${dest};`,
+    fb_dryer: (dest) => `Πώς θα συγκρινόταν το στεγνωτήριό σας στην ${dest};`,
+    fb_ev: (dest) => `Τι θα γινόταν αν φορτίζατε το ίδιο EV στην ${dest};`,
+    fb_other: (dest, device) => `Πώς συγκρίνεται το ίδιο φορτίο (${device}) στην ${dest};`,
+    fb_sub: (kwh, dest) => `Τα ίδια ${kwh} kWh, διαφορετική αγορά ηλεκτρικής ενέργειας. Δείτε το ζωντανό αποτέλεσμα στην ${dest} →`,
+    live_negative_headline: (dest) => `Εν τω μεταξύ στην ${dest}, η χονδρική τιμή ηλεκτρικής ενέργειας είναι κάτω από το μηδέν.`,
+    live_negative_sub: (kwh, dest) => `Το ίδιο φορτίο ${kwh} kWh βρίσκεται εκεί τώρα σε μια πολύ ασυνήθιστη περίοδο τιμών αγοράς. Δείτε τον ίδιο υπολογισμό στην ${dest} →`,
+    live_cheaper_dishwasher: (dest) => `Κρίμα που δεν βάζετε το πλυντήριο πιάτων στην ${dest}.`,
+    live_cheaper_washer: (dest) => `Κρίμα που δεν κάνετε την πλύση στην ${dest}.`,
+    live_cheaper_dryer: (dest) => `Το στεγνωτήριό σας ίσως προτιμούσε σήμερα την ${dest}.`,
+    live_cheaper_ev: (dest) => `Το EV σας ίσως προτιμούσε σήμερα την ${dest}.`,
+    live_cheaper_other: (dest) => `Αυτό το φορτίο είναι φθηνότερο τώρα στην ${dest}.`,
+    live_cheaper_sub_pct: (kwh, cost, pct) => `Με την τρέχουσα χονδρική τιμή, τα ίδια ${kwh} kWh θα κόστιζαν εκεί περίπου ${cost} — περίπου ${pct}% λιγότερο από εδώ. Πατήστε για σύγκριση →`,
+    live_cheaper_sub: (kwh, cost) => `Με την τρέχουσα χονδρική τιμή, τα ίδια ${kwh} kWh θα κόστιζαν εκεί περίπου ${cost}. Πατήστε για σύγκριση →`,
+    live_expensive_dishwasher: (dest) => `Ευτυχώς που δεν βάζετε το πλυντήριο πιάτων στην ${dest}.`,
+    live_expensive_washer: (dest) => `Ευτυχώς που δεν κάνετε την πλύση στην ${dest}.`,
+    live_expensive_dryer: (dest) => `Ευτυχώς που το στεγνωτήριό σας δεν βρίσκεται στην ${dest}.`,
+    live_expensive_ev: (dest) => `Ευτυχώς που δεν φορτίζετε το EV σας στην ${dest}.`,
+    live_expensive_other: (dest) => `Ευτυχώς που αυτό το φορτίο δεν λειτουργεί στην ${dest}.`,
+    live_expensive_sub_mult: (kwh, cost, mult) => `Τα ίδια ${kwh} kWh θα κόστιζαν εκεί τώρα περίπου ${cost} — περίπου ${mult}× το τρέχον κόστος σας βάσει τιμής αγοράς. Δείτε ${dest} →`,
+    live_expensive_sub: (kwh, cost, dest) => `Τα ίδια ${kwh} kWh θα κόστιζαν εκεί τώρα περίπου ${cost}. Δείτε ${dest} →`,
+    live_compare_headline: (dest, device) => `Πώς συγκρίνεται το ίδιο φορτίο (${device}) στην ${dest};`,
+    live_compare_sub: "Τα ίδια {kwh} kWh, διαφορετική αγορά ηλεκτρικής ενέργειας. Δείτε πώς η τρέχουσα χονδρική τιμή επηρεάζει το αποτέλεσμα →",
+  },
+  it: {
+    stepLabel: "Passaggio 3 di 3",
+    h1: "Le tue ore più economiche",
+    loading: "Ricerca della migliore fascia disponibile…",
+    ad: "Pubblicità",
+    worldTitle: "Nel frattempo, da un’altra parte…",
+    worldSub: "Lo stesso consumo elettrico può avere un costo molto diverso in un altro mercato.",
+    checkAnother: "🌍 Controlla un altro paese",
+    irelandLink: "🇮🇪 Ore più economiche in Irlanda",
+    note: "CheapestHours confronta segnali del mercato elettrico all’ingrosso. La tua bolletta reale può includere imposte, costi di rete, margine del fornitore e condizioni specifiche del contratto.",
+    seeMoreDetails: "Vedi più dettagli",
+    bestVerifiedWindow: "Migliore fascia verificata",
+    marketPriceComponent: "componente legata al prezzo di mercato",
+    priceRightNow: "Prezzo in questo momento",
+    yourKwh: (kwh) => `I tuoi ${kwh} kWh`,
+    load: "Carico",
+    energy: "Energia",
+    searchWindow: "Intervallo di ricerca",
+    possibleSaving: "Risparmio possibile",
+    fine: "Solo segnale del mercato all’ingrosso. Imposte, costi di rete, margine del fornitore e condizioni del tuo contratto elettrico non sono inclusi.",
+    error: (msg) => `Non è stato possibile calcolare il risultato in questo momento (${msg}).`,
+    verdict_run: "🟢 USA ORA",
+    verdict_mid: "🟠 ASPETTA SE PUOI",
+    verdict_wait: "🔴 ASPETTA",
+    verdict_regulated: "⚪ SOLO PREZZO ATTUALE",
+    verdict_no_forecast: "⚪ SOLO PREZZO ATTUALE",
+    verdict_unverified: "⚪ SOLO PREZZO ATTUALE",
+    explain_regulated: "Questo mercato è mostrato come tariffa regolamentata. CheapestHours non inventa una decisione USA/ASPETTA quando non esiste un segnale futuro comparabile.",
+    explain_no_forecast: "Il prezzo all’ingrosso attuale è disponibile, ma questo mercato non fornisce al momento una previsione utilizzabile delle ore più economiche.",
+    explain_unverified: "Sono disponibili dati sui prezzi futuri, ma CheapestHours non ha potuto verificare una fascia continua adatta a questo carico. Mostriamo il prezzo attuale senza fare supposizioni.",
+    explain_zero: (device) => `Il prezzo all’ingrosso è pari o inferiore a zero in questo momento — un periodo eccezionalmente economico per ${device}.`,
+    explain_run_small: (money, device) => `Più tardi esiste una fascia più economica, ma la differenza del prezzo di mercato è solo di circa ${money} per ${device}.`,
+    explain_run_best: (device) => `Il prezzo attuale è già conveniente quanto la migliore fascia comparabile disponibile per ${device}.`,
+    explain_mid: (money, pct) => `Aspettare potrebbe ridurre la componente legata al prezzo di mercato di circa ${money} (${pct}%).`,
+    explain_wait: (money, pct) => `Una fascia successiva potrebbe ridurre la componente legata al prezzo di mercato di circa ${money} (${pct}%).`,
+    device_ev: "ricarica dell’auto elettrica",
+    device_dishwasher: "ciclo della lavastoviglie",
+    device_washer: "ciclo della lavatrice",
+    device_dryer: "ciclo dell’asciugatrice",
+    device_water_heater: "riscaldamento dell’acqua",
+    device_heat_pump: "funzionamento della pompa di calore",
+    device_custom: "carico elettrico personalizzato",
+    market_ireland: "Irlanda", market_california: "California",
+    market_uk: "Regno Unito", market_poland: "Polonia",
+    market_greece: "Grecia", market_italy: "Italia",
+    fb_dishwasher: (dest) => `Come sarebbe lo stesso ciclo della lavastoviglie in ${dest}?`,
+    fb_washer: (dest) => `Quanto costerebbe lo stesso bucato in ${dest}?`,
+    fb_dryer: (dest) => `Come sarebbe il confronto per la tua asciugatrice in ${dest}?`,
+    fb_ev: (dest) => `E se ricaricassi la stessa auto elettrica in ${dest}?`,
+    fb_other: (dest, device) => `Come si confronta lo stesso carico (${device}) in ${dest}?`,
+    fb_sub: (kwh, dest) => `Gli stessi ${kwh} kWh, un mercato elettrico diverso. Guarda il risultato aggiornato in ${dest} →`,
+    live_negative_headline: (dest) => `Nel frattempo in ${dest}, il prezzo all’ingrosso dell’elettricità è sotto zero.`,
+    live_negative_sub: (kwh, dest) => `Lo stesso carico da ${kwh} kWh si trova lì in un periodo di prezzo di mercato molto insolito. Guarda lo stesso calcolo in ${dest} →`,
+    live_cheaper_dishwasher: (dest) => `Peccato non usare la lavastoviglie in ${dest}.`,
+    live_cheaper_washer: (dest) => `Peccato non fare il bucato in ${dest}.`,
+    live_cheaper_dryer: (dest) => `La tua asciugatrice oggi potrebbe preferire ${dest}.`,
+    live_cheaper_ev: (dest) => `La tua auto elettrica oggi potrebbe preferire ${dest}.`,
+    live_cheaper_other: (dest) => `Questo carico costa meno in ${dest} in questo momento.`,
+    live_cheaper_sub_pct: (kwh, cost, pct) => `Al prezzo all’ingrosso attuale, gli stessi ${kwh} kWh costerebbero circa ${cost} lì — circa il ${pct}% in meno rispetto a qui. Tocca per confrontare →`,
+    live_cheaper_sub: (kwh, cost) => `Al prezzo all’ingrosso attuale, gli stessi ${kwh} kWh costerebbero circa ${cost} lì. Tocca per confrontare →`,
+    live_expensive_dishwasher: (dest) => `Meno male che non usi la lavastoviglie in ${dest}.`,
+    live_expensive_washer: (dest) => `Meno male che non fai il bucato in ${dest}.`,
+    live_expensive_dryer: (dest) => `Meno male che la tua asciugatrice non è in ${dest}.`,
+    live_expensive_ev: (dest) => `Meno male che non stai ricaricando l’auto elettrica in ${dest}.`,
+    live_expensive_other: (dest) => `Meno male che questo carico non è in funzione in ${dest}.`,
+    live_expensive_sub_mult: (kwh, cost, mult) => `Gli stessi ${kwh} kWh costerebbero circa ${cost} lì in questo momento — circa ${mult}× il tuo attuale costo legato al prezzo di mercato. Guarda ${dest} →`,
+    live_expensive_sub: (kwh, cost, dest) => `Gli stessi ${kwh} kWh costerebbero circa ${cost} lì in questo momento. Guarda ${dest} →`,
+    live_compare_headline: (dest, device) => `Come si confronta lo stesso carico (${device}) in ${dest}?`,
+    live_compare_sub: "Gli stessi {kwh} kWh, un mercato elettrico diverso. Guarda come il prezzo all’ingrosso attuale cambia il risultato →",
   }
 };
 
@@ -538,6 +680,12 @@ const ZONE_META = {
   ES:{name:"Spain",flag:"🇪🇸",tz:"Europe/Madrid"},
   PT:{name:"Portugal",flag:"🇵🇹",tz:"Europe/Lisbon"},
   GR:{name:"Greece",flag:"🇬🇷",tz:"Europe/Athens"},
+  "IT-NO":{name:"Italy North",flag:"🇮🇹",tz:"Europe/Rome"},
+  "IT-CNO":{name:"Italy Centre-North",flag:"🇮🇹",tz:"Europe/Rome"},
+  "IT-CSO":{name:"Italy Centre-South",flag:"🇮🇹",tz:"Europe/Rome"},
+  "IT-SO":{name:"Italy South",flag:"🇮🇹",tz:"Europe/Rome"},
+  "IT-SAR":{name:"Sardinia",flag:"🇮🇹",tz:"Europe/Rome"},
+  "IT-SIC":{name:"Sicily",flag:"🇮🇹",tz:"Europe/Rome"},
   EE:{name:"Estonia",flag:"🇪🇪",tz:"Europe/Tallinn"},
   LV:{name:"Latvia",flag:"🇱🇻",tz:"Europe/Riga"},
   LT:{name:"Lithuania",flag:"🇱🇹",tz:"Europe/Vilnius"},
@@ -592,11 +740,31 @@ const device = qs.get("device") || "ev";
 const kwh = Math.max(.01, Number(qs.get("kwh")) || 40);
 const waitHours = Math.max(1, Number(qs.get("wait")) || 8);
 const runtime = Math.max(.1, Number(qs.get("runtime")) || Math.min(waitHours, 3));
-const lang = qs.get("lang") || (country === "PL" ? "pl" : "en");
+const lang = qs.get("lang") ||
+  (country === "PL" ? "pl" :
+   country === "GR" ? "el" :
+   country === "IT" ? "it" : "en");
 
 
 const PL_COUNTRY_NAMES = {FI:"Finlandia",SE:"Szwecja",NO:"Norwegia",DK:"Dania",DE:"Niemcy",NL:"Holandia",BE:"Belgia",AT:"Austria",FR:"Francja",PL:"Polska",CZ:"Czechy",HU:"Węgry",ES:"Hiszpania",PT:"Portugalia",IT:"Włochy",GR:"Grecja",EE:"Estonia",LV:"Łotwa",LT:"Litwa",IE:"Irlandia",GB:"Wielka Brytania",CH:"Szwajcaria",HR:"Chorwacja",BG:"Bułgaria",SI:"Słowenia",SK:"Słowacja",RO:"Rumunia",RS:"Serbia",BA:"Bośnia i Hercegowina",ME:"Czarnogóra",MK:"Macedonia Północna",US:"Stany Zjednoczone",CA:"Kanada",MX:"Meksyk",AU:"Australia",NZ:"Nowa Zelandia",JP:"Japonia",KR:"Korea Południowa",ZA:"Republika Południowej Afryki",PH:"Filipiny"};
-function localizedCountryName(code, fallback) { return lang === "pl" ? (PL_COUNTRY_NAMES[code] || fallback) : fallback; }
+const EL_COUNTRY_NAMES = {FI:"Φινλανδία",SE:"Σουηδία",NO:"Νορβηγία",DK:"Δανία",DE:"Γερμανία",NL:"Ολλανδία",BE:"Βέλγιο",AT:"Αυστρία",FR:"Γαλλία",PL:"Πολωνία",CZ:"Τσεχία",HU:"Ουγγαρία",ES:"Ισπανία",PT:"Πορτογαλία",IT:"Ιταλία",GR:"Ελλάδα",EE:"Εσθονία",LV:"Λετονία",LT:"Λιθουανία",IE:"Ιρλανδία",GB:"Ηνωμένο Βασίλειο",CH:"Ελβετία",HR:"Κροατία",BG:"Βουλγαρία",SI:"Σλοβενία",SK:"Σλοβακία",RO:"Ρουμανία",RS:"Σερβία",BA:"Βοσνία και Ερζεγοβίνη",ME:"Μαυροβούνιο",MK:"Βόρεια Μακεδονία",US:"Ηνωμένες Πολιτείες",CA:"Καναδάς",MX:"Μεξικό",AU:"Αυστραλία",NZ:"Νέα Ζηλανδία",JP:"Ιαπωνία",KR:"Νότια Κορέα",ZA:"Νότια Αφρική",PH:"Φιλιππίνες"};
+const IT_COUNTRY_NAMES = {FI:"Finlandia",SE:"Svezia",NO:"Norvegia",DK:"Danimarca",DE:"Germania",NL:"Paesi Bassi",BE:"Belgio",AT:"Austria",FR:"Francia",PL:"Polonia",CZ:"Cechia",HU:"Ungheria",ES:"Spagna",PT:"Portogallo",IT:"Italia",GR:"Grecia",EE:"Estonia",LV:"Lettonia",LT:"Lituania",IE:"Irlanda",GB:"Regno Unito",CH:"Svizzera",HR:"Croazia",BG:"Bulgaria",SI:"Slovenia",SK:"Slovacchia",RO:"Romania",RS:"Serbia",BA:"Bosnia ed Erzegovina",ME:"Montenegro",MK:"Macedonia del Nord",US:"Stati Uniti",CA:"Canada",MX:"Messico",AU:"Australia",NZ:"Nuova Zelanda",JP:"Giappone",KR:"Corea del Sud",ZA:"Sudafrica",PH:"Filippine"};
+const EL_ZONE_NAMES = {GR:"Ελλάδα","IT-NO":"Βόρεια Ιταλία","IT-CNO":"Κεντροβόρεια Ιταλία","IT-CSO":"Κεντρονότια Ιταλία","IT-SO":"Νότια Ιταλία","IT-SAR":"Σαρδηνία","IT-SIC":"Σικελία"};
+const IT_ZONE_NAMES = {GR:"Grecia","IT-NO":"Italia Nord","IT-CNO":"Italia Centro-Nord","IT-CSO":"Italia Centro-Sud","IT-SO":"Italia Sud","IT-SAR":"Sardegna","IT-SIC":"Sicilia"};
+
+function localizedCountryName(code, fallback) {
+  if (lang === "pl") return PL_COUNTRY_NAMES[code] || fallback;
+  if (lang === "el") return EL_COUNTRY_NAMES[code] || fallback;
+  if (lang === "it") return IT_COUNTRY_NAMES[code] || fallback;
+  return fallback;
+}
+
+function localizedZoneName(code, fallback) {
+  if (lang === "pl") return PL_COUNTRY_NAMES[countryForZone(code)] || fallback;
+  if (lang === "el") return EL_ZONE_NAMES[code] || EL_COUNTRY_NAMES[countryForZone(code)] || fallback;
+  if (lang === "it") return IT_ZONE_NAMES[code] || IT_COUNTRY_NAMES[countryForZone(code)] || fallback;
+  return fallback;
+}
 
 document.documentElement.lang = lang;
 
@@ -607,11 +775,12 @@ function withLang(paramsObj) {
   return "?" + p.toString();
 }
 
-const zone = ZONE_META[zoneCode] || {
+const zoneBase = ZONE_META[zoneCode] || {
   name:(COUNTRY_NAMES[country] || [zoneCode,"🌍"])[0],
   flag:(COUNTRY_NAMES[country] || [zoneCode,"🌍"])[1],
   tz:"UTC"
 };
+const zone = { ...zoneBase, name: localizedZoneName(zoneCode, zoneBase.name) };
 const deviceLabel = t(lang, DEVICE_KEY[device] || "device_custom");
 
 // Static UI text
@@ -666,7 +835,8 @@ function fmtMoney(value,currency) {
 function fmtHour(iso,tz) {
   if (!iso) return "—";
   try {
-    return new Date(iso).toLocaleTimeString(lang === "pl" ? "pl-PL" : "en-GB", { hour:"2-digit", minute:"2-digit", timeZone:tz });
+    const locale = lang === "pl" ? "pl-PL" : lang === "el" ? "el-GR" : lang === "it" ? "it-IT" : "en-GB";
+    return new Date(iso).toLocaleTimeString(locale, { hour:"2-digit", minute:"2-digit", timeZone:tz });
   } catch { return iso; }
 }
 
@@ -815,7 +985,8 @@ function renderWorldFallback() {
   ) % fallbackZones.length;
 
   const code = fallbackZones[index];
-  const meta = ZONE_META[code] || { name: code, flag: "🌍" };
+  const metaBase = ZONE_META[code] || { name: code, flag: "🌍", tz:"UTC" };
+  const meta = { ...metaBase, name: localizedZoneName(code, metaBase.name) };
 
   const fbKeyMap = { dishwasher:"fb_dishwasher", washer:"fb_washer", dryer:"fb_dryer", ev:"fb_ev" };
   const headline = fbKeyMap[device]
@@ -863,7 +1034,8 @@ async function buildWorldHook(userSpot,userCostLocal) {
       if (s.price_type === "regulated") return null;
       const usdPerKwh = toUsdPerKwh(s);
       if (usdPerKwh == null) return null;
-      return { code, spot:s, usdPerKwh, usdCost:usdPerKwh * kwh, meta:ZONE_META[code] || {name:code,flag:"🌍",tz:"UTC"} };
+      const baseMeta = ZONE_META[code] || {name:code,flag:"🌍",tz:"UTC"};
+      return { code, spot:s, usdPerKwh, usdCost:usdPerKwh * kwh, meta:{...baseMeta,name:localizedZoneName(code,baseMeta.name)} };
     } catch { return null; }
   }))).filter(Boolean);
 
@@ -941,6 +1113,7 @@ function countryForZone(code) {
   if (code.startsWith("CA-")) return "CA";
   if (code.startsWith("PH-")) return "PH";
   if (code.startsWith("KR-")) return "KR";
+  if (code.startsWith("IT-")) return "IT";
   if (/^SE\d$/.test(code)) return "SE";
   if (/^NO\d$/.test(code)) return "NO";
   if (/^DK\d$/.test(code)) return "DK";
@@ -953,6 +1126,8 @@ const FEATURED = [
   { slug: "california", key: "market_california" },
   { slug: "united-kingdom", key: "market_uk" },
   { slug: "poland", key: "market_poland" },
+  { slug: "greece", key: "market_greece" },
+  { slug: "italy", key: "market_italy" },
 ];
 document.getElementById("seoLinks").innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
@@ -964,8 +1139,13 @@ run();
 // Small attribution/reference links; intentionally unobtrusive.
 const sourceLinks = document.getElementById("sourceLinks");
 if (sourceLinks) {
-  sourceLinks.innerHTML = lang === "pl"
-    ? 'Aktualne dane rynku energii: <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.'
+  sourceLinks.innerHTML =
+    lang === "pl"
+      ? 'Aktualne dane rynku energii: <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.'
+    : lang === "el"
+      ? 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας: <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.'
+    : lang === "it"
+      ? 'Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell’elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.'
     : 'Live electricity market data: <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.';
 }
 
