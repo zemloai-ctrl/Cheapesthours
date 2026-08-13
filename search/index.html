@@ -26,6 +26,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
+     crossorigin="anonymous"></script>
+
   <style>
     :root {
       --navy:#17213B; --navy-deep:#0D1526; --gold:#D4A24C; --cream:#F5ECDC;
@@ -402,17 +405,17 @@ const STRINGS = {
   it: {
     stepLabel: "Passaggio 2 di 3",
     h1: "Cosa vuoi utilizzare?",
-    lead: "Bastano pochi dettagli per confrontare l’uso dell’elettricità adesso con l’attesa di una fascia più conveniente.",
+    lead: "Bastano pochi dettagli per confrontare l'uso dell'elettricità adesso con l'attesa di una fascia più conveniente.",
     yourMarket: "🌍 Il tuo mercato",
     changeCountry: "Cambia paese",
     zoneLabel: "Area / zona di mercato",
     zoneHint: "Alcuni paesi hanno più zone del mercato elettrico.",
     deviceLabel: "Cosa vuoi utilizzare?",
-    device_ev: "🚗 Ricaricare un’auto elettrica",
+    device_ev: "🚗 Ricaricare un'auto elettrica",
     device_dishwasher: "🍽️ Avviare la lavastoviglie",
     device_washer: "👕 Fare il bucato",
-    device_dryer: "🌪️ Avviare l’asciugatrice",
-    device_water_heater: "🚿 Scaldare l’acqua",
+    device_dryer: "🌪️ Avviare l'asciugatrice",
+    device_water_heater: "🚿 Scaldare l'acqua",
     device_heat_pump: "🏠 Usare una pompa di calore",
     device_custom: "⚙️ Altro / carico personalizzato",
     kwhLabel: "Consumo di energia (kWh)",
@@ -431,8 +434,8 @@ const STRINGS = {
     customHint: "Per pompe, server, carichi industriali o qualsiasi utilizzo calcolato in kW × ore.",
     checkBtn: "Trova le ore più economiche →",
     ad: "Pubblicità",
-    note: "CheapestHours usa i dati del mercato elettrico per confrontare il prezzo attuale con le ore successive. I prezzi all’ingrosso non corrispondono al prezzo finale della bolletta.",
-    sourceLine: 'Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell’elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.',
+    note: "CheapestHours usa i dati del mercato elettrico per confrontare il prezzo attuale con le ore successive. I prezzi all'ingrosso non corrispondono al prezzo finale della bolletta.",
+    sourceLine: 'Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.',
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
     market_greece: "Grecia", market_italy: "Italia",
@@ -444,13 +447,6 @@ function t(lang, key) {
   return (key in dict) ? dict[key] : STRINGS.en[key];
 }
 
-// ============================================================================
-// Zone data. Every zone code below is taken directly from Elecz's own public
-// docs (elecz.com/docs/) — not guessed. GB, US and MX were corrected on
-// 2026-08-12: MX-MEX did not exist as an Elecz zone (Mexico City area is
-// MX-PUE); GB and US were only exposing a small subset of the zones Elecz
-// actually supports.
-// ============================================================================
 const COUNTRY_META = {
   FI:{name:"Finland",flag:"🇫🇮",zones:[["FI","Finland"]]},
   SE:{name:"Sweden",flag:"🇸🇪",zones:[["SE1","SE1 · North"],["SE2","SE2"],["SE3","SE3 · Stockholm"],["SE4","SE4 · South"]]},
@@ -627,8 +623,6 @@ const lang = qs.get("lang") ||
    countryCode === "IT" ? "it" : "en");
 const meta = COUNTRY_META[countryCode] || COUNTRY_META.FI;
 
-// Every internal link must carry `lang` forward — this is the one function
-// that generates outbound URLs, so language can never silently reset.
 function withLang(paramsObj) {
   const p = new URLSearchParams(paramsObj);
   if (lang && lang !== "en") p.set("lang", lang);
@@ -667,7 +661,6 @@ const els = {
   leadText: document.getElementById("leadText"),
 };
 
-// Static UI text
 els.stepLabel.textContent = t(lang, "stepLabel");
 els.h1Text.textContent = t(lang, "h1");
 els.leadText.textContent = t(lang, "lead");
@@ -687,7 +680,6 @@ els.sourceLine.innerHTML = t(lang, "sourceLine");
 document.getElementById("changeLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
 document.getElementById("brandLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
 
-// Device select options (localized labels)
 els.device.innerHTML = "";
 ["ev","dishwasher","washer","dryer","water-heater","heat-pump","custom"].forEach(key => {
   const opt = document.createElement("option");
@@ -696,7 +688,6 @@ els.device.innerHTML = "";
   els.device.appendChild(opt);
 });
 
-// Duration select options
 els.duration.innerHTML = "";
 [2,4,6,8,12,24].forEach(h => {
   const opt = document.createElement("option");
@@ -754,7 +745,6 @@ els.checkBtn.addEventListener("click", () => {
   window.location.href = "/result/" + withLang(params);
 });
 
-// Featured markets nav, localized market names, language preserved
 const FEATURED = [
   { slug: "ireland", key: "market_ireland" },
   { slug: "california", key: "market_california" },
