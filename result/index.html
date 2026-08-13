@@ -26,6 +26,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
+     crossorigin="anonymous"></script>
+
   <style>
     :root {
       --navy:#17213B; --navy-deep:#0D1526; --gold:#D4A24C; --cream:#F5ECDC;
@@ -335,6 +338,9 @@
       </div>
     </section>
 
+    <!-- Replace with the real AdSense unit after approval. -->
+    <div class="ad-slot" aria-label="Advertisement" id="adLabel2">Advertisement</div>
+
     <p class="note" id="noteText">
       CheapestHours compares wholesale electricity market signals. Your actual bill may include taxes,
       grid charges, supplier margin and contract-specific pricing.
@@ -346,12 +352,6 @@
 </main>
 
 <script>
-// ============================================================================
-// i18n — same model as /search/: English ground truth, per-key fallback,
-// `lang` carried through every generated URL (withLang), including the
-// world-hook postcards and fallback links, so language never resets
-// mid-funnel even while exploring other markets.
-// ============================================================================
 const STRINGS = {
   en: {
     stepLabel: "Step 3 of 3",
@@ -398,14 +398,12 @@ const STRINGS = {
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
     market_greece: "Greece", market_italy: "Italy",
-    // Fallback postcard (no live network data)
     fb_dishwasher: (dest) => `What would the same dishwasher cycle look like in ${dest}?`,
     fb_washer: (dest) => `What would doing the same laundry cost in ${dest}?`,
     fb_dryer: (dest) => `How would your dryer compare in ${dest}?`,
     fb_ev: (dest) => `What if you charged the same EV in ${dest}?`,
     fb_other: (dest, device) => `How does the same ${device} compare in ${dest}?`,
     fb_sub: (kwh, dest) => `Same ${kwh} kWh, different electricity market. See the live result in ${dest} →`,
-    // Live postcard (real comparison data)
     live_negative_headline: (dest) => `Meanwhile in ${dest}, wholesale electricity is below zero.`,
     live_negative_sub: (kwh, dest) => `The same ${kwh} kWh load is sitting in a very unusual market-price period there right now. See the same calculation in ${dest} →`,
     live_cheaper_dishwasher: (dest) => `Too bad you're not doing the dishes in ${dest}.`,
@@ -570,11 +568,11 @@ const STRINGS = {
     h1: "Le tue ore più economiche",
     loading: "Ricerca della migliore fascia disponibile…",
     ad: "Pubblicità",
-    worldTitle: "Nel frattempo, da un’altra parte…",
+    worldTitle: "Nel frattempo, da un'altra parte…",
     worldSub: "Lo stesso consumo elettrico può avere un costo molto diverso in un altro mercato.",
     checkAnother: "🌍 Controlla un altro paese",
     irelandLink: "🇮🇪 Ore più economiche in Irlanda",
-    note: "CheapestHours confronta segnali del mercato elettrico all’ingrosso. La tua bolletta reale può includere imposte, costi di rete, margine del fornitore e condizioni specifiche del contratto.",
+    note: "CheapestHours confronta segnali del mercato elettrico all'ingrosso. La tua bolletta reale può includere imposte, costi di rete, margine del fornitore e condizioni specifiche del contratto.",
     seeMoreDetails: "Vedi più dettagli",
     bestVerifiedWindow: "Migliore fascia verificata",
     marketPriceComponent: "componente legata al prezzo di mercato",
@@ -584,7 +582,7 @@ const STRINGS = {
     energy: "Energia",
     searchWindow: "Intervallo di ricerca",
     possibleSaving: "Risparmio possibile",
-    fine: "Solo segnale del mercato all’ingrosso. Imposte, costi di rete, margine del fornitore e condizioni del tuo contratto elettrico non sono inclusi.",
+    fine: "Solo segnale del mercato all'ingrosso. Imposte, costi di rete, margine del fornitore e condizioni del tuo contratto elettrico non sono inclusi.",
     error: (msg) => `Non è stato possibile calcolare il risultato in questo momento (${msg}).`,
     verdict_run: "🟢 USA ORA",
     verdict_mid: "🟠 ASPETTA SE PUOI",
@@ -593,18 +591,18 @@ const STRINGS = {
     verdict_no_forecast: "⚪ SOLO PREZZO ATTUALE",
     verdict_unverified: "⚪ SOLO PREZZO ATTUALE",
     explain_regulated: "Questo mercato è mostrato come tariffa regolamentata. CheapestHours non inventa una decisione USA/ASPETTA quando non esiste un segnale futuro comparabile.",
-    explain_no_forecast: "Il prezzo all’ingrosso attuale è disponibile, ma questo mercato non fornisce al momento una previsione utilizzabile delle ore più economiche.",
+    explain_no_forecast: "Il prezzo all'ingrosso attuale è disponibile, ma questo mercato non fornisce al momento una previsione utilizzabile delle ore più economiche.",
     explain_unverified: "Sono disponibili dati sui prezzi futuri, ma CheapestHours non ha potuto verificare una fascia continua adatta a questo carico. Mostriamo il prezzo attuale senza fare supposizioni.",
-    explain_zero: (device) => `Il prezzo all’ingrosso è pari o inferiore a zero in questo momento — un periodo eccezionalmente economico per ${device}.`,
+    explain_zero: (device) => `Il prezzo all'ingrosso è pari o inferiore a zero in questo momento — un periodo eccezionalmente economico per ${device}.`,
     explain_run_small: (money, device) => `Più tardi esiste una fascia più economica, ma la differenza del prezzo di mercato è solo di circa ${money} per ${device}.`,
     explain_run_best: (device) => `Il prezzo attuale è già conveniente quanto la migliore fascia comparabile disponibile per ${device}.`,
     explain_mid: (money, pct) => `Aspettare potrebbe ridurre la componente legata al prezzo di mercato di circa ${money} (${pct}%).`,
     explain_wait: (money, pct) => `Una fascia successiva potrebbe ridurre la componente legata al prezzo di mercato di circa ${money} (${pct}%).`,
-    device_ev: "ricarica dell’auto elettrica",
+    device_ev: "ricarica dell'auto elettrica",
     device_dishwasher: "ciclo della lavastoviglie",
     device_washer: "ciclo della lavatrice",
-    device_dryer: "ciclo dell’asciugatrice",
-    device_water_heater: "riscaldamento dell’acqua",
+    device_dryer: "ciclo dell'asciugatrice",
+    device_water_heater: "riscaldamento dell'acqua",
     device_heat_pump: "funzionamento della pompa di calore",
     device_custom: "carico elettrico personalizzato",
     market_ireland: "Irlanda", market_california: "California",
@@ -616,24 +614,24 @@ const STRINGS = {
     fb_ev: (dest) => `E se ricaricassi la stessa auto elettrica in ${dest}?`,
     fb_other: (dest, device) => `Come si confronta lo stesso carico (${device}) in ${dest}?`,
     fb_sub: (kwh, dest) => `Gli stessi ${kwh} kWh, un mercato elettrico diverso. Guarda il risultato aggiornato in ${dest} →`,
-    live_negative_headline: (dest) => `Nel frattempo in ${dest}, il prezzo all’ingrosso dell’elettricità è sotto zero.`,
+    live_negative_headline: (dest) => `Nel frattempo in ${dest}, il prezzo all'ingrosso dell'elettricità è sotto zero.`,
     live_negative_sub: (kwh, dest) => `Lo stesso carico da ${kwh} kWh si trova lì in un periodo di prezzo di mercato molto insolito. Guarda lo stesso calcolo in ${dest} →`,
     live_cheaper_dishwasher: (dest) => `Peccato non usare la lavastoviglie in ${dest}.`,
     live_cheaper_washer: (dest) => `Peccato non fare il bucato in ${dest}.`,
     live_cheaper_dryer: (dest) => `La tua asciugatrice oggi potrebbe preferire ${dest}.`,
     live_cheaper_ev: (dest) => `La tua auto elettrica oggi potrebbe preferire ${dest}.`,
     live_cheaper_other: (dest) => `Questo carico costa meno in ${dest} in questo momento.`,
-    live_cheaper_sub_pct: (kwh, cost, pct) => `Al prezzo all’ingrosso attuale, gli stessi ${kwh} kWh costerebbero circa ${cost} lì — circa il ${pct}% in meno rispetto a qui. Tocca per confrontare →`,
-    live_cheaper_sub: (kwh, cost) => `Al prezzo all’ingrosso attuale, gli stessi ${kwh} kWh costerebbero circa ${cost} lì. Tocca per confrontare →`,
+    live_cheaper_sub_pct: (kwh, cost, pct) => `Al prezzo all'ingrosso attuale, gli stessi ${kwh} kWh costerebbero circa ${cost} lì — circa il ${pct}% in meno rispetto a qui. Tocca per confrontare →`,
+    live_cheaper_sub: (kwh, cost) => `Al prezzo all'ingrosso attuale, gli stessi ${kwh} kWh costerebbero circa ${cost} lì. Tocca per confrontare →`,
     live_expensive_dishwasher: (dest) => `Meno male che non usi la lavastoviglie in ${dest}.`,
     live_expensive_washer: (dest) => `Meno male che non fai il bucato in ${dest}.`,
     live_expensive_dryer: (dest) => `Meno male che la tua asciugatrice non è in ${dest}.`,
-    live_expensive_ev: (dest) => `Meno male che non stai ricaricando l’auto elettrica in ${dest}.`,
+    live_expensive_ev: (dest) => `Meno male che non stai ricaricando l'auto elettrica in ${dest}.`,
     live_expensive_other: (dest) => `Meno male che questo carico non è in funzione in ${dest}.`,
     live_expensive_sub_mult: (kwh, cost, mult) => `Gli stessi ${kwh} kWh costerebbero circa ${cost} lì in questo momento — circa ${mult}× il tuo attuale costo legato al prezzo di mercato. Guarda ${dest} →`,
     live_expensive_sub: (kwh, cost, dest) => `Gli stessi ${kwh} kWh costerebbero circa ${cost} lì in questo momento. Guarda ${dest} →`,
     live_compare_headline: (dest, device) => `Come si confronta lo stesso carico (${device}) in ${dest}?`,
-    live_compare_sub: "Gli stessi {kwh} kWh, un mercato elettrico diverso. Guarda come il prezzo all’ingrosso attuale cambia il risultato →",
+    live_compare_sub: "Gli stessi {kwh} kWh, un mercato elettrico diverso. Guarda come il prezzo all'ingrosso attuale cambia il risultato →",
   }
 };
 
@@ -768,7 +766,6 @@ function localizedZoneName(code, fallback) {
 
 document.documentElement.lang = lang;
 
-// Preserve lang (and every other param) on every internal link this page emits.
 function withLang(paramsObj) {
   const p = new URLSearchParams(paramsObj);
   if (lang && lang !== "en") p.set("lang", lang);
@@ -783,11 +780,11 @@ const zoneBase = ZONE_META[zoneCode] || {
 const zone = { ...zoneBase, name: localizedZoneName(zoneCode, zoneBase.name) };
 const deviceLabel = t(lang, DEVICE_KEY[device] || "device_custom");
 
-// Static UI text
 document.getElementById("stepLabel").textContent = t(lang, "stepLabel");
 document.getElementById("h1Text").textContent = t(lang, "h1");
 document.getElementById("loadingText").textContent = t(lang, "loading");
 document.getElementById("adLabel1").textContent = t(lang, "ad");
+document.getElementById("adLabel2").textContent = t(lang, "ad");
 document.getElementById("worldTitle").textContent = t(lang, "worldTitle");
 document.getElementById("worldSub").textContent = t(lang, "worldSub");
 document.getElementById("checkAnotherLink").textContent = t(lang, "checkAnother");
@@ -961,8 +958,6 @@ async function run() {
       </section>
     `;
 
-    // Show a useful curiosity card immediately — no network dependency, so it
-    // can never be left blank. buildWorldHook upgrades it with live data.
     renderWorldFallback();
     buildWorldHook(spot,currentCost).catch((err) => {
       console.warn("World hook live comparison failed; keeping fallback card:", err);
@@ -1003,10 +998,6 @@ function renderWorldFallback() {
 }
 
 async function buildWorldHook(userSpot,userCostLocal) {
-  /*
-    Prototype: samples a handful of diverse markets client-side.
-    Production: replace with ONE cached global snapshot generated server-side.
-  */
   const candidateZones = [
     "FI","DE","ES","IE","NO1","US-CA-NP15","US-NY-NYC","JP-TKY","AU-NSW"
   ].filter(code => code !== zoneCode);
@@ -1045,6 +1036,9 @@ async function buildWorldHook(userSpot,userCostLocal) {
   const cheapest = [...rows].sort((a,b) => a.usdCost - b.usdCost)[0];
   const mostExpensive = [...rows].sort((a,b) => b.usdCost - a.usdCost)[0];
 
+  // Contrast threshold lowered from 1.35 to 1.12 (13.8.2026): the old bar was
+  // rarely crossed, so the page almost always fell into the bland "compare"
+  // mode instead of the playful "onneksi et..." / "parempi ladata..." copy.
   let chosen = null, mode = null;
   if (negative) { chosen = negative; mode = "negative"; }
   else {
@@ -1052,7 +1046,7 @@ async function buildWorldHook(userSpot,userCostLocal) {
     const expensiveRatio = mostExpensive ? mostExpensive.usdCost / userUsdCost : 1;
     const cheapContrast = cheapRatio > 0 ? 1 / cheapRatio : 999;
     const expensiveContrast = expensiveRatio;
-    if (cheapContrast >= 1.35 || expensiveContrast >= 1.35) {
+    if (cheapContrast >= 1.12 || expensiveContrast >= 1.12) {
       if (cheapContrast >= expensiveContrast) { chosen = cheapest; mode = "cheaper"; }
       else { chosen = mostExpensive; mode = "expensive"; }
     } else { chosen = cheapest || mostExpensive; mode = "compare"; }
@@ -1120,7 +1114,6 @@ function countryForZone(code) {
   return code;
 }
 
-// Featured markets nav, localized, language preserved
 const FEATURED = [
   { slug: "ireland", key: "market_ireland" },
   { slug: "california", key: "market_california" },
@@ -1135,8 +1128,6 @@ document.getElementById("seoLinks").innerHTML = FEATURED.map(f =>
 
 run();
 
-
-// Small attribution/reference links; intentionally unobtrusive.
 const sourceLinks = document.getElementById("sourceLinks");
 if (sourceLinks) {
   sourceLinks.innerHTML =
@@ -1145,7 +1136,7 @@ if (sourceLinks) {
     : lang === "el"
       ? 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας: <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.'
     : lang === "it"
-      ? 'Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell’elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.'
+      ? 'Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.'
     : 'Live electricity market data: <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.';
 }
 
