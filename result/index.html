@@ -1036,9 +1036,6 @@ async function buildWorldHook(userSpot,userCostLocal) {
   const cheapest = [...rows].sort((a,b) => a.usdCost - b.usdCost)[0];
   const mostExpensive = [...rows].sort((a,b) => b.usdCost - a.usdCost)[0];
 
-  // Contrast threshold lowered from 1.35 to 1.12 (13.8.2026): the old bar was
-  // rarely crossed, so the page almost always fell into the bland "compare"
-  // mode instead of the playful "onneksi et..." / "parempi ladata..." copy.
   let chosen = null, mode = null;
   if (negative) { chosen = negative; mode = "negative"; }
   else {
@@ -1136,7 +1133,7 @@ if (sourceLinks) {
     : lang === "el"
       ? 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας: <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.'
     : lang === "it"
-      ? 'Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.'
+      ? `Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`
     : 'Live electricity market data: <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.';
 }
 
