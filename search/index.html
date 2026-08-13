@@ -281,12 +281,6 @@
   </main>
 
 <script>
-// ============================================================================
-// i18n. English is the ground truth: every UI string has an `en` entry, and
-// t(lang, key, ...args) falls back to `en` per-key if a translation is
-// missing — a gap in one string never breaks the rest of the page. Language
-// flows through every internal link (withLang) so it never resets mid-funnel.
-// ============================================================================
 const STRINGS = {
   en: {
     stepLabel: "Step 2 of 3",
@@ -435,7 +429,7 @@ const STRINGS = {
     checkBtn: "Trova le ore più economiche →",
     ad: "Pubblicità",
     note: "CheapestHours usa i dati del mercato elettrico per confrontare il prezzo attuale con le ore successive. I prezzi all'ingrosso non corrispondono al prezzo finale della bolletta.",
-    sourceLine: 'Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.',
+    sourceLine: `Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`,
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
     market_greece: "Grecia", market_italy: "Italia",
