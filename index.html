@@ -349,6 +349,8 @@
     <a class="featured-link" href="/poland/">🇵🇱 See today's cheapest electricity hours in Poland →</a>
     <a class="featured-link" href="/greece/">🇬🇷 See today's cheapest electricity hours in Greece →</a>
     <a class="featured-link" href="/italy/">🇮🇹 See today's cheapest electricity hours in Italy →</a>
+    <a class="featured-link" href="/japan/">🇯🇵 See today's cheapest electricity hours in Japan →</a>
+    <a class="featured-link" href="/spain/">🇪🇸 See today's cheapest electricity hours in Spain →</a>
 
     <footer>
       Electricity market data powered by
@@ -357,6 +359,8 @@
       <br>
       Comparing electricity price APIs?
       <a href="https://botcentrum.com/" rel="noopener">See BotCentrum</a>.
+      <br>
+      <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a>
     </footer>
   </main>
 
@@ -377,7 +381,9 @@
       const lang =
         selectedCountry === "PL" ? "pl" :
         selectedCountry === "GR" ? "el" :
-        selectedCountry === "IT" ? "it" : "";
+        selectedCountry === "IT" ? "it" :
+        selectedCountry === "JP" ? "ja" :
+        selectedCountry === "ES" ? "es" : "";
 
       const params = new URLSearchParams({ country: selectedCountry });
       if (lang) params.set("lang", lang);
