@@ -278,6 +278,10 @@
     <p class="note" id="sourceLine"></p>
 
     <nav class="seo-links" aria-label="Featured electricity markets" id="seoLinks"></nav>
+
+    <p class="note" style="margin-top:14px">
+      <a href="/privacy/" style="color:inherit">Privacy Policy</a> · <a href="/contact/" style="color:inherit">Contact</a>
+    </p>
   </main>
 
 <script>
@@ -318,7 +322,7 @@ const STRINGS = {
     sourceLine: 'Live electricity market data by <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.',
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
-    market_greece: "Greece", market_italy: "Italy",
+    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan",
   },
   pl: {
     stepLabel: "Krok 2 z 3",
@@ -356,7 +360,7 @@ const STRINGS = {
     sourceLine: 'Aktualne dane rynku energii dostarcza <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.',
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
-    market_greece: "Grecja", market_italy: "Włochy",
+    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia",
   },
   el: {
     stepLabel: "Βήμα 2 από 3",
@@ -394,7 +398,7 @@ const STRINGS = {
     sourceLine: 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας από το <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.',
     market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
     market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
-    market_greece: "Ελλάδα", market_italy: "Ιταλία",
+    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία",
   },
   it: {
     stepLabel: "Passaggio 2 di 3",
@@ -432,7 +436,45 @@ const STRINGS = {
     sourceLine: `Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`,
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
-    market_greece: "Grecia", market_italy: "Italia",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone",
+  },
+  ja: {
+    stepLabel: "ステップ 2/3",
+    h1: "何を使いますか？",
+    lead: "いくつかの情報を教えていただければ、今使う場合と安い時間帯まで待つ場合を比較できます。",
+    yourMarket: "🌍 あなたの市場",
+    changeCountry: "国を変更",
+    zoneLabel: "エリア / 市場区域",
+    zoneHint: "国によっては複数の電力市場エリアがあります。",
+    deviceLabel: "何を使いますか？",
+    device_ev: "🚗 EVを充電する",
+    device_dishwasher: "🍽️ 食洗機を使う",
+    device_washer: "👕 洗濯をする",
+    device_dryer: "🌪️ 乾燥機を使う",
+    device_water_heater: "🚿 お湯を沸かす",
+    device_heat_pump: "🏠 ヒートポンプを使う",
+    device_custom: "⚙️ その他 / カスタム負荷",
+    kwhLabel: "使用電力量 (kWh)",
+    durationLabel: "待てる時間",
+    duration_2: "2時間", duration_4: "4時間", duration_6: "6時間",
+    duration_8: "8時間", duration_12: "12時間", duration_24: "24時間",
+    hint_ev: "一般的なEVの例：約40kWh。実際の使用量が分かる場合は変更してください。",
+    hint_dishwasher: "食洗機1回あたりの使用量は約1〜1.5kWhが目安です。",
+    hint_washer: "洗濯1回あたりの使用量は約0.5〜1.5kWhが目安です。",
+    hint_dryer: "乾燥機1回あたりの使用量は約2〜4kWhが目安です。",
+    hint_water_heater: "あくまで目安です。実際の給湯器の使用量が分かる場合は入力してください。",
+    hint_heat_pump: "ヒートポンプの使用量は機種によって大きく異なります。実際の使用量が分かる場合は変更してください。",
+    hint_custom: "上に合計kWhを入力するか、下の出力×稼働時間を使用してください。",
+    powerLabel: "出力 (kW)",
+    runtimeLabel: "稼働時間 (時間)",
+    customHint: "ポンプ、サーバー、産業用負荷など、kW×時間で計算されるものに使用してください。",
+    checkBtn: "安い時間帯を調べる →",
+    ad: "広告",
+    note: "CheapestHoursは電力市場データを使い、現在の価格と今後の時間帯を比較します。卸売価格は実際の電気料金とは異なります。",
+    sourceLine: '電力市場のリアルタイムデータは <a href="https://elecz.com/ja/">Elecz</a> 提供。電力価格APIをお探しですか？ <a href="https://botcentrum.com/">BotCentrumを見る</a>。',
+    market_ireland: "アイルランド", market_california: "カリフォルニア",
+    market_uk: "イギリス", market_poland: "ポーランド",
+    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本",
   }
 };
 
@@ -586,10 +628,27 @@ const ZONE_NAMES_IT = {
   "IT-SO":"Sud", "IT-SAR":"Sardegna", "IT-SIC":"Sicilia"
 };
 
+const MARKET_NAMES_JA = {
+  FI:"フィンランド", SE:"スウェーデン", NO:"ノルウェー", DK:"デンマーク", DE:"ドイツ", NL:"オランダ",
+  BE:"ベルギー", AT:"オーストリア", FR:"フランス", PL:"ポーランド", CZ:"チェコ", HU:"ハンガリー",
+  ES:"スペイン", PT:"ポルトガル", IT:"イタリア", GR:"ギリシャ", EE:"エストニア", LV:"ラトビア",
+  LT:"リトアニア", IE:"アイルランド", GB:"イギリス", CH:"スイス", HR:"クロアチア",
+  BG:"ブルガリア", SI:"スロベニア", SK:"スロバキア", RO:"ルーマニア", RS:"セルビア",
+  BA:"ボスニア・ヘルツェゴビナ", ME:"モンテネグロ", MK:"北マケドニア",
+  US:"アメリカ合衆国", CA:"カナダ", MX:"メキシコ", AU:"オーストラリア",
+  NZ:"ニュージーランド", JP:"日本", KR:"韓国", ZA:"南アフリカ", PH:"フィリピン"
+};
+
+const ZONE_NAMES_JA = {
+  "JP-HKD":"北海道", "JP-THK":"東北", "JP-TKY":"東京", "JP-CBU":"中部",
+  "JP-HKR":"北陸", "JP-KNS":"関西", "JP-CGK":"中国", "JP-SKK":"四国", "JP-KYS":"九州"
+};
+
 function marketName(code, fallback){
   if (lang === "pl") return MARKET_NAMES_PL[code] || fallback;
   if (lang === "el") return MARKET_NAMES_EL[code] || fallback;
   if (lang === "it") return MARKET_NAMES_IT[code] || fallback;
+  if (lang === "ja") return MARKET_NAMES_JA[code] || fallback;
   return fallback;
 }
 
@@ -597,6 +656,7 @@ function zoneName(value, fallback){
   if (lang === "pl" && value === "PL") return "Polska";
   if (lang === "el") return ZONE_NAMES_EL[value] || fallback;
   if (lang === "it") return ZONE_NAMES_IT[value] || fallback;
+  if (lang === "ja") return ZONE_NAMES_JA[value] || fallback;
   return fallback;
 }
 
@@ -614,7 +674,8 @@ const countryCode = qs.get("country") || localStorage.getItem("cheapesthours-cou
 const lang = qs.get("lang") ||
   (countryCode === "PL" ? "pl" :
    countryCode === "GR" ? "el" :
-   countryCode === "IT" ? "it" : "en");
+   countryCode === "IT" ? "it" :
+   countryCode === "JP" ? "ja" : "en");
 const meta = COUNTRY_META[countryCode] || COUNTRY_META.FI;
 
 function withLang(paramsObj) {
@@ -746,6 +807,7 @@ const FEATURED = [
   { slug: "poland", key: "market_poland" },
   { slug: "greece", key: "market_greece" },
   { slug: "italy", key: "market_italy" },
+  { slug: "japan", key: "market_japan" },
 ];
 els.seoLinks.innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
