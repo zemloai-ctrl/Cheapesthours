@@ -400,7 +400,7 @@ const STRINGS = {
     device_custom: "custom electricity load",
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
-    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan",
+    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan", market_spain: "Spain",
     fb_dishwasher: (dest) => `What would the same dishwasher cycle look like in ${dest}?`,
     fb_washer: (dest) => `What would doing the same laundry cost in ${dest}?`,
     fb_dryer: (dest) => `How would your dryer compare in ${dest}?`,
@@ -470,7 +470,7 @@ const STRINGS = {
     device_custom: "niestandardowe obciążenie",
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
-    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia",
+    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia", market_spain: "Hiszpania",
     fb_dishwasher: (dest) => `Jak wyglądałby ten sam cykl zmywarki w ${dest}?`,
     fb_washer: (dest) => `Ile kosztowałoby to samo pranie w ${dest}?`,
     fb_dryer: (dest) => `Jak wypadłaby Twoja suszarka w ${dest}?`,
@@ -540,7 +540,7 @@ const STRINGS = {
     device_custom: "προσαρμοσμένο ηλεκτρικό φορτίο",
     market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
     market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
-    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία",
+    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία", market_spain: "Ισπανία",
     fb_dishwasher: (dest) => `Πώς θα ήταν ο ίδιος κύκλος πλυντηρίου πιάτων στην ${dest};`,
     fb_washer: (dest) => `Πόσο θα κόστιζε η ίδια πλύση στην ${dest};`,
     fb_dryer: (dest) => `Πώς θα συγκρινόταν το στεγνωτήριό σας στην ${dest};`,
@@ -610,7 +610,7 @@ const STRINGS = {
     device_custom: "carico elettrico personalizzato",
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
-    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone", market_spain: "Spagna",
     fb_dishwasher: (dest) => `Come sarebbe lo stesso ciclo della lavastoviglie in ${dest}?`,
     fb_washer: (dest) => `Quanto costerebbe lo stesso bucato in ${dest}?`,
     fb_dryer: (dest) => `Come sarebbe il confronto per la tua asciugatrice in ${dest}?`,
@@ -680,7 +680,7 @@ const STRINGS = {
     device_custom: "カスタム負荷",
     market_ireland: "アイルランド", market_california: "カリフォルニア",
     market_uk: "イギリス", market_poland: "ポーランド",
-    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本",
+    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本", market_spain: "スペイン",
     fb_dishwasher: (dest) => `同じ食洗機を${dest}で使うとどうなる？`,
     fb_washer: (dest) => `同じ洗濯を${dest}でしたらいくらになる？`,
     fb_dryer: (dest) => `${dest}では乾燥機の結果はどう変わる？`,
@@ -705,6 +705,76 @@ const STRINGS = {
     live_expensive_sub: (kwh, cost, dest) => `同じ${kwh} kWhが今そちらでは約${cost}かかります。${dest}を見る →`,
     live_compare_headline: (dest, device) => `同じ${device}を${dest}で使うとどう変わる？`,
     live_compare_sub: "同じ{kwh} kWh、市場が変われば結果も変わります。現在の卸売価格が結果にどう影響するか見る →",
+  },
+  es: {
+    stepLabel: "Paso 3 de 3",
+    h1: "Tus horas más baratas",
+    loading: "Buscando la mejor franja disponible…",
+    ad: "Publicidad",
+    worldTitle: "Mientras tanto, en otro lugar…",
+    worldSub: "El mismo consumo de electricidad puede verse muy distinto en otro mercado.",
+    checkAnother: "🌍 Consultar otro país",
+    irelandLink: "🇮🇪 Horas más baratas en Irlanda",
+    note: "CheapestHours compara señales del mercado mayorista de electricidad. Tu factura real puede incluir impuestos, peajes de red, margen de la comercializadora y condiciones específicas de tu contrato.",
+    seeMoreDetails: "Ver más detalles",
+    bestVerifiedWindow: "Mejor franja verificada",
+    marketPriceComponent: "componente de precio de mercado",
+    priceRightNow: "Precio ahora mismo",
+    yourKwh: (kwh) => `Tus ${kwh} kWh`,
+    load: "Carga",
+    energy: "Energía",
+    searchWindow: "Ventana de búsqueda",
+    possibleSaving: "Ahorro posible",
+    fine: "Solo señal del mercado mayorista. No incluye impuestos, peajes de red, margen de la comercializadora ni tu contrato de electricidad.",
+    error: (msg) => `No se ha podido calcular este resultado ahora mismo (${msg}).`,
+    verdict_run: "🟢 USAR AHORA",
+    verdict_mid: "🟠 ESPERA SI TE CONVIENE",
+    verdict_wait: "🔴 ESPERA",
+    verdict_regulated: "⚪ SOLO PRECIO ACTUAL",
+    verdict_no_forecast: "⚪ SOLO PRECIO ACTUAL",
+    verdict_unverified: "⚪ SOLO PRECIO ACTUAL",
+    explain_regulated: "Este mercado se muestra como tarifa regulada. CheapestHours no inventa una decisión USAR/ESPERAR cuando no hay una señal de mercado a plazo comparable.",
+    explain_no_forecast: "El precio mayorista actual está disponible, pero este mercado no ofrece actualmente una previsión utilizable de horas más baratas.",
+    explain_unverified: "Existen datos de precio a futuro, pero CheapestHours no ha podido verificar una franja continua que coincida con esta carga. Se muestra el precio actual sin adivinar.",
+    explain_zero: (device) => `El precio mayorista está en cero o por debajo ahora mismo — un periodo excepcionalmente barato para ${device}.`,
+    explain_run_small: (money, device) => `Más tarde hay una franja más barata, pero la diferencia de precio de mercado es de solo unos ${money} para ${device}.`,
+    explain_run_best: (device) => `El precio actual ya es tan bueno como la mejor franja comparable disponible para ${device}.`,
+    explain_mid: (money, pct) => `Esperar podría reducir el componente de precio de mercado en unos ${money} (${pct}%).`,
+    explain_wait: (money, pct) => `Una franja posterior podría reducir el componente de precio de mercado en unos ${money} (${pct}%).`,
+    device_ev: "carga del coche eléctrico",
+    device_dishwasher: "ciclo de lavavajillas",
+    device_washer: "ciclo de lavadora",
+    device_dryer: "ciclo de secadora",
+    device_water_heater: "calentamiento de agua",
+    device_heat_pump: "funcionamiento de la bomba de calor",
+    device_custom: "carga eléctrica personalizada",
+    market_ireland: "Irlanda", market_california: "California",
+    market_uk: "Reino Unido", market_poland: "Polonia",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón",
+    fb_dishwasher: (dest) => `¿Cómo sería el mismo ciclo de lavavajillas en ${dest}?`,
+    fb_washer: (dest) => `¿Cuánto costaría la misma colada en ${dest}?`,
+    fb_dryer: (dest) => `¿Cómo se compararía tu secadora en ${dest}?`,
+    fb_ev: (dest) => `¿Y si cargaras el mismo coche eléctrico en ${dest}?`,
+    fb_other: (dest, device) => `¿Cómo se compara la misma carga (${device}) en ${dest}?`,
+    fb_sub: (kwh, dest) => `Los mismos ${kwh} kWh, un mercado eléctrico distinto. Consulta el resultado en directo en ${dest} →`,
+    live_negative_headline: (dest) => `Mientras tanto en ${dest}, el precio mayorista de la electricidad está por debajo de cero.`,
+    live_negative_sub: (kwh, dest) => `La misma carga de ${kwh} kWh se encuentra allí en un periodo de precio de mercado muy inusual. Consulta el mismo cálculo en ${dest} →`,
+    live_cheaper_dishwasher: (dest) => `Lástima no estar poniendo el lavavajillas en ${dest}.`,
+    live_cheaper_washer: (dest) => `Lástima no estar haciendo la colada en ${dest}.`,
+    live_cheaper_dryer: (dest) => `Hoy tu secadora podría preferir ${dest}.`,
+    live_cheaper_ev: (dest) => `Hoy tu coche eléctrico podría preferir ${dest}.`,
+    live_cheaper_other: (dest) => `Esta carga es más barata en ${dest} ahora mismo.`,
+    live_cheaper_sub_pct: (kwh, cost, pct) => `Al precio mayorista actual, los mismos ${kwh} kWh costarían allí unos ${cost} — aproximadamente un ${pct}% menos que aquí. Toca para comparar →`,
+    live_cheaper_sub: (kwh, cost) => `Al precio mayorista actual, los mismos ${kwh} kWh costarían allí unos ${cost}. Toca para comparar →`,
+    live_expensive_dishwasher: (dest) => `Menos mal que no estás poniendo el lavavajillas en ${dest}.`,
+    live_expensive_washer: (dest) => `Menos mal que no estás haciendo la colada en ${dest}.`,
+    live_expensive_dryer: (dest) => `Menos mal que tu secadora no está en ${dest}.`,
+    live_expensive_ev: (dest) => `Menos mal que no estás cargando tu coche eléctrico en ${dest}.`,
+    live_expensive_other: (dest) => `Menos mal que esta carga no está funcionando en ${dest}.`,
+    live_expensive_sub_mult: (kwh, cost, mult) => `Los mismos ${kwh} kWh costarían allí ahora mismo unos ${cost} — unas ${mult}× tu coste actual de precio de mercado. Ver ${dest} →`,
+    live_expensive_sub: (kwh, cost, dest) => `Los mismos ${kwh} kWh costarían allí ahora mismo unos ${cost}. Ver ${dest} →`,
+    live_compare_headline: (dest, device) => `¿Cómo se compara la misma carga (${device}) en ${dest}?`,
+    live_compare_sub: "Los mismos {kwh} kWh, un mercado eléctrico distinto. Consulta cómo cambia el resultado el precio mayorista actual →",
   }
 };
 
@@ -815,7 +885,8 @@ const lang = qs.get("lang") ||
   (country === "PL" ? "pl" :
    country === "GR" ? "el" :
    country === "IT" ? "it" :
-   country === "JP" ? "ja" : "en");
+   country === "JP" ? "ja" :
+   country === "ES" ? "es" : "en");
 
 
 const PL_COUNTRY_NAMES = {FI:"Finlandia",SE:"Szwecja",NO:"Norwegia",DK:"Dania",DE:"Niemcy",NL:"Holandia",BE:"Belgia",AT:"Austria",FR:"Francja",PL:"Polska",CZ:"Czechy",HU:"Węgry",ES:"Hiszpania",PT:"Portugalia",IT:"Włochy",GR:"Grecja",EE:"Estonia",LV:"Łotwa",LT:"Litwa",IE:"Irlandia",GB:"Wielka Brytania",CH:"Szwajcaria",HR:"Chorwacja",BG:"Bułgaria",SI:"Słowenia",SK:"Słowacja",RO:"Rumunia",RS:"Serbia",BA:"Bośnia i Hercegowina",ME:"Czarnogóra",MK:"Macedonia Północna",US:"Stany Zjednoczone",CA:"Kanada",MX:"Meksyk",AU:"Australia",NZ:"Nowa Zelandia",JP:"Japonia",KR:"Korea Południowa",ZA:"Republika Południowej Afryki",PH:"Filipiny"};
@@ -825,12 +896,14 @@ const EL_ZONE_NAMES = {GR:"Ελλάδα","IT-NO":"Βόρεια Ιταλία","IT
 const IT_ZONE_NAMES = {GR:"Grecia","IT-NO":"Italia Nord","IT-CNO":"Italia Centro-Nord","IT-CSO":"Italia Centro-Sud","IT-SO":"Italia Sud","IT-SAR":"Sardegna","IT-SIC":"Sicilia"};
 const JA_COUNTRY_NAMES = {FI:"フィンランド",SE:"スウェーデン",NO:"ノルウェー",DK:"デンマーク",DE:"ドイツ",NL:"オランダ",BE:"ベルギー",AT:"オーストリア",FR:"フランス",PL:"ポーランド",CZ:"チェコ",HU:"ハンガリー",ES:"スペイン",PT:"ポルトガル",IT:"イタリア",GR:"ギリシャ",EE:"エストニア",LV:"ラトビア",LT:"リトアニア",IE:"アイルランド",GB:"イギリス",CH:"スイス",HR:"クロアチア",BG:"ブルガリア",SI:"スロベニア",SK:"スロバキア",RO:"ルーマニア",RS:"セルビア",BA:"ボスニア・ヘルツェゴビナ",ME:"モンテネグロ",MK:"北マケドニア",US:"アメリカ合衆国",CA:"カナダ",MX:"メキシコ",AU:"オーストラリア",NZ:"ニュージーランド",JP:"日本",KR:"韓国",ZA:"南アフリカ",PH:"フィリピン"};
 const JA_ZONE_NAMES = {"JP-HKD":"北海道","JP-THK":"東北","JP-TKY":"東京","JP-CBU":"中部","JP-HKR":"北陸","JP-KNS":"関西","JP-CGK":"中国","JP-SKK":"四国","JP-KYS":"九州"};
+const ES_COUNTRY_NAMES = {FI:"Finlandia",SE:"Suecia",NO:"Noruega",DK:"Dinamarca",DE:"Alemania",NL:"Países Bajos",BE:"Bélgica",AT:"Austria",FR:"Francia",PL:"Polonia",CZ:"Chequia",HU:"Hungría",ES:"España",PT:"Portugal",IT:"Italia",GR:"Grecia",EE:"Estonia",LV:"Letonia",LT:"Lituania",IE:"Irlanda",GB:"Reino Unido",CH:"Suiza",HR:"Croacia",BG:"Bulgaria",SI:"Eslovenia",SK:"Eslovaquia",RO:"Rumanía",RS:"Serbia",BA:"Bosnia y Herzegovina",ME:"Montenegro",MK:"Macedonia del Norte",US:"Estados Unidos",CA:"Canadá",MX:"México",AU:"Australia",NZ:"Nueva Zelanda",JP:"Japón",KR:"Corea del Sur",ZA:"Sudáfrica",PH:"Filipinas"};
 
 function localizedCountryName(code, fallback) {
   if (lang === "pl") return PL_COUNTRY_NAMES[code] || fallback;
   if (lang === "el") return EL_COUNTRY_NAMES[code] || fallback;
   if (lang === "it") return IT_COUNTRY_NAMES[code] || fallback;
   if (lang === "ja") return JA_COUNTRY_NAMES[code] || fallback;
+  if (lang === "es") return ES_COUNTRY_NAMES[code] || fallback;
   return fallback;
 }
 
@@ -839,6 +912,7 @@ function localizedZoneName(code, fallback) {
   if (lang === "el") return EL_ZONE_NAMES[code] || EL_COUNTRY_NAMES[countryForZone(code)] || fallback;
   if (lang === "it") return IT_ZONE_NAMES[code] || IT_COUNTRY_NAMES[countryForZone(code)] || fallback;
   if (lang === "ja") return JA_ZONE_NAMES[code] || JA_COUNTRY_NAMES[countryForZone(code)] || fallback;
+  if (lang === "es") return ES_COUNTRY_NAMES[countryForZone(code)] || fallback;
   return fallback;
 }
 
@@ -910,7 +984,7 @@ function fmtMoney(value,currency) {
 function fmtHour(iso,tz) {
   if (!iso) return "—";
   try {
-    const locale = lang === "pl" ? "pl-PL" : lang === "el" ? "el-GR" : lang === "it" ? "it-IT" : lang === "ja" ? "ja-JP" : "en-GB";
+    const locale = lang === "pl" ? "pl-PL" : lang === "el" ? "el-GR" : lang === "it" ? "it-IT" : lang === "ja" ? "ja-JP" : lang === "es" ? "es-ES" : "en-GB";
     return new Date(iso).toLocaleTimeString(locale, { hour:"2-digit", minute:"2-digit", timeZone:tz });
   } catch { return iso; }
 }
@@ -1197,6 +1271,7 @@ const FEATURED = [
   { slug: "greece", key: "market_greece" },
   { slug: "italy", key: "market_italy" },
   { slug: "japan", key: "market_japan" },
+  { slug: "spain", key: "market_spain" },
 ];
 document.getElementById("seoLinks").innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
@@ -1215,6 +1290,8 @@ if (sourceLinks) {
       ? `Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`
     : lang === "ja"
       ? '電力市場のリアルタイムデータ: <a href="https://elecz.com/ja/">Elecz</a>。電力価格APIをお探しですか？ <a href="https://botcentrum.com/">BotCentrumを見る</a>。'
+    : lang === "es"
+      ? 'Datos del mercado eléctrico en directo: <a href="https://elecz.com/es/">Elecz</a>. ¿Buscas APIs de precio de electricidad? <a href="https://botcentrum.com/">Ver BotCentrum</a>.'
     : 'Live electricity market data: <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.';
 }
 
