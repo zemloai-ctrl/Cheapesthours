@@ -322,7 +322,7 @@ const STRINGS = {
     sourceLine: 'Live electricity market data by <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.',
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
-    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan",
+    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan", market_spain: "Spain",
   },
   pl: {
     stepLabel: "Krok 2 z 3",
@@ -360,7 +360,7 @@ const STRINGS = {
     sourceLine: 'Aktualne dane rynku energii dostarcza <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.',
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
-    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia",
+    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia", market_spain: "Hiszpania",
   },
   el: {
     stepLabel: "Βήμα 2 από 3",
@@ -398,7 +398,7 @@ const STRINGS = {
     sourceLine: 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας από το <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.',
     market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
     market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
-    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία",
+    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία", market_spain: "Ισπανία",
   },
   it: {
     stepLabel: "Passaggio 2 di 3",
@@ -436,7 +436,7 @@ const STRINGS = {
     sourceLine: `Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`,
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
-    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone", market_spain: "Spagna",
   },
   ja: {
     stepLabel: "ステップ 2/3",
@@ -474,7 +474,45 @@ const STRINGS = {
     sourceLine: '電力市場のリアルタイムデータは <a href="https://elecz.com/ja/">Elecz</a> 提供。電力価格APIをお探しですか？ <a href="https://botcentrum.com/">BotCentrumを見る</a>。',
     market_ireland: "アイルランド", market_california: "カリフォルニア",
     market_uk: "イギリス", market_poland: "ポーランド",
-    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本",
+    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本", market_spain: "スペイン",
+  },
+  es: {
+    stepLabel: "Paso 2 de 3",
+    h1: "¿Qué quieres usar?",
+    lead: "Con unos pocos datos podemos comparar usar electricidad ahora con esperar a una franja más barata.",
+    yourMarket: "🌍 Tu mercado",
+    changeCountry: "Cambiar país",
+    zoneLabel: "Área / zona de mercado",
+    zoneHint: "Algunos países tienen varias zonas de mercado eléctrico.",
+    deviceLabel: "¿Qué quieres usar?",
+    device_ev: "🚗 Cargar un coche eléctrico",
+    device_dishwasher: "🍽️ Poner el lavavajillas",
+    device_washer: "👕 Hacer la colada",
+    device_dryer: "🌪️ Usar la secadora",
+    device_water_heater: "🚿 Calentar agua",
+    device_heat_pump: "🏠 Usar una bomba de calor",
+    device_custom: "⚙️ Otra cosa / carga personalizada",
+    kwhLabel: "Consumo de energía (kWh)",
+    durationLabel: "Puede esperar hasta",
+    duration_2: "2 horas", duration_4: "4 horas", duration_6: "6 horas",
+    duration_8: "8 horas", duration_12: "12 horas", duration_24: "24 horas",
+    hint_ev: "Ejemplo típico de EV: unos 40 kWh. Cámbialo si conoces tu consumo real.",
+    hint_dishwasher: "Un ciclo de lavavajillas suele consumir entre 1 y 1,5 kWh.",
+    hint_washer: "Un ciclo de lavadora suele consumir entre 0,5 y 1,5 kWh.",
+    hint_dryer: "Un ciclo de secadora suele consumir entre 2 y 4 kWh.",
+    hint_water_heater: "Solo es un ejemplo. Introduce el consumo real de tu calentador si lo conoces.",
+    hint_heat_pump: "El consumo de una bomba de calor varía mucho. Cambia esta estimación si conoces tu consumo.",
+    hint_custom: "Introduce el total de kWh arriba, o usa potencia × tiempo de funcionamiento abajo.",
+    powerLabel: "Potencia (kW)",
+    runtimeLabel: "Tiempo de funcionamiento (horas)",
+    customHint: "Para bombas, servidores, cargas industriales o cualquier cosa medida en kW × horas.",
+    checkBtn: "Encontrar mis horas más baratas →",
+    ad: "Publicidad",
+    note: "CheapestHours utiliza datos del mercado eléctrico para comparar el precio actual con las próximas horas. Los precios mayoristas no son lo mismo que tu factura final de electricidad.",
+    sourceLine: 'Datos del mercado eléctrico en directo por <a href="https://elecz.com/es/">Elecz</a>. ¿Buscas APIs de precio de electricidad? <a href="https://botcentrum.com/">Ver BotCentrum</a>.',
+    market_ireland: "Irlanda", market_california: "California",
+    market_uk: "Reino Unido", market_poland: "Polonia",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón", market_spain: "España",
   }
 };
 
@@ -639,6 +677,17 @@ const MARKET_NAMES_JA = {
   NZ:"ニュージーランド", JP:"日本", KR:"韓国", ZA:"南アフリカ", PH:"フィリピン"
 };
 
+const MARKET_NAMES_ES = {
+  FI:"Finlandia", SE:"Suecia", NO:"Noruega", DK:"Dinamarca", DE:"Alemania", NL:"Países Bajos",
+  BE:"Bélgica", AT:"Austria", FR:"Francia", PL:"Polonia", CZ:"Chequia", HU:"Hungría",
+  ES:"España", PT:"Portugal", IT:"Italia", GR:"Grecia", EE:"Estonia", LV:"Letonia",
+  LT:"Lituania", IE:"Irlanda", GB:"Reino Unido", CH:"Suiza", HR:"Croacia",
+  BG:"Bulgaria", SI:"Eslovenia", SK:"Eslovaquia", RO:"Rumanía", RS:"Serbia",
+  BA:"Bosnia y Herzegovina", ME:"Montenegro", MK:"Macedonia del Norte",
+  US:"Estados Unidos", CA:"Canadá", MX:"México", AU:"Australia",
+  NZ:"Nueva Zelanda", JP:"Japón", KR:"Corea del Sur", ZA:"Sudáfrica", PH:"Filipinas"
+};
+
 const ZONE_NAMES_JA = {
   "JP-HKD":"北海道", "JP-THK":"東北", "JP-TKY":"東京", "JP-CBU":"中部",
   "JP-HKR":"北陸", "JP-KNS":"関西", "JP-CGK":"中国", "JP-SKK":"四国", "JP-KYS":"九州"
@@ -649,6 +698,7 @@ function marketName(code, fallback){
   if (lang === "el") return MARKET_NAMES_EL[code] || fallback;
   if (lang === "it") return MARKET_NAMES_IT[code] || fallback;
   if (lang === "ja") return MARKET_NAMES_JA[code] || fallback;
+  if (lang === "es") return MARKET_NAMES_ES[code] || fallback;
   return fallback;
 }
 
@@ -657,6 +707,7 @@ function zoneName(value, fallback){
   if (lang === "el") return ZONE_NAMES_EL[value] || fallback;
   if (lang === "it") return ZONE_NAMES_IT[value] || fallback;
   if (lang === "ja") return ZONE_NAMES_JA[value] || fallback;
+  if (lang === "es" && value === "ES") return "España";
   return fallback;
 }
 
@@ -675,7 +726,8 @@ const lang = qs.get("lang") ||
   (countryCode === "PL" ? "pl" :
    countryCode === "GR" ? "el" :
    countryCode === "IT" ? "it" :
-   countryCode === "JP" ? "ja" : "en");
+   countryCode === "JP" ? "ja" :
+   countryCode === "ES" ? "es" : "en");
 const meta = COUNTRY_META[countryCode] || COUNTRY_META.FI;
 
 function withLang(paramsObj) {
@@ -808,6 +860,7 @@ const FEATURED = [
   { slug: "greece", key: "market_greece" },
   { slug: "italy", key: "market_italy" },
   { slug: "japan", key: "market_japan" },
+  { slug: "spain", key: "market_spain" },
 ];
 els.seoLinks.innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
