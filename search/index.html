@@ -322,7 +322,7 @@ const STRINGS = {
     sourceLine: 'Live electricity market data by <a href="https://elecz.com/">Elecz</a>. Comparing electricity price APIs? <a href="https://botcentrum.com/">See BotCentrum</a>.',
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
-    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan", market_spain: "Spain",
+    market_greece: "Greece", market_italy: "Italy", market_japan: "Japan", market_spain: "Spain", market_new_york: "New York",
   },
   pl: {
     stepLabel: "Krok 2 z 3",
@@ -360,7 +360,7 @@ const STRINGS = {
     sourceLine: 'Aktualne dane rynku energii dostarcza <a href="https://elecz.com/">Elecz</a>. Porównujesz API cen energii? <a href="https://botcentrum.com/">Zobacz BotCentrum</a>.',
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
-    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia", market_spain: "Hiszpania",
+    market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia", market_spain: "Hiszpania", market_new_york: "Nowy Jork",
   },
   el: {
     stepLabel: "Βήμα 2 από 3",
@@ -398,7 +398,7 @@ const STRINGS = {
     sourceLine: 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας από το <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.',
     market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
     market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
-    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία", market_spain: "Ισπανία",
+    market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία", market_spain: "Ισπανία", market_new_york: "Νέα Υόρκη",
   },
   it: {
     stepLabel: "Passaggio 2 di 3",
@@ -436,7 +436,7 @@ const STRINGS = {
     sourceLine: `Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`,
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
-    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone", market_spain: "Spagna",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone", market_spain: "Spagna", market_new_york: "New York",
   },
   ja: {
     stepLabel: "ステップ 2/3",
@@ -474,7 +474,7 @@ const STRINGS = {
     sourceLine: '電力市場のリアルタイムデータは <a href="https://elecz.com/ja/">Elecz</a> 提供。電力価格APIをお探しですか？ <a href="https://botcentrum.com/">BotCentrumを見る</a>。',
     market_ireland: "アイルランド", market_california: "カリフォルニア",
     market_uk: "イギリス", market_poland: "ポーランド",
-    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本", market_spain: "スペイン",
+    market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本", market_spain: "スペイン", market_new_york: "ニューヨーク",
   },
   es: {
     stepLabel: "Paso 2 de 3",
@@ -512,7 +512,7 @@ const STRINGS = {
     sourceLine: 'Datos del mercado eléctrico en directo por <a href="https://elecz.com/es/">Elecz</a>. ¿Buscas APIs de precio de electricidad? <a href="https://botcentrum.com/">Ver BotCentrum</a>.',
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Reino Unido", market_poland: "Polonia",
-    market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón", market_spain: "España",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón", market_spain: "España", market_new_york: "Nueva York",
   }
 };
 
@@ -861,6 +861,7 @@ const FEATURED = [
   { slug: "italy", key: "market_italy" },
   { slug: "japan", key: "market_japan" },
   { slug: "spain", key: "market_spain" },
+  { slug: "new-york", key: "market_new_york" },
 ];
 els.seoLinks.innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
