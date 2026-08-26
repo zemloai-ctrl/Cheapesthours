@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Électricité moins chère en Belgique aujourd'hui | CheapestHours</title>
+
+  <meta name="description" content="Prix de gros de l'électricité en Belgique en direct et les heures les moins chères aujourd'hui. Données en temps réel du marché belge (ELIA).">
+
+  <link rel="canonical" href="https://cheapesthours.com/belgium/">
+
+  <meta property="og:title" content="Électricité moins chère en Belgique aujourd'hui | CheapestHours">
+  <meta property="og:description" content="Prix de gros de l'électricité en Belgique en direct et les heures les moins chères aujourd'hui. Données en temps réel du marché belge (ELIA).">
+  <meta property="og:url" content="https://cheapesthours.com/belgium/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cheapesthours.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta name="theme-color" content="#17213B">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
+     crossorigin="anonymous"></script>
+
+  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Pourquoi le prix de l'électricité en Belgique ressemble-t-il souvent à celui de la France ou des Pays-Bas ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Belgique est fortement interconnectée avec la France, les Pays-Bas et l'Allemagne via des lignes à haute tension. Quand ces marchés voisins sont suffisamment couplés, les prix belges suivent de près les mouvements de prix chez ses voisins, surtout lors de fortes variations de production solaire ou éolienne dans la région."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quand l'électricité est-elle la moins chère en Belgique ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les prix sont généralement les plus bas la nuit et lors des périodes de forte production éolienne en mer du Nord ou solaire en milieu de journée. Comme dans les pays voisins, des prix négatifs peuvent occasionnellement apparaître lors de week-ends ensoleillés ou venteux à faible demande."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ce prix est-il le même que celui de ma facture d'électricité ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Le prix affiché ici est le prix de gros du marché day-ahead (EPEX Spot Belgique, opéré via ELIA). Votre facture inclut en plus les coûts de réseau, les taxes régionales et fédérales, les redevances, et la marge de votre fournisseur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quel rôle joue le nucléaire dans le prix de l'électricité belge ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le nucléaire représente historiquement une part importante et stable de la production belge, ce qui contribue à modérer les prix par rapport à des marchés davantage dépendants du gaz. Les décisions concernant la prolongation ou l'arrêt des réacteurs nucléaires belges influencent directement les perspectives de prix à moyen terme."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --navy:#17213B;
+      --deep:#0D1526;
+      --gold:#D4A24C;
+      --cream:#F5ECDC;
+      --ink:#1B2A4A;
+      --soft:rgba(27,42,74,.64);
+      --green:#3F8F6B;
+      --orange:#B9862E;
+      --red:#C85F54
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:"Inter",sans-serif;
+      color:var(--cream);
+      background:radial-gradient(
+        ellipse at 50% -10%,
+        #2a3c69 0%,
+        var(--navy) 43%,
+        var(--deep) 100%
+      )
+    }
+
+    main{
+      width:min(100% - 36px,440px);
+      margin:auto;
+      padding:36px 0 50px
+    }
+
+    .brand{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:21px;
+      font-weight:650;
+      text-decoration:none
+    }
+
+    h1{
+      font-family:"Fraunces",serif;
+      font-size:28px;
+      line-height:1.15;
+      margin:24px 0 8px;
+      text-align:center
+    }
+
+    .intro{
+      text-align:center;
+      color:rgba(245,236,220,.66);
+      font-size:13px;
+      line-height:1.55;
+      margin:0 0 22px
+    }
+
+    .card{
+      background:var(--cream);
+      color:var(--ink);
+      border-radius:21px;
+      padding:23px 21px;
+      box-shadow:0 22px 65px rgba(0,0,0,.34)
+    }
+
+    .flag{
+      text-align:center;
+      font-size:39px
+    }
+
+    .updated{
+      text-align:center;
+      color:var(--soft);
+      font-size:10.5px;
+      margin-top:3px
+    }
+
+    .hero{
+      text-align:center;
+      padding:17px 0 12px
+    }
+
+    .price{
+      font-size:31px;
+      font-weight:800
+    }
+
+    .state{
+      display:inline-block;
+      margin-top:7px;
+      padding:5px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700
+    }
+
+    .good{
+      color:var(--green);
+      background:rgba(63,143,107,.1)
+    }
+
+    .mid{
+      color:var(--orange);
+      background:rgba(185,134,46,.1)
+    }
+
+    .bad{
+      color:var(--red);
+      background:rgba(200,95,84,.1)
+    }
+
+    h2{
+      font-family:"Fraunces",serif;
+      font-size:18px;
+      margin:18px 0 8px
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px
+    }
+
+    th{
+      text-align:left;
+      color:var(--soft);
+      font-size:9.5px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      padding:6px 4px
+    }
+
+    td{
+      padding:8px 4px;
+      border-top:1px solid rgba(27,42,74,.08)
+    }
+
+    td:last-child,
+    th:last-child{
+      text-align:right;
+      font-weight:700
+    }
+
+    .check{
+      display:block;
+      margin-top:16px;
+      padding:14px;
+      border-radius:12px;
+      text-align:center;
+      text-decoration:none;
+      background:linear-gradient(135deg,var(--gold),#C08A38);
+      color:var(--ink);
+      font-family:"Fraunces",serif;
+      font-weight:700
+    }
+
+    .ad{
+      min-height:74px;
+      margin:21px 0;
+      display:grid;
+      place-items:center;
+      border:1px dashed rgba(245,236,220,.18);
+      border-radius:12px;
+      color:rgba(245,236,220,.3);
+      font-size:10px;
+      text-transform:uppercase
+    }
+
+    .copy{
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
+    .copy h2{
+      color:var(--gold);
+      font-size:20px
+    }
+
+    .faq{
+      margin-top:26px
+    }
+
+    .faq h2{
+      color:var(--gold);
+      font-size:20px;
+      text-align:center;
+      margin:0 0 14px
+    }
+
+    .faq-item{
+      border-top:1px solid rgba(245,236,220,.13);
+      padding:14px 0
+    }
+
+    .faq-item:last-child{
+      border-bottom:1px solid rgba(245,236,220,.13)
+    }
+
+    .faq-item h3{
+      font-family:"Fraunces",serif;
+      color:var(--cream);
+      font-size:14px;
+      margin:0 0 6px;
+      font-weight:600
+    }
+
+    .faq-item p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
+    .links{
+      display:grid;
+      gap:9px;
+      margin-top:20px
+    }
+
+    .links a{
+      color:var(--cream);
+      text-decoration:none;
+      border:1px solid rgba(245,236,220,.13);
+      background:rgba(245,236,220,.05);
+      border-radius:12px;
+      padding:12px 14px;
+      font-size:12px
+    }
+
+    .country-links-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:18px;
+      margin:25px 0 9px;
+      text-align:center
+    }
+
+    .country-links{
+      display:grid;
+      gap:8px
+    }
+
+    .country-links a{
+      color:var(--cream);
+      text-decoration:none;
+      border:1px solid rgba(245,236,220,.13);
+      background:rgba(245,236,220,.045);
+      border-radius:12px;
+      padding:11px 14px;
+      font-size:11.5px
+    }
+
+    .fine{
+      margin-top:22px;
+      text-align:center;
+      color:rgba(245,236,220,.4);
+      font-size:10px;
+      line-height:1.5
+    }
+
+    .loading,
+    .error{
+      text-align:center;
+      padding:35px 0;
+      color:var(--soft);
+      font-size:12px
+    }
+  </style>
+</head>
+
+<body>
+
+<main>
+
+  <a class="brand" href="/">⚡ CheapestHours</a>
+
+  <h1>🇧🇪 Quand l'électricité est-elle la moins chère aujourd'hui ?</h1>
+
+  <p class="intro">
+    Consultez le prix de gros de l'électricité en Belgique en direct et les
+    heures les moins chères aujourd'hui.
+  </p>
+
+  <div class="card" id="live">
+    <div class="loading">Chargement des données du marché belge…</div>
+  </div>
+
+  <div class="ad">Publicité</div>
+
+  <section class="copy">
+
+    <h2>Quand l'électricité est-elle la moins chère en Belgique ?</h2>
+
+    <p>
+      Le prix de gros de l'électricité en Belgique est fixé sur le
+      marché day-ahead d'EPEX Spot et géré par le gestionnaire de
+      réseau ELIA. Le marché belge est étroitement interconnecté avec
+      ceux de la France, des Pays-Bas et de l'Allemagne, ce qui
+      signifie que les prix belges suivent souvent de près les
+      variations de prix observées chez ses voisins.
+    </p>
+
+    <p>
+      Le mix électrique belge combine une part historiquement
+      importante de nucléaire — qui apporte une production stable —
+      avec une part croissante d'éolien offshore en mer du Nord et de
+      solaire. Les prix ont tendance à baisser lors de fortes
+      productions éoliennes ou solaires couplées à une faible demande,
+      et à augmenter en soirée ou lors de périodes de froid intense,
+      lorsque le chauffage électrique fait grimper la consommation.
+    </p>
+
+    <p>
+      Le prix affiché ici est un prix de gros. Votre facture
+      d'électricité inclut en plus les coûts de réseau, les taxes
+      régionales et fédérales, les redevances, et la marge de votre
+      fournisseur.
+    </p>
+
+  </section>
+
+  <section class="faq">
+    <h2>Questions fréquentes</h2>
+
+    <div class="faq-item">
+      <h3>Pourquoi le prix de l'électricité en Belgique ressemble-t-il souvent à celui de la France ou des Pays-Bas ?</h3>
+      <p>
+        La Belgique est fortement interconnectée avec la France, les
+        Pays-Bas et l'Allemagne via des lignes à haute tension. Quand
+        ces marchés voisins sont suffisamment couplés, les prix
+        belges suivent de près les mouvements de prix chez ses
+        voisins, surtout lors de fortes variations de production
+        solaire ou éolienne dans la région.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Quand l'électricité est-elle la moins chère en Belgique ?</h3>
+      <p>
+        Les prix sont généralement les plus bas la nuit et lors des
+        périodes de forte production éolienne en mer du Nord ou
+        solaire en milieu de journée. Comme dans les pays voisins,
+        des prix négatifs peuvent occasionnellement apparaître lors
+        de week-ends ensoleillés ou venteux à faible demande.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Ce prix est-il le même que celui de ma facture d'électricité ?</h3>
+      <p>
+        Non. Le prix affiché ici est le prix de gros du marché
+        day-ahead (EPEX Spot Belgique, opéré via ELIA). Votre facture
+        inclut en plus les coûts de réseau, les taxes régionales et
+        fédérales, les redevances, et la marge de votre fournisseur.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Quel rôle joue le nucléaire dans le prix de l'électricité belge ?</h3>
+      <p>
+        Le nucléaire représente historiquement une part importante et
+        stable de la production belge, ce qui contribue à modérer les
+        prix par rapport à des marchés davantage dépendants du gaz.
+        Les décisions concernant la prolongation ou l'arrêt des
+        réacteurs nucléaires belges influencent directement les
+        perspectives de prix à moyen terme.
+      </p>
+    </div>
+  </section>
+
+  <div class="links">
+
+    <a href="/search/?country=BE&device=ev">
+      🚗 Trouver le meilleur moment pour recharger →
+    </a>
+
+    <a href="/search/?country=BE&device=dishwasher">
+      🍽️ Dois-je lancer le lave-vaisselle maintenant ? →
+    </a>
+
+    <a href="/">
+      🌍 Consulter les prix dans un autre pays →
+    </a>
+
+  </div>
+
+  <h2 class="country-links-title">Découvrir d'autres marchés</h2>
+
+  <nav class="country-links" aria-label="Autres marchés de l'électricité">
+
+    <a href="/ireland/">
+      🇮🇪 Heures les moins chères en Irlande →
+    </a>
+
+    <a href="/california/">
+      🇺🇸 Heures les moins chères en Californie →
+    </a>
+
+    <a href="/texas/">
+      🇺🇸 Heures les moins chères au Texas →
+    </a>
+
+    <a href="/new-york/">
+      🗽 Heures les moins chères à New York →
+    </a>
+
+    <a href="/united-kingdom/">
+      🇬🇧 Heures les moins chères au Royaume-Uni →
+    </a>
+
+    <a href="/germany/">
+      🇩🇪 Heures les moins chères en Allemagne →
+    </a>
+
+    <a href="/france/">
+      🇫🇷 Heures les moins chères en France →
+    </a>
+
+    <a href="/netherlands/">
+      🇳🇱 Heures les moins chères aux Pays-Bas →
+    </a>
+
+    <a href="/austria/">
+      🇦🇹 Heures les moins chères en Autriche →
+    </a>
+
+    <a href="/finland/">
+      🇫🇮 Heures les moins chères en Finlande →
+    </a>
+
+    <a href="/poland/">
+      🇵🇱 Heures les moins chères en Pologne →
+    </a>
+
+    <a href="/greece/">
+      🇬🇷 Heures les moins chères en Grèce →
+    </a>
+
+    <a href="/italy/">
+      🇮🇹 Heures les moins chères en Italie →
+    </a>
+
+    <a href="/spain/">
+      🇪🇸 Heures les moins chères en Espagne →
+    </a>
+
+    <a href="/japan/">
+      🇯🇵 Heures les moins chères au Japon →
+    </a>
+
+    <a href="/ontario/">
+      🇨🇦 Heures les moins chères en Ontario →
+    </a>
+
+  </nav>
+
+  <p class="fine">
+    Données de marché en direct fournies par <a href="https://elecz.com/">Elecz</a>.
+    CheapestHours est un outil indépendant pour choisir le meilleur moment pour consommer de l'électricité.
+    <a href="/privacy/">Confidentialité</a> · <a href="/contact/">Contact</a>
+  </p>
+
+</main>
+
+<script>
+
+async function getJSON(url){
+  const r = await fetch(url);
+
+  if(!r.ok){
+    throw new Error("HTTP " + r.status);
+  }
+
+  return r.json();
+}
+
+function fmt(price,unit,currency){
+
+  if(/^[cp]\/[a-z]+/i.test(unit||"")){
+    return Number(price).toFixed(2) + " " + unit;
+  }
+
+  const s = {
+    EUR:"€",
+    GBP:"£",
+    USD:"$",
+    JPY:"¥",
+    PLN:"zł"
+  }[currency] || currency + " ";
+
+  return s + Number(price).toFixed(2) + "/kWh";
+}
+
+function hour(iso){
+
+  try{
+
+    return new Date(iso).toLocaleTimeString(
+      "fr-BE",
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        timeZone:"Europe/Brussels"
+      }
+    );
+
+  }catch{
+
+    return iso;
+
+  }
+}
+
+(async()=>{
+
+  const el = document.getElementById("live");
+
+  try{
+
+    const [spot,cheap] = await Promise.all([
+
+      getJSON(
+        "https://elecz.com/signal/spot?zone=BE"
+      ),
+
+      getJSON(
+        "https://elecz.com/signal/cheapest-hours?zone=BE&hours=12"
+      )
+
+    ]);
+
+    const sig = cheap.current_hour_signal;
+
+    const cls =
+      sig === "low"
+        ? "good"
+        : sig === "high"
+          ? "bad"
+          : "mid";
+
+    const label =
+      cls === "good"
+        ? "🟢 Prix bas"
+        : cls === "bad"
+          ? "🔴 Prix élevé"
+          : "🟡 Prix normal";
+
+    const pts = (cheap.cheapest_hours || [])
+      .slice()
+      .sort((a,b)=>a.price-b.price)
+      .slice(0,6)
+      .sort((a,b)=>new Date(a.hour)-new Date(b.hour));
+
+    const rows = pts
+      .map(
+        p => `
+          <tr>
+            <td>${hour(p.hour)}</td>
+            <td>${fmt(p.price,spot.unit,spot.currency)}</td>
+          </tr>
+        `
+      )
+      .join("");
+
+    el.innerHTML = `
+
+      <div class="flag">🇧🇪</div>
+
+      <div class="updated">
+        Mis à jour à ${hour(spot.timestamp)}
+      </div>
+
+      <div class="hero">
+
+        <div class="price">
+          ${fmt(spot.price,spot.unit,spot.currency)}
+        </div>
+
+        <div style="margin-top:4px;font-size:10.5px;color:var(--soft)">
+          Prix de gros — différent de votre facture.
+        </div>
+
+        <div class="state ${cls}">
+          ${label}
+        </div>
+
+      </div>
+
+      <h2>Heures les moins chères</h2>
+
+      ${
+        rows
+          ? `
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Heure</th>
+                  <th>Prix</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                ${rows}
+              </tbody>
+
+            </table>
+          `
+          : `
+            <p style="font-size:12px;color:var(--soft)">
+              Aucune donnée de prix à venir n'est disponible pour le moment.
+            </p>
+          `
+      }
+
+      <a class="check" href="/search/?country=BE">
+        Vérifier ma consommation →
+      </a>
+
+    `;
+
+  }catch(e){
+
+    el.innerHTML = `
+      <div class="error">
+        Les données du marché belge sont temporairement indisponibles.
+      </div>
+    `;
+
+  }
+
+})();
+
+</script>
+
+</body>
+</html>
