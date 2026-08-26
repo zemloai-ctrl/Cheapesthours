@@ -220,32 +220,62 @@
       color: rgba(245,236,220,.62);
       font-size: 12.5px;
       line-height: 1.65;
+      text-align: center;
     }
 
     .intro strong { color: rgba(245,236,220,.88); }
 
-    .featured-link {
-      display: block;
-      margin: 14px auto 0;
-      padding: 12px 16px;
-      max-width: 390px;
-      border: 1px solid rgba(245,236,220,.14);
+    /* --- Country grid --- */
+
+    .region {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .region-title {
+      font-family: "Fraunces", serif;
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 650;
+      margin: 0 0 10px 2px;
+      letter-spacing: .01em;
+    }
+
+    .region-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .country-tile {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 12px;
+      border: 1px solid rgba(245,236,220,.13);
       border-radius: 12px;
-      background: rgba(245,236,220,.055);
+      background: rgba(245,236,220,.045);
       color: var(--cream);
       text-decoration: none;
       font-size: 12.5px;
       font-weight: 500;
-      transition: border-color .2s, background .2s;
+      line-height: 1.25;
+      transition: border-color .2s, background .2s, transform .15s;
     }
 
-    .featured-link:hover {
+    .country-tile:hover {
       border-color: rgba(212,162,76,.65);
       background: rgba(245,236,220,.09);
+      transform: translateY(-1px);
+    }
+
+    .country-tile .tile-flag {
+      font-size: 20px;
+      flex-shrink: 0;
     }
 
     footer {
-      margin-top: 28px;
+      margin-top: 34px;
       color: rgba(245,236,220,.36);
       font-size: 10.5px;
       line-height: 1.5;
@@ -343,15 +373,44 @@
       electricity use against current and upcoming market prices.
     </p>
 
-    <a class="featured-link" href="/ireland/">🇮🇪 See today's cheapest electricity hours in Ireland →</a>
-    <a class="featured-link" href="/california/">🇺🇸 See today's cheapest electricity hours in California →</a>
-    <a class="featured-link" href="/united-kingdom/">🇬🇧 See today's cheapest electricity hours in the United Kingdom →</a>
-    <a class="featured-link" href="/poland/">🇵🇱 See today's cheapest electricity hours in Poland →</a>
-    <a class="featured-link" href="/greece/">🇬🇷 See today's cheapest electricity hours in Greece →</a>
-    <a class="featured-link" href="/italy/">🇮🇹 See today's cheapest electricity hours in Italy →</a>
-    <a class="featured-link" href="/japan/">🇯🇵 See today's cheapest electricity hours in Japan →</a>
-    <a class="featured-link" href="/spain/">🇪🇸 See today's cheapest electricity hours in Spain →</a>
-    <a class="featured-link" href="/new-york/">🗽 See today's cheapest electricity hours in New York →</a>
+    <nav aria-label="Browse by country">
+
+      <div class="region">
+        <div class="region-title">Europe</div>
+        <div class="region-grid">
+          <a class="country-tile" href="/ireland/"><span class="tile-flag">🇮🇪</span>Ireland</a>
+          <a class="country-tile" href="/united-kingdom/"><span class="tile-flag">🇬🇧</span>United Kingdom</a>
+          <a class="country-tile" href="/germany/"><span class="tile-flag">🇩🇪</span>Germany</a>
+          <a class="country-tile" href="/france/"><span class="tile-flag">🇫🇷</span>France</a>
+          <a class="country-tile" href="/netherlands/"><span class="tile-flag">🇳🇱</span>Netherlands</a>
+          <a class="country-tile" href="/belgium/"><span class="tile-flag">🇧🇪</span>Belgium</a>
+          <a class="country-tile" href="/austria/"><span class="tile-flag">🇦🇹</span>Austria</a>
+          <a class="country-tile" href="/finland/"><span class="tile-flag">🇫🇮</span>Finland</a>
+          <a class="country-tile" href="/poland/"><span class="tile-flag">🇵🇱</span>Poland</a>
+          <a class="country-tile" href="/italy/"><span class="tile-flag">🇮🇹</span>Italy</a>
+          <a class="country-tile" href="/spain/"><span class="tile-flag">🇪🇸</span>Spain</a>
+          <a class="country-tile" href="/greece/"><span class="tile-flag">🇬🇷</span>Greece</a>
+        </div>
+      </div>
+
+      <div class="region">
+        <div class="region-title">North America</div>
+        <div class="region-grid">
+          <a class="country-tile" href="/california/"><span class="tile-flag">🇺🇸</span>California</a>
+          <a class="country-tile" href="/texas/"><span class="tile-flag">🇺🇸</span>Texas</a>
+          <a class="country-tile" href="/new-york/"><span class="tile-flag">🗽</span>New York</a>
+          <a class="country-tile" href="/ontario/"><span class="tile-flag">🇨🇦</span>Ontario</a>
+        </div>
+      </div>
+
+      <div class="region">
+        <div class="region-title">Asia</div>
+        <div class="region-grid">
+          <a class="country-tile" href="/japan/"><span class="tile-flag">🇯🇵</span>Japan</a>
+        </div>
+      </div>
+
+    </nav>
 
     <footer>
       Electricity market data powered by
@@ -384,7 +443,13 @@
         selectedCountry === "GR" ? "el" :
         selectedCountry === "IT" ? "it" :
         selectedCountry === "JP" ? "ja" :
-        selectedCountry === "ES" ? "es" : "";
+        selectedCountry === "ES" ? "es" :
+        selectedCountry === "DE" ? "de" :
+        selectedCountry === "FR" ? "fr" :
+        selectedCountry === "NL" ? "nl" :
+        selectedCountry === "FI" ? "fi" :
+        selectedCountry === "AT" ? "de" :
+        selectedCountry === "BE" ? "fr" : "";
 
       const params = new URLSearchParams({ country: selectedCountry });
       if (lang) params.set("lang", lang);
