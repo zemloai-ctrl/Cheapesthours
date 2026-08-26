@@ -323,6 +323,9 @@ const STRINGS = {
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
     market_greece: "Greece", market_italy: "Italy", market_japan: "Japan", market_spain: "Spain", market_new_york: "New York",
+    market_germany: "Germany", market_france: "France", market_netherlands: "Netherlands",
+    market_belgium: "Belgium", market_austria: "Austria", market_finland: "Finland",
+    market_texas: "Texas", market_ontario: "Ontario",
   },
   pl: {
     stepLabel: "Krok 2 z 3",
@@ -361,6 +364,9 @@ const STRINGS = {
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
     market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia", market_spain: "Hiszpania", market_new_york: "Nowy Jork",
+    market_germany: "Niemcy", market_france: "Francja", market_netherlands: "Holandia",
+    market_belgium: "Belgia", market_austria: "Austria", market_finland: "Finlandia",
+    market_texas: "Teksas", market_ontario: "Ontario",
   },
   el: {
     stepLabel: "Βήμα 2 από 3",
@@ -399,6 +405,9 @@ const STRINGS = {
     market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
     market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
     market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία", market_spain: "Ισπανία", market_new_york: "Νέα Υόρκη",
+    market_germany: "Γερμανία", market_france: "Γαλλία", market_netherlands: "Ολλανδία",
+    market_belgium: "Βέλγιο", market_austria: "Αυστρία", market_finland: "Φινλανδία",
+    market_texas: "Τέξας", market_ontario: "Οντάριο",
   },
   it: {
     stepLabel: "Passaggio 2 di 3",
@@ -433,10 +442,13 @@ const STRINGS = {
     checkBtn: "Trova le ore più economiche →",
     ad: "Pubblicità",
     note: "CheapestHours usa i dati del mercato elettrico per confrontare il prezzo attuale con le ore successive. I prezzi all'ingrosso non corrispondono al prezzo finale della bolletta.",
-    sourceLine: `Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`,
+    sourceLine: `Dati aggiornati del mercato elettrico forniti da <a href="https://elecz.com/it/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`,
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
     market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone", market_spain: "Spagna", market_new_york: "New York",
+    market_germany: "Germania", market_france: "Francia", market_netherlands: "Paesi Bassi",
+    market_belgium: "Belgio", market_austria: "Austria", market_finland: "Finlandia",
+    market_texas: "Texas", market_ontario: "Ontario",
   },
   ja: {
     stepLabel: "ステップ 2/3",
@@ -475,6 +487,9 @@ const STRINGS = {
     market_ireland: "アイルランド", market_california: "カリフォルニア",
     market_uk: "イギリス", market_poland: "ポーランド",
     market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本", market_spain: "スペイン", market_new_york: "ニューヨーク",
+    market_germany: "ドイツ", market_france: "フランス", market_netherlands: "オランダ",
+    market_belgium: "ベルギー", market_austria: "オーストリア", market_finland: "フィンランド",
+    market_texas: "テキサス", market_ontario: "オンタリオ",
   },
   es: {
     stepLabel: "Paso 2 de 3",
@@ -513,6 +528,9 @@ const STRINGS = {
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Reino Unido", market_poland: "Polonia",
     market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón", market_spain: "España", market_new_york: "Nueva York",
+    market_germany: "Alemania", market_france: "Francia", market_netherlands: "Países Bajos",
+    market_belgium: "Bélgica", market_austria: "Austria", market_finland: "Finlandia",
+    market_texas: "Texas", market_ontario: "Ontario",
   }
 };
 
@@ -854,14 +872,22 @@ els.checkBtn.addEventListener("click", () => {
 
 const FEATURED = [
   { slug: "ireland", key: "market_ireland" },
-  { slug: "california", key: "market_california" },
   { slug: "united-kingdom", key: "market_uk" },
+  { slug: "germany", key: "market_germany" },
+  { slug: "france", key: "market_france" },
+  { slug: "netherlands", key: "market_netherlands" },
+  { slug: "belgium", key: "market_belgium" },
+  { slug: "austria", key: "market_austria" },
+  { slug: "finland", key: "market_finland" },
   { slug: "poland", key: "market_poland" },
-  { slug: "greece", key: "market_greece" },
   { slug: "italy", key: "market_italy" },
-  { slug: "japan", key: "market_japan" },
   { slug: "spain", key: "market_spain" },
+  { slug: "greece", key: "market_greece" },
+  { slug: "california", key: "market_california" },
+  { slug: "texas", key: "market_texas" },
   { slug: "new-york", key: "market_new_york" },
+  { slug: "ontario", key: "market_ontario" },
+  { slug: "japan", key: "market_japan" },
 ];
 els.seoLinks.innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
