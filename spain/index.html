@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Precio Luz Hoy — Horas Más Baratas en España | CheapestHours</title>
+  <title>Precio de la luz en España hoy | CheapestHours</title>
 
-  <meta name="description" content="Precio de la luz hoy en España, precio spot actual del mercado mayorista y las horas más baratas disponibles.">
+  <meta name="description" content="Precio mayorista de la electricidad en España en directo y las horas más baratas de hoy. Datos en tiempo real del mercado eléctrico español.">
 
   <link rel="canonical" href="https://cheapesthours.com/spain/">
 
-  <meta property="og:title" content="Precio Luz Hoy — Horas Más Baratas en España | CheapestHours">
-  <meta property="og:description" content="Precio de la luz hoy en España, precio spot actual del mercado mayorista y las horas más baratas disponibles.">
+  <meta property="og:title" content="Precio de la luz en España hoy | CheapestHours">
+  <meta property="og:description" content="Precio mayorista de la electricidad en España en directo y las horas más baratas de hoy. Datos en tiempo real del mercado eléctrico español.">
   <meta property="og:url" content="https://cheapesthours.com/spain/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cheapesthours.com/og-image.png">
@@ -29,6 +29,48 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
+
+  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Por qué España tiene tantas horas con precios de la electricidad negativos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La potencia solar instalada en España pasó de unos 9 GW en 2020 a más de 32 GW en 2025. En días muy soleados o ventosos con baja demanda, la producción renovable puede superar el consumo, empujando el precio mayorista por debajo de cero. En 2025 España superó las 500 horas con precios negativos, más del doble que en todo 2024."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuándo es más cara la electricidad en España?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los precios suelen subir al anochecer, cuando la producción solar desaparece pero la demanda sigue siendo alta, especialmente en las tardes de verano con mucho uso de aire acondicionado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es este el mismo precio que aparece en mi factura?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Aquí se muestra el precio mayorista del mercado diario (OMIE). Tu factura incluye además peajes de acceso, cargos regulados, impuestos y el margen de tu comercializadora. Si tienes la tarifa regulada PVPC, tu precio sigue de cerca este mercado, pero con estos costes añadidos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es la excepción ibérica en el precio de la electricidad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La excepción ibérica fue un mecanismo aprobado por la Unión Europea que permitió a España y Portugal limitar temporalmente el precio del gas usado para generar electricidad, con el objetivo de reducir el precio final de la luz durante la crisis energética. Es un ajuste regulatorio que puede afectar al precio mayorista mostrado en el mercado."
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -210,6 +252,41 @@
       font-size:20px
     }
 
+    .faq{
+      margin-top:26px
+    }
+
+    .faq h2{
+      color:var(--gold);
+      font-size:20px;
+      text-align:center;
+      margin:0 0 14px
+    }
+
+    .faq-item{
+      border-top:1px solid rgba(245,236,220,.13);
+      padding:14px 0
+    }
+
+    .faq-item:last-child{
+      border-bottom:1px solid rgba(245,236,220,.13)
+    }
+
+    .faq-item h3{
+      font-family:"Fraunces",serif;
+      color:var(--cream);
+      font-size:14px;
+      margin:0 0 6px;
+      font-weight:600
+    }
+
+    .faq-item p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
     .links{
       display:grid;
       gap:9px;
@@ -226,27 +303,61 @@
       font-size:12px
     }
 
-    .country-links-title{
-      font-family:"Fraunces",serif;
-      color:var(--gold);
-      font-size:18px;
-      margin:25px 0 9px;
-      text-align:center
+    /* --- Country grid --- */
+
+    .region{
+      margin-top:26px;
+      text-align:left
     }
 
-    .country-links{
+    .region-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:15px;
+      font-weight:650;
+      margin:0 0 10px 2px;
+      letter-spacing:.01em
+    }
+
+    .region-grid{
       display:grid;
+      grid-template-columns:1fr 1fr;
       gap:8px
     }
 
-    .country-links a{
+    .country-tile{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:12px 12px;
+      border:1px solid rgba(245,236,220,.13);
+      border-radius:12px;
+      background:rgba(245,236,220,.045);
       color:var(--cream);
       text-decoration:none;
-      border:1px solid rgba(245,236,220,.13);
-      background:rgba(245,236,220,.045);
-      border-radius:12px;
-      padding:11px 14px;
-      font-size:11.5px
+      font-size:12.5px;
+      font-weight:500;
+      line-height:1.25;
+      transition:border-color .2s, background .2s, transform .15s
+    }
+
+    .country-tile:hover{
+      border-color:rgba(212,162,76,.65);
+      background:rgba(245,236,220,.09);
+      transform:translateY(-1px)
+    }
+
+    .country-tile .tile-flag{
+      font-size:20px;
+      flex-shrink:0
+    }
+
+    .explore-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:18px;
+      margin:28px 0 4px;
+      text-align:center
     }
 
     .fine{
@@ -273,106 +384,165 @@
 
   <a class="brand" href="/">⚡ CheapestHours</a>
 
-  <h1>🇪🇸 El Precio de la Luz Hoy — Horas Más Baratas en España</h1>
+  <h1>🇪🇸 ¿Cuándo es más barata la electricidad hoy?</h1>
 
   <p class="intro">
-    Consulta el precio actual del mercado mayorista de electricidad en España y las horas más baratas disponibles hoy.
+    Consulta el precio mayorista de la electricidad en España en
+    directo y las horas más baratas de hoy.
   </p>
 
   <div class="card" id="live">
-    <div class="loading">Cargando el mercado eléctrico español en directo…</div>
+    <div class="loading">Cargando datos del mercado eléctrico español…</div>
   </div>
 
   <div class="ad">Publicidad</div>
 
   <section class="copy">
 
-    <h2>¿Cuándo es más barata la luz en España?</h2>
+    <h2>¿Cuándo es más barata la electricidad en España?</h2>
 
     <p>
-      El precio mayorista de la electricidad cambia a lo largo del día.
-      CheapestHours utiliza datos de mercado en directo para mostrar el precio
-      actual y las horas más baratas disponibles, ayudándote a decidir si usar
-      electricidad ahora o esperar.
+      El precio mayorista de la electricidad en España se fija en el
+      mercado diario (OMIE) y varía cada hora. España es uno de los
+      países con mayor crecimiento de energía solar y eólica de
+      Europa: la potencia solar instalada pasó de unos 9 GW en 2020
+      a más de 32 GW en 2025.
     </p>
 
     <p>
-      El precio que se muestra aquí es el precio mayorista del mercado
-      (basado en las subastas de OMIE), no el PVPC ni tu tarifa final. El PVPC
-      sigue de cerca este precio hora a hora, pero desde 2024 incorpora también
-      una cesta de futuros que suaviza su volatilidad. Tu factura final puede
-      incluir además peajes de acceso, impuestos y el margen de tu
-      comercializadora.
+      En días muy soleados o ventosos con baja demanda —a menudo en
+      primavera y a mediodía— la producción renovable puede superar
+      el consumo, empujando el precio por debajo de cero. En 2025,
+      España superó las 500 horas con precios negativos en lo que
+      va de año, más del doble que en todo 2024.
     </p>
 
     <p>
-      Esto puede ser útil para usos flexibles de electricidad como la carga de
-      un coche eléctrico, el lavavajillas, la lavadora, la secadora, el
-      calentador de agua y otros electrodomésticos que se pueden programar
-      para una hora más barata — especialmente con tarifas indexadas al
-      mercado mayorista.
+      Los precios suelen subir al anochecer, cuando la producción
+      solar desaparece pero la demanda sigue siendo alta, sobre todo
+      en las tardes de verano con mucho uso de aire acondicionado.
+    </p>
+
+    <p>
+      El precio mostrado aquí es el precio mayorista. Tu factura
+      incluye además peajes de acceso, cargos regulados, impuestos y
+      el margen de tu comercializadora. Si tienes la tarifa regulada
+      PVPC, tu precio sigue de cerca este mercado, pero con estos
+      costes añadidos.
     </p>
 
   </section>
 
+  <section class="faq">
+    <h2>Preguntas frecuentes</h2>
+
+    <div class="faq-item">
+      <h3>¿Por qué España tiene tantas horas con precios de la electricidad negativos?</h3>
+      <p>
+        La potencia solar instalada en España pasó de unos 9 GW en
+        2020 a más de 32 GW en 2025. En días muy soleados o
+        ventosos con baja demanda, la producción renovable puede
+        superar el consumo, empujando el precio mayorista por
+        debajo de cero. En 2025 España superó las 500 horas con
+        precios negativos, más del doble que en todo 2024.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Cuándo es más cara la electricidad en España?</h3>
+      <p>
+        Los precios suelen subir al anochecer, cuando la producción
+        solar desaparece pero la demanda sigue siendo alta,
+        especialmente en las tardes de verano con mucho uso de aire
+        acondicionado.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Es este el mismo precio que aparece en mi factura?</h3>
+      <p>
+        No. Aquí se muestra el precio mayorista del mercado diario
+        (OMIE). Tu factura incluye además peajes de acceso, cargos
+        regulados, impuestos y el margen de tu comercializadora. Si
+        tienes la tarifa regulada PVPC, tu precio sigue de cerca
+        este mercado, pero con estos costes añadidos.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>¿Qué es la excepción ibérica en el precio de la electricidad?</h3>
+      <p>
+        La excepción ibérica fue un mecanismo aprobado por la Unión
+        Europea que permitió a España y Portugal limitar
+        temporalmente el precio del gas usado para generar
+        electricidad, con el objetivo de reducir el precio final de
+        la luz durante la crisis energética. Es un ajuste
+        regulatorio que puede afectar al precio mayorista mostrado
+        en el mercado.
+      </p>
+    </div>
+  </section>
+
   <div class="links">
 
-    <a href="/search/?country=ES&device=ev&lang=es">
-      🚗 Encuentra la hora más barata para cargar tu coche eléctrico →
+    <a href="/search/?country=ES&device=ev">
+      🚗 Encuentra la mejor hora para cargar mi coche eléctrico →
     </a>
 
-    <a href="/search/?country=ES&device=dishwasher&lang=es">
-      🍽️ ¿Compensa poner el lavavajillas ahora? →
+    <a href="/search/?country=ES&device=dishwasher">
+      🍽️ ¿Debería poner el lavavajillas ahora? →
     </a>
 
     <a href="/">
-      🌍 Consulta el precio de la luz en otro país →
+      🌍 Consulta precios de la electricidad en otro país →
     </a>
 
   </div>
 
-  <h2 class="country-links-title">Explora otros mercados</h2>
+  <h2 class="explore-title">Explora otros mercados</h2>
 
-  <nav class="country-links" aria-label="Otros mercados eléctricos">
+  <nav aria-label="Otros mercados eléctricos">
 
-    <a href="/ireland/">
-      🇮🇪 Horas más baratas en Irlanda →
-    </a>
+    <div class="region">
+      <div class="region-title">Europa</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/ireland/"><span class="tile-flag">🇮🇪</span>Irlanda</a>
+        <a class="country-tile" href="/united-kingdom/"><span class="tile-flag">🇬🇧</span>Reino Unido</a>
+        <a class="country-tile" href="/germany/"><span class="tile-flag">🇩🇪</span>Alemania</a>
+        <a class="country-tile" href="/france/"><span class="tile-flag">🇫🇷</span>Francia</a>
+        <a class="country-tile" href="/netherlands/"><span class="tile-flag">🇳🇱</span>Países Bajos</a>
+        <a class="country-tile" href="/belgium/"><span class="tile-flag">🇧🇪</span>Bélgica</a>
+        <a class="country-tile" href="/austria/"><span class="tile-flag">🇦🇹</span>Austria</a>
+        <a class="country-tile" href="/finland/"><span class="tile-flag">🇫🇮</span>Finlandia</a>
+        <a class="country-tile" href="/poland/"><span class="tile-flag">🇵🇱</span>Polonia</a>
+        <a class="country-tile" href="/italy/"><span class="tile-flag">🇮🇹</span>Italia</a>
+        <a class="country-tile" href="/greece/"><span class="tile-flag">🇬🇷</span>Grecia</a>
+      </div>
+    </div>
 
-    <a href="/california/">
-      🇺🇸 Horas más baratas en California →
-    </a>
+    <div class="region">
+      <div class="region-title">América del Norte</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/california/"><span class="tile-flag">🇺🇸</span>California</a>
+        <a class="country-tile" href="/texas/"><span class="tile-flag">🇺🇸</span>Texas</a>
+        <a class="country-tile" href="/new-york/"><span class="tile-flag">🗽</span>Nueva York</a>
+        <a class="country-tile" href="/ontario/"><span class="tile-flag">🇨🇦</span>Ontario</a>
+      </div>
+    </div>
 
-    <a href="/united-kingdom/">
-      🇬🇧 Horas más baratas en el Reino Unido →
-    </a>
-
-    <a href="/poland/">
-      🇵🇱 Horas más baratas en Polonia →
-    </a>
-
-    <a href="/greece/">
-      🇬🇷 Horas más baratas en Grecia →
-    </a>
-
-    <a href="/italy/">
-      🇮🇹 Horas más baratas en Italia →
-    </a>
-
-    <a href="/japan/">
-      🇯🇵 Horas más baratas en Japón →
-    </a>
-
-    <a href="/new-york/">
-      🗽 Horas más baratas en Nueva York →
-    </a>
+    <div class="region">
+      <div class="region-title">Asia</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/japan/"><span class="tile-flag">🇯🇵</span>Japón</a>
+      </div>
+    </div>
 
   </nav>
 
   <p class="fine">
-    Datos del mercado eléctrico en directo por <a href="https://elecz.com/es/">Elecz</a>.
-    CheapestHours es una herramienta independiente para encontrar el mejor momento para usar electricidad.
-    <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a>
+    Datos de mercado en tiempo real proporcionados por <a href="https://elecz.com/">Elecz</a>.
+    CheapestHours es una herramienta independiente para planificar el consumo eléctrico.
+    <a href="/privacy/">Privacidad</a> · <a href="/contact/">Contacto</a>
   </p>
 
 </main>
@@ -482,7 +652,7 @@ function hour(iso){
       <div class="flag">🇪🇸</div>
 
       <div class="updated">
-        Actualizado a las ${hour(spot.timestamp)} hora local
+        Actualizado a las ${hour(spot.timestamp)}
       </div>
 
       <div class="hero">
@@ -492,7 +662,7 @@ function hour(iso){
         </div>
 
         <div style="margin-top:4px;font-size:10.5px;color:var(--soft)">
-          Precio mayorista — no es el precio final de tu factura.
+          Precio mayorista — distinto de tu factura.
         </div>
 
         <div class="state ${cls}">
@@ -501,7 +671,7 @@ function hour(iso){
 
       </div>
 
-      <h2>Horas más baratas disponibles</h2>
+      <h2>Horas más baratas</h2>
 
       ${
         rows
@@ -523,13 +693,13 @@ function hour(iso){
           `
           : `
             <p style="font-size:12px;color:var(--soft)">
-              No hay datos de precio disponibles para las próximas horas.
+              Todavía no hay datos de precios para las próximas horas.
             </p>
           `
       }
 
-      <a class="check" href="/search/?country=ES&lang=es">
-        Consulta según tu consumo →
+      <a class="check" href="/search/?country=ES">
+        Consultar mi consumo →
       </a>
 
     `;
@@ -538,7 +708,7 @@ function hour(iso){
 
     el.innerHTML = `
       <div class="error">
-        Los datos de España no están disponibles en este momento.
+        Los datos del mercado español no están disponibles temporalmente.
       </div>
     `;
 
