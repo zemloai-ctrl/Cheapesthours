@@ -401,6 +401,9 @@ const STRINGS = {
     market_ireland: "Ireland", market_california: "California",
     market_uk: "United Kingdom", market_poland: "Poland",
     market_greece: "Greece", market_italy: "Italy", market_japan: "Japan", market_spain: "Spain", market_new_york: "New York",
+    market_germany: "Germany", market_france: "France", market_netherlands: "Netherlands",
+    market_belgium: "Belgium", market_austria: "Austria", market_finland: "Finland",
+    market_texas: "Texas", market_ontario: "Ontario",
     fb_dishwasher: (dest) => `What would the same dishwasher cycle look like in ${dest}?`,
     fb_washer: (dest) => `What would doing the same laundry cost in ${dest}?`,
     fb_dryer: (dest) => `How would your dryer compare in ${dest}?`,
@@ -471,6 +474,9 @@ const STRINGS = {
     market_ireland: "Irlandia", market_california: "Kalifornia",
     market_uk: "Wielka Brytania", market_poland: "Polska",
     market_greece: "Grecja", market_italy: "Włochy", market_japan: "Japonia", market_spain: "Hiszpania", market_new_york: "Nowy Jork",
+    market_germany: "Niemcy", market_france: "Francja", market_netherlands: "Holandia",
+    market_belgium: "Belgia", market_austria: "Austria", market_finland: "Finlandia",
+    market_texas: "Teksas", market_ontario: "Ontario",
     fb_dishwasher: (dest) => `Jak wyglądałby ten sam cykl zmywarki w ${dest}?`,
     fb_washer: (dest) => `Ile kosztowałoby to samo pranie w ${dest}?`,
     fb_dryer: (dest) => `Jak wypadłaby Twoja suszarka w ${dest}?`,
@@ -541,6 +547,9 @@ const STRINGS = {
     market_ireland: "Ιρλανδία", market_california: "Καλιφόρνια",
     market_uk: "Ηνωμένο Βασίλειο", market_poland: "Πολωνία",
     market_greece: "Ελλάδα", market_italy: "Ιταλία", market_japan: "Ιαπωνία", market_spain: "Ισπανία", market_new_york: "Νέα Υόρκη",
+    market_germany: "Γερμανία", market_france: "Γαλλία", market_netherlands: "Ολλανδία",
+    market_belgium: "Βέλγιο", market_austria: "Αυστρία", market_finland: "Φινλανδία",
+    market_texas: "Τέξας", market_ontario: "Οντάριο",
     fb_dishwasher: (dest) => `Πώς θα ήταν ο ίδιος κύκλος πλυντηρίου πιάτων στην ${dest};`,
     fb_washer: (dest) => `Πόσο θα κόστιζε η ίδια πλύση στην ${dest};`,
     fb_dryer: (dest) => `Πώς θα συγκρινόταν το στεγνωτήριό σας στην ${dest};`,
@@ -611,6 +620,9 @@ const STRINGS = {
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Regno Unito", market_poland: "Polonia",
     market_greece: "Grecia", market_italy: "Italia", market_japan: "Giappone", market_spain: "Spagna", market_new_york: "New York",
+    market_germany: "Germania", market_france: "Francia", market_netherlands: "Paesi Bassi",
+    market_belgium: "Belgio", market_austria: "Austria", market_finland: "Finlandia",
+    market_texas: "Texas", market_ontario: "Ontario",
     fb_dishwasher: (dest) => `Come sarebbe lo stesso ciclo della lavastoviglie in ${dest}?`,
     fb_washer: (dest) => `Quanto costerebbe lo stesso bucato in ${dest}?`,
     fb_dryer: (dest) => `Come sarebbe il confronto per la tua asciugatrice in ${dest}?`,
@@ -681,6 +693,9 @@ const STRINGS = {
     market_ireland: "アイルランド", market_california: "カリフォルニア",
     market_uk: "イギリス", market_poland: "ポーランド",
     market_greece: "ギリシャ", market_italy: "イタリア", market_japan: "日本", market_spain: "スペイン", market_new_york: "ニューヨーク",
+    market_germany: "ドイツ", market_france: "フランス", market_netherlands: "オランダ",
+    market_belgium: "ベルギー", market_austria: "オーストリア", market_finland: "フィンランド",
+    market_texas: "テキサス", market_ontario: "オンタリオ",
     fb_dishwasher: (dest) => `同じ食洗機を${dest}で使うとどうなる？`,
     fb_washer: (dest) => `同じ洗濯を${dest}でしたらいくらになる？`,
     fb_dryer: (dest) => `${dest}では乾燥機の結果はどう変わる？`,
@@ -750,7 +765,10 @@ const STRINGS = {
     device_custom: "carga eléctrica personalizada",
     market_ireland: "Irlanda", market_california: "California",
     market_uk: "Reino Unido", market_poland: "Polonia",
-    market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón", market_new_york: "Nueva York",
+    market_greece: "Grecia", market_italy: "Italia", market_japan: "Japón", market_spain: "España", market_new_york: "Nueva York",
+    market_germany: "Alemania", market_france: "Francia", market_netherlands: "Países Bajos",
+    market_belgium: "Bélgica", market_austria: "Austria", market_finland: "Finlandia",
+    market_texas: "Texas", market_ontario: "Ontario",
     fb_dishwasher: (dest) => `¿Cómo sería el mismo ciclo de lavavajillas en ${dest}?`,
     fb_washer: (dest) => `¿Cuánto costaría la misma colada en ${dest}?`,
     fb_dryer: (dest) => `¿Cómo se compararía tu secadora en ${dest}?`,
@@ -892,11 +910,14 @@ const lang = qs.get("lang") ||
 const PL_COUNTRY_NAMES = {FI:"Finlandia",SE:"Szwecja",NO:"Norwegia",DK:"Dania",DE:"Niemcy",NL:"Holandia",BE:"Belgia",AT:"Austria",FR:"Francja",PL:"Polska",CZ:"Czechy",HU:"Węgry",ES:"Hiszpania",PT:"Portugalia",IT:"Włochy",GR:"Grecja",EE:"Estonia",LV:"Łotwa",LT:"Litwa",IE:"Irlandia",GB:"Wielka Brytania",CH:"Szwajcaria",HR:"Chorwacja",BG:"Bułgaria",SI:"Słowenia",SK:"Słowacja",RO:"Rumunia",RS:"Serbia",BA:"Bośnia i Hercegowina",ME:"Czarnogóra",MK:"Macedonia Północna",US:"Stany Zjednoczone",CA:"Kanada",MX:"Meksyk",AU:"Australia",NZ:"Nowa Zelandia",JP:"Japonia",KR:"Korea Południowa",ZA:"Republika Południowej Afryki",PH:"Filipiny"};
 const EL_COUNTRY_NAMES = {FI:"Φινλανδία",SE:"Σουηδία",NO:"Νορβηγία",DK:"Δανία",DE:"Γερμανία",NL:"Ολλανδία",BE:"Βέλγιο",AT:"Αυστρία",FR:"Γαλλία",PL:"Πολωνία",CZ:"Τσεχία",HU:"Ουγγαρία",ES:"Ισπανία",PT:"Πορτογαλία",IT:"Ιταλία",GR:"Ελλάδα",EE:"Εσθονία",LV:"Λετονία",LT:"Λιθουανία",IE:"Ιρλανδία",GB:"Ηνωμένο Βασίλειο",CH:"Ελβετία",HR:"Κροατία",BG:"Βουλγαρία",SI:"Σλοβενία",SK:"Σλοβακία",RO:"Ρουμανία",RS:"Σερβία",BA:"Βοσνία και Ερζεγοβίνη",ME:"Μαυροβούνιο",MK:"Βόρεια Μακεδονία",US:"Ηνωμένες Πολιτείες",CA:"Καναδάς",MX:"Μεξικό",AU:"Αυστραλία",NZ:"Νέα Ζηλανδία",JP:"Ιαπωνία",KR:"Νότια Κορέα",ZA:"Νότια Αφρική",PH:"Φιλιππίνες"};
 const IT_COUNTRY_NAMES = {FI:"Finlandia",SE:"Svezia",NO:"Norvegia",DK:"Danimarca",DE:"Germania",NL:"Paesi Bassi",BE:"Belgio",AT:"Austria",FR:"Francia",PL:"Polonia",CZ:"Cechia",HU:"Ungheria",ES:"Spagna",PT:"Portogallo",IT:"Italia",GR:"Grecia",EE:"Estonia",LV:"Lettonia",LT:"Lituania",IE:"Irlanda",GB:"Regno Unito",CH:"Svizzera",HR:"Croazia",BG:"Bulgaria",SI:"Slovenia",SK:"Slovacchia",RO:"Romania",RS:"Serbia",BA:"Bosnia ed Erzegovina",ME:"Montenegro",MK:"Macedonia del Nord",US:"Stati Uniti",CA:"Canada",MX:"Messico",AU:"Australia",NZ:"Nuova Zelanda",JP:"Giappone",KR:"Corea del Sud",ZA:"Sudafrica",PH:"Filippine"};
-const EL_ZONE_NAMES = {GR:"Ελλάδα","IT-NO":"Βόρεια Ιταλία","IT-CNO":"Κεντροβόρεια Ιταλία","IT-CSO":"Κεντρονότια Ιταλία","IT-SO":"Νότια Ιταλία","IT-SAR":"Σαρδηνία","IT-SIC":"Σικελία"};
-const IT_ZONE_NAMES = {GR:"Grecia","IT-NO":"Italia Nord","IT-CNO":"Italia Centro-Nord","IT-CSO":"Italia Centro-Sud","IT-SO":"Italia Sud","IT-SAR":"Sardegna","IT-SIC":"Sicilia"};
+const EN_ZONE_NAMES = {"US-TX-HB_HOUSTON":"Texas","CA-ON":"Ontario"};
+const PL_ZONE_NAMES = {"US-TX-HB_HOUSTON":"Teksas","CA-ON":"Ontario"};
+const EL_ZONE_NAMES = {GR:"Ελλάδα","IT-NO":"Βόρεια Ιταλία","IT-CNO":"Κεντροβόρεια Ιταλία","IT-CSO":"Κεντρονότια Ιταλία","IT-SO":"Νότια Ιταλία","IT-SAR":"Σαρδηνία","IT-SIC":"Σικελία","US-TX-HB_HOUSTON":"Τέξας","CA-ON":"Οντάριο"};
+const IT_ZONE_NAMES = {GR:"Grecia","IT-NO":"Italia Nord","IT-CNO":"Italia Centro-Nord","IT-CSO":"Italia Centro-Sud","IT-SO":"Italia Sud","IT-SAR":"Sardegna","IT-SIC":"Sicilia","US-TX-HB_HOUSTON":"Texas","CA-ON":"Ontario"};
 const JA_COUNTRY_NAMES = {FI:"フィンランド",SE:"スウェーデン",NO:"ノルウェー",DK:"デンマーク",DE:"ドイツ",NL:"オランダ",BE:"ベルギー",AT:"オーストリア",FR:"フランス",PL:"ポーランド",CZ:"チェコ",HU:"ハンガリー",ES:"スペイン",PT:"ポルトガル",IT:"イタリア",GR:"ギリシャ",EE:"エストニア",LV:"ラトビア",LT:"リトアニア",IE:"アイルランド",GB:"イギリス",CH:"スイス",HR:"クロアチア",BG:"ブルガリア",SI:"スロベニア",SK:"スロバキア",RO:"ルーマニア",RS:"セルビア",BA:"ボスニア・ヘルツェゴビナ",ME:"モンテネグロ",MK:"北マケドニア",US:"アメリカ合衆国",CA:"カナダ",MX:"メキシコ",AU:"オーストラリア",NZ:"ニュージーランド",JP:"日本",KR:"韓国",ZA:"南アフリカ",PH:"フィリピン"};
-const JA_ZONE_NAMES = {"JP-HKD":"北海道","JP-THK":"東北","JP-TKY":"東京","JP-CBU":"中部","JP-HKR":"北陸","JP-KNS":"関西","JP-CGK":"中国","JP-SKK":"四国","JP-KYS":"九州"};
+const JA_ZONE_NAMES = {"JP-HKD":"北海道","JP-THK":"東北","JP-TKY":"東京","JP-CBU":"中部","JP-HKR":"北陸","JP-KNS":"関西","JP-CGK":"中国","JP-SKK":"四国","JP-KYS":"九州","US-TX-HB_HOUSTON":"テキサス","CA-ON":"オンタリオ"};
 const ES_COUNTRY_NAMES = {FI:"Finlandia",SE:"Suecia",NO:"Noruega",DK:"Dinamarca",DE:"Alemania",NL:"Países Bajos",BE:"Bélgica",AT:"Austria",FR:"Francia",PL:"Polonia",CZ:"Chequia",HU:"Hungría",ES:"España",PT:"Portugal",IT:"Italia",GR:"Grecia",EE:"Estonia",LV:"Letonia",LT:"Lituania",IE:"Irlanda",GB:"Reino Unido",CH:"Suiza",HR:"Croacia",BG:"Bulgaria",SI:"Eslovenia",SK:"Eslovaquia",RO:"Rumanía",RS:"Serbia",BA:"Bosnia y Herzegovina",ME:"Montenegro",MK:"Macedonia del Norte",US:"Estados Unidos",CA:"Canadá",MX:"México",AU:"Australia",NZ:"Nueva Zelanda",JP:"Japón",KR:"Corea del Sur",ZA:"Sudáfrica",PH:"Filipinas"};
+const ES_ZONE_NAMES = {"US-TX-HB_HOUSTON":"Texas","CA-ON":"Ontario"};
 
 function localizedCountryName(code, fallback) {
   if (lang === "pl") return PL_COUNTRY_NAMES[code] || fallback;
@@ -908,11 +929,12 @@ function localizedCountryName(code, fallback) {
 }
 
 function localizedZoneName(code, fallback) {
-  if (lang === "pl") return PL_COUNTRY_NAMES[countryForZone(code)] || fallback;
+  if (lang === "en") return EN_ZONE_NAMES[code] || fallback;
+  if (lang === "pl") return PL_ZONE_NAMES[code] || PL_COUNTRY_NAMES[countryForZone(code)] || fallback;
   if (lang === "el") return EL_ZONE_NAMES[code] || EL_COUNTRY_NAMES[countryForZone(code)] || fallback;
   if (lang === "it") return IT_ZONE_NAMES[code] || IT_COUNTRY_NAMES[countryForZone(code)] || fallback;
   if (lang === "ja") return JA_ZONE_NAMES[code] || JA_COUNTRY_NAMES[countryForZone(code)] || fallback;
-  if (lang === "es") return ES_COUNTRY_NAMES[countryForZone(code)] || fallback;
+  if (lang === "es") return ES_ZONE_NAMES[code] || ES_COUNTRY_NAMES[countryForZone(code)] || fallback;
   return fallback;
 }
 
@@ -1121,7 +1143,7 @@ async function run() {
 
 function renderWorldFallback() {
   const fallbackZones = [
-    "JP-TKY","AU-NSW","IE","FI","DE","ES","NO1","US-CA-NP15","US-NY-NYC"
+    "JP-TKY","AU-NSW","IE","FI","DE","FR","NL","ES","NO1","US-CA-NP15","US-TX-HB_HOUSTON","US-NY-NYC","CA-ON"
   ].filter(code => code !== zoneCode);
 
   if (!fallbackZones.length) return;
@@ -1151,7 +1173,7 @@ function renderWorldFallback() {
 
 async function buildWorldHook(userSpot,userCostLocal) {
   const candidateZones = [
-    "FI","DE","ES","IE","NO1","US-CA-NP15","US-NY-NYC","JP-TKY","AU-NSW"
+    "FI","DE","FR","NL","ES","IE","NO1","US-CA-NP15","US-TX-HB_HOUSTON","US-NY-NYC","CA-ON","JP-TKY","AU-NSW"
   ].filter(code => code !== zoneCode);
 
   let rates = {};
@@ -1265,14 +1287,22 @@ function countryForZone(code) {
 
 const FEATURED = [
   { slug: "ireland", key: "market_ireland" },
-  { slug: "california", key: "market_california" },
   { slug: "united-kingdom", key: "market_uk" },
+  { slug: "germany", key: "market_germany" },
+  { slug: "france", key: "market_france" },
+  { slug: "netherlands", key: "market_netherlands" },
+  { slug: "belgium", key: "market_belgium" },
+  { slug: "austria", key: "market_austria" },
+  { slug: "finland", key: "market_finland" },
   { slug: "poland", key: "market_poland" },
-  { slug: "greece", key: "market_greece" },
   { slug: "italy", key: "market_italy" },
-  { slug: "japan", key: "market_japan" },
   { slug: "spain", key: "market_spain" },
+  { slug: "greece", key: "market_greece" },
+  { slug: "california", key: "market_california" },
+  { slug: "texas", key: "market_texas" },
   { slug: "new-york", key: "market_new_york" },
+  { slug: "ontario", key: "market_ontario" },
+  { slug: "japan", key: "market_japan" },
 ];
 document.getElementById("seoLinks").innerHTML = FEATURED.map(f =>
   `<a href="/${f.slug}/${lang !== 'en' ? '?lang=' + lang : ''}">${t(lang, f.key)}</a>`
@@ -1288,7 +1318,7 @@ if (sourceLinks) {
     : lang === "el"
       ? 'Ζωντανά δεδομένα αγοράς ηλεκτρικής ενέργειας: <a href="https://elecz.com/">Elecz</a>. Συγκρίνετε API τιμών ηλεκτρικής ενέργειας; <a href="https://botcentrum.com/">Δείτε το BotCentrum</a>.'
     : lang === "it"
-      ? `Dati aggiornati del mercato elettrico: <a href="https://elecz.com/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`
+      ? `Dati aggiornati del mercato elettrico: <a href="https://elecz.com/it/">Elecz</a>. Vuoi confrontare le API dei prezzi dell'elettricità? <a href="https://botcentrum.com/">Vedi BotCentrum</a>.`
     : lang === "ja"
       ? '電力市場のリアルタイムデータ: <a href="https://elecz.com/ja/">Elecz</a>。電力価格APIをお探しですか？ <a href="https://botcentrum.com/">BotCentrumを見る</a>。'
     : lang === "es"
