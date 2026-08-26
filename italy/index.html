@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PUN Oggi — Prezzo Elettricità Italia | CheapestHours</title>
+  <title>Prezzo elettricità in Italia oggi | CheapestHours</title>
 
-  <meta name="description" content="PUN oggi e prezzo dell'elettricità in Italia. Guarda il prezzo all'ingrosso attuale e le ore più economiche.">
+  <meta name="description" content="Prezzo all'ingrosso dell'elettricità in Italia in tempo reale e le ore più economiche di oggi. Dati live dal mercato elettrico italiano.">
 
   <link rel="canonical" href="https://cheapesthours.com/italy/">
 
-  <meta property="og:title" content="PUN Oggi — Prezzo Elettricità Italia | CheapestHours">
-  <meta property="og:description" content="PUN oggi e prezzo dell'elettricità in Italia. Guarda il prezzo all'ingrosso attuale e le ore più economiche.">
+  <meta property="og:title" content="Prezzo elettricità in Italia oggi | CheapestHours">
+  <meta property="og:description" content="Prezzo all'ingrosso dell'elettricità in Italia in tempo reale e le ore più economiche di oggi. Dati live dal mercato elettrico italiano.">
   <meta property="og:url" content="https://cheapesthours.com/italy/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cheapesthours.com/og-image.png">
@@ -29,6 +29,48 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
+
+  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Perché il prezzo dell'elettricità in Italia varia da zona a zona?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Il mercato elettrico italiano è diviso in zone di prezzo (Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna) a causa di vincoli sulla rete di trasmissione tra le diverse aree del Paese. Ogni zona può avere un prezzo diverso nella stessa ora, a seconda della produzione locale e della capacità di trasporto dell'energia tra le zone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quando l'elettricità costa meno in Italia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I prezzi tendono a essere più bassi nelle ore centrali della giornata, specialmente nelle zone del Sud e in Sicilia, dove la produzione fotovoltaica è molto elevata. Nelle giornate più soleggiate, l'eccesso di produzione solare può spingere i prezzi verso il basso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Questo prezzo è uguale a quello della mia bolletta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Qui viene mostrato il prezzo all'ingrosso del mercato del giorno prima (MGP), gestito dal GME. La tua bolletta include inoltre gli oneri di trasporto e gestione del contatore, gli oneri di sistema, le imposte e il margine del tuo fornitore."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "L'Italia importa elettricità dagli altri Paesi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sì. L'Italia importa regolarmente elettricità da Francia e Svizzera, soprattutto nel Nord del Paese, dove i prezzi possono risentire delle condizioni dei mercati confinanti e della capacità disponibile sulle interconnessioni."
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -210,6 +252,41 @@
       font-size:20px
     }
 
+    .faq{
+      margin-top:26px
+    }
+
+    .faq h2{
+      color:var(--gold);
+      font-size:20px;
+      text-align:center;
+      margin:0 0 14px
+    }
+
+    .faq-item{
+      border-top:1px solid rgba(245,236,220,.13);
+      padding:14px 0
+    }
+
+    .faq-item:last-child{
+      border-bottom:1px solid rgba(245,236,220,.13)
+    }
+
+    .faq-item h3{
+      font-family:"Fraunces",serif;
+      color:var(--cream);
+      font-size:14px;
+      margin:0 0 6px;
+      font-weight:600
+    }
+
+    .faq-item p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
     .links{
       display:grid;
       gap:9px;
@@ -226,27 +303,61 @@
       font-size:12px
     }
 
-    .country-links-title{
-      font-family:"Fraunces",serif;
-      color:var(--gold);
-      font-size:18px;
-      margin:25px 0 9px;
-      text-align:center
+    /* --- Country grid --- */
+
+    .region{
+      margin-top:26px;
+      text-align:left
     }
 
-    .country-links{
+    .region-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:15px;
+      font-weight:650;
+      margin:0 0 10px 2px;
+      letter-spacing:.01em
+    }
+
+    .region-grid{
       display:grid;
+      grid-template-columns:1fr 1fr;
       gap:8px
     }
 
-    .country-links a{
+    .country-tile{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:12px 12px;
+      border:1px solid rgba(245,236,220,.13);
+      border-radius:12px;
+      background:rgba(245,236,220,.045);
       color:var(--cream);
       text-decoration:none;
-      border:1px solid rgba(245,236,220,.13);
-      background:rgba(245,236,220,.045);
-      border-radius:12px;
-      padding:11px 14px;
-      font-size:11.5px
+      font-size:12.5px;
+      font-weight:500;
+      line-height:1.25;
+      transition:border-color .2s, background .2s, transform .15s
+    }
+
+    .country-tile:hover{
+      border-color:rgba(212,162,76,.65);
+      background:rgba(245,236,220,.09);
+      transform:translateY(-1px)
+    }
+
+    .country-tile .tile-flag{
+      font-size:20px;
+      flex-shrink:0
+    }
+
+    .explore-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:18px;
+      margin:28px 0 4px;
+      text-align:center
     }
 
     .fine{
@@ -273,122 +384,165 @@
 
   <a class="brand" href="/">⚡ CheapestHours</a>
 
-  <h1>🇮🇹 PUN Oggi — Le Ore Più Economiche per l'Elettricità in Italia</h1>
+  <h1>🇮🇹 Quando l'elettricità costa meno oggi?</h1>
 
   <p class="intro">
-    Guarda il prezzo dell'elettricità oggi in Italia, il prezzo all'ingrosso attuale e le ore più economiche disponibili.
-  </p>
-
-  <p class="intro">
-    L'Italia ha più zone di mercato. Questa pagina usa <strong>Italia Nord (IT-NO)</strong>
-    come riferimento; puoi scegliere un'altra zona nel passaggio successivo.
+    Scopri il prezzo all'ingrosso dell'elettricità in Italia in tempo
+    reale e le ore più economiche di oggi.
   </p>
 
   <div class="card" id="live">
-    <div class="loading">Caricamento dei dati aggiornati del mercato elettrico italiano…</div>
+    <div class="loading">Caricamento dati del mercato elettrico italiano…</div>
   </div>
 
   <div class="ad">Pubblicità</div>
 
   <section class="copy">
 
-    <h2>Quando costa meno la corrente in Italia?</h2>
+    <h2>Quando l'elettricità costa meno in Italia?</h2>
 
     <p>
-      Il prezzo dell'elettricità sul mercato all'ingrosso cambia durante la giornata.
-      CheapestHours usa dati di mercato aggiornati per mostrare il prezzo attuale e
-      le ore più economiche disponibili, aiutandoti a capire se conviene usare
-      energia adesso oppure aspettare.
+      Il prezzo all'ingrosso dell'elettricità in Italia è determinato
+      sul Mercato del Giorno Prima (MGP), gestito dal GME (Gestore
+      dei Mercati Energetici), mentre Terna gestisce la rete di
+      trasmissione nazionale.
     </p>
 
     <p>
-      In Italia molte guide parlano delle fasce orarie F1, F2 e F3. Queste fasce
-      dipendono dal tipo di contratto e non sono la stessa cosa del prezzo orario
-      del mercato all'ingrosso. CheapestHours mostra il segnale di mercato in tempo
-      reale: la tua tariffa finale può essere diversa.
+      Una caratteristica particolare del mercato italiano è la
+      divisione in zone di prezzo (Nord, Centro-Nord, Centro-Sud,
+      Sud, Sicilia, Sardegna), dovuta a vincoli sulla capacità di
+      trasporto tra le diverse aree del Paese. Questo significa che
+      lo stesso momento della giornata può avere prezzi diversi in
+      zone diverse: il Sud e la Sicilia, con una forte produzione
+      fotovoltaica, tendono ad avere prezzi più bassi nelle ore
+      centrali della giornata, mentre il Nord è più esposto ai
+      prezzi di importazione da Francia e Svizzera.
     </p>
 
     <p>
-      Questo può essere utile per consumi flessibili come ricarica dell'auto
-      elettrica, lavastoviglie, lavatrice, asciugatrice, scaldacqua e altri carichi
-      che possono essere spostati in un momento più conveniente — in particolare
-      con offerte indicizzate al PUN o tariffe dinamiche.
+      Il prezzo mostrato qui è un prezzo all'ingrosso. La tua
+      bolletta include inoltre gli oneri di trasporto e gestione del
+      contatore, gli oneri di sistema, le imposte e il margine del
+      tuo fornitore.
     </p>
 
     <p>
-      <strong>Nota sul prezzo:</strong> il valore mostrato da CheapestHours è il
-      prezzo del mercato elettrico all'ingrosso per la zona selezionata. Non è il
-      prezzo finale della tua bolletta. Il costo pagato dal cliente può includere
-      spread del fornitore, trasporto e gestione della rete, imposte, IVA e altre
-      componenti contrattuali, quindi può essere sensibilmente più alto.
-    </p>
-
-    <p>
-      Il PUN e i prezzi zonali italiani riflettono il mercato elettrico, ma non
-      rappresentano da soli la bolletta domestica. CheapestHours usa questo segnale
-      di mercato per aiutarti a capire <em>quando</em> l'elettricità è relativamente
-      più conveniente, non per stimare il prezzo finale del tuo contratto.
+      Utile per usi flessibili dell'elettricità come la ricarica
+      dell'auto elettrica, la lavastoviglie, la lavatrice,
+      l'asciugatrice, lo scaldacqua e altri consumi che possono
+      essere spostati a un orario più conveniente.
     </p>
 
   </section>
 
+  <section class="faq">
+    <h2>Domande frequenti</h2>
+
+    <div class="faq-item">
+      <h3>Perché il prezzo dell'elettricità in Italia varia da zona a zona?</h3>
+      <p>
+        Il mercato elettrico italiano è diviso in zone di prezzo
+        (Nord, Centro-Nord, Centro-Sud, Sud, Sicilia, Sardegna) a
+        causa di vincoli sulla rete di trasmissione tra le diverse
+        aree del Paese. Ogni zona può avere un prezzo diverso nella
+        stessa ora, a seconda della produzione locale e della
+        capacità di trasporto dell'energia tra le zone.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Quando l'elettricità costa meno in Italia?</h3>
+      <p>
+        I prezzi tendono a essere più bassi nelle ore centrali della
+        giornata, specialmente nelle zone del Sud e in Sicilia, dove
+        la produzione fotovoltaica è molto elevata. Nelle giornate
+        più soleggiate, l'eccesso di produzione solare può spingere i
+        prezzi verso il basso.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Questo prezzo è uguale a quello della mia bolletta?</h3>
+      <p>
+        No. Qui viene mostrato il prezzo all'ingrosso del mercato del
+        giorno prima (MGP), gestito dal GME. La tua bolletta include
+        inoltre gli oneri di trasporto e gestione del contatore, gli
+        oneri di sistema, le imposte e il margine del tuo fornitore.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>L'Italia importa elettricità dagli altri Paesi?</h3>
+      <p>
+        Sì. L'Italia importa regolarmente elettricità da Francia e
+        Svizzera, soprattutto nel Nord del Paese, dove i prezzi
+        possono risentire delle condizioni dei mercati confinanti e
+        della capacità disponibile sulle interconnessioni.
+      </p>
+    </div>
+  </section>
+
   <div class="links">
 
-    <a href="/search/?country=IT&device=ev&lang=it">
-      🚗 Trova l'orario più economico per ricaricare l'auto elettrica →
+    <a href="/search/?country=IT&device=ev">
+      🚗 Trova il momento migliore per ricaricare →
     </a>
 
-    <a href="/search/?country=IT&device=dishwasher&lang=it">
-      🍽️ Conviene avviare la lavastoviglie adesso? →
+    <a href="/search/?country=IT&device=dishwasher">
+      🍽️ Conviene accendere la lavastoviglie ora? →
     </a>
 
     <a href="/">
-      🌍 Controlla i prezzi dell'elettricità in un altro paese →
+      🌍 Controlla i prezzi in un altro Paese →
     </a>
 
   </div>
 
-  <h2 class="country-links-title">Esplora altri mercati</h2>
+  <h2 class="explore-title">Scopri altri mercati</h2>
 
-  <nav class="country-links" aria-label="Altri mercati elettrici">
+  <nav aria-label="Altri mercati dell'elettricità">
 
-    <a href="/ireland/">
-      🇮🇪 Ore più economiche in Irlanda →
-    </a>
+    <div class="region">
+      <div class="region-title">Europa</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/ireland/"><span class="tile-flag">🇮🇪</span>Irlanda</a>
+        <a class="country-tile" href="/united-kingdom/"><span class="tile-flag">🇬🇧</span>Regno Unito</a>
+        <a class="country-tile" href="/germany/"><span class="tile-flag">🇩🇪</span>Germania</a>
+        <a class="country-tile" href="/france/"><span class="tile-flag">🇫🇷</span>Francia</a>
+        <a class="country-tile" href="/netherlands/"><span class="tile-flag">🇳🇱</span>Paesi Bassi</a>
+        <a class="country-tile" href="/belgium/"><span class="tile-flag">🇧🇪</span>Belgio</a>
+        <a class="country-tile" href="/austria/"><span class="tile-flag">🇦🇹</span>Austria</a>
+        <a class="country-tile" href="/finland/"><span class="tile-flag">🇫🇮</span>Finlandia</a>
+        <a class="country-tile" href="/poland/"><span class="tile-flag">🇵🇱</span>Polonia</a>
+        <a class="country-tile" href="/spain/"><span class="tile-flag">🇪🇸</span>Spagna</a>
+        <a class="country-tile" href="/greece/"><span class="tile-flag">🇬🇷</span>Grecia</a>
+      </div>
+    </div>
 
-    <a href="/california/">
-      🇺🇸 Ore più economiche in California →
-    </a>
+    <div class="region">
+      <div class="region-title">Nord America</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/california/"><span class="tile-flag">🇺🇸</span>California</a>
+        <a class="country-tile" href="/texas/"><span class="tile-flag">🇺🇸</span>Texas</a>
+        <a class="country-tile" href="/new-york/"><span class="tile-flag">🗽</span>New York</a>
+        <a class="country-tile" href="/ontario/"><span class="tile-flag">🇨🇦</span>Ontario</a>
+      </div>
+    </div>
 
-    <a href="/united-kingdom/">
-      🇬🇧 Ore più economiche nel Regno Unito →
-    </a>
-    <a href="/poland/">
-      🇵🇱 Ore più economiche in Polonia →
-    </a>
+    <div class="region">
+      <div class="region-title">Asia</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/japan/"><span class="tile-flag">🇯🇵</span>Giappone</a>
+      </div>
+    </div>
 
-      <a href="/greece/">
-      🇬🇷 Ore più economiche in Grecia →
-    </a>
-
-    <a href="/japan/">
-      🇯🇵 Ore più economiche in Giappone →
-    </a>
-
-    <a href="/spain/">
-      🇪🇸 Ore più economiche in Spagna →
-    </a>
-
-    <a href="/new-york/">
-      🗽 Ore più economiche a New York →
-    </a>
-
-</nav>
+  </nav>
 
   <p class="fine">
-    Dati aggiornati del mercato elettrico all'ingrosso forniti da <a href="https://elecz.com/">Elecz</a>.
-    CheapestHours è uno strumento indipendente che aiuta a individuare i momenti più convenienti per usare elettricità.
-    <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a>
+    Dati di mercato in tempo reale forniti da <a href="https://elecz.com/">Elecz</a>.
+    CheapestHours è uno strumento indipendente per pianificare i consumi elettrici.
+    <a href="/privacy/">Privacy</a> · <a href="/contact/">Contatti</a>
   </p>
 
 </main>
@@ -407,7 +561,7 @@ async function getJSON(url){
 
 function fmt(price,unit,currency){
 
-  if(/^[cp]\//i.test(unit||"")){
+  if(/^[cp]\/[a-z]+/i.test(unit||"")){
     return Number(price).toFixed(2) + " " + unit;
   }
 
@@ -451,11 +605,11 @@ function hour(iso){
     const [spot,cheap] = await Promise.all([
 
       getJSON(
-        "https://elecz.com/signal/spot?zone=IT-NO"
+        "https://elecz.com/signal/spot?zone=IT"
       ),
 
       getJSON(
-        "https://elecz.com/signal/cheapest-hours?zone=IT-NO&hours=12"
+        "https://elecz.com/signal/cheapest-hours?zone=IT&hours=12"
       )
 
     ]);
@@ -471,9 +625,9 @@ function hour(iso){
 
     const label =
       cls === "good"
-        ? "🟢 Conveniente adesso"
+        ? "🟢 Prezzo basso"
         : cls === "bad"
-          ? "🔴 Caro adesso"
+          ? "🔴 Prezzo alto"
           : "🟡 Prezzo normale";
 
     const pts = (cheap.cheapest_hours || [])
@@ -498,7 +652,7 @@ function hour(iso){
       <div class="flag">🇮🇹</div>
 
       <div class="updated">
-        Aggiornato alle ${hour(spot.timestamp)} ora locale
+        Aggiornato alle ${hour(spot.timestamp)}
       </div>
 
       <div class="hero">
@@ -508,7 +662,7 @@ function hour(iso){
         </div>
 
         <div style="margin-top:4px;font-size:10.5px;color:var(--soft)">
-          Prezzo all'ingrosso — non è il prezzo finale in bolletta.
+          Prezzo all'ingrosso — diverso dalla tua bolletta.
         </div>
 
         <div class="state ${cls}">
@@ -517,7 +671,7 @@ function hour(iso){
 
       </div>
 
-      <h2>Ore più economiche disponibili</h2>
+      <h2>Ore più economiche</h2>
 
       ${
         rows
@@ -539,13 +693,13 @@ function hour(iso){
           `
           : `
             <p style="font-size:12px;color:var(--soft)">
-              Non ci sono dati di prezzo disponibili per le prossime ore.
+              Non ci sono ancora dati sui prezzi per le prossime ore.
             </p>
           `
       }
 
-      <a class="check" href="/search/?country=IT&lang=it">
-        Controlla il mio consumo →
+      <a class="check" href="/search/?country=IT">
+        Controlla i miei consumi →
       </a>
 
     `;
@@ -554,7 +708,7 @@ function hour(iso){
 
     el.innerHTML = `
       <div class="error">
-        I dati per l'Italia sono temporaneamente non disponibili.
+        I dati del mercato italiano sono temporaneamente non disponibili.
       </div>
     `;
 
