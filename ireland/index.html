@@ -14,6 +14,12 @@
   <meta property="og:description" content="Find Ireland's cheapest electricity hours today. Check the live wholesale price and see whether it's better to use electricity now or wait.">
   <meta property="og:url" content="https://cheapesthours.com/ireland/">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cheapesthours.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta name="theme-color" content="#17213B">
 
@@ -23,6 +29,48 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
+
+  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does Ireland sometimes have negative electricity prices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ireland has one of the highest shares of wind power in its electricity mix in Europe. During windy nights with low demand, there can be more electricity on the grid than is needed, pushing the wholesale price below zero for short periods."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is electricity most expensive in Ireland?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prices typically rise during weekday evening peak demand, roughly 5pm to 7pm, especially when wind output is low and the grid relies more heavily on gas-fired generation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this the same price as my electricity bill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is the I-SEM (Integrated Single Electricity Market) wholesale price. Your household bill also includes supplier margin, network charges, the PSO levy, and VAT."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the I-SEM electricity market?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The I-SEM (Integrated Single Electricity Market) is the wholesale electricity market covering both Ireland and Northern Ireland, operated day-ahead as part of the wider pan-European market coupling. It sets one wholesale price for the island as a whole."
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -204,6 +252,41 @@
       font-size:20px
     }
 
+    .faq{
+      margin-top:26px
+    }
+
+    .faq h2{
+      color:var(--gold);
+      font-size:20px;
+      text-align:center;
+      margin:0 0 14px
+    }
+
+    .faq-item{
+      border-top:1px solid rgba(245,236,220,.13);
+      padding:14px 0
+    }
+
+    .faq-item:last-child{
+      border-bottom:1px solid rgba(245,236,220,.13)
+    }
+
+    .faq-item h3{
+      font-family:"Fraunces",serif;
+      color:var(--cream);
+      font-size:14px;
+      margin:0 0 6px;
+      font-weight:600
+    }
+
+    .faq-item p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
     .links{
       display:grid;
       gap:9px;
@@ -283,26 +366,83 @@
     <h2>When is electricity cheapest in Ireland?</h2>
 
     <p>
-      Electricity prices can change throughout the day.
-      CheapestHours uses live wholesale market data to show the current price
-      and the cheapest available hours, helping you decide whether to use electricity now or wait.
+      Ireland's wholesale electricity price is set through the
+      Integrated Single Electricity Market (I-SEM), covering both
+      Ireland and Northern Ireland, operated day-ahead as part of the
+      wider pan-European market coupling.
     </p>
 
     <p>
-      This can be useful for flexible electricity use such as EV charging,
-      dishwashers, washing machines, dryers, water heating and other loads
-      that can be moved to a cheaper time.
+      Ireland has one of the highest shares of wind power in its
+      electricity mix in Europe. When wind output is high, wholesale
+      prices tend to fall — sometimes into negative territory during
+      windy, low-demand periods such as overnight. When wind is low
+      and demand is high, typically weekday evenings around 5pm–7pm,
+      the grid relies more on gas-fired generation and prices tend to
+      rise.
     </p>
 
     <p>
-      The prices shown here are wholesale market signals, not your final household tariff.
-      Your actual electricity bill can also include supplier charges, network fees,
-      taxes and the terms of your electricity plan.
+      The price shown here is the wholesale market price. Your actual
+      household bill also includes supplier margin, network charges,
+      the PSO (Public Service Obligation) levy, and VAT, so it will
+      differ from the number on this page.
+    </p>
+
+    <p>
+      This can be useful for flexible electricity use such as EV
+      charging, dishwashers, washing machines, dryers, water heating
+      and other loads that can be moved to a cheaper time.
     </p>
 
   </section>
 
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>Why does Ireland sometimes have negative electricity prices?</h3>
+      <p>
+        Ireland has one of the highest shares of wind power in its
+        electricity mix in Europe. During windy nights with low
+        demand, there can be more electricity on the grid than is
+        needed, pushing the wholesale price below zero for short
+        periods.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>When is electricity most expensive in Ireland?</h3>
+      <p>
+        Prices typically rise during weekday evening peak demand,
+        roughly 5pm to 7pm, especially when wind output is low and
+        the grid relies more heavily on gas-fired generation.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is this the same price as my electricity bill?</h3>
+      <p>
+        No. This is the I-SEM (Integrated Single Electricity Market)
+        wholesale price. Your household bill also includes supplier
+        margin, network charges, the PSO levy, and VAT.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the I-SEM electricity market?</h3>
+      <p>
+        The I-SEM (Integrated Single Electricity Market) is the
+        wholesale electricity market covering both Ireland and
+        Northern Ireland, operated day-ahead as part of the wider
+        pan-European market coupling. It sets one wholesale price for
+        the island as a whole.
+      </p>
+    </div>
+  </section>
+
   <div class="links">
+
     <a href="/search/?country=IE&device=ev">
       🚗 Find my cheapest EV charging time →
     </a>
@@ -314,17 +454,27 @@
     <a href="/">
       🌍 Check electricity prices in another country →
     </a>
+
   </div>
 
   <h2 class="country-links-title">Explore other markets</h2>
 
   <nav class="country-links" aria-label="Other electricity markets">
-    <a href="/california/">
-      🇺🇸 Cheapest electricity hours in California →
-    </a>
 
     <a href="/united-kingdom/">
       🇬🇧 Cheapest electricity hours in the United Kingdom →
+    </a>
+
+    <a href="/germany/">
+      🇩🇪 Cheapest electricity hours in Germany →
+    </a>
+
+    <a href="/france/">
+      🇫🇷 Cheapest electricity hours in France →
+    </a>
+
+    <a href="/netherlands/">
+      🇳🇱 Cheapest electricity hours in the Netherlands →
     </a>
 
     <a href="/poland/">
@@ -339,17 +489,18 @@
       🇬🇷 Cheapest electricity hours in Greece →
     </a>
 
-    <a href="/japan/">
-      🇯🇵 Cheapest electricity hours in Japan →
-    </a>
-
     <a href="/spain/">
       🇪🇸 Cheapest electricity hours in Spain →
     </a>
 
-    <a href="/new-york/">
-      🗽 Cheapest electricity hours in New York →
+    <a href="/japan/">
+      🇯🇵 Cheapest electricity hours in Japan →
     </a>
+
+    <a href="/california/">
+      🇺🇸 Cheapest electricity hours in California →
+    </a>
+
   </nav>
 
   <p class="fine">
@@ -394,7 +545,7 @@ function hour(iso){
     return new Date(iso).toLocaleTimeString(
       "en-IE",
       {
-        hour:"2-digit",
+        hour:"numeric",
         minute:"2-digit",
         timeZone:"Europe/Dublin"
       }
@@ -457,7 +608,7 @@ function hour(iso){
       <div class="flag">🇮🇪</div>
 
       <div class="updated">
-        Updated ${hour(spot.timestamp)} Ireland time
+        Updated ${hour(spot.timestamp)} Irish time
       </div>
 
       <div class="hero">
