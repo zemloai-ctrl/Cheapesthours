@@ -24,6 +24,48 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
 
+  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When is electricity most expensive in California?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prices typically rise in the early evening, roughly 4pm to 9pm, when solar generation drops off as the sun sets but demand is still high — a pattern often called the 'duck curve'. This effect is strongest on hot summer evenings when air conditioning use overlaps with the drop in solar output."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is electricity cheapest in California?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prices are usually lowest in the middle of the day, roughly 10am to 3pm, when solar output is highest. On sunny, low-demand days the wholesale price can fall very low or even go negative for short periods, since California's grid regularly has more solar power than it needs at midday."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this the same price as my electricity bill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is the CAISO wholesale market price. Your utility bill (e.g. from PG&E, SCE or SDG&E) also includes transmission and distribution charges, taxes, and other fees, and may follow a fixed time-of-use rate schedule rather than the live wholesale price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 'duck curve' in California electricity prices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The duck curve describes how California's net electricity demand dips sharply during the day as solar output rises, then climbs steeply in the evening as the sun sets and demand stays high — creating a curve shaped like a duck when plotted on a graph. It's why prices tend to be cheap at midday and expensive in the early evening."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --navy:#17213B;
@@ -204,6 +246,41 @@
       font-size:20px
     }
 
+    .faq{
+      margin-top:26px
+    }
+
+    .faq h2{
+      color:var(--gold);
+      font-size:20px;
+      text-align:center;
+      margin:0 0 14px
+    }
+
+    .faq-item{
+      border-top:1px solid rgba(245,236,220,.13);
+      padding:14px 0
+    }
+
+    .faq-item:last-child{
+      border-bottom:1px solid rgba(245,236,220,.13)
+    }
+
+    .faq-item h3{
+      font-family:"Fraunces",serif;
+      color:var(--cream);
+      font-size:14px;
+      margin:0 0 6px;
+      font-weight:600
+    }
+
+    .faq-item p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
     .links{
       display:grid;
       gap:9px;
@@ -283,23 +360,87 @@
     <h2>When is electricity cheapest in California?</h2>
 
     <p>
-      Wholesale electricity prices can change throughout the day.
-      CheapestHours uses live California market data to show the current price
-      and the cheapest available hours, helping you decide whether to use electricity now or wait.
+      California's wholesale electricity market is run by CAISO (the
+      California Independent System Operator). This page shows the
+      NP15 pricing zone, one of the main trading hubs in CAISO's
+      day-ahead market.
     </p>
 
     <p>
-      This can be useful for flexible electricity use such as EV charging,
-      dishwashers, washing machines, dryers, water heating and other loads
-      that can be moved to a cheaper time.
+      California gets a very large share of its daytime power from
+      solar, so wholesale prices tend to follow a distinctive pattern
+      known as the "duck curve": prices fall in the middle of the day
+      (roughly 10am–3pm) when solar output is high, sometimes even
+      turning negative on sunny, low-demand days. Prices then rise
+      sharply in the early evening (roughly 4pm–9pm) as solar output
+      drops off while demand — including air conditioning on hot days
+      — stays high.
     </p>
 
     <p>
-      The prices shown here are wholesale market signals, not your utility's retail electricity rate.
-      Your actual bill can include utility tariffs, transmission and distribution charges,
-      taxes and other fees.
+      The price shown here is the CAISO wholesale market price, not
+      your utility's retail rate. Your actual bill from a utility such
+      as PG&E, SCE or SDG&E includes transmission and distribution
+      charges, taxes and other fees, and residential customers are
+      often billed on a fixed time-of-use schedule rather than the
+      live wholesale price.
     </p>
 
+    <p>
+      This can be useful for flexible electricity use such as EV
+      charging, dishwashers, washing machines, dryers, water heating
+      and other loads that can be moved to a cheaper time.
+    </p>
+
+  </section>
+
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>When is electricity most expensive in California?</h3>
+      <p>
+        Prices typically rise in the early evening, roughly 4pm to
+        9pm, when solar generation drops off as the sun sets but
+        demand is still high — a pattern often called the "duck
+        curve". This effect is strongest on hot summer evenings when
+        air conditioning use overlaps with the drop in solar output.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>When is electricity cheapest in California?</h3>
+      <p>
+        Prices are usually lowest in the middle of the day, roughly
+        10am to 3pm, when solar output is highest. On sunny,
+        low-demand days the wholesale price can fall very low or even
+        go negative for short periods, since California's grid
+        regularly has more solar power than it needs at midday.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is this the same price as my electricity bill?</h3>
+      <p>
+        No. This is the CAISO wholesale market price. Your utility
+        bill (e.g. from PG&E, SCE or SDG&E) also includes transmission
+        and distribution charges, taxes, and other fees, and may
+        follow a fixed time-of-use rate schedule rather than the live
+        wholesale price.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What is the "duck curve" in California electricity prices?</h3>
+      <p>
+        The duck curve describes how California's net electricity
+        demand dips sharply during the day as solar output rises,
+        then climbs steeply in the evening as the sun sets and demand
+        stays high — creating a curve shaped like a duck when plotted
+        on a graph. It's why prices tend to be cheap at midday and
+        expensive in the early evening.
+      </p>
+    </div>
   </section>
 
   <div class="links">
