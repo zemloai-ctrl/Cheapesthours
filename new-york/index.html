@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Cheapest Electricity Hours in New York Today | CheapestHours</title>
+  <title>Cheapest Electricity Hours in New York | CheapestHours</title>
 
-  <meta name="description" content="See New York's current wholesale electricity price and the cheapest available hours today.">
+  <meta name="description" content="Find New York's cheapest electricity hours today. Check the live NYISO wholesale price and see whether it's better to use electricity now or wait.">
 
   <link rel="canonical" href="https://cheapesthours.com/new-york/">
 
-  <meta property="og:title" content="Cheapest Electricity Hours in New York Today | CheapestHours">
-  <meta property="og:description" content="See New York's current wholesale electricity price and the cheapest available hours today.">
+  <meta property="og:title" content="Cheapest Electricity Hours in New York | CheapestHours">
+  <meta property="og:description" content="Find New York's cheapest electricity hours today. Check the live NYISO wholesale price and see whether it's better to use electricity now or wait.">
   <meta property="og:url" content="https://cheapesthours.com/new-york/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cheapesthours.com/og-image.png">
@@ -29,6 +29,48 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
+
+  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is electricity more expensive in New York City than upstate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "New York's grid is split into pricing zones by NYISO. New York City (Zone J) is usually the most expensive zone because it has the highest demand and limited transmission capacity to bring in cheaper power, including hydroelectric generation from upstate. Upstate zones, closer to hydro and other generation, are typically cheaper."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is electricity cheapest in New York?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prices tend to be lowest overnight, when demand is low across the state. Periods of strong hydroelectric output, particularly from upstate sources like Niagara, can also help push prices down."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this the same price as my electricity bill?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is the NYISO wholesale market price for a specific zone. Most residential customers are on fixed or utility-set rates from providers like Con Edison or National Grid, which include delivery charges, taxes, and other fees on top of the wholesale energy cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does electricity get so expensive in New York during summer heat waves?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Summer heat waves push air conditioning demand sharply higher across the state, especially in New York City, straining transmission capacity into the city and forcing the grid to call on more expensive backup generation — both factors that can push wholesale prices up significantly."
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -210,6 +252,41 @@
       font-size:20px
     }
 
+    .faq{
+      margin-top:26px
+    }
+
+    .faq h2{
+      color:var(--gold);
+      font-size:20px;
+      text-align:center;
+      margin:0 0 14px
+    }
+
+    .faq-item{
+      border-top:1px solid rgba(245,236,220,.13);
+      padding:14px 0
+    }
+
+    .faq-item:last-child{
+      border-bottom:1px solid rgba(245,236,220,.13)
+    }
+
+    .faq-item h3{
+      font-family:"Fraunces",serif;
+      color:var(--cream);
+      font-size:14px;
+      margin:0 0 6px;
+      font-weight:600
+    }
+
+    .faq-item p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.7;
+      color:rgba(245,236,220,.67)
+    }
+
     .links{
       display:grid;
       gap:9px;
@@ -226,27 +303,61 @@
       font-size:12px
     }
 
-    .country-links-title{
-      font-family:"Fraunces",serif;
-      color:var(--gold);
-      font-size:18px;
-      margin:25px 0 9px;
-      text-align:center
+    /* --- Country grid --- */
+
+    .region{
+      margin-top:26px;
+      text-align:left
     }
 
-    .country-links{
+    .region-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:15px;
+      font-weight:650;
+      margin:0 0 10px 2px;
+      letter-spacing:.01em
+    }
+
+    .region-grid{
       display:grid;
+      grid-template-columns:1fr 1fr;
       gap:8px
     }
 
-    .country-links a{
+    .country-tile{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:12px 12px;
+      border:1px solid rgba(245,236,220,.13);
+      border-radius:12px;
+      background:rgba(245,236,220,.045);
       color:var(--cream);
       text-decoration:none;
-      border:1px solid rgba(245,236,220,.13);
-      background:rgba(245,236,220,.045);
-      border-radius:12px;
-      padding:11px 14px;
-      font-size:11.5px
+      font-size:12.5px;
+      font-weight:500;
+      line-height:1.25;
+      transition:border-color .2s, background .2s, transform .15s
+    }
+
+    .country-tile:hover{
+      border-color:rgba(212,162,76,.65);
+      background:rgba(245,236,220,.09);
+      transform:translateY(-1px)
+    }
+
+    .country-tile .tile-flag{
+      font-size:20px;
+      flex-shrink:0
+    }
+
+    .explore-title{
+      font-family:"Fraunces",serif;
+      color:var(--gold);
+      font-size:18px;
+      margin:28px 0 4px;
+      text-align:center
     }
 
     .fine{
@@ -268,26 +379,18 @@
 </head>
 
 <body>
-
 <main>
 
   <a class="brand" href="/">⚡ CheapestHours</a>
 
-  <h1>🗽 Cheapest Electricity Hours in New York Today</h1>
+  <h1>🗽 Cheapest electricity hours in New York today</h1>
 
   <p class="intro">
-    See New York's current wholesale electricity price and the cheapest available hours today.
-  </p>
-
-  <p class="intro">
-    New York has multiple market zones. This page uses <strong>NYC (US-NY-NYC)</strong>
-    as the reference zone — prices vary significantly across the state, so pick
-    your own zone (Long Island, Westchester, Capital, Central, North Country,
-    and more) in the next step.
+    See New York City's current wholesale electricity price and the cheapest available hours today.
   </p>
 
   <div class="card" id="live">
-    <div class="loading">Loading live New York electricity market data…</div>
+    <div class="loading">Loading New York's live electricity market…</div>
   </div>
 
   <div class="ad">Advertisement</div>
@@ -297,34 +400,94 @@
     <h2>When is electricity cheapest in New York?</h2>
 
     <p>
-      Wholesale electricity prices change throughout the day. CheapestHours uses
-      live market data to show the current price and the cheapest hours coming
-      up, helping you decide whether to use electricity now or wait.
+      New York's wholesale electricity market is run by NYISO (the
+      New York Independent System Operator), which splits the state
+      into pricing zones. This page shows Zone J, covering New York
+      City — usually the most expensive zone on the grid.
     </p>
 
     <p>
-      The price shown here is the NYISO wholesale market price for the selected
-      zone — not your final utility bill. Your actual rate can include delivery
-      charges, capacity costs, taxes, and your utility's or supplier's markup, so
-      it will typically be higher than the wholesale number.
+      New York City tends to have the highest prices in the state
+      because it has the highest demand while also facing limited
+      transmission capacity to bring in cheaper power from upstate,
+      including hydroelectric generation from sources like Niagara.
+      This means the same hour of the day can have a noticeably
+      different price in NYC than in upstate zones.
     </p>
 
     <p>
-      This can be useful for flexible electricity use like EV charging,
-      dishwashers, laundry, water heating, and other loads that can be shifted
-      to a cheaper time — especially if you're on a real-time or wholesale-linked
-      pricing plan.
+      Prices tend to be lowest overnight, when statewide demand is
+      low. Summer heat waves are the opposite extreme: sharply higher
+      air conditioning demand strains transmission into the city and
+      forces the grid to call on more expensive backup generation,
+      which can push wholesale prices up significantly.
+    </p>
+
+    <p>
+      The price shown here is the NYISO wholesale market price, not
+      your retail rate. Most residential customers are on fixed or
+      utility-set rates from providers like Con Edison or National
+      Grid, which include delivery charges, taxes, and other fees on
+      top of the wholesale energy cost.
     </p>
 
   </section>
 
+  <section class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>Why is electricity more expensive in New York City than upstate?</h3>
+      <p>
+        New York's grid is split into pricing zones by NYISO. New
+        York City (Zone J) is usually the most expensive zone because
+        it has the highest demand and limited transmission capacity
+        to bring in cheaper power, including hydroelectric generation
+        from upstate. Upstate zones, closer to hydro and other
+        generation, are typically cheaper.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>When is electricity cheapest in New York?</h3>
+      <p>
+        Prices tend to be lowest overnight, when demand is low across
+        the state. Periods of strong hydroelectric output,
+        particularly from upstate sources like Niagara, can also
+        help push prices down.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is this the same price as my electricity bill?</h3>
+      <p>
+        No. This is the NYISO wholesale market price for a specific
+        zone. Most residential customers are on fixed or utility-set
+        rates from providers like Con Edison or National Grid, which
+        include delivery charges, taxes, and other fees on top of the
+        wholesale energy cost.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why does electricity get so expensive in New York during summer heat waves?</h3>
+      <p>
+        Summer heat waves push air conditioning demand sharply higher
+        across the state, especially in New York City, straining
+        transmission capacity into the city and forcing the grid to
+        call on more expensive backup generation — both factors that
+        can push wholesale prices up significantly.
+      </p>
+    </div>
+  </section>
+
   <div class="links">
 
-    <a href="/search/?country=US&device=ev&lang=en">
-      🚗 Find the best time to charge your EV →
+    <a href="/search/?country=US&device=ev">
+      🚗 Find my cheapest EV charging time →
     </a>
 
-    <a href="/search/?country=US&device=dishwasher&lang=en">
+    <a href="/search/?country=US&device=dishwasher">
       🍽️ Should I run the dishwasher now? →
     </a>
 
@@ -334,46 +497,48 @@
 
   </div>
 
-  <h2 class="country-links-title">Explore other markets</h2>
+  <h2 class="explore-title">Explore other markets</h2>
 
-  <nav class="country-links" aria-label="Other electricity markets">
+  <nav aria-label="Other electricity markets">
 
-    <a href="/ireland/">
-      🇮🇪 Cheapest electricity hours in Ireland →
-    </a>
+    <div class="region">
+      <div class="region-title">North America</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/california/"><span class="tile-flag">🇺🇸</span>California</a>
+        <a class="country-tile" href="/texas/"><span class="tile-flag">🇺🇸</span>Texas</a>
+        <a class="country-tile" href="/ontario/"><span class="tile-flag">🇨🇦</span>Ontario</a>
+      </div>
+    </div>
 
-    <a href="/california/">
-      🇺🇸 Cheapest electricity hours in California →
-    </a>
+    <div class="region">
+      <div class="region-title">Europe</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/ireland/"><span class="tile-flag">🇮🇪</span>Ireland</a>
+        <a class="country-tile" href="/united-kingdom/"><span class="tile-flag">🇬🇧</span>United Kingdom</a>
+        <a class="country-tile" href="/germany/"><span class="tile-flag">🇩🇪</span>Germany</a>
+        <a class="country-tile" href="/france/"><span class="tile-flag">🇫🇷</span>France</a>
+        <a class="country-tile" href="/netherlands/"><span class="tile-flag">🇳🇱</span>Netherlands</a>
+        <a class="country-tile" href="/belgium/"><span class="tile-flag">🇧🇪</span>Belgium</a>
+        <a class="country-tile" href="/austria/"><span class="tile-flag">🇦🇹</span>Austria</a>
+        <a class="country-tile" href="/finland/"><span class="tile-flag">🇫🇮</span>Finland</a>
+        <a class="country-tile" href="/poland/"><span class="tile-flag">🇵🇱</span>Poland</a>
+        <a class="country-tile" href="/italy/"><span class="tile-flag">🇮🇹</span>Italy</a>
+        <a class="country-tile" href="/spain/"><span class="tile-flag">🇪🇸</span>Spain</a>
+        <a class="country-tile" href="/greece/"><span class="tile-flag">🇬🇷</span>Greece</a>
+      </div>
+    </div>
 
-    <a href="/united-kingdom/">
-      🇬🇧 Cheapest electricity hours in the United Kingdom →
-    </a>
-
-    <a href="/poland/">
-      🇵🇱 Cheapest electricity hours in Poland →
-    </a>
-
-    <a href="/greece/">
-      🇬🇷 Cheapest electricity hours in Greece →
-    </a>
-
-    <a href="/italy/">
-      🇮🇹 Cheapest electricity hours in Italy →
-    </a>
-
-    <a href="/japan/">
-      🇯🇵 Cheapest electricity hours in Japan →
-    </a>
-
-    <a href="/spain/">
-      🇪🇸 Cheapest electricity hours in Spain →
-    </a>
+    <div class="region">
+      <div class="region-title">Asia</div>
+      <div class="region-grid">
+        <a class="country-tile" href="/japan/"><span class="tile-flag">🇯🇵</span>Japan</a>
+      </div>
+    </div>
 
   </nav>
 
   <p class="fine">
-    Live wholesale electricity data via <a href="https://elecz.com/">Elecz</a>.
+    Live wholesale electricity data via Elecz.
     CheapestHours is an independent electricity timing tool.
     <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a>
   </p>
@@ -394,7 +559,7 @@ async function getJSON(url){
 
 function fmt(price,unit,currency){
 
-  if(/^[cp]\/[a-z]+/i.test(unit||"")){
+  if(/^[cp]\//i.test(unit||"")){
     return Number(price).toFixed(2) + " " + unit;
   }
 
@@ -402,8 +567,7 @@ function fmt(price,unit,currency){
     EUR:"€",
     GBP:"£",
     USD:"$",
-    JPY:"¥",
-    PLN:"zł"
+    JPY:"¥"
   }[currency] || currency + " ";
 
   return s + Number(price).toFixed(2) + "/kWh";
@@ -412,20 +576,17 @@ function fmt(price,unit,currency){
 function hour(iso){
 
   try{
-
     return new Date(iso).toLocaleTimeString(
       "en-US",
       {
-        hour:"2-digit",
+        hour:"numeric",
         minute:"2-digit",
         timeZone:"America/New_York"
       }
     );
-
-  }catch{
-
+  }
+  catch{
     return iso;
-
   }
 }
 
@@ -458,10 +619,10 @@ function hour(iso){
 
     const label =
       cls === "good"
-        ? "🟢 Cheap right now"
+        ? "🟢 Cheap now"
         : cls === "bad"
-          ? "🔴 Expensive right now"
-          : "🟡 Normal price";
+          ? "🔴 Expensive now"
+          : "🟡 Normal";
 
     const pts = (cheap.cheapest_hours || [])
       .slice()
@@ -469,23 +630,19 @@ function hour(iso){
       .slice(0,6)
       .sort((a,b)=>new Date(a.hour)-new Date(b.hour));
 
-    const rows = pts
-      .map(
-        p => `
-          <tr>
-            <td>${hour(p.hour)}</td>
-            <td>${fmt(p.price,spot.unit,spot.currency)}</td>
-          </tr>
-        `
-      )
-      .join("");
+    const rows = pts.map(p => `
+      <tr>
+        <td>${hour(p.hour)}</td>
+        <td>${fmt(p.price,spot.unit,spot.currency)}</td>
+      </tr>
+    `).join("");
 
     el.innerHTML = `
 
       <div class="flag">🗽</div>
 
       <div class="updated">
-        Updated at ${hour(spot.timestamp)} local time
+        Updated ${hour(spot.timestamp)} Eastern time
       </div>
 
       <div class="hero">
@@ -494,26 +651,21 @@ function hour(iso){
           ${fmt(spot.price,spot.unit,spot.currency)}
         </div>
 
-        <div style="margin-top:4px;font-size:10.5px;color:var(--soft)">
-          Wholesale price — not your final bill.
-        </div>
-
         <div class="state ${cls}">
           ${label}
         </div>
 
       </div>
 
-      <h2>Cheapest hours available</h2>
+      <h2>Cheapest available hours</h2>
 
       ${
         rows
           ? `
             <table>
-
               <thead>
                 <tr>
-                  <th>Hour</th>
+                  <th>Time</th>
                   <th>Price</th>
                 </tr>
               </thead>
@@ -521,27 +673,27 @@ function hour(iso){
               <tbody>
                 ${rows}
               </tbody>
-
             </table>
           `
           : `
             <p style="font-size:12px;color:var(--soft)">
-              No price data available for upcoming hours yet.
+              No forward price data is available right now.
             </p>
           `
       }
 
-      <a class="check" href="/search/?country=US&lang=en">
-        Check based on my usage →
+      <a class="check" href="/search/?country=US">
+        Check my electricity use →
       </a>
 
     `;
 
-  }catch(e){
+  }
+  catch(e){
 
     el.innerHTML = `
       <div class="error">
-        New York data is temporarily unavailable.
+        Live New York data is temporarily unavailable.
       </div>
     `;
 
