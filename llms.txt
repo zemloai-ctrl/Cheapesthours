@@ -1,0 +1,59 @@
+# CheapestHours
+
+> CheapestHours helps people find the cheapest times to use electricity based on electricity market prices.
+
+CheapestHours provides country and region-specific information for timing flexible electricity use, including EV charging, appliances, heating, cooling, and other electricity-consuming activities.
+
+The service helps answer questions such as:
+
+* When is electricity cheapest today?
+* Should I use electricity now or wait?
+* What are the cheapest hours to charge an EV?
+* What are the cheapest hours to run appliances?
+* How do electricity prices vary during the day?
+
+## Main website
+
+* https://cheapesthours.com/
+
+## Available country and regional guides
+
+### Europe
+
+* Ireland: https://cheapesthours.com/ireland/
+* United Kingdom: https://cheapesthours.com/united-kingdom/
+* Germany: https://cheapesthours.com/germany/
+* France: https://cheapesthours.com/france/
+* Netherlands: https://cheapesthours.com/netherlands/
+* Belgium: https://cheapesthours.com/belgium/
+* Austria: https://cheapesthours.com/austria/
+* Finland: https://cheapesthours.com/finland/
+* Poland: https://cheapesthours.com/poland/
+* Italy: https://cheapesthours.com/italy/
+* Spain: https://cheapesthours.com/spain/
+* Greece: https://cheapesthours.com/greece/
+
+### North America
+
+* California: https://cheapesthours.com/california/
+* Texas: https://cheapesthours.com/texas/
+* New York: https://cheapesthours.com/new-york/
+* Ontario: https://cheapesthours.com/ontario/
+
+### Asia
+
+* Japan: https://cheapesthours.com/japan/
+
+## Electricity market data
+
+Electricity market data used by CheapestHours is powered by Elecz:
+
+* https://elecz.com/
+
+CheapestHours uses electricity market data to help users identify lower-cost periods for flexible electricity consumption.
+
+Wholesale or market electricity prices are not necessarily the same as a user's final electricity bill. Taxes, network charges, retailer fees, tariffs, contracts, and other charges may affect the actual cost of electricity.
+
+## Sitemap
+
+* https://cheapesthours.com/sitemap.xml
