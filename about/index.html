@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About CheapestHours — Methodology, Data & Limitations</title>
+<meta name="description" content="How CheapestHours works, where electricity market data comes from, how cheap hours are identified, and the limitations of wholesale price data.">
+<link rel="canonical" href="https://cheapesthours.com/about/">
+<meta property="og:title" content="About CheapestHours — Methodology, Data & Limitations">
+<meta property="og:description" content="How CheapestHours turns electricity market data into useful timing signals.">
+<meta property="og:url" content="https://cheapesthours.com/about/"><meta property="og:type" content="website">
+<link rel="icon" href="/favicon.ico" sizes="any"><meta name="theme-color" content="#17213B">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366" crossorigin="anonymous"></script>
+<style>
+:root{--navy:#17213B;--deep:#0D1526;--gold:#D4A24C;--cream:#F5ECDC}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#2a3c69 0%,var(--navy) 43%,var(--deep) 100%);color:var(--cream);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(100% - 36px,760px);margin:auto;padding:38px 0 60px}.brand{color:var(--gold);text-decoration:none;font-family:Georgia,serif;font-size:21px;font-weight:700}
+article{margin-top:25px;background:#F5ECDC;color:#1B2A4A;border-radius:20px;padding:clamp(24px,5vw,42px);box-shadow:0 22px 65px rgba(0,0,0,.28)}
+h1,h2{font-family:Georgia,serif}h1{font-size:32px;margin:0 0 12px}h2{font-size:21px;margin:30px 0 9px}p,li{font-size:15px;line-height:1.72}a{color:#8a5c13}.lead{font-size:17px;color:rgba(27,42,74,.72)}
+.note{padding:15px 17px;background:rgba(27,42,74,.06);border-radius:12px;margin:18px 0}
+footer{text-align:center;margin-top:24px;font-size:12px;color:rgba(245,236,220,.58)}footer a{color:inherit}
+</style></head>
+<body><main><a class="brand" href="/">⚡ CheapestHours</a>
+<article>
+<h1>About CheapestHours</h1>
+<p class="lead">CheapestHours is a free electricity-timing utility. Its purpose is to help people decide when to run flexible electrical loads by making changing wholesale electricity prices easier to understand and use.</p>
+
+<h2>What the service does</h2>
+<p>Electricity prices can change substantially during a day. CheapestHours combines live and upcoming market-price information with a simple device-based search. A user can choose a market and describe a flexible load — for example an electric vehicle, dishwasher, washing machine, dryer, water heater or another appliance — and compare using electricity now with waiting for a cheaper period.</p>
+<p>The individual market pages provide a quicker view: the current wholesale price, upcoming prices and the cheapest available hours, together with local context explaining how that electricity market works.</p>
+
+<h2>Where the data comes from</h2>
+<p>CheapestHours receives normalized electricity-market signals from <a href="https://elecz.com/" rel="noopener">Elecz</a>. Elecz collects and normalizes data from electricity-market and grid sources for supported regions. Because electricity markets differ by country and region, the relevant market zone and source can also differ. CheapestHours does not invent estimated market prices when source data is unavailable.</p>
+<p>Market data changes continuously. The time shown with a result matters: a recommendation is a snapshot based on the data available when the page is loaded, not a promise about a future electricity bill.</p>
+
+<h2>How “cheapest hours” are identified</h2>
+<p>The tool compares the available hourly price observations within the relevant upcoming period. For a multi-hour task, consecutive hours matter: a three-hour charging session needs a useful three-hour window, not merely the single cheapest hour of the day. The interface therefore focuses on practical timing windows as well as the current-hour signal.</p>
+<p>“Cheap” is relative to the available market prices being compared. It does not mean electricity is free, below a particular retail tariff, or guaranteed to be cheaper than another supplier's contract.</p>
+
+<h2>Wholesale prices versus your bill</h2>
+<div class="note"><strong>Important:</strong> a wholesale electricity price is not the same thing as the final price on a household electricity bill.</div>
+<p>Retail electricity prices can include supplier margins, network or distribution charges, taxes, levies and other regulated or contractual components. The benefit of shifting consumption therefore depends on the user's electricity contract. Customers on dynamic or spot-linked contracts are usually more directly exposed to hourly market prices than customers on fixed-price contracts.</p>
+<p>CheapestHours is a timing aid, not an electricity supplier, billing service or guarantee of savings. Users should check the terms of their own electricity contract before treating a wholesale-price movement as a change in their personal tariff.</p>
+
+<h2>Why market pages are different</h2>
+<p>Electricity markets are not interchangeable. Some use national prices, others use bidding zones or regional hubs; some publish hourly prices and others use different settlement intervals. Each published market page therefore includes local explanation and uses the applicable Elecz market signal rather than applying one universal price to every country.</p>
+
+<h2>Editorial and maintenance approach</h2>
+<p>We aim to keep the service useful rather than publish pages simply for search traffic. A market page is intended to combine functioning price data, a practical scheduling route and market-specific explanation. Pages and integrations are updated when data availability, market naming or the service itself changes. If a data source is temporarily unavailable, the site may be unable to provide a current recommendation.</p>
+
+<h2>Who operates CheapestHours?</h2>
+<p>CheapestHours is an independent service maintained by <strong>SKA Trading Oy / Zemlo AI</strong> in Finland. Electricity-market signals are provided by Elecz. Advertising, when present, does not determine which hours are shown as cheaper or how market data is ranked.</p>
+
+<h2>Questions or data issues</h2>
+<p>If you notice a market page that appears stale, incorrect or unclear, please tell us. The <a href="/contact/">contact page</a> explains how to reach the maintainer. You can also read our <a href="/privacy/">Privacy Policy</a>.</p>
+</article>
+<footer><a href="/">Home</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy Policy</a></footer>
+</main></body></html>
