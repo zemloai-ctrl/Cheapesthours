@@ -225,6 +225,32 @@
 
     .intro strong { color: rgba(245,236,220,.88); }
 
+    .explain {
+      margin: 34px 0 4px;
+      padding: 23px 20px;
+      text-align: left;
+      border: 1px solid rgba(245,236,220,.13);
+      border-radius: 16px;
+      background: rgba(245,236,220,.045);
+      color: rgba(245,236,220,.72);
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+    .explain h2 {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-family: "Fraunces", serif;
+      font-size: 19px;
+    }
+    .explain h3 {
+      margin: 18px 0 6px;
+      color: var(--cream);
+      font-family: "Fraunces", serif;
+      font-size: 15px;
+    }
+    .explain p { margin: 0 0 10px; }
+    .explain a { color: var(--cream); }
+
     /* --- Country grid --- */
 
     .region {
@@ -363,15 +389,52 @@
       <button class="go" id="continueBtn" type="button">Continue →</button>
       <p class="micro">Next: choose your area and what you want to run.</p>
     </section>
-
-    <!-- Replace this placeholder with the real AdSense unit after approval. -->
-    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
-
     <p class="intro">
       <strong>CheapestHours</strong> turns electricity market data into a simple question:
       use electricity now, or wait? Check charging, appliances and other flexible
       electricity use against current and upcoming market prices.
     </p>
+    <section class="explain">
+      <h2>What CheapestHours actually shows</h2>
+      <p>
+        CheapestHours is a practical timing tool for flexible electricity use. It reads current and
+        upcoming wholesale electricity-market prices and turns them into a simpler decision: is this
+        a relatively good time to use electricity, or is a cheaper period available soon?
+      </p>
+      <p>
+        This is most useful for loads that can be moved without inconvenience, such as EV charging,
+        dishwashers, washing machines, tumble dryers, water heating and home batteries. The search
+        tool lets you choose a market, device, power and duration so the result can be based on the
+        hours that matter for that job rather than on a generic daily average.
+      </p>
+
+      <h3>Wholesale price is not your electricity bill</h3>
+      <p>
+        The prices shown here are electricity-market prices. Your final retail rate can also include
+        supplier margins, network charges, taxes and other regulated or contractual components.
+        Shifting usage therefore has the clearest direct effect when your electricity contract follows
+        spot or wholesale prices. With a fixed-price contract, the market data is still useful context
+        but does not mean your own tariff changes every hour.
+      </p>
+
+      <h3>How the data is produced</h3>
+      <p>
+        Live market signals are supplied by <a href="https://elecz.com/" rel="noopener">Elecz</a>,
+        which normalizes electricity-market data across supported regions. CheapestHours uses those
+        signals to present the current price, upcoming prices and cheaper time windows in a
+        consumer-friendly form. Market pages also explain the local market and the limitations of the
+        price shown.
+      </p>
+
+      <h3>Independent and continuously updated</h3>
+      <p>
+        CheapestHours is an independent utility maintained by SKA Trading Oy / Zemlo AI in Finland.
+        The service is designed around changing market data rather than static price claims: users can
+        return whenever they need to schedule electricity use. Read more about the calculation,
+        sources and limitations on our <a href="/about/">About &amp; methodology</a> page.
+      </p>
+    </section>
+
 
     <nav aria-label="Browse by country">
 
@@ -417,10 +480,7 @@
       <a href="https://elecz.com/" rel="noopener">Elecz</a>.
       Wholesale prices are not the same as your final electricity bill.
       <br>
-      Comparing electricity price APIs?
-      <a href="https://botcentrum.com/" rel="noopener">See BotCentrum</a>.
-      <br>
-      <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a>
+      <a href="/about/">About &amp; methodology</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a>
     </footer>
   </main>
 
