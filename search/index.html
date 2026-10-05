@@ -795,7 +795,7 @@ els.powerLabel.textContent = t(lang, "powerLabel");
 els.runtimeLabel.textContent = t(lang, "runtimeLabel");
 els.customHint.textContent = t(lang, "customHint");
 els.checkBtn.textContent = t(lang, "checkBtn");
-els.adLabel.textContent = t(lang, "ad");
+if (els.adLabel) els.adLabel.textContent = t(lang, "ad");
 els.noteText.textContent = t(lang, "note");
 els.sourceLine.innerHTML = t(lang, "sourceLine");
 document.getElementById("changeLink").href = "/" + (lang !== "en" ? "?lang=" + lang : "");
