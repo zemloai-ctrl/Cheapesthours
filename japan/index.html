@@ -25,7 +25,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
@@ -72,278 +72,77 @@
   </script>
 
   <style>
-    :root{
-      --navy:#17213B;
-      --deep:#0D1526;
-      --gold:#D4A24C;
-      --cream:#F5ECDC;
-      --ink:#1B2A4A;
-      --soft:rgba(27,42,74,.64);
-      --green:#3F8F6B;
-      --orange:#B9862E;
-      --red:#C85F54
-    }
-
+    :root{--navy:#17213B;--deep:#0D1526;--gold:#D4A24C;--cream:#F5ECDC;--ink:#1B2A4A;--soft:#637087;--green:#287552;--orange:#8B651E;--red:#B34439;--line:#DFE3E8;--paper:#FAFAF7}
     *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family:"Inter",sans-serif;
-      color:var(--cream);
-      background:radial-gradient(
-        ellipse at 50% -10%,
-        #2a3c69 0%,
-        var(--navy) 43%,
-        var(--deep) 100%
-      )
-    }
-
-    main{
-      width:min(100% - 36px,440px);
-      margin:auto;
-      padding:36px 0 50px
-    }
-
-    .brand{
-      font-family:"Fraunces",serif;
-      color:var(--gold);
-      font-size:21px;
-      font-weight:650;
-      text-decoration:none
-    }
-
-    h1{
-      font-family:"Fraunces",serif;
-      font-size:28px;
-      line-height:1.15;
-      margin:24px 0 8px;
-      text-align:center
-    }
-
-    .intro{
-      text-align:center;
-      color:rgba(245,236,220,.66);
-      font-size:13px;
-      line-height:1.55;
-      margin:0 0 22px
-    }
-
-    .card{
-      background:var(--cream);
-      color:var(--ink);
-      border-radius:21px;
-      padding:23px 21px;
-      box-shadow:0 22px 65px rgba(0,0,0,.34)
-    }
-
-    .flag{
-      text-align:center;
-      font-size:39px
-    }
-
-    .updated{
-      text-align:center;
-      color:var(--soft);
-      font-size:10.5px;
-      margin-top:3px
-    }
-
-    .hero{
-      text-align:center;
-      padding:17px 0 12px
-    }
-
-    .price{
-      font-size:31px;
-      font-weight:800
-    }
-
-    .state{
-      display:inline-block;
-      margin-top:7px;
-      padding:5px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700
-    }
-
-    .good{
-      color:var(--green);
-      background:rgba(63,143,107,.1)
-    }
-
-    .mid{
-      color:var(--orange);
-      background:rgba(185,134,46,.1)
-    }
-
-    .bad{
-      color:var(--red);
-      background:rgba(200,95,84,.1)
-    }
-
-    h2{
-      font-family:"Fraunces",serif;
-      font-size:18px;
-      margin:18px 0 8px
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:13px
-    }
-
-    th{
-      text-align:left;
-      color:var(--soft);
-      font-size:9.5px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      padding:6px 4px
-    }
-
-    td{
-      padding:8px 4px;
-      border-top:1px solid rgba(27,42,74,.08)
-    }
-
-    td:last-child,
-    th:last-child{
-      text-align:right;
-      font-weight:700
-    }
-
-    .check{
-      display:block;
-      margin-top:16px;
-      padding:14px;
-      border-radius:12px;
-      text-align:center;
-      text-decoration:none;
-      background:linear-gradient(135deg,var(--gold),#C08A38);
-      color:var(--ink);
-      font-family:"Fraunces",serif;
-      font-weight:700
-    }
-
-    .ad{
-      min-height:74px;
-      margin:21px 0;
-      display:grid;
-      place-items:center;
-      border:1px dashed rgba(245,236,220,.18);
-      border-radius:12px;
-      color:rgba(245,236,220,.3);
-      font-size:10px;
-      text-transform:uppercase
-    }
-
-    .copy{
-      font-size:12.5px;
-      line-height:1.7;
-      color:rgba(245,236,220,.67)
-    }
-
-    .copy h2{
-      color:var(--gold);
-      font-size:20px
-    }
-
-    .faq{
-      margin-top:26px
-    }
-
-    .faq h2{
-      color:var(--gold);
-      font-size:20px;
-      text-align:center;
-      margin:0 0 14px
-    }
-
-    .faq-item{
-      border-top:1px solid rgba(245,236,220,.13);
-      padding:14px 0
-    }
-
-    .faq-item:last-child{
-      border-bottom:1px solid rgba(245,236,220,.13)
-    }
-
-    .faq-item h3{
-      font-family:"Fraunces",serif;
-      color:var(--cream);
-      font-size:14px;
-      margin:0 0 6px;
-      font-weight:600
-    }
-
-    .faq-item p{
-      margin:0;
-      font-size:12.5px;
-      line-height:1.7;
-      color:rgba(245,236,220,.67)
-    }
-
-    .links{
-      display:grid;
-      gap:9px;
-      margin-top:20px
-    }
-
-    .links a{
-      color:var(--cream);
-      text-decoration:none;
-      border:1px solid rgba(245,236,220,.13);
-      background:rgba(245,236,220,.05);
-      border-radius:12px;
-      padding:12px 14px;
-      font-size:12px
-    }
-
-    .fine{
-      margin-top:22px;
-      text-align:center;
-      color:rgba(245,236,220,.4);
-      font-size:10px;
-      line-height:1.5
-    }
-
-    .loading,
-    .error{
-      text-align:center;
-      padding:35px 0;
-      color:var(--soft);
-      font-size:12px
-    }
-    h1{line-height:1.5}
-    .area-card{margin-bottom:16px}
-    .area-card label{display:block;font-weight:700;font-size:14px}
-    .area-card select{width:100%;margin-top:10px;padding:12px;border:1px solid var(--soft);border-radius:10px;background:var(--cream);color:var(--ink);font:inherit}
-    .area-card p{font-size:12px;line-height:1.7;color:var(--soft);margin-bottom:0}
-    .copy a,.fine a{color:var(--gold)}
-    .sources{font-size:11px}
-    #searchHint{margin-top:10px}
+    html{scroll-behavior:smooth;scroll-padding-top:24px}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:15px;line-height:1.85;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-underline-offset:4px}
+    a,button,select,summary{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid #A87528;outline-offset:5px}
+    .skip{position:absolute;left:20px;top:-100px;background:white;padding:10px;z-index:3}.skip:focus{top:10px}
+    .site-header{background:var(--navy);color:var(--cream)}
+    .header-inner{max-width:1120px;margin:auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:"Fraunces",serif;color:var(--gold);font-size:24px;text-decoration:none;white-space:nowrap}
+    .header-nav{display:flex;gap:28px;align-items:center;font-size:12px}.header-nav a{text-decoration:none}.locale{border-left:1px solid #ffffff30;padding-left:24px;color:#e7d5b1;letter-spacing:.06em}
+    main{max-width:1120px;margin:auto;padding:0 32px 64px}
+    .page-hero{padding:54px 0 38px;display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:end}
+    .eyebrow{font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--soft);display:flex;align-items:center;gap:10px;margin:0 0 16px}.eyebrow:before{content:"";width:22px;height:3px;background:var(--gold)}
+    h1{font-size:clamp(28px,3.4vw,42px);line-height:1.55;letter-spacing:.025em;margin:0;font-weight:700;word-break:normal;overflow-wrap:anywhere}
+    .hero-note{font-size:14px;line-height:2;color:var(--soft);margin:0;padding-bottom:6px}
+    .market-strip{display:flex;gap:22px;align-items:center;border-top:1px solid var(--line);padding:15px 0;font-size:11px;color:var(--soft)}.market-strip span:first-child{font-weight:700;color:var(--ink)}
+    .workspace{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start;margin:18px 0 52px}
+    .area-card{background:var(--cream);border:1px solid #e6dbc9;border-radius:16px;padding:28px 24px;position:sticky;top:24px}
+    .step{font-family:"Fraunces",serif;font-size:13px;color:#916823;margin:0 0 8px;letter-spacing:.1em}
+    .area-card h2{font-size:20px;margin:0 0 20px;line-height:1.6}.area-card label{display:block;font-size:12px;font-weight:600;margin-bottom:8px}
+    .area-card select{width:100%;background:#fff;color:var(--ink);font:inherit;font-weight:700;border:1px solid #b8b5ae;border-radius:8px;padding:12px;min-height:50px;cursor:pointer}
+    .area-card p{font-size:12px;color:#5e665f;line-height:1.9}.area-card .area-detail{padding-bottom:20px;border-bottom:1px solid #d8cbb6;margin:12px 0 24px}
+    .check{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:var(--cream);text-decoration:none;font-weight:600;font-size:13px;padding:16px 18px;border-radius:8px;line-height:1.7;transition:background .2s}.check:hover{background:#2a3c69}.check span{color:var(--gold);font-size:21px}
+    #searchHint{font-size:11px;margin-bottom:0;color:#5d625c}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;box-shadow:0 8px 24px #17213b04;min-height:480px}
+    .live-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:20px;border-bottom:1px solid var(--line)}.live-head h2{font-size:18px;margin:0}.live-head span{font-size:10px;letter-spacing:.06em;color:var(--soft)}
+    .hero{padding:24px 0 22px}.price-caption{font-size:12px;font-weight:500;color:var(--soft);margin:0 0 4px}.price{font-size:clamp(32px,4vw,44px);letter-spacing:-.035em;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.5}.price small{font-size:16px;letter-spacing:0;font-weight:500;margin-left:10px}.price-note{color:var(--soft);font-size:11px;margin:4px 0 12px}
+    .state{display:inline-block;padding:4px 12px;font-size:12px;font-weight:600;border-radius:5px}.good{background:#eaf5ee;color:var(--green)}.mid{background:#faf1dd;color:var(--orange)}.bad{background:#faecea;color:var(--red)}
+    .updated{font-size:11px;color:var(--soft);margin:12px 0 0}.table-heading{font-size:15px;margin:0 0 6px}.table-note{font-size:11px;line-height:1.8;color:var(--soft);margin:0 0 14px}
+    table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}th{text-align:left;font-size:11px;font-weight:500;color:var(--soft);padding:10px 12px;background:#f4f6f7}td{padding:12px;border-bottom:1px solid #edf0f2}td:last-child,th:last-child{text-align:right}td:last-child{font-weight:600}.cheapest td{background:#f0f7f2}.slot-tag{display:inline-block;font-size:10px;font-weight:500;background:#dcecdf;color:var(--green);padding:1px 6px;border-radius:4px;margin-left:8px}
+    .loading,.error{padding:64px 12px;text-align:center;color:var(--soft);font-size:13px}.loading:before{content:"";display:block;width:26px;height:26px;border:2px solid var(--line);border-top-color:var(--gold);border-radius:50%;margin:0 auto 20px;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin:0 0 22px}.section-head h2{font-size:24px;letter-spacing:.025em;margin:0;line-height:1.6}.section-head p{font-size:12px;color:var(--soft);margin:0}
+    .use-cases{padding:32px;border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:52px}.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.use-item+.use-item{border-left:1px solid var(--line);padding-left:24px}.use-icon{width:32px;height:32px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}.use-item h3{font-size:16px;margin:0 0 8px}.use-item p{font-size:13px;color:var(--soft);line-height:1.95;margin:0}.use-foot{font-size:11px;color:var(--soft);border-top:1px solid var(--line);padding-top:18px;margin:24px 0 0}
+    .reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;border-top:1px solid var(--line);padding-top:40px}
+    .copy h2,.faq>h2{font-size:20px;line-height:1.7;margin:0 0 16px}.copy h2:not(:first-child){margin-top:28px}.copy p{font-size:13px;line-height:2.05;color:#57647a;margin:0 0 16px}.sources{font-size:11px!important;padding-top:16px;border-top:1px solid var(--line)}.sources a{color:#455570}
+    .faq-item{border-bottom:1px solid var(--line);padding:0}.faq-item:first-of-type{border-top:1px solid var(--line)}.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 0;cursor:pointer;list-style:none;font-size:13px;font-weight:600;line-height:1.9}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:"＋";color:#936b2b;font-size:18px;flex-shrink:0}.faq-item[open] summary:after{content:"−"}.faq-item p{font-size:12px;color:#57647a;line-height:2;margin:0;padding-bottom:20px}
+    .site-footer{background:var(--navy);color:#c1c8d6;padding:32px}.footer-inner{max-width:1056px;margin:auto;display:flex;justify-content:space-between;gap:32px}.footer-inner p{font-size:11px;margin:12px 0 0;max-width:520px}.footer-nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;font-size:11px}.footer-nav a{text-decoration:none}.footer-nav a:hover{text-decoration:underline}
+    @media(max-width:900px){.workspace{grid-template-columns:260px minmax(0,1fr)}.card{padding:24px}.page-hero{gap:28px}.reading-grid{gap:32px}.slot-tag{display:none}}
+    @media(max-width:680px){.header-inner{padding:18px 20px}.brand{font-size:21px}.header-nav{gap:14px}.header-nav>a{display:none}.locale{border:0;padding:0;font-size:11px}main{padding:0 20px 40px}.page-hero{grid-template-columns:1fr;gap:18px;padding:32px 0 24px}h1{font-size:28px;line-height:1.65}.eyebrow{font-size:10px;margin-bottom:12px}.hero-note{font-size:13px}.market-strip{gap:12px;flex-wrap:wrap;font-size:10px}.workspace{grid-template-columns:1fr;gap:16px;margin:12px 0 36px}.area-card{position:static;padding:22px}.area-card h2{font-size:18px;margin-bottom:14px}.area-card .area-detail{padding-bottom:14px;margin-bottom:18px}.card{min-height:420px;padding:22px}.live-head{padding-bottom:16px}.live-head span{font-size:9px}.hero{padding-top:20px}.price{font-size:38px}.section-head{display:block}.section-head h2{font-size:21px}.section-head p{margin-top:6px}.use-cases{padding:24px 22px;margin-bottom:36px}.use-grid{grid-template-columns:1fr;gap:22px}.use-item{display:grid;grid-template-columns:38px 1fr;column-gap:14px}.use-icon{grid-row:1/3}.use-item+.use-item{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:22px}.use-item p{grid-column:2}.reading-grid{grid-template-columns:1fr;gap:36px;padding-top:28px}.footer-inner{display:block}.footer-nav{margin-top:24px;gap:16px}.site-footer{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.loading:before{animation:none}.check{transition:none}}
   </style>
 </head>
 
 <body>
+<a class="skip" href="#live">価格データへ移動</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/">⚡ CheapestHours</a><nav class="header-nav" aria-label="メインメニュー"><a href="#guide">使い方</a><a href="#faq">よくある質問</a><span class="locale">日本 / 日本語</span></nav></div></header>
 
 <main>
 
-  <a class="brand" href="/">⚡ CheapestHours</a>
-
-  <h1>🇯🇵 お住まいのエリアで、<br>電気を使う時間を考える</h1>
-  <p class="intro">東京と九州では、同じ時間でも市場価格が違うことがあります。まずエリアを選び、EV充電や給湯、洗濯・乾燥の時間を確認しましょう。</p>
-  <div class="card area-card">
+  <section class="page-hero"><div><p class="eyebrow">暮らしのための電力市場データ</p><h1>電気を使う時間を、<br>あなたのエリアで。</h1></div><p class="hero-note">EVの充電も、毎日の洗濯も。<br>お住まいのエリアの市場価格を見て、<br>無理なく使える時間を探しましょう。</p></section>
+  <div class="market-strip"><span>JEPX エリア価格</span><span>北海道〜九州の9エリア</span><span>日本時間（JST）で表示</span></div>
+  <section class="workspace" aria-label="エリア選択と市場価格">
+  <aside class="area-card"><div class="step">01 / エリア</div><h2>まず、エリアを選ぶ</h2>
     <label for="area">お住まいの電力エリア</label>
     <select id="area"><option value="JP-HKD">北海道</option><option value="JP-THK">東北</option><option value="JP-TKY" selected>東京</option><option value="JP-CBU">中部</option><option value="JP-HKR">北陸</option><option value="JP-KNS">関西</option><option value="JP-CGK">中国</option><option value="JP-SKK">四国</option><option value="JP-KYS">九州</option></select>
-    <p>初期表示は東京です。小売電気事業者の名前ではなく、お住まいの送配電エリアで選んでください。沖縄は対象外です。</p>
-  </div>
-  <div class="card" id="live" aria-live="polite"><div class="loading">東京エリアのデータを読み込み中…</div></div>
-  <a class="check" href="/search/?country=JP&lang=ja">使用量と待てる時間を入力する →</a>
-  <p class="intro" id="searchHint">Searchでも「東京」を選んでください。</p>
+    <p class="area-detail">初期表示は東京です。小売電気事業者の名前ではなく、お住まいの送配電エリアで選んでください。沖縄は対象外です。</p>
+    <div class="step">02 / 使用量</div><a class="check" href="/search/?country=JP&lang=ja">使用量と待てる時間を<br>入力する<span aria-hidden="true">→</span></a>
+    <p id="searchHint">検索画面でも「東京」を選んでください。</p>
+  </aside>
+  <div class="card" id="live" aria-live="polite" aria-atomic="true"><div class="loading">東京エリアのデータを読み込み中…</div></div>
+  </section>
+  <section class="use-cases" id="guide"><div class="section-head"><h2>いつもの暮らしに、使える選択を。</h2><p>動かせる予定から、少しずつ。</p></div>
+    <div class="use-grid">
+      <article class="use-item"><svg class="use-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 18l3-8h16l3 8v8h-4v-4H9v4H5zM5 18h22M10 10l2-4h8l2 4M9 18v2m14-2v2"/></svg><h3>EVの充電</h3><p>出発まで何時間待てる？<br>必要な充電量と待てる時間を入力し、市場価格分の違いを確認。</p></article>
+      <article class="use-item"><svg class="use-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="3" width="18" height="26" rx="3"/><path d="M7 10h18M11 7h1m4 0h5"/><circle cx="16" cy="19" r="6"/><path d="M11 20q3-4 5 0t5 0"/></svg><h3>洗濯・乾燥</h3><p>仕上げたい時間から逆算。<br>生活音や家族の予定も考えながら、動かせる時間を選びましょう。</p></article>
+      <article class="use-item"><svg class="use-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="5" width="14" height="24" rx="4"/><path d="M13 5V2m6 3V2M9 13h14m-10 8h6M5 11V7m22 4V7"/></svg><h3>給湯・エコキュート</h3><p>まずは契約の単価を確認。<br>夜間料金や機器の設定を確かめてから、給湯の使用量を試算。</p></article>
+    </div><p class="use-foot">検索画面で機器を選択できます。連続運転は「その他」で消費電力・運転時間を入力。表示は卸売価格に基づく目安です。</p>
+  </section>
+  <div class="reading-grid">
   <section class="copy">
     <h2>全国一律ではない、JEPXのエリア価格</h2>
     <p>日本には沖縄を含む10の供給エリアがあります。このページは、JEPXがスポット市場のエリア価格を公表する北海道・東北・東京・中部・北陸・関西・中国・四国・九州の9エリアを扱います。沖縄は他の9エリアと地域間連系線でつながっていません。</p>
@@ -351,27 +150,19 @@
     <h2>「毎日この時間が安い」と決めつけない</h2>
     <p>JEPXの一日前市場は翌日分を30分単位、1日48コマで取引します。このページの時刻・価格はElecz APIが返すデータに基づき、日本時間（JST）で表示します。JEPXの全48コマをそのまま掲載する表ではありません。</p>
     <p>晴れた日の日中・正午前後は、太陽光発電によって供給が増える時間です。ただし最安の時間は需要や他の発電、エリアの状況でも変わります。夏の冷房や冬の暖房を使う日も、固定の時刻ではなく取得できた価格を確認してください。</p>
-    <h2>暮らしに合わせて使う</h2>
-    <p>EV充電は出発までに待てる時間と充電量を、洗濯・乾燥は終了したい時間や生活音への配慮を先に決めましょう。SearchでEV・洗濯・乾燥・給湯を選び、使用量の初期値を実際の機器に合わせて調整できます。複数時間の運転は「その他」で消費電力と運転時間を入力してください。</p>
-    <p>表示は卸売市場価格です。家庭の請求単価や節約額を保証するものではありません。市場連動型か、夜間が安い時間帯別料金かを確認してから使いましょう。</p>
+<p>表示は卸売市場価格です。家庭の請求単価や節約額を保証するものではありません。市場連動型か、夜間が安い時間帯別料金かを確認してから使いましょう。</p>
     <p class="sources">市場情報の出典：<a href="https://www.jepx.jp/electricpower/market-data/spot/">JEPX エリア価格</a> · <a href="https://www.jepx.jp/electricpower/outline/">JEPX 取引概要</a> · <a href="https://www.occto.or.jp/assets/en/information_disclosure/annual_report/files/2022_annualreport_240202.pdf">OCCTO 供給エリア（p.5）</a> · <a href="https://www.enecho.meti.go.jp/about/whitepaper/2020html/3-6-1.html">資源エネルギー庁 市場分断の説明</a></p>
   </section>
-  <section class="faq">
+  <section class="faq" id="faq">
     <h2>使う前に知っておきたいこと</h2>
-    <div class="faq-item"><h3>市場価格が安い時間に使えば、電気料金も安くなりますか？</h3><p>契約によります。市場連動型でも市場価格の反映方法はプランごとに異なります。固定単価や時間帯別料金のプランでは、契約上の単価を優先してください。基本料金・燃料費調整・再エネ賦課金などもあるため、この表示だけで請求額は計算できません。</p></div>
-    <div class="faq-item"><h3>どのエリアを選べばよいですか？</h3><p>お住まいの場所の一般送配電事業者のエリアを選んでください。契約した小売電気事業者の本社所在地ではありません。分からない場合は検針票や契約先で確認してください。沖縄の価格はこのページでは扱っていません。</p></div>
-    <div class="faq-item"><h3>エコキュートの沸き上げ時間を変えてもよいですか？</h3><p>まず契約の時間帯別単価と機器の設定・取扱説明書を確認してください。夜間料金が安い契約では、卸売価格が安い昼間へ移しても得になるとは限りません。Searchの給湯の選択肢は使用量の試算用で、機器の自動制御や専用シミュレーションではありません。</p></div>
-    <div class="faq-item"><h3>明日の価格や、連続した安い時間帯は分かりますか？</h3><p>取得できた価格データの範囲内で表示します。翌日分がまだ取得できない場合もあり、未公表の価格を予測するものではありません。表の安い時間は連続するとは限りません。Searchでは待てる時間を設定し、その他を選ぶと消費電力と運転時間を入力できます。結果に連続時間帯が表示されるかはAPIの返すデータによります。</p></div>
+    <details class="faq-item"><summary>市場価格が安い時間に使えば、電気料金も安くなりますか？</summary><p>契約によります。市場連動型でも市場価格の反映方法はプランごとに異なります。固定単価や時間帯別料金のプランでは、契約上の単価を優先してください。基本料金・燃料費調整・再エネ賦課金などもあるため、この表示だけで請求額は計算できません。</p></details>
+    <details class="faq-item"><summary>どのエリアを選べばよいですか？</summary><p>お住まいの場所の一般送配電事業者のエリアを選んでください。契約した小売電気事業者の本社所在地ではありません。分からない場合は検針票や契約先で確認してください。沖縄の価格はこのページでは扱っていません。</p></details>
+    <details class="faq-item"><summary>エコキュートの沸き上げ時間を変えてもよいですか？</summary><p>まず契約の時間帯別単価と機器の設定・取扱説明書を確認してください。夜間料金が安い契約では、卸売価格が安い昼間へ移しても得になるとは限りません。Searchの給湯の選択肢は使用量の試算用で、機器の自動制御や専用シミュレーションではありません。</p></details>
+    <details class="faq-item"><summary>明日の価格や、連続した安い時間帯は分かりますか？</summary><p>取得できた価格データの範囲内で表示します。翌日分がまだ取得できない場合もあり、未公表の価格を予測するものではありません。表の安い時間は連続するとは限りません。Searchでは待てる時間を設定し、その他を選ぶと消費電力と運転時間を入力できます。結果に連続時間帯が表示されるかはAPIの返すデータによります。</p></details>
   </section>
-  <div class="links"><a href="/">🌍 他の国・地域を見る →</a></div>
-
-  <p class="fine">
-    電力市場データは <a href="https://elecz.com/ja/">Elecz</a> 提供。
-    CheapestHoursは、電気を使うのに最適な時間帯を見つけるための独立したツールです。
-    <a href="/privacy/">プライバシーポリシー</a> · <a href="/contact/">お問い合わせ</a>
-  </p>
-
+  </div>
 </main>
+<footer class="site-footer"><div class="footer-inner"><div><a class="brand" href="/">⚡ CheapestHours</a><p>電力市場データは <a href="https://elecz.com/ja/">Elecz</a> 提供。<br>電気を使う時間を考えるための、独立したツールです。</p></div><nav class="footer-nav" aria-label="サイト情報"><a href="/about/">このサイトについて</a><a href="/privacy/">プライバシーポリシー</a><a href="/contact/">お問い合わせ</a><a href="/">他の国・地域</a></nav></div></footer>
 
 <script>
 
@@ -386,6 +177,7 @@ async function getJSON(url){
 }
 
 function fmt(price,unit,currency){
+  if(currency === "JPY") return Number(price).toFixed(2) + " 円/kWh";
 
   if(/^[cp]\/[a-z]+/i.test(unit||"")){
     return Number(price).toFixed(2) + " " + unit;
@@ -436,7 +228,7 @@ async function loadArea(){
   const id = ++requestId;
   const zone = area.value;
   const areaName = area.options[area.selectedIndex].textContent;
-  document.getElementById("searchHint").textContent = 'Searchでも「' + areaName + '」を選んでください。エリア・機器は検索画面で設定します。';
+  document.getElementById("searchHint").textContent = '検索画面でも「' + areaName + '」を選んでください。機器は次の画面で設定できます。';
 
   const el = document.getElementById("live");
   el.innerHTML = `<div class="loading">${areaName}エリアのデータを読み込み中…</div>`;
@@ -478,11 +270,12 @@ async function loadArea(){
       .slice(0,6)
       .sort((a,b)=>apiDate(a.hour)-apiDate(b.hour));
 
+    const lowest = pts.length ? Math.min(...pts.map(p=>Number(p.price))) : null;
     const rows = pts
       .map(
         p => `
-          <tr>
-            <td>${hour(p.hour)}</td>
+          <tr class="${Number(p.price) === lowest ? 'cheapest' : ''}">
+            <td>${hour(p.hour)}${Number(p.price) === lowest ? '<span class="slot-tag">表示内の最安</span>' : ''}</td>
             <td>${fmt(p.price,spot.unit,spot.currency)}</td>
           </tr>
         `
@@ -491,41 +284,18 @@ async function loadArea(){
 
     el.innerHTML = `
 
-      <div class="flag">🇯🇵</div>
-      <h2 style="text-align:center">${areaName}エリア</h2>
-
-      <div class="updated">
-        ${hour(spot.timestamp)} 時点のデータ
-      </div>
-
-      <div class="hero">
-
-        <div class="price">
-          ${fmt(spot.price,spot.unit,spot.currency)}
-        </div>
-
-        <div style="margin-top:4px;font-size:10.5px;color:var(--soft)">
-          卸売市場価格 — 実際の請求額とは異なります。
-        </div>
-
-        <div class="state ${cls}">
-          ${label}
-        </div>
-
-      </div>
-
-      <h2>取得データ内の安い時間帯</h2>
-      <p style="font-size:11px;color:var(--soft)">APIから取得した安い時間の候補から最大6件を表示。連続した運転時間帯ではありません。日付・時刻は日本時間です。</p>
-
+      <div class="live-head"><h2>${areaName}エリア</h2><span>JEPX / 卸売市場価格</span></div>
+      <div class="hero"><p class="price-caption">現在の市場価格</p><div class="price">${fmt(spot.price,spot.unit,spot.currency).replace(" 円/kWh", "<small>円/kWh</small>")}</div><p class="price-note">ご家庭の請求単価とは異なります。</p><div class="state ${cls}">${label}</div><p class="updated">${hour(spot.timestamp)} 時点 · 日本時間</p></div>
+      <h3 class="table-heading">これからの安い時間帯</h3><p class="table-note">取得した候補から最大6件を表示。連続した運転時間帯ではありません。</p>
       ${
         rows
           ? `
-            <table>
+            <table aria-label="取得データ内の安い時間帯">
 
               <thead>
                 <tr>
-                  <th>時間</th>
-                  <th>価格</th>
+                  <th scope="col">日付・時間（JST）</th>
+                  <th scope="col">市場価格</th>
                 </tr>
               </thead>
 
