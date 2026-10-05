@@ -64,7 +64,7 @@
       "name": "Kann ich einen zusammenhängenden Zeitraum planen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Öffnen Sie die Verbrauchssuche und wählen Sie eine eigene Last. Dort können Sie Leistung und Laufzeit eingeben, etwa für drei Stunden. Die Ergebnisberechnung verwendet die verfügbaren Preisdaten; die günstigen Einzelintervalle auf dieser Seite sind kein zusammenhängender Ladeplan."
+        "text": "Öffnen Sie die Verbrauchssuche und wählen Sie „Something else / custom load“. Dort können Sie Leistung und Laufzeit eingeben, etwa für drei Stunden. Die Ergebnisberechnung verwendet die verfügbaren Preisdaten; die günstigen Einzelintervalle auf dieser Seite sind kein zusammenhängender Ladeplan."
       }
     }
   ]
@@ -330,6 +330,7 @@
       font-size:11.5px
     }
 
+    .fine a{color:var(--gold)}
     .fine{
       margin-top:22px;
       text-align:center;
@@ -366,11 +367,11 @@
   </div>
   <section class="copy planner">
     <h2>Eigenen Verbrauch planen</h2>
-    <p>Wie lange können Sie warten, und wie viel Strom brauchen Sie? Die Suche vergleicht verfügbare Preisintervalle für Ihren Verbrauch.</p>
+    <p>Wie lange können Sie warten, und wie viel Strom brauchen Sie? Die Suche vergleicht verfügbare Preisintervalle für Ihren Verbrauch. Die gemeinsame Suche und Ergebnisansicht sind derzeit auf Englisch.</p>
     <div class="links">
-      <a href="/search/?country=DE&amp;lang=de"><strong>Wann sollte ich mein E-Auto laden? →</strong><br>In der Suche „E-Auto“ wählen und den Energiebedarf anpassen.</a>
-      <a href="/search/?country=DE&amp;lang=de"><strong>Wann sollte die Waschmaschine laufen? →</strong><br>In der Suche „Waschmaschine“ wählen und die mögliche Wartezeit angeben.</a>
-      <a href="/search/?country=DE&amp;lang=de"><strong>Ich brauche drei Stunden günstigen Strom →</strong><br>„Eigene Last“ wählen und Leistung sowie drei Stunden Laufzeit eingeben.</a>
+      <a href="/search/?country=DE&amp;lang=en"><strong>Wann sollte ich mein E-Auto laden? →</strong><br>In der Suche „Charge an EV“ wählen und den Energiebedarf anpassen.</a>
+      <a href="/search/?country=DE&amp;lang=en"><strong>Wann sollte die Waschmaschine laufen? →</strong><br>In der Suche „Do laundry“ wählen und die mögliche Wartezeit angeben.</a>
+      <a href="/search/?country=DE&amp;lang=en"><strong>Ich brauche drei Stunden günstigen Strom →</strong><br>„Something else / custom load“ wählen und Leistung sowie drei Stunden Laufzeit eingeben.</a>
     </div>
     <h2>Für wen lohnt sich das Verschieben?</h2>
     <p><strong>Dynamischer Tarif:</strong> Ihr Energiepreis folgt der vertraglich vereinbarten Börsenpreisformel. Günstigere Intervalle können Ihre Kosten senken; Preisaufschläge, Netzentgelte und Steuern bleiben zu berücksichtigen.</p>
@@ -596,7 +597,7 @@ function hour(iso){
           `
       }
 
-      <a class="check" href="/search/?country=DE&amp;lang=de">
+      <a class="check" href="/search/?country=DE&amp;lang=en">
         Günstige Zeit für meinen Verbrauch finden →
       </a>
 
