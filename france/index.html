@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Électricité moins chère aujourd'hui en France | CheapestHours</title>
+  <title>Prix de l’électricité en France : choisir quand consommer | CheapestHours</title>
 
-  <meta name="description" content="Prix de gros de l'électricité en France en direct et les heures les moins chères aujourd'hui. Données en temps réel du marché français.">
+  <meta name="description" content="Consultez les prix de gros en France et les créneaux disponibles. Base, heures creuses, Tempo ou tarif dynamique : planifiez selon votre contrat.">
 
   <link rel="canonical" href="https://cheapesthours.com/france/">
 
-  <meta property="og:title" content="Électricité moins chère aujourd'hui en France | CheapestHours">
-  <meta property="og:description" content="Prix de gros de l'électricité en France en direct et les heures les moins chères aujourd'hui. Données en temps réel du marché français.">
+  <meta property="og:title" content="Prix de l’électricité en France : choisir quand consommer | CheapestHours">
+  <meta property="og:description" content="Consultez les prix de gros en France et les créneaux disponibles. Base, heures creuses, Tempo ou tarif dynamique : planifiez selon votre contrat.">
   <meta property="og:url" content="https://cheapesthours.com/france/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cheapesthours.com/og-image.png">
@@ -30,689 +30,159 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
 
-  <!-- FAQPage structured data for AEO/GEO (Google AI Overview, ChatGPT/Perplexity citation) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Pourquoi le prix de l'électricité en France varie-t-il moins qu'en Allemagne ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La France produit environ deux tiers de son électricité grâce au nucléaire, une source stable et peu dépendante de la météo. L'Allemagne, à l'inverse, dépend fortement de l'éolien et du solaire, dont la production varie beaucoup selon le vent et l'ensoleillement — ce qui explique des prix bien plus volatils outre-Rhin."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quand l'électricité est-elle la moins chère en France ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Les prix sont généralement les plus bas la nuit et en milieu de journée, lorsque la demande est faible et que la production nucléaire reste stable. Au printemps, quand la production nucléaire et hydraulique est abondante alors que la demande de chauffage est faible, les prix peuvent occasionnellement devenir négatifs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Ce prix est-il le même que celui de ma facture d'électricité ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Non. Le prix affiché ici est le prix de gros du marché day-ahead (EPEX Spot France). Votre facture inclut en plus les coûts d'acheminement (TURPE), les taxes, notamment l’accise sur l’électricité, et la marge de votre fournisseur."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quand l'électricité est-elle la plus chère en France ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Les prix augmentent généralement en début de soirée en hiver, lorsque le chauffage électrique fait grimper la demande alors que la production solaire est nulle. Les vagues de froid intenses, en particulier, peuvent pousser les prix nettement à la hausse."
-        }
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Les créneaux les moins chers sont-ils mes heures creuses ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. Cette liste compare des prix de gros. Vos heures creuses sont les plages associées à votre contrat et à votre compteur. Vérifiez-les sur votre facture ou dans votre espace client avant de programmer un appareil."
       }
-    ]
-  }
-  </script>
-
-  <style>
-    :root{
-      --navy:#17213B;
-      --deep:#0D1526;
-      --gold:#D4A24C;
-      --cream:#F5ECDC;
-      --ink:#1B2A4A;
-      --soft:rgba(27,42,74,.64);
-      --green:#3F8F6B;
-      --orange:#B9862E;
-      --red:#C85F54
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi mes horaires d’heures creuses peuvent-ils changer ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enedis fait évoluer progressivement les horaires depuis novembre 2025, avec un déploiement prévu jusqu’en 2027. Les clients concernés sont informés par leur fournisseur. Il n’existe pas un nouvel horaire identique pour tous les foyers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le voyant de prix indique-t-il la couleur Tempo du jour ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. « Prix bas » ou « Prix élevé » décrit le signal de marché, pas un jour bleu, blanc ou rouge Tempo. Pour Tempo, consultez le calendrier officiel EDF et la grille tarifaire de votre contrat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un prix négatif signifie-t-il que ma consommation est gratuite ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. Le prix de gros n’est qu’une composante du coût de l’électricité. Votre facture comprend aussi l’acheminement, les taxes et les conditions de votre fournisseur. Le coût dépend de votre contrat, même lorsque le marché devient négatif."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je trouver trois heures consécutives ou les prix de demain ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La liste présente des créneaux disponibles, pas nécessairement consécutifs. La recherche accepte un besoin en kWh ou une puissance et une durée, mais ne garantit pas un bloc continu de cette durée. Les prix futurs ne sont affichés que lorsqu’ils sont disponibles ; nous ne les prédisons pas."
+      }
     }
-
+  ]
+}</script><style>
+    :root{--navy:#17213B;--deep:#0D1526;--gold:#D4A24C;--cream:#F5ECDC;--ink:#1B2A4A;--soft:#637087;--green:#287552;--orange:#8B651E;--red:#B34439;--line:#DFE3E8;--paper:#FAFAF7}
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:24px}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:"Noto Sans",Arial,sans-serif;font-size:15px;line-height:1.85;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-underline-offset:4px}
+    a,button,select,summary{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:3px solid #A87528;outline-offset:5px}
+    .skip{position:absolute;left:20px;top:-100px;background:white;padding:10px;z-index:3}.skip:focus{top:10px}
+    .site-header{background:var(--navy);color:var(--cream)}
+    .header-inner{max-width:1120px;margin:auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:"Fraunces",serif;color:var(--gold);font-size:24px;text-decoration:none;white-space:nowrap}
+    .header-nav{display:flex;gap:28px;align-items:center;font-size:12px}.header-nav a{text-decoration:none}.locale{border-left:1px solid #ffffff30;padding-left:24px;color:#e7d5b1;letter-spacing:.06em}
+    main{max-width:1120px;margin:auto;padding:0 32px 64px}
+    .page-hero{padding:54px 0 38px;display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:end}
+    .eyebrow{font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--soft);display:flex;align-items:center;gap:10px;margin:0 0 16px}.eyebrow:before{content:"";width:22px;height:3px;background:var(--gold)}
+    h1{font-size:clamp(28px,3.4vw,42px);line-height:1.55;letter-spacing:.025em;margin:0;font-weight:700;word-break:normal;overflow-wrap:anywhere}
+    .hero-note{font-size:14px;line-height:2;color:var(--soft);margin:0;padding-bottom:6px}
+    .market-strip{display:flex;gap:22px;align-items:center;border-top:1px solid var(--line);padding:15px 0;font-size:11px;color:var(--soft)}.market-strip span:first-child{font-weight:700;color:var(--ink)}
+    .workspace{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start;margin:18px 0 52px}
+    .area-card{background:var(--cream);border:1px solid #e6dbc9;border-radius:16px;padding:28px 24px;position:sticky;top:24px}
+    .step{font-family:"Fraunces",serif;font-size:13px;color:#916823;margin:0 0 8px;letter-spacing:.1em}
+    .area-card h2{font-size:20px;margin:0 0 20px;line-height:1.6}.area-card label{display:block;font-size:12px;font-weight:600;margin-bottom:8px}
+    .area-card select{width:100%;background:#fff;color:var(--ink);font:inherit;font-weight:700;border:1px solid #b8b5ae;border-radius:8px;padding:12px;min-height:50px;cursor:pointer}
+    .area-card p{font-size:12px;color:#5e665f;line-height:1.9}.area-card .area-detail{padding-bottom:20px;border-bottom:1px solid #d8cbb6;margin:12px 0 24px}
+    .check{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:var(--cream);text-decoration:none;font-weight:600;font-size:13px;padding:16px 18px;border-radius:8px;line-height:1.7;transition:background .2s}.check:hover{background:#2a3c69}.check span{color:var(--gold);font-size:21px}
+    #searchHint{font-size:11px;margin-bottom:0;color:#5d625c}
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;box-shadow:0 8px 24px #17213b04;min-height:480px}
+    .live-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:20px;border-bottom:1px solid var(--line)}.live-head h2{font-size:18px;margin:0}.live-head span{font-size:10px;letter-spacing:.06em;color:var(--soft)}
+    .hero{padding:24px 0 22px}.price-caption{font-size:12px;font-weight:500;color:var(--soft);margin:0 0 4px}.price{font-size:clamp(32px,4vw,44px);letter-spacing:-.035em;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.5}.price small{font-size:16px;letter-spacing:0;font-weight:500;margin-left:10px}.price-note{color:var(--soft);font-size:11px;margin:4px 0 12px}
+    .state{display:inline-block;padding:4px 12px;font-size:12px;font-weight:600;border-radius:5px}.good{background:#eaf5ee;color:var(--green)}.mid{background:#faf1dd;color:var(--orange)}.bad{background:#faecea;color:var(--red)}
+    .updated{font-size:11px;color:var(--soft);margin:12px 0 0}.table-heading{font-size:15px;margin:0 0 6px}.table-note{font-size:11px;line-height:1.8;color:var(--soft);margin:0 0 14px}
+    table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}th{text-align:left;font-size:11px;font-weight:500;color:var(--soft);padding:10px 12px;background:#f4f6f7}td{padding:12px;border-bottom:1px solid #edf0f2}td:last-child,th:last-child{text-align:right}td:last-child{font-weight:600}.cheapest td{background:#f0f7f2}.slot-tag{display:inline-block;font-size:10px;font-weight:500;background:#dcecdf;color:var(--green);padding:1px 6px;border-radius:4px;margin-left:8px}
+    .loading,.error{padding:64px 12px;text-align:center;color:var(--soft);font-size:13px}.loading:before{content:"";display:block;width:26px;height:26px;border:2px solid var(--line);border-top-color:var(--gold);border-radius:50%;margin:0 auto 20px;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:baseline;margin:0 0 22px}.section-head h2{font-size:24px;letter-spacing:.025em;margin:0;line-height:1.6}.section-head p{font-size:12px;color:var(--soft);margin:0}
+    .use-cases{padding:32px;border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:52px}.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.use-item+.use-item{border-left:1px solid var(--line);padding-left:24px}.use-icon{width:32px;height:32px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}.use-item h3{font-size:16px;margin:0 0 8px}.use-item p{font-size:13px;color:var(--soft);line-height:1.95;margin:0}.use-foot{font-size:11px;color:var(--soft);border-top:1px solid var(--line);padding-top:18px;margin:24px 0 0}
+    .reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;border-top:1px solid var(--line);padding-top:40px}
+    .copy h2,.faq>h2{font-size:20px;line-height:1.7;margin:0 0 16px}.copy h2:not(:first-child){margin-top:28px}.copy p{font-size:13px;line-height:2.05;color:#57647a;margin:0 0 16px}.sources{font-size:11px!important;padding-top:16px;border-top:1px solid var(--line)}.sources a{color:#455570}
+    .faq-item{border-bottom:1px solid var(--line);padding:0}.faq-item:first-of-type{border-top:1px solid var(--line)}.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 0;cursor:pointer;list-style:none;font-size:13px;font-weight:600;line-height:1.9}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:"＋";color:#936b2b;font-size:18px;flex-shrink:0}.faq-item[open] summary:after{content:"−"}.faq-item p{font-size:12px;color:#57647a;line-height:2;margin:0;padding-bottom:20px}
+    .site-footer{background:var(--navy);color:#c1c8d6;padding:32px}.footer-inner{max-width:1056px;margin:auto;display:flex;justify-content:space-between;gap:32px}.footer-inner p{font-size:11px;margin:12px 0 0;max-width:520px}.footer-nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap;font-size:11px}.footer-nav a{text-decoration:none}.footer-nav a:hover{text-decoration:underline}
+    @media(max-width:900px){.workspace{grid-template-columns:260px minmax(0,1fr)}.card{padding:24px}.page-hero{gap:28px}.reading-grid{gap:32px}.slot-tag{display:none}}
+    @media(max-width:680px){.header-inner{padding:18px 20px}.brand{font-size:21px}.header-nav{gap:14px}.header-nav>a{display:none}.locale{border:0;padding:0;font-size:11px}main{padding:0 20px 40px}.page-hero{grid-template-columns:1fr;gap:18px;padding:32px 0 24px}h1{font-size:28px;line-height:1.65}.eyebrow{font-size:10px;margin-bottom:12px}.hero-note{font-size:13px}.market-strip{gap:12px;flex-wrap:wrap;font-size:10px}.workspace{grid-template-columns:1fr;gap:16px;margin:12px 0 36px}.area-card{position:static;padding:22px}.area-card h2{font-size:18px;margin-bottom:14px}.area-card .area-detail{padding-bottom:14px;margin-bottom:18px}.card{min-height:420px;padding:22px}.live-head{padding-bottom:16px}.live-head span{font-size:9px}.hero{padding-top:20px}.price{font-size:38px}.section-head{display:block}.section-head h2{font-size:21px}.section-head p{margin-top:6px}.use-cases{padding:24px 22px;margin-bottom:36px}.use-grid{grid-template-columns:1fr;gap:22px}.use-item{display:grid;grid-template-columns:38px 1fr;column-gap:14px}.use-icon{grid-row:1/3}.use-item+.use-item{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:22px}.use-item p{grid-column:2}.reading-grid{grid-template-columns:1fr;gap:36px;padding-top:28px}.footer-inner{display:block}.footer-nav{margin-top:24px;gap:16px}.site-footer{padding:28px 20px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.loading:before{animation:none}.check{transition:none}}
 
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family:"Inter",sans-serif;
-      color:var(--cream);
-      background:radial-gradient(
-        ellipse at 50% -10%,
-        #2a3c69 0%,
-        var(--navy) 43%,
-        var(--deep) 100%
-      )
-    }
+    .tariff-list{list-style:none;padding:0;margin:0 0 24px}.tariff-list li{padding:12px 0;border-bottom:1px solid #d8cbb6;font-size:12px;line-height:1.8;color:#596472}.tariff-list strong{display:block;color:var(--ink);font-size:13px}.tariff-card h2{font-size:21px}.tariff-card>p{margin-top:10px}.price small{font-size:16px;letter-spacing:0;font-weight:500;margin-left:8px}.season-link{font-size:12px;color:#72521d}.header-nav{gap:20px}.locale{letter-spacing:0}h1{letter-spacing:-.025em;line-height:1.25}.hero-note{line-height:1.8}.copy p{line-height:1.85}.use-item p{line-height:1.85}.live-head span{letter-spacing:0}.table-heading{margin-bottom:8px}.updated{line-height:1.7}.faq-item summary{line-height:1.65}.faq-item p{line-height:1.85}.use-item h3{line-height:1.5}@media(max-width:680px){.header-inner{gap:12px}.header-nav{min-width:0}.locale{max-width:80px;line-height:1.5}.price{overflow-wrap:anywhere}h1{font-size:32px;line-height:1.3}.locale{font-size:10px}.use-item{grid-template-columns:32px 1fr}.use-grid{gap:18px}.live-head{align-items:flex-start}.live-head span{max-width:100px;text-align:right}.price{font-size:36px}.section-head h2{line-height:1.4}.slot-tag{display:none}}
 
-    main{
-      width:min(100% - 36px,440px);
-      margin:auto;
-      padding:36px 0 50px
-    }
-
-    .brand{
-      font-family:"Fraunces",serif;
-      color:var(--gold);
-      font-size:21px;
-      font-weight:650;
-      text-decoration:none
-    }
-
-    h1{
-      font-family:"Fraunces",serif;
-      font-size:28px;
-      line-height:1.15;
-      margin:24px 0 8px;
-      text-align:center
-    }
-
-    .intro{
-      text-align:center;
-      color:rgba(245,236,220,.66);
-      font-size:13px;
-      line-height:1.55;
-      margin:0 0 22px
-    }
-
-    .card{
-      background:var(--cream);
-      color:var(--ink);
-      border-radius:21px;
-      padding:23px 21px;
-      box-shadow:0 22px 65px rgba(0,0,0,.34)
-    }
-
-    .flag{
-      text-align:center;
-      font-size:39px
-    }
-
-    .updated{
-      text-align:center;
-      color:var(--soft);
-      font-size:10.5px;
-      margin-top:3px
-    }
-
-    .hero{
-      text-align:center;
-      padding:17px 0 12px
-    }
-
-    .price{
-      font-size:31px;
-      font-weight:800
-    }
-
-    .state{
-      display:inline-block;
-      margin-top:7px;
-      padding:5px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700
-    }
-
-    .good{
-      color:var(--green);
-      background:rgba(63,143,107,.1)
-    }
-
-    .mid{
-      color:var(--orange);
-      background:rgba(185,134,46,.1)
-    }
-
-    .bad{
-      color:var(--red);
-      background:rgba(200,95,84,.1)
-    }
-
-    h2{
-      font-family:"Fraunces",serif;
-      font-size:18px;
-      margin:18px 0 8px
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:13px
-    }
-
-    th{
-      text-align:left;
-      color:var(--soft);
-      font-size:9.5px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      padding:6px 4px
-    }
-
-    td{
-      padding:8px 4px;
-      border-top:1px solid rgba(27,42,74,.08)
-    }
-
-    td:last-child,
-    th:last-child{
-      text-align:right;
-      font-weight:700
-    }
-
-    .check{
-      display:block;
-      margin-top:16px;
-      padding:14px;
-      border-radius:12px;
-      text-align:center;
-      text-decoration:none;
-      background:linear-gradient(135deg,var(--gold),#C08A38);
-      color:var(--ink);
-      font-family:"Fraunces",serif;
-      font-weight:700
-    }
-
-    .ad{
-      min-height:74px;
-      margin:21px 0;
-      display:grid;
-      place-items:center;
-      border:1px dashed rgba(245,236,220,.18);
-      border-radius:12px;
-      color:rgba(245,236,220,.3);
-      font-size:10px;
-      text-transform:uppercase
-    }
-
-    .copy{
-      font-size:12.5px;
-      line-height:1.7;
-      color:rgba(245,236,220,.67)
-    }
-
-    .copy h2{
-      color:var(--gold);
-      font-size:20px
-    }
-
-    .faq{
-      margin-top:26px
-    }
-
-    .faq h2{
-      color:var(--gold);
-      font-size:20px;
-      text-align:center;
-      margin:0 0 14px
-    }
-
-    .faq-item{
-      border-top:1px solid rgba(245,236,220,.13);
-      padding:14px 0
-    }
-
-    .faq-item:last-child{
-      border-bottom:1px solid rgba(245,236,220,.13)
-    }
-
-    .faq-item h3{
-      font-family:"Fraunces",serif;
-      color:var(--cream);
-      font-size:14px;
-      margin:0 0 6px;
-      font-weight:600
-    }
-
-    .faq-item p{
-      margin:0;
-      font-size:12.5px;
-      line-height:1.7;
-      color:rgba(245,236,220,.67)
-    }
-
-    .links{
-      display:grid;
-      gap:9px;
-      margin-top:20px
-    }
-
-    .links a{
-      color:var(--cream);
-      text-decoration:none;
-      border:1px solid rgba(245,236,220,.13);
-      background:rgba(245,236,220,.05);
-      border-radius:12px;
-      padding:12px 14px;
-      font-size:12px
-    }
-
-    .country-links-title{
-      font-family:"Fraunces",serif;
-      color:var(--gold);
-      font-size:18px;
-      margin:25px 0 9px;
-      text-align:center
-    }
-
-    .country-links{
-      display:grid;
-      gap:8px
-    }
-
-    .country-links a{
-      color:var(--cream);
-      text-decoration:none;
-      border:1px solid rgba(245,236,220,.13);
-      background:rgba(245,236,220,.045);
-      border-radius:12px;
-      padding:11px 14px;
-      font-size:11.5px
-    }
-
-    .fine{
-      margin-top:22px;
-      text-align:center;
-      color:rgba(245,236,220,.4);
-      font-size:10px;
-      line-height:1.5
-    }
-
-    .loading,
-    .error{
-      text-align:center;
-      padding:35px 0;
-      color:var(--soft);
-      font-size:12px
-    }
-  </style>
-</head>
-
-<body>
-
+body{font-family:Inter,system-ui,sans-serif;line-height:1.7}h1,h2,h3{font-family:Fraunces,serif}h1{font-weight:600;font-size:clamp(34px,4vw,48px)}
+.contracts{border-top:1px solid var(--line);padding:30px 0 34px}.contract-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.contract{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}.contract h3{margin:0 0 10px;font-size:20px;line-height:1.4}.contract p{font-size:12px;color:var(--soft);line-height:1.8;margin:0 0 12px}.contract a{font-size:11px;color:#755321}.contract-kicker{font:600 10px Inter,sans-serif;letter-spacing:.1em;color:#927044;display:block;margin-bottom:12px}.contract.tempo{background:#f5ecdc}.tempo-colors{display:flex;gap:8px;margin:12px 0;font-size:10px}.tempo-colors span{padding:4px 7px;border-radius:4px;background:#fff;border:1px solid #d6dce5}.tempo-colors .blue{background:#e9effa;border-color:#a4b9da}.tempo-colors .red{background:#faecea;border-color:#dca9a4}.contract-note{font-size:12px;color:var(--soft);margin:18px 0 0}.workspace{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);margin-top:0}.planner{background:var(--cream);padding:28px;border-radius:16px;border:1px solid #e6dbc9}.planner h2{font-size:25px;margin:0 0 12px}.planner>p{font-size:12px;color:var(--soft);line-height:1.8}.plan-links{display:grid;gap:12px;margin:24px 0}.plan-link{padding:16px;border:1px solid #d8cbb6;background:#fffcf7;border-radius:8px;text-decoration:none;display:block}.plan-link strong{display:block;font-size:14px;line-height:1.6}.plan-link span{display:block;font-size:11px;color:var(--soft);margin-top:6px}.plan-link:hover{border-color:#ab8039}.reading-grid{margin-top:40px}.locale{max-width:none}.use-foot{line-height:1.8}.market-links{display:flex;flex-wrap:wrap;gap:20px;font-size:12px;border-top:1px solid var(--line);padding-top:22px;margin-top:36px}.market-links a{text-decoration:none}.market-links a:last-child{margin-left:auto}.header-nav .locale{max-width:none}
+@media(max-width:900px){.contract-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.workspace{grid-template-columns:1fr}.contract-grid{gap:12px}.contract{padding:16px}.contract h3{font-size:18px}.tempo-colors{flex-wrap:wrap}.planner{padding:24px 22px}.contracts .section-head h2{font-size:23px}h1{font-size:36px}.market-links a:last-child{margin-left:0}.header-nav .locale{font-size:10px}.reading-grid{margin-top:28px}.contract-kicker{font-size:9px}}
+@media(max-width:360px){.contract-grid{grid-template-columns:1fr}}
+</style></head><body><a class="skip" href="#live">Aller aux prix</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/">⚡ CheapestHours</a><nav class="header-nav" aria-label="Menu principal"><a href="#contrat">Mon contrat</a><a href="#faq">Questions</a><span class="locale">France / Français</span></nav></div></header>
 <main>
-
-  <a class="brand" href="/">⚡ CheapestHours</a>
-
-  <h1>🇫🇷 Quand l'électricité est-elle la moins chère aujourd'hui ?</h1>
-
-  <p class="intro">
-    Consultez le prix de gros de l'électricité en France en direct et les
-    heures les moins chères aujourd'hui.
-  </p>
-
-  <div class="card" id="live">
-    <div class="loading">Chargement des données du marché français…</div>
-  </div>
-  <section class="copy">
-
-    <h2>Quand l'électricité est-elle la moins chère en France ?</h2>
-
-    <p>
-      Le prix de gros de l'électricité en France est fixé sur le
-      marché day-ahead de l'EPEX Spot et varie heure par heure.
-      Contrairement à beaucoup de ses voisins européens, la France
-      produit environ deux tiers de son électricité grâce au
-      nucléaire — une source stable, peu dépendante de la météo.
-    </p>
-
-    <p>
-      Cette forte part de nucléaire, complétée par l'hydraulique,
-      rend généralement les prix français plus stables que ceux de
-      pays davantage dépendants de l'éolien et du solaire, comme
-      l'Allemagne. Les prix restent malgré tout influencés par la
-      demande (chauffage électrique en hiver), la disponibilité du
-      parc nucléaire (maintenance programmée) et les échanges avec
-      les pays voisins via les interconnexions.
-    </p>
-
-    <p>
-      Au printemps, lorsque la production nucléaire et hydraulique
-      reste élevée alors que la demande de chauffage diminue, les
-      prix peuvent occasionnellement devenir négatifs pendant
-      quelques heures, notamment le week-end.
-    </p>
-
-    <p>
-      Le prix affiché ici est un prix de gros. Votre facture
-      d'électricité inclut en plus les coûts d'acheminement (TURPE),
-      les taxes, la contribution au service public de l'électricité
-      et la marge de votre fournisseur.
-    </p>
-
-  </section>
-
-  <section class="faq">
-    <h2>Questions fréquentes</h2>
-
-    <div class="faq-item">
-      <h3>Pourquoi le prix de l'électricité en France varie-t-il moins qu'en Allemagne ?</h3>
-      <p>
-        La France produit environ deux tiers de son électricité
-        grâce au nucléaire, une source stable et peu dépendante de
-        la météo. L'Allemagne, à l'inverse, dépend fortement de
-        l'éolien et du solaire, dont la production varie beaucoup
-        selon le vent et l'ensoleillement — ce qui explique des prix
-        bien plus volatils outre-Rhin.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Quand l'électricité est-elle la moins chère en France ?</h3>
-      <p>
-        Les prix sont généralement les plus bas la nuit et en milieu
-        de journée, lorsque la demande est faible et que la
-        production nucléaire reste stable. Au printemps, quand la
-        production nucléaire et hydraulique est abondante alors que
-        la demande de chauffage est faible, les prix peuvent
-        occasionnellement devenir négatifs.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Ce prix est-il le même que celui de ma facture d'électricité ?</h3>
-      <p>
-        Non. Le prix affiché ici est le prix de gros du marché
-        day-ahead (EPEX Spot France). Votre facture inclut en plus
-        les coûts d'acheminement (TURPE), les taxes, la contribution
-        au service public de l'électricité et la marge de votre
-        fournisseur.
-      </p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Quand l'électricité est-elle la plus chère en France ?</h3>
-      <p>
-        Les prix augmentent généralement en début de soirée en
-        hiver, lorsque le chauffage électrique fait grimper la
-        demande alors que la production solaire est nulle. Les
-        vagues de froid intenses, en particulier, peuvent pousser
-        les prix nettement à la hausse.
-      </p>
-    </div>
-  </section>
-
-  <div class="links">
-
-    <a href="/search/?country=FR&device=ev">
-      🚗 Trouver le meilleur moment pour recharger →
-    </a>
-
-    <a href="/search/?country=FR&device=dishwasher">
-      🍽️ Dois-je lancer le lave-vaisselle maintenant ? →
-    </a>
-
-    <a href="/">
-      🌍 Consulter les prix dans un autre pays →
-    </a>
-
-  </div>
-
-  <h2 class="country-links-title">Découvrir d'autres marchés</h2>
-
-  <nav class="country-links" aria-label="Autres marchés de l'électricité">
-
-    <a href="/ireland/">
-      🇮🇪 Heures les moins chères en Irlande →
-    </a>
-
-    <a href="/california/">
-      🇺🇸 Heures les moins chères en Californie →
-    </a>
-
-    <a href="/texas/">
-      🇺🇸 Heures les moins chères au Texas →
-    </a>
-
-    <a href="/new-york/">
-      🗽 Heures les moins chères à New York →
-    </a>
-
-    <a href="/united-kingdom/">
-      🇬🇧 Heures les moins chères au Royaume-Uni →
-    </a>
-
-    <a href="/germany/">
-      🇩🇪 Heures les moins chères en Allemagne →
-    </a>
-
-    <a href="/netherlands/">
-      🇳🇱 Heures les moins chères aux Pays-Bas →
-    </a>
-
-    <a href="/belgium/">
-      🇧🇪 Heures les moins chères en Belgique →
-    </a>
-
-    <a href="/austria/">
-      🇦🇹 Heures les moins chères en Autriche →
-    </a>
-
-    <a href="/finland/">
-      🇫🇮 Heures les moins chères en Finlande →
-    </a>
-
-    <a href="/poland/">
-      🇵🇱 Heures les moins chères en Pologne →
-    </a>
-
-    <a href="/greece/">
-      🇬🇷 Heures les moins chères en Grèce →
-    </a>
-
-    <a href="/italy/">
-      🇮🇹 Heures les moins chères en Italie →
-    </a>
-
-    <a href="/spain/">
-      🇪🇸 Heures les moins chères en Espagne →
-    </a>
-
-    <a href="/japan/">
-      🇯🇵 Heures les moins chères au Japon →
-    </a>
-
-    <a href="/ontario/">
-      🇨🇦 Heures les moins chères en Ontario →
-    </a>
-
-  </nav>
-
-  <p class="fine">
-    Données de marché en direct fournies par <a href="https://elecz.com/fr/">Elecz</a>.
-    CheapestHours est un outil indépendant pour choisir le meilleur moment pour consommer de l'électricité.
-    <a href="https://botcentrum.com/fr/">BotCentrum</a> ·
-    <a href="/about/">About &amp; methodology</a> · <a href="/privacy/">Confidentialité</a> · <a href="/contact/">Contact</a>
-  </p>
-
-</main>
-
-<script>
-
-async function getJSON(url){
-  const r = await fetch(url);
-
-  if(!r.ok){
-    throw new Error("HTTP " + r.status);
-  }
-
-  return r.json();
-}
-
+<section class="page-hero"><div><p class="eyebrow">L’électricité, à votre rythme</p><h1>Le bon moment dépend<br>de votre contrat.</h1></div><p class="hero-note">Un chauffe-eau à programmer, une voiture à recharger, une lessive à lancer. Comparez les prix du marché français, puis vérifiez ce que ces horaires changent réellement pour vous.</p></section>
+<section class="contracts" id="contrat" aria-labelledby="contract-title"><div class="section-head"><h2 id="contract-title">Avant les prix : votre option tarifaire.</h2><p>À retrouver sur votre facture.</p></div><div class="contract-grid">
+<article class="contract"><span class="contract-kicker">01 / Même prix dans la journée</span><h3>Base</h3><p>Le prix du kWh ne dépend pas de l’heure de consommation. Une baisse du marché ne modifie pas automatiquement ce prix.</p><a href="https://particulier.edf.fr/fr/accueil/guide-energie/electricite/comprendre-heures-creuses.html">Base et heures creuses : EDF ↗</a></article>
+<article class="contract"><span class="contract-kicker">02 / Vos plages contractuelles</span><h3>Heures pleines / heures creuses</h3><p>Programmez selon les plages de votre compteur. Les horaires évoluent progressivement depuis novembre 2025 : vérifiez ceux communiqués par votre fournisseur.</p><a href="https://www.enedis.fr/magazine/modification-des-heures-creuses-comprendre-ce-qui-change-partir-du-1er-novembre-2025">Le changement expliqué par Enedis ↗</a></article>
+<article class="contract tempo"><span class="contract-kicker">03 / La couleur et l’heure</span><h3>Tempo</h3><div class="tempo-colors" aria-label="Couleurs Tempo"><span class="blue">Bleu</span><span>Blanc</span><span class="red">Rouge</span></div><p>Le tarif dépend de la couleur du jour et des heures pleines ou creuses. Cette page n’affiche pas la couleur Tempo en direct.</p><a href="https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo.html">Consulter le calendrier EDF ↗</a></article>
+<article class="contract"><span class="contract-kicker">04 / Le marché dans votre tarif</span><h3>Tarif dynamique</h3><p>Décaler une consommation peut réduire la part variable liée au marché. Vérifiez la formule de prix, les frais et les conditions de votre offre.</p><a href="/about/">Comprendre nos calculs ↗</a></article>
+</div><p class="contract-note">Un créneau bon marché ici n’est pas automatiquement une heure creuse de votre contrat. Nos signaux « prix bas / élevé » ne sont pas les couleurs Tempo.</p></section>
+<div class="market-strip"><span>France · zone FR</span><span>Prix de gros</span><span>Heure de Paris · CET / CEST</span></div>
+<section class="workspace" aria-label="Prix du marché et consommation"><div class="card" id="live" aria-live="polite" aria-atomic="true"><div class="loading">Chargement des données du marché français…</div></div>
+<aside class="planner"><div class="step">Votre consommation</div><h2>Que voulez-vous programmer ?</h2><p>La recherche compare le coût lié au marché pour votre besoin en énergie. Pour Base, HP/HC ou Tempo, votre contrat reste la référence.</p><div class="plan-links">
+<a class="plan-link" href="/search/?country=FR&amp;lang=en"><strong>Chauffe-eau : préparer l’eau chaude →</strong><span>Choisissez « Heat water » et ajustez les kWh. Vérifiez aussi le réglage heures creuses de votre ballon.</span></a>
+<a class="plan-link" href="/search/?country=FR&amp;lang=en"><strong>Voiture électrique : prévoir la recharge →</strong><span>Choisissez « Charge an EV », indiquez l’énergie nécessaire et combien de temps vous pouvez attendre.</span></a>
+<a class="plan-link" href="/search/?country=FR&amp;lang=en"><strong>Linge et vaisselle : déplacer un cycle →</strong><span>Choisissez « Do laundry » ou « Run the dishwasher » et adaptez l’estimation.</span></a>
+</div><p>La recherche et les résultats sont actuellement en anglais. Les appareils se choisissent sur la page suivante.</p><a class="check" href="/search/?country=FR&amp;lang=en">Comparer ma consommation<span aria-hidden="true">→</span></a></aside></section>
+<div class="reading-grid"><section class="copy"><h2>Pourquoi le prix français change-t-il ?</h2><p>La disponibilité du parc nucléaire, l’hydraulique, le vent, le solaire, la demande et les échanges avec les pays voisins contribuent à l’équilibre du marché. Le chauffage électrique rend notamment la demande sensible au froid. Une forte part nucléaire ne garantit pas des prix peu variables.</p><p>RTE observe un creux de prix en milieu de journée lié à la consommation et à la production solaire en France et en Europe. Un excédent de production qui ne trouve pas de débouché peut conduire à des prix négatifs. Il n’existe donc pas une heure toujours la moins chère.</p><h2>Un prix de gros, pas votre facture.</h2><p>Le marché spot de la veille pour le lendemain utilise des intervalles de 15 minutes depuis octobre 2025. Notre liste suit les données disponibles de la zone FR fournies par Elecz ; elle n’est pas un tableau exhaustif des quarts d’heure du marché.</p><p>Votre facture comprend aussi l’acheminement (TURPE), l’abonnement, les taxes et contributions — notamment l’accise sur l’électricité et la TVA — ainsi que les conditions commerciales du fournisseur. Nous conservons l’unité de la source et affichons les heures à Paris, avec le changement d’heure. La zone FR ne représente pas un tarif individuel en Corse ou outre-mer.</p><p class="sources">Sources : <a href="https://analysesetdonnees.rte-france.com/bilan-electrique-2025/prix">RTE — prix et profils du marché</a> · <a href="https://www.rte-france.com/bases-electricite/consommation-electricite/prix-negatifs-electricite">RTE — prix négatifs</a> · <a href="https://particulier.edf.fr/fr/accueil/aide-contact/faq/tarifs-aides/taxe-cspe-accise-electricite.html">EDF — accise sur l’électricité</a>.</p></section>
+<section class="faq" id="faq"><h2>Avant de lancer un appareil.</h2><details class="faq-item"><summary>Les créneaux les moins chers sont-ils mes heures creuses ?</summary><p>Non. Cette liste compare des prix de gros. Vos heures creuses sont les plages associées à votre contrat et à votre compteur. Vérifiez-les sur votre facture ou dans votre espace client avant de programmer un appareil.</p></details>
+<details class="faq-item"><summary>Pourquoi mes horaires d’heures creuses peuvent-ils changer ?</summary><p>Enedis fait évoluer progressivement les horaires depuis novembre 2025, avec un déploiement prévu jusqu’en 2027. Les clients concernés sont informés par leur fournisseur. Il n’existe pas un nouvel horaire identique pour tous les foyers.</p></details>
+<details class="faq-item"><summary>Le voyant de prix indique-t-il la couleur Tempo du jour ?</summary><p>Non. « Prix bas » ou « Prix élevé » décrit le signal de marché, pas un jour bleu, blanc ou rouge Tempo. Pour Tempo, consultez le calendrier officiel EDF et la grille tarifaire de votre contrat.</p></details>
+<details class="faq-item"><summary>Un prix négatif signifie-t-il que ma consommation est gratuite ?</summary><p>Non. Le prix de gros n’est qu’une composante du coût de l’électricité. Votre facture comprend aussi l’acheminement, les taxes et les conditions de votre fournisseur. Le coût dépend de votre contrat, même lorsque le marché devient négatif.</p></details>
+<details class="faq-item"><summary>Puis-je trouver trois heures consécutives ou les prix de demain ?</summary><p>La liste présente des créneaux disponibles, pas nécessairement consécutifs. La recherche accepte un besoin en kWh ou une puissance et une durée, mais ne garantit pas un bloc continu de cette durée. Les prix futurs ne sont affichés que lorsqu’ils sont disponibles ; nous ne les prédisons pas.</p></details></section></div>
+<nav class="market-links" aria-label="Autres marchés européens"><a href="/belgium/">Belgique ↗</a><a href="/germany/">Allemagne ↗</a><a href="/spain/">Espagne ↗</a><a href="/italy/">Italie ↗</a><a href="/#markets">Tous les marchés →</a></nav></main>
+<footer class="site-footer"><div class="footer-inner"><div><a class="brand" href="/">⚡ CheapestHours</a><p>Données du marché fournies par <a href="https://elecz.com/fr/">Elecz</a>.<br>Un outil indépendant pour programmer votre consommation d’électricité.</p></div><nav class="footer-nav" aria-label="Informations du site"><a href="/about/">À propos et méthodologie</a><a href="/privacy/">Confidentialité</a><a href="/contact/">Contact</a><a href="/">Autres pays</a></nav></div></footer><script>async function getJSON(url){const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}
+const number = new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:4});
 function fmt(price,unit,currency){
-
-  if(/^[cp]\/[a-z]+/i.test(unit||"")){
-    return Number(price).toFixed(2) + " " + unit;
-  }
-
-  const s = {
-    EUR:"€",
-    GBP:"£",
-    USD:"$",
-    JPY:"¥",
-    PLN:"zł"
-  }[currency] || currency + " ";
-
-  return s + Number(price).toFixed(2) + "/kWh";
+  const value=Number(price);if(!Number.isFinite(value))return '—';
+  if(currency==='EUR' && /^(?:EUR|€)\/kWh$/i.test(unit||'')) return number.format(value)+' €/kWh';
+  if(currency==='EUR' && unit==='c/kWh')return number.format(value)+' c€/kWh';
+  if(/^[cp]\/[a-z]+/i.test(unit||''))return number.format(value)+' '+unit;
+  // Preserve source units rather than assuming MWh prices are kWh prices.
+  return number.format(value)+' '+(unit || ((currency||'')+'/kWh'));
 }
-
+// Elecz's official connector contract specifies UTC for all timestamps.
+function apiDate(iso){return new Date(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?$/.test(iso||'')?iso+'Z':iso);}
 function hour(iso){
-
-  try{
-
-    return new Date(iso).toLocaleTimeString(
-      "fr-FR",
-      {
-        hour:"2-digit",
-        minute:"2-digit",
-        timeZone:"Europe/Paris"
-      }
-    );
-
-  }catch{
-
-    return iso;
-
-  }
+  const date=apiDate(iso);if(!iso||!Number.isFinite(date.getTime()))return 'Heure indisponible';
+  return date.toLocaleString('fr-FR',{day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris',hour12:false});
 }
-
-(async()=>{
-
-  const el = document.getElementById("live");
-
-  try{
-
-    const [spot,cheap] = await Promise.all([
-
-      getJSON(
-        "https://elecz.com/signal/spot?zone=FR"
-      ),
-
-      getJSON(
-        "https://elecz.com/signal/cheapest-hours?zone=FR&hours=12"
-      )
-
-    ]);
-
-    const sig = cheap.current_hour_signal;
-
-    const cls =
-      sig === "low"
-        ? "good"
-        : sig === "high"
-          ? "bad"
-          : "mid";
-
-    const label =
-      cls === "good"
-        ? "🟢 Prix bas"
-        : cls === "bad"
-          ? "🔴 Prix élevé"
-          : "🟡 Prix normal";
-
-    const pts = (cheap.cheapest_hours || [])
-      .slice()
-      .sort((a,b)=>a.price-b.price)
-      .slice(0,6)
-      .sort((a,b)=>new Date(a.hour)-new Date(b.hour));
-
-    const rows = pts
-      .map(
-        p => `
-          <tr>
-            <td>${hour(p.hour)}</td>
-            <td>${fmt(p.price,spot.unit,spot.currency)}</td>
-          </tr>
-        `
-      )
-      .join("");
-
-    el.innerHTML = `
-
-      <div class="flag">🇫🇷</div>
-
-      <div class="updated">
-        Mis à jour à ${hour(spot.timestamp)}
-      </div>
-
-      <div class="hero">
-
-        <div class="price">
-          ${fmt(spot.price,spot.unit,spot.currency)}
-        </div>
-
-        <div style="margin-top:4px;font-size:10.5px;color:var(--soft)">
-          Prix de gros — différent de votre facture.
-        </div>
-
-        <div class="state ${cls}">
-          ${label}
-        </div>
-
-      </div>
-
-      <h2>Heures les moins chères</h2>
-
-      ${
-        rows
-          ? `
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Heure</th>
-                  <th>Prix</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                ${rows}
-              </tbody>
-
-            </table>
-          `
-          : `
-            <p style="font-size:12px;color:var(--soft)">
-              Aucune donnée de prix à venir n'est disponible pour le moment.
-            </p>
-          `
-      }
-
-      <a class="check" href="/search/?country=FR">
-        Vérifier ma consommation →
-      </a>
-
-    `;
-
-  }catch(e){
-
-    el.innerHTML = `
-      <div class="error">
-        Les données du marché français sont temporairement indisponibles.
-      </div>
-    `;
-
-  }
-
-})();
-
-</script>
-
-</body>
-</html>
+function escapeHTML(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+async function loadMarket(){
+ const el=document.getElementById('live');el.setAttribute('aria-busy','true');
+ try{
+  const [spotResult,cheapResult]=await Promise.allSettled([getJSON('https://elecz.com/signal/spot?zone=FR'),getJSON('https://elecz.com/signal/cheapest-hours?zone=FR&hours=12')]);
+  if(spotResult.status!=='fulfilled'||spotResult.value.price==null||!Number.isFinite(Number(spotResult.value.price)))throw new Error('No spot price');
+  const spot=spotResult.value,cheap=cheapResult.status==='fulfilled'?cheapResult.value:{};
+  const slots=Array.isArray(cheap.cheapest_hours)?cheap.cheapest_hours:[];
+  const sig=cheap.current_hour_signal;
+  const cls=sig==='low'?'good':sig==='high'?'bad':'mid';
+  const label=sig==='low'?'Prix bas sur le marché':sig==='high'?'Prix élevé sur le marché':sig==='medium'||sig==='normal'?'Prix intermédiaire sur le marché':'Évaluation du prix indisponible';
+  const pts=slots.filter(p=>p.price!=null&&Number.isFinite(Number(p.price))&&Number.isFinite(apiDate(p.hour).getTime())).sort((a,b)=>Number(a.price)-Number(b.price)).slice(0,6).sort((a,b)=>apiDate(a.hour)-apiDate(b.hour));
+  const lowest=pts.length?Math.min(...pts.map(p=>Number(p.price))):null;
+  const rows=pts.map(p=>'<tr class="'+(Number(p.price)===lowest?'cheapest':'')+'"><td>'+hour(p.hour)+(Number(p.price)===lowest?'<span class="slot-tag">Minimum de la liste</span>':'')+'</td><td>'+escapeHTML(fmt(p.price,p.unit||cheap.unit||spot.unit,cheap.currency||spot.currency))+'</td></tr>').join('');
+  el.innerHTML='<div class="live-head"><h2>France · FR</h2><span>Marché de gros</span></div><div class="hero"><p class="price-caption">Prix de marché actuel</p><div class="price">'+escapeHTML(fmt(spot.price,spot.unit,spot.currency)).replace(' €/kWh','<small>€/kWh</small>').replace(' c€/kWh','<small>c€/kWh</small>')+'</div><p class="price-note">Ce prix n’est pas le tarif final de votre fournisseur.</p><div class="state '+cls+'">'+label+'</div><p class="updated">Données : '+hour(spot.timestamp)+(spot.stale?' · Données signalées comme anciennes par la source':'')+(spot.fallback?' · Données de remplacement de la source':'')+'</p></div><h3 class="table-heading">Créneaux moins chers disponibles</h3><p class="table-note">Jusqu’à 6 créneaux disponibles, en heure de Paris. Ils ne sont pas nécessairement consécutifs.</p>'+(cheap.data_complete===false?'<p class="table-note">Les données ne couvrent pas encore toute la période. Le classement peut évoluer avec de nouveaux prix.</p>':'')+(rows?'<table aria-label="Créneaux moins chers disponibles"><thead><tr><th scope="col">Date · heure</th><th scope="col">Prix de marché</th></tr></thead><tbody>'+rows+'</tbody></table>':'<p class="table-note">Les prix à venir ne sont pas disponibles pour le moment. <a href="/about/">À propos et méthodologie</a></p>');
+ }catch(e){el.innerHTML='<div class="error">Les données du marché français sont temporairement indisponibles. Réessayez plus tard ou poursuivez dans la recherche.</div>';}
+ finally{el.setAttribute('aria-busy','false');}
+}
+loadMarket();
+</script></body></html>
