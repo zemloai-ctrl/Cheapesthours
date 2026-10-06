@@ -906,7 +906,7 @@ const lang = qs.get("lang") ||
 const PL_COUNTRY_NAMES = {FI:"Finlandia",SE:"Szwecja",NO:"Norwegia",DK:"Dania",DE:"Niemcy",NL:"Holandia",BE:"Belgia",AT:"Austria",FR:"Francja",PL:"Polska",CZ:"Czechy",HU:"Węgry",ES:"Hiszpania",PT:"Portugalia",IT:"Włochy",GR:"Grecja",EE:"Estonia",LV:"Łotwa",LT:"Litwa",IE:"Irlandia",GB:"Wielka Brytania",CH:"Szwajcaria",HR:"Chorwacja",BG:"Bułgaria",SI:"Słowenia",SK:"Słowacja",RO:"Rumunia",RS:"Serbia",BA:"Bośnia i Hercegowina",ME:"Czarnogóra",MK:"Macedonia Północna",US:"Stany Zjednoczone",CA:"Kanada",MX:"Meksyk",AU:"Australia",NZ:"Nowa Zelandia",JP:"Japonia",KR:"Korea Południowa",ZA:"Republika Południowej Afryki",PH:"Filipiny"};
 const EL_COUNTRY_NAMES = {FI:"Φινλανδία",SE:"Σουηδία",NO:"Νορβηγία",DK:"Δανία",DE:"Γερμανία",NL:"Ολλανδία",BE:"Βέλγιο",AT:"Αυστρία",FR:"Γαλλία",PL:"Πολωνία",CZ:"Τσεχία",HU:"Ουγγαρία",ES:"Ισπανία",PT:"Πορτογαλία",IT:"Ιταλία",GR:"Ελλάδα",EE:"Εσθονία",LV:"Λετονία",LT:"Λιθουανία",IE:"Ιρλανδία",GB:"Ηνωμένο Βασίλειο",CH:"Ελβετία",HR:"Κροατία",BG:"Βουλγαρία",SI:"Σλοβενία",SK:"Σλοβακία",RO:"Ρουμανία",RS:"Σερβία",BA:"Βοσνία και Ερζεγοβίνη",ME:"Μαυροβούνιο",MK:"Βόρεια Μακεδονία",US:"Ηνωμένες Πολιτείες",CA:"Καναδάς",MX:"Μεξικό",AU:"Αυστραλία",NZ:"Νέα Ζηλανδία",JP:"Ιαπωνία",KR:"Νότια Κορέα",ZA:"Νότια Αφρική",PH:"Φιλιππίνες"};
 const IT_COUNTRY_NAMES = {FI:"Finlandia",SE:"Svezia",NO:"Norvegia",DK:"Danimarca",DE:"Germania",NL:"Paesi Bassi",BE:"Belgio",AT:"Austria",FR:"Francia",PL:"Polonia",CZ:"Cechia",HU:"Ungheria",ES:"Spagna",PT:"Portogallo",IT:"Italia",GR:"Grecia",EE:"Estonia",LV:"Lettonia",LT:"Lituania",IE:"Irlanda",GB:"Regno Unito",CH:"Svizzera",HR:"Croazia",BG:"Bulgaria",SI:"Slovenia",SK:"Slovacchia",RO:"Romania",RS:"Serbia",BA:"Bosnia ed Erzegovina",ME:"Montenegro",MK:"Macedonia del Nord",US:"Stati Uniti",CA:"Canada",MX:"Messico",AU:"Australia",NZ:"Nuova Zelanda",JP:"Giappone",KR:"Corea del Sud",ZA:"Sudafrica",PH:"Filippine"};
-const EN_ZONE_NAMES = {"US-TX-HB_HOUSTON":"Texas","CA-ON":"Ontario"};
+const EN_ZONE_NAMES = {"US-TX-HB_HOUSTON":"Texas · Houston hub","CA-ON":"Ontario"};
 const PL_ZONE_NAMES = {"US-TX-HB_HOUSTON":"Teksas","CA-ON":"Ontario"};
 const EL_ZONE_NAMES = {GR:"Ελλάδα","IT-NO":"Βόρεια Ιταλία","IT-CNO":"Κεντροβόρεια Ιταλία","IT-CSO":"Κεντρονότια Ιταλία","IT-SO":"Νότια Ιταλία","IT-SAR":"Σαρδηνία","IT-SIC":"Σικελία","US-TX-HB_HOUSTON":"Τέξας","CA-ON":"Οντάριο"};
 const IT_ZONE_NAMES = {GR:"Grecia","IT-NO":"Italia Nord","IT-CNO":"Italia Centro-Nord","IT-CSO":"Italia Centro-Sud","IT-SO":"Italia Sud","IT-SAR":"Sardegna","IT-SIC":"Sicilia","US-TX-HB_HOUSTON":"Texas","CA-ON":"Ontario"};
@@ -978,7 +978,10 @@ function trim(n) {
 }
 
 function minorUnit(unit) { return /^[cp]\//i.test(unit || ""); }
-function majorPrice(price,unit) { return minorUnit(unit) ? Number(price) / 100 : Number(price); }
+function majorPrice(price,unit) {
+  if (/\/MWh$/i.test(unit || "")) return Number(price) / 1000;
+  return minorUnit(unit) ? Number(price) / 100 : Number(price);
+}
 
 function symbol(currency) {
   return {
@@ -988,10 +991,10 @@ function symbol(currency) {
 }
 
 function fmtUnitPrice(value,unit,currency) {
-  if (value == null) return "—";
-  if (minorUnit(unit)) return `${Number(value).toFixed(2)} ${unit}`;
+  if (value == null || !Number.isFinite(Number(value))) return "—";
   const decimals = currency === "JPY" || currency === "KRW" ? 1 : 2;
-  return `${symbol(currency)}${Number(value).toFixed(decimals)}/kWh`;
+  const formatted = Number(value).toLocaleString("en-GB", {minimumFractionDigits:decimals, maximumFractionDigits:4});
+  return formatted + " " + (unit || ((currency || "") + "/kWh"));
 }
 
 function fmtMoney(value,currency) {
@@ -1005,20 +1008,26 @@ function fmtHour(iso,tz) {
     const locale = lang === "pl" ? "pl-PL" : lang === "el" ? "el-GR" : lang === "it" ? "it-IT" : lang === "ja" ? "ja-JP" : lang === "es" ? "es-ES" : "en-GB";
     // Elecz documents every timestamp as UTC, including offset-free slot strings.
     const stamp = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?$/.test(iso) ? iso + "Z" : iso;
-    return new Date(stamp).toLocaleTimeString(locale, { hour:"2-digit", minute:"2-digit", timeZone:tz, hour12:false });
+    return new Date(stamp).toLocaleString(locale, { day:"numeric", month:"numeric", hour:"2-digit", minute:"2-digit", timeZone:tz, hour12:false });
   } catch { return iso; }
 }
 
 function extractWindow(cheap) {
-  if (cheap?.best_window?.avg_price != null) {
-    return { avg:cheap.best_window.avg_price, start:cheap.best_window.start, end:cheap.best_window.end };
+  const explicitRuntime = qs.has("runtime");
+  const timestamp = value => new Date(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?$/.test(value || "") ? value + "Z" : value).getTime();
+  const valid = candidate => {
+    if (candidate?.avg_price == null || !Number.isFinite(Number(candidate.avg_price))) return false;
+    const start = timestamp(candidate.start), end = timestamp(candidate.end);
+    if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return false;
+    // An API window of another duration cannot verify a custom continuous task.
+    return !explicitRuntime || Math.abs((end - start) / 3600000 - runtime) <= 1 / 60;
+  };
+  for (const candidate of [cheap?.best_window, cheap?.best_3h_window]) {
+    if (valid(candidate)) return {avg:Number(candidate.avg_price), start:candidate.start, end:candidate.end, unit:cheap.unit, currency:cheap.currency};
   }
-  if (cheap?.best_3h_window?.avg_price != null && runtime <= 3.25) {
-    return { avg:cheap.best_3h_window.avg_price, start:cheap.best_3h_window.start, end:cheap.best_3h_window.end };
-  }
-  if (cheap?.cheapest_hours?.length && runtime <= 1.25) {
-    const best = [...cheap.cheapest_hours].sort((a,b) => a.price - b.price)[0];
-    return { avg:best.price, start:best.hour, end:null };
+  if (!explicitRuntime && cheap?.cheapest_hours?.length && runtime <= 1.25) {
+    const best = cheap.cheapest_hours.filter(p => p.price != null && Number.isFinite(Number(p.price)) && Number.isFinite(timestamp(p.hour))).sort((a,b) => a.price-b.price)[0];
+    if (best) return {avg:Number(best.price), start:best.hour, end:null, unit:best.unit || cheap.unit, currency:cheap.currency};
   }
   return null;
 }
@@ -1043,6 +1052,7 @@ async function run() {
         .catch(() => ({ available:false }))
     ]);
 
+    if (spot.price == null || !Number.isFinite(Number(spot.price))) throw new Error("Price unavailable");
     const regulated = spot.price_type === "regulated";
     const currentUnitMajor = majorPrice(spot.price,spot.unit);
     const currentCost = currentUnitMajor * kwh;
@@ -1062,9 +1072,8 @@ async function run() {
     } else {
       window = extractWindow(cheap);
 
-      if (window) {
-        bestCost = majorPrice(window.avg,spot.unit) * kwh;
-        if (bestCost > currentCost) bestCost = currentCost;
+      if (window && (!window.currency || window.currency === spot.currency)) {
+        bestCost = majorPrice(window.avg,window.unit || spot.unit) * kwh;
 
         saving = Math.max(0,currentCost - bestCost);
         savingPct = currentCost > 0 ? (saving / currentCost) * 100 : 0;
@@ -1127,6 +1136,7 @@ async function run() {
         </details>
 
         <div class="fine">${t(lang,"fine")}</div>
+        ${spot.source ? '<div class="fine">' + String(spot.source).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])) + (zoneCode.startsWith('GB') ? ' · Octopus Agile tariff reference; compare with your own region and contract.' : '') + '</div>' : ''}
       </section>
     `;
 
@@ -1327,3 +1337,4 @@ if (sourceLinks) {
 </script>
 </body>
 </html>
+

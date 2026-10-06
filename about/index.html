@@ -30,21 +30,24 @@ footer{text-align:center;margin-top:24px;font-size:12px;color:rgba(245,236,220,.
 
 <h2>Where the data comes from</h2>
 <p>CheapestHours receives normalized electricity-market signals from <a href="https://elecz.com/" rel="noopener">Elecz</a>. Elecz collects and normalizes data from electricity-market and grid sources for supported regions. Because electricity markets differ by country and region, the relevant market zone and source can also differ. CheapestHours does not invent estimated market prices when source data is unavailable.</p>
+<p>Most source signals are wholesale prices. Some integrations differ: the current GB signal uses an Octopus Agile tariff reference, and a source can mark a price as regulated. Source units and labels matter; a tariff reference is not a universal wholesale benchmark.</p>
 <p>Market data changes continuously. The time shown with a result matters: a recommendation is a snapshot based on the data available when the page is loaded, not a promise about a future electricity bill.</p>
 
 <h2>How “cheapest hours” are identified</h2>
-<p>The tool compares the available hourly price observations within the relevant upcoming period. For a multi-hour task, consecutive hours matter: a three-hour charging session needs a useful three-hour window, not merely the single cheapest hour of the day. The interface therefore focuses on practical timing windows as well as the current-hour signal.</p>
+<p>Market pages list up to six lower-price observations from the available data, displayed in chronological order. They may be separate periods rather than one continuous session. Market settlement intervals and the observations supplied by the API can differ; the list is not a complete quarter-hour schedule.</p>
+<p>Search accepts an energy amount, or power multiplied by runtime for a custom load. Results use a price window supplied by Elecz when available. When a custom runtime is specified, a window of a different duration is not presented as a verified match. The tool does not book or control appliances, and missing future prices are not predicted.</p>
 <p>“Cheap” is relative to the available market prices being compared. It does not mean electricity is free, below a particular retail tariff, or guaranteed to be cheaper than another supplier's contract.</p>
 
 <h2>Wholesale prices versus your bill</h2>
 <div class="note"><strong>Important:</strong> a wholesale electricity price is not the same thing as the final price on a household electricity bill.</div>
-<p>Retail electricity prices can include supplier margins, network or distribution charges, taxes, levies and other regulated or contractual components. The benefit of shifting consumption therefore depends on the user's electricity contract. Customers on dynamic or spot-linked contracts are usually more directly exposed to hourly market prices than customers on fixed-price contracts.</p>
+<p>Retail electricity prices can include supplier margins, network or distribution charges, taxes, levies and other regulated or contractual components. The benefit of shifting consumption therefore depends on the user's electricity contract. Customers on dynamic or spot-linked contracts are usually more directly exposed to changing market prices than customers on fixed-price contracts.</p>
 <p>CheapestHours is a timing aid, not an electricity supplier, billing service or guarantee of savings. Users should check the terms of their own electricity contract before treating a wholesale-price movement as a change in their personal tariff.</p>
 
 <h2>Why market pages are different</h2>
 <p>Electricity markets are not interchangeable. Some use national prices, others use bidding zones or regional hubs; some publish hourly prices and others use different settlement intervals. Each published market page therefore includes local explanation and uses the applicable Elecz market signal rather than applying one universal price to every country.</p>
 
 <h2>Editorial and maintenance approach</h2>
+<p>Market guides link to official regulators, system operators and market operators for local claims. Content and integrations were reviewed on 6 October 2026. Contract terms and regulated schedules can change; your supplier’s current terms take priority for your bill.</p>
 <p>We aim to keep the service useful rather than publish pages simply for search traffic. A market page is intended to combine functioning price data, a practical scheduling route and market-specific explanation. Pages and integrations are updated when data availability, market naming or the service itself changes. If a data source is temporarily unavailable, the site may be unable to provide a current recommendation.</p>
 
 <h2>Who operates CheapestHours?</h2>

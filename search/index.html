@@ -735,7 +735,9 @@ const LOAD_META = {
 };
 
 const qs = new URLSearchParams(location.search);
-const countryCode = qs.get("country") || localStorage.getItem("cheapesthours-country") || "FI";
+let savedCountry = null;
+try { savedCountry = localStorage.getItem("cheapesthours-country"); } catch {}
+const countryCode = qs.get("country") || savedCountry || "FI";
 const lang = qs.get("lang") ||
   (countryCode === "PL" ? "pl" :
    countryCode === "GR" ? "el" :
@@ -826,6 +828,8 @@ meta.zones.forEach(([value,label]) => {
   option.textContent = zoneName(value, label);
   els.zoneSelect.appendChild(option);
 });
+const requestedZone = qs.get("zone");
+if (meta.zones.some(([value]) => value === requestedZone)) els.zoneSelect.value = requestedZone;
 if (meta.zones.length > 1) els.zoneField.style.display = "block";
 
 function updateLoad() {
@@ -891,3 +895,4 @@ els.seoLinks.innerHTML = FEATURED.map(f =>
 </script>
 </body>
 </html>
+
