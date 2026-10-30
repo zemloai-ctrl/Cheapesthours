@@ -21,9 +21,9 @@
 
   <meta name="theme-color" content="#17213B">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1192222195357366"
      crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
 @media(max-width:350px){.market-grid{grid-template-columns:1fr}.hero h1{font-size:35px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.market-card{transition:none}}
 </style>
-</head>
+<link rel="stylesheet" href="/assets/fonts/fonts.css"><style>.legal-nav{display:flex;flex-wrap:wrap;gap:12px;font:14px/1.7 system-ui,sans-serif;padding:16px;max-width:1100px;margin:auto}.legal-nav a{color:inherit}.legal-nav button{font:inherit;color:inherit;border:0;padding:0;background:transparent;text-decoration:underline;cursor:pointer}</style></head>
 
 <body>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/">⚡ CheapestHours</a><nav class="header-nav" aria-label="Main navigation"><a href="#markets">Explore markets</a><a href="/about/">How it works</a></nav></div></header>
@@ -105,7 +105,7 @@
 
 <a class="market-card" href="/japan/" data-region="Asia" data-name="Japan 日本" aria-label="Japan electricity market guide"><div class="card-top"><span class="market-mark" aria-hidden="true">JP</span><span class="language">日本語</span></div><h3>Japan</h3><p class="local-name">日本</p><p class="market-description">Choose your JEPX area, from Hokkaido to Kyushu.</p><div class="card-bottom"><span>Explore the market</span><span aria-hidden="true">↗</span></div></a></nav><p class="empty" id="market-empty" hidden>No matching guide. Try another name or choose “All markets”.</p><p class="coverage">Looking for somewhere else? The country selector above includes additional supported markets. <a href="#start-title">Choose your country ↑</a></p></section>
 </div><section class="how" id="how-it-works"><div class="wrap how-layout"><div class="how-intro"><p class="eyebrow">Before you plan</p><h2>A market price.<br>A useful starting point.</h2></div><div><h3>Timing depends on your tariff</h3><p>Moving usage can reduce the variable energy cost when your contract follows market prices. A fixed retail rate does not automatically change with the wholesale price. Network charges, taxes and supplier fees also affect your bill.</p></div><div><h3>Plan with available data</h3><p>Choose your market and energy use, then compare the current price with upcoming data supplied by <a href="https://elecz.com/">Elecz</a>. Availability varies by market. <a href="/about/">Read about our sources and calculations →</a></p></div></div></section></main>
-<footer class="site-footer"><div class="wrap footer-inner"><div><a class="brand" href="/">⚡ CheapestHours</a><p class="footer-copy">An independent electricity timing tool maintained by SKA Trading Oy / Zemlo AI, Finland. Market data by <a href="https://elecz.com/">Elecz</a>. Wholesale prices are not your final electricity bill.</p></div><nav class="footer-nav" aria-label="Site information"><a href="/about/">About &amp; methodology</a><a href="/privacy/">Privacy Policy</a><a href="/contact/">Contact</a></nav></div></footer>
+<footer class="site-footer"><div class="wrap footer-inner"><div><a class="brand" href="/">⚡ CheapestHours</a><p class="footer-copy">An independent electricity timing tool maintained by SKA Trading Oy / Zemlo AI, Finland. Market data by <a href="https://elecz.com/">Elecz</a>. Wholesale prices are not your final electricity bill.</p></div><nav class="footer-nav" aria-label="Site information"><a href="/about/">About &amp; methodology</a><a href="/privacy/">Privacy Policy</a><a href="/contact/">Contact</a></nav></div><nav class="legal-nav" aria-label="Legal information"><a href="/privacy/" data-privacy-link>Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a> · <button type="button" data-privacy-settings>Privacy settings</button></nav></footer>
 <script>    const country = document.getElementById("country");
     const continueBtn = document.getElementById("continueBtn");
 
@@ -165,5 +165,5 @@ for(const button of filters) button.addEventListener("click",()=>{
 });
 marketSearch.addEventListener("input",updateMarkets);
 </script>
-</body>
+<script src="/assets/privacy-settings.js" defer></script></body>
 </html>
