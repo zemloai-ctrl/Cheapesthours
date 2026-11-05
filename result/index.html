@@ -977,7 +977,9 @@ function trim(n) {
   return Number(n).toFixed(2).replace(/\.00$/,"").replace(/(\.\d)0$/,"$1");
 }
 
-function minorUnit(unit) { return /^[cp]\//i.test(unit || ""); }
+// Elecz ZONE_UNIT_LOCAL: c, p, ore (öre), gr are minor units (1/100).
+// KRW, JPY and MXN are already major units.
+function minorUnit(unit) { return /^(?:c|p|ore|öre|gr)\/kWh$/i.test((unit || "").trim()); }
 function majorPrice(price,unit) {
   if (/\/MWh$/i.test(unit || "")) return Number(price) / 1000;
   return minorUnit(unit) ? Number(price) / 100 : Number(price);
@@ -986,6 +988,7 @@ function majorPrice(price,unit) {
 function symbol(currency) {
   return {
     EUR:"€", GBP:"£", USD:"$", JPY:"¥", CAD:"CA$", AUD:"A$", NZD:"NZ$",
+    SEK:"kr ", NOK:"kr ", DKK:"kr ", PLN:"zł ",
     KRW:"₩", ZAR:"R", PHP:"₱", MXN:"MX$"
   }[currency] || (currency ? currency + " " : "");
 }
